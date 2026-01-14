@@ -1,5 +1,5 @@
 //!  Submodule provding implementations of the `TryFrom` trait for the
-//! [`Element`] enum.
+//! `Element` enum.
 
 impl TryFrom<char> for crate::Element {
     type Error = crate::errors::Error;

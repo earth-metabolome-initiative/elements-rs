@@ -1,5 +1,5 @@
 //!  Submodule provding the implementation of the `Display` trait for the
-//! [`Element`] enum.
+//! `Element` enum.
 
 impl core::fmt::Display for crate::Element {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
