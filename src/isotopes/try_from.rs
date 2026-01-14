@@ -16,3 +16,19 @@ impl TryFrom<char> for crate::Isotope {
         })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_try_from_char() {
+        for char in ['P', 'D', 'T'] {
+            let result = crate::Isotope::try_from(char);
+            assert!(result.is_ok(), "Failed to convert char '{}' to Isotope", char);
+        }
+
+        // Test an invalid character
+        let invalid_char = 'X';
+        let result = crate::Isotope::try_from(invalid_char);
+        assert!(matches!(result, Err(crate::errors::Error::CharacterIsotope('X'))));
+    }
+}
