@@ -160,6 +160,7 @@ dependencies = [
  "serde",
  "strum",
  "strum_macros",
+ "thiserror",
 ]
 
 [[package]]
