@@ -127,3 +127,62 @@ impl super::ElementVariant for super::Isotope {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use crate::isotopes::ElementVariant;
+
+    #[test]
+    fn test_element_variant() {
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                assert_eq!(
+                    isotope.element(),
+                    element,
+                    "Isotope {:?} should return element {:?}",
+                    isotope,
+                    element
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_element_variant_delegation() {
+        // Test that the Isotope enum correctly delegates to individual isotope
+        // implementations for the element() method. Test representative isotopes
+        // from different elements.
+
+        // Hydrogen isotopes
+        let h1 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::H1);
+        assert_eq!(h1.element(), crate::Element::H);
+
+        let d2 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        assert_eq!(d2.element(), crate::Element::H);
+
+        // Carbon isotopes
+        let c12 = crate::isotopes::Isotope::C(crate::isotopes::CarbonIsotope::C12);
+        assert_eq!(c12.element(), crate::Element::C);
+
+        let c13 = crate::isotopes::Isotope::C(crate::isotopes::CarbonIsotope::C13);
+        assert_eq!(c13.element(), crate::Element::C);
+
+        // Oxygen isotopes
+        let o16 = crate::isotopes::Isotope::O(crate::isotopes::OxygenIsotope::O16);
+        assert_eq!(o16.element(), crate::Element::O);
+
+        // Argon isotopes
+        let ar40 = crate::isotopes::Isotope::Ar(crate::isotopes::ArgonIsotope::Ar40);
+        assert_eq!(ar40.element(), crate::Element::Ar);
+
+        // Uranium isotopes
+        let u235 = crate::isotopes::Isotope::U(crate::isotopes::UraniumIsotope::U235);
+        assert_eq!(u235.element(), crate::Element::U);
+
+        let u238 = crate::isotopes::Isotope::U(crate::isotopes::UraniumIsotope::U238);
+        assert_eq!(u238.element(), crate::Element::U);
+    }
+}

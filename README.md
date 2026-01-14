@@ -69,16 +69,6 @@ let nitrogen = Element::from_str("N").unwrap();
 - `sqlite`: Enables `SQLite`-specific type mappings (requires `diesel`)
 - `postgres`: Enables `PostgreSQL`-specific type mappings (requires `diesel`)
 
-## Compiling the PGRX Extension
-
-After cloning the repository, you can compile the PGRX extension in the `./extension` directory by running:
-
-```bash
-USER_ID=$(id -u) GROUP_ID=$(id -g) docker compose up
-```
-
-Note: The `USER_ID` and `GROUP_ID` environment variables ensure proper file permissions when mounting volumes, avoiding root-owned files on the host system.
-
 ## License
 
 This project is licensed under the same terms as the parent EMI monorepo.

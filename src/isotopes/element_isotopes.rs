@@ -128,3 +128,28 @@ impl crate::Element {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use crate::isotopes::ElementVariant;
+
+    #[test]
+    fn test_isotopes() {
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            assert!(!isotopes.is_empty(), "Element {:?} should have at least one isotope", element);
+            // Verify that all isotopes belong to the correct element
+            for isotope in isotopes {
+                assert_eq!(
+                    isotope.element(),
+                    element,
+                    "Isotope {:?} should belong to element {:?}",
+                    isotope,
+                    element
+                );
+            }
+        }
+    }
+}
