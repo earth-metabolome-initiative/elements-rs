@@ -162,4 +162,26 @@ mod tests {
         let h7 = Isotope::H(crate::isotopes::HydrogenIsotope::H7);
         assert_eq!(h7.isotopic_composition(), None);
     }
+
+    #[test]
+    fn test_isotopic_composition_strum() {
+        use strum::IntoEnumIterator;
+
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let composition = isotope.isotopic_composition();
+                // Isotopic composition should be either None (for synthetic isotopes) or
+                // between 0 and 1
+                if let Some(comp) = composition {
+                    assert!(
+                        (0.0..=1.0).contains(&comp),
+                        "Isotopic composition for isotope {:?} should be between 0 and 1, got {:?}",
+                        isotope,
+                        comp
+                    );
+                }
+            }
+        }
+    }
 }

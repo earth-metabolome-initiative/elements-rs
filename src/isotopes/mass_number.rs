@@ -167,4 +167,37 @@ mod tests {
         let ar40 = Isotope::Ar(crate::isotopes::ArgonIsotope::Ar40);
         assert_eq!(ar40.mass_number(), 40);
     }
+
+    #[test]
+    fn test_mass_number_strum() {
+        use strum::IntoEnumIterator;
+
+        use crate::isotopes::{ElementVariant, MassNumber};
+
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let mass_number = isotope.mass_number();
+                // Mass number should be positive and reasonable
+                assert!(
+                    mass_number > 0,
+                    "Mass number for isotope {:?} should be positive",
+                    isotope
+                );
+                assert!(
+                    mass_number < 300,
+                    "Mass number for isotope {:?} should be reasonable (< 300)",
+                    isotope
+                );
+                // Verify that the isotope belongs to the correct element
+                assert_eq!(
+                    isotope.element(),
+                    element,
+                    "Isotope {:?} should belong to element {:?}",
+                    isotope,
+                    element
+                );
+            }
+        }
+    }
 }

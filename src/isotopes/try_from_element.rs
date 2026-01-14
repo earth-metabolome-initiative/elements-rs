@@ -210,4 +210,32 @@ mod tests {
         assert!(Isotope::try_from((Element::O, 11)).is_err()); // O12 is the lowest for oxygen
         assert!(Isotope::try_from((Element::O, 29)).is_err()); // O28 is the highest for oxygen
     }
+
+    #[test]
+    fn test_try_from_element_strum() {
+        use strum::IntoEnumIterator;
+
+        use crate::isotopes::{ElementVariant, MassNumber};
+
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let mass_number = isotope.mass_number();
+                // Verify that we can create the isotope from (element, mass_number)
+                let reconstructed = crate::Isotope::try_from((element, mass_number)).unwrap();
+                assert_eq!(
+                    reconstructed, isotope,
+                    "Reconstructing isotope {:?} from (element, mass_number) should work",
+                    isotope
+                );
+                // Verify that the reconstructed isotope belongs to the correct element
+                assert_eq!(
+                    reconstructed.element(),
+                    element,
+                    "Reconstructed isotope should belong to element {:?}",
+                    element
+                );
+            }
+        }
+    }
 }

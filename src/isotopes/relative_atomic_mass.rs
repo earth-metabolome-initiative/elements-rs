@@ -126,3 +126,31 @@ impl super::RelativeAtomicMass for super::Isotope {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use crate::isotopes::RelativeAtomicMass;
+
+    #[test]
+    fn test_relative_atomic_mass() {
+        for element in crate::Element::iter() {
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let mass = isotope.relative_atomic_mass();
+                // Verify that relative atomic mass is positive and reasonable
+                assert!(
+                    mass > 0.0,
+                    "Relative atomic mass for isotope {:?} should be positive",
+                    isotope
+                );
+                assert!(
+                    mass < 300.0,
+                    "Relative atomic mass for isotope {:?} should be reasonable (< 300)",
+                    isotope
+                );
+            }
+        }
+    }
+}

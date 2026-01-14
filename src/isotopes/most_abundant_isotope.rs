@@ -130,3 +130,26 @@ impl crate::Element {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use crate::isotopes::ElementVariant;
+
+    #[test]
+    fn test_most_abundant_isotope() {
+        for element in crate::Element::iter() {
+            let isotope = element.most_abundant_isotope();
+            // Verify that the returned isotope belongs to the correct element
+            assert_eq!(
+                isotope.element(),
+                element,
+                "Most abundant isotope for {:?} should belong to the same element",
+                element
+            );
+            // Note: Some elements like Tc have no naturally occurring isotopes,
+            // so we don't check for isotopic composition here
+        }
+    }
+}
