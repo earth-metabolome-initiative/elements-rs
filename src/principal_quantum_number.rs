@@ -138,14 +138,19 @@ impl PrincipalQuantumNumber for crate::Isotope {
 
 #[cfg(test)]
 mod tests {
-    use super::PrincipalQuantumNumber;
     use strum::IntoEnumIterator;
+
+    use super::PrincipalQuantumNumber;
 
     #[test]
     fn test_principal_quantum_number() {
         for element in crate::Element::iter() {
             let n = element.principal_quantum_number();
-            assert!((1..=7).contains(&n), "Principal quantum number should be between 1 and 7 for {:?}", element);
+            assert!(
+                (1..=7).contains(&n),
+                "Principal quantum number should be between 1 and 7 for {:?}",
+                element
+            );
         }
     }
 }

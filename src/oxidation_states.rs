@@ -133,7 +133,11 @@ mod tests {
     fn test_oxidation_states() {
         for element in crate::Element::iter() {
             let states = element.oxidation_states();
-            assert!(states.into_iter().count() > 0, "Oxidation states should not be empty for {:?}", element);
+            assert!(
+                states.into_iter().count() > 0,
+                "Oxidation states should not be empty for {:?}",
+                element
+            );
             // Test is_valid_oxidation_state for 0 (common oxidation state)
             let _ = element.is_valid_oxidation_state(0); // Just ensure it doesn't panic
         }

@@ -10,7 +10,7 @@ impl crate::Element {
     /// # Examples
     ///
     /// ```rust
-    /// use elements_rs::{Element, AtomicOrbitalType};
+    /// use elements_rs::{AtomicOrbitalType, Element};
     ///
     /// let orbitals = Element::H.orbitals();
     /// assert_eq!(orbitals.len(), 1);

@@ -7,7 +7,8 @@ impl FromStr for crate::Element {
 
     /// Parses an element from its symbol string.
     ///
-    /// Supports case-insensitive parsing for some elements (e.g., "c" for Carbon).
+    /// Supports case-insensitive parsing for some elements (e.g., "c" for
+    /// Carbon).
     ///
     /// # Examples
     ///

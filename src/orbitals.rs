@@ -55,7 +55,7 @@ impl AtomicOrbital {
     /// # Examples
     ///
     /// ```rust
-    /// use elements_rs::{Element, AtomicOrbitalType};
+    /// use elements_rs::{AtomicOrbitalType, Element};
     ///
     /// let orbitals = Element::H.orbitals();
     /// assert_eq!(orbitals[0].orbital_type(), AtomicOrbitalType::S);
@@ -90,9 +90,14 @@ mod tests {
         for element in crate::Element::iter() {
             let orbitals = element.orbitals();
             assert!(!orbitals.is_empty(), "Orbitals should not be empty for {:?}", element);
-            let total_electrons: u32 = orbitals.iter().map(|o| o.number_of_electrons() as u32).sum();
+            let total_electrons: u32 =
+                orbitals.iter().map(|o| o.number_of_electrons() as u32).sum();
             let atomic_number = u8::from(element) as u32;
-            assert_eq!(total_electrons, atomic_number, "Total electrons in orbitals should equal atomic number for {:?}", element);
+            assert_eq!(
+                total_electrons, atomic_number,
+                "Total electrons in orbitals should equal atomic number for {:?}",
+                element
+            );
         }
     }
 }

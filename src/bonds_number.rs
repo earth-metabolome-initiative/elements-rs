@@ -9,7 +9,7 @@ pub trait BondsNumber {
     /// # Examples
     ///
     /// ```rust
-    /// use elements_rs::{Element, BondsNumber};
+    /// use elements_rs::{BondsNumber, Element};
     ///
     /// let (min, max) = Element::H.number_of_bonds();
     /// assert_eq!((min, max), (1, 1));
@@ -24,7 +24,7 @@ pub trait BondsNumber {
     /// # Examples
     ///
     /// ```rust
-    /// use elements_rs::{Element, BondsNumber};
+    /// use elements_rs::{BondsNumber, Element};
     ///
     /// assert!(Element::He.is_noble_gas());
     /// assert!(!Element::H.is_noble_gas());
@@ -169,8 +169,9 @@ impl BondsNumber for crate::Isotope {
 
 #[cfg(test)]
 mod tests {
-    use super::BondsNumber;
     use strum::IntoEnumIterator;
+
+    use super::BondsNumber;
 
     #[test]
     fn test_number_of_bonds() {
