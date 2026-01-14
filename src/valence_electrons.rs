@@ -131,4 +131,20 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn test_valence_electrons_delegation() {
+        for element in crate::Element::iter() {
+            let element_number = element.valence_electrons();
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let isotope_number = isotope.valence_electrons();
+                assert_eq!(
+                    element_number, isotope_number,
+                    "Valence electrons mismatch for isotope {:?} of element {:?}",
+                    isotope, element
+                );
+            }
+        }
+    }
 }

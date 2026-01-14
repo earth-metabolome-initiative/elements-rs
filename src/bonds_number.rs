@@ -188,4 +188,25 @@ mod tests {
             let _ = element.is_noble_gas(); // Just ensure it doesn't panic
         }
     }
+
+    #[test]
+    fn test_isotope_number_of_bonds() {
+        for element in crate::Element::iter() {
+            let (elem_min, elem_max) = element.number_of_bonds();
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let (min, max) = isotope.number_of_bonds();
+                assert_eq!(
+                    min, elem_min,
+                    "Min bonds should match for isotope {:?} of {:?}",
+                    isotope, element
+                );
+                assert_eq!(
+                    max, elem_max,
+                    "Max bonds should match for isotope {:?} of {:?}",
+                    isotope, element
+                );
+            }
+        }
+    }
 }

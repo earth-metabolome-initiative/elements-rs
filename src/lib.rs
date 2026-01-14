@@ -280,9 +280,3 @@ pub enum Element {
     /// Oganesson
     Og,
 }
-
-impl AsRef<Element> for Element {
-    fn as_ref(&self) -> &Element {
-        self
-    }
-}

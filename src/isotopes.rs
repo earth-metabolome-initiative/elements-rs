@@ -597,3 +597,22 @@ impl RelativeAtomicMass for crate::Element {
         self.most_abundant_isotope().relative_atomic_mass()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::isotopes::{IsotopicComposition, RelativeAtomicMass};
+
+    #[test]
+    fn test_isotopic_composition() {
+        let hydrogen = crate::Element::H;
+        let isotopic_composition = hydrogen.isotopic_composition();
+        assert_eq!(isotopic_composition, Some(0.999885));
+    }
+
+    #[test]
+    fn test_relative_atomic_mass() {
+        let carbon = crate::Element::C;
+        let relative_atomic_mass = carbon.relative_atomic_mass();
+        assert!((relative_atomic_mass - 12.0).abs() < 0.0001);
+    }
+}

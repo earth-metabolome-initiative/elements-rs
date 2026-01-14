@@ -153,4 +153,20 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn test_isotope_principal_quantum_number() {
+        for element in crate::Element::iter() {
+            let element_number = element.principal_quantum_number();
+            let isotopes = element.isotopes();
+            for isotope in isotopes {
+                let isotope_number = isotope.principal_quantum_number();
+                assert_eq!(
+                    element_number, isotope_number,
+                    "Principal quantum number mismatch for isotope {:?} of element {:?}",
+                    isotope, element
+                );
+            }
+        }
+    }
 }

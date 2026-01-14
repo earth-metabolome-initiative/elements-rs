@@ -330,6 +330,12 @@ mod tests {
             assert_eq!(result.unwrap(), expected_char, "Failed for {:?}", element);
         }
 
+        // We check an error case for a single-character symbol that does not exist
+        assert!(matches!(
+            crate::Element::try_from('X'),
+            Err(crate::errors::Error::Element(['X', ' ']))
+        ));
+
         // Test that two-character symbols fail
         let two_char_elements = vec![
             crate::Element::He,
@@ -442,6 +448,18 @@ mod tests {
             let result: Result<char, _> = element.try_into();
             assert!(result.is_err(), "Should fail for two-character element {:?}", element);
         }
+
+        // We test a corner case for an invalid character array
+        assert!(matches!(
+            crate::Element::try_from(['X', 'Y']),
+            Err(crate::errors::Error::Element(['X', 'Y']))
+        ));
+
+        // We test a corner case for an invalid character array
+        assert!(matches!(
+            crate::Element::try_from(['X', ' ']),
+            Err(crate::errors::Error::Element(['X', ' ']))
+        ));
     }
 
     #[test]
