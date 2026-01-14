@@ -251,30 +251,96 @@ pub use zirconium::ZirconiumIsotope;
 /// Relative atomic mass (in atomic mass units).
 pub trait RelativeAtomicMass {
     /// Returns the relative atomic mass in daltons (Da).
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, RelativeAtomicMass};
+    ///
+    /// let h1 = HydrogenIsotope::H1;
+    /// assert_eq!(h1.relative_atomic_mass(), 1.00782503223);
+    ///
+    /// let deuterium = HydrogenIsotope::D2;
+    /// assert_eq!(deuterium.relative_atomic_mass(), 2.01410177812);
+    /// ```
     fn relative_atomic_mass(&self) -> f64;
 }
 
 /// Mass number (number of protons + neutrons).
 pub trait MassNumber {
     /// Returns the mass number (A).
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, MassNumber};
+    ///
+    /// let h1 = HydrogenIsotope::H1;
+    /// assert_eq!(h1.mass_number(), 1);
+    ///
+    /// let deuterium = HydrogenIsotope::D2;
+    /// assert_eq!(deuterium.mass_number(), 2);
+    ///
+    /// let tritium = HydrogenIsotope::T3;
+    /// assert_eq!(tritium.mass_number(), 3);
+    /// ```
     fn mass_number(&self) -> u16;
 }
 
 /// Element that an isotope belongs to.
 pub trait ElementVariant {
     /// Returns the parent element.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{
+    ///     Element,
+    ///     isotopes::{ElementVariant, HydrogenIsotope},
+    /// };
+    ///
+    /// let h1 = HydrogenIsotope::H1;
+    /// assert_eq!(h1.element(), Element::H);
+    ///
+    /// let deuterium = HydrogenIsotope::D2;
+    /// assert_eq!(deuterium.element(), Element::H);
+    /// ```
     fn element(&self) -> crate::Element;
 }
 
 /// Natural abundance (isotopic composition) as a fraction.
 pub trait IsotopicComposition {
     /// Returns `None` for isotopes without stable natural occurrence.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, IsotopicComposition};
+    ///
+    /// let h1 = HydrogenIsotope::H1;
+    /// assert_eq!(h1.isotopic_composition(), Some(0.999885));
+    ///
+    /// let deuterium = HydrogenIsotope::D2;
+    /// assert_eq!(deuterium.isotopic_composition(), Some(0.000115));
+    ///
+    /// let tritium = HydrogenIsotope::T3;
+    /// assert_eq!(tritium.isotopic_composition(), None); // No stable natural occurrence
+    /// ```
     fn isotopic_composition(&self) -> Option<f64>;
 }
 
 /// Most abundant naturally occurring isotope.
 pub trait MostAbundantIsotope {
     /// Returns the most abundant isotope.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, MostAbundantIsotope};
+    ///
+    /// let most_abundant = HydrogenIsotope::most_abundant_isotope();
+    /// assert_eq!(most_abundant, HydrogenIsotope::H1);
+    /// ```
     fn most_abundant_isotope() -> Self;
 }
 

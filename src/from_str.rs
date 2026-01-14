@@ -7,8 +7,7 @@ impl FromStr for crate::Element {
 
     /// Parses an element from its symbol string.
     ///
-    /// Supports case-insensitive parsing for some elements (e.g., "c" for
-    /// Carbon).
+    /// Parses element symbols into Element variants.
     ///
     /// # Examples
     ///
@@ -21,7 +20,7 @@ impl FromStr for crate::Element {
     /// let oxygen: Element = "O".parse().unwrap();
     /// assert_eq!(oxygen, Element::O);
     ///
-    /// let carbon: Element = "c".parse().unwrap();
+    /// let carbon: Element = "C".parse().unwrap();
     /// assert_eq!(carbon, Element::C);
     /// ```
     #[allow(clippy::too_many_lines)]
@@ -32,17 +31,17 @@ impl FromStr for crate::Element {
             "Li" => Self::Li,
             "Be" => Self::Be,
             "B" => Self::B,
-            "C" | "c" => Self::C,
-            "N" | "n" => Self::N,
-            "O" | "o" => Self::O,
+            "C" => Self::C,
+            "N" => Self::N,
+            "O" => Self::O,
             "F" => Self::F,
             "Ne" => Self::Ne,
             "Na" => Self::Na,
             "Mg" => Self::Mg,
             "Al" => Self::Al,
             "Si" => Self::Si,
-            "P" | "p" => Self::P,
-            "S" | "s" => Self::S,
+            "P" => Self::P,
+            "S" => Self::S,
             "Cl" => Self::Cl,
             "Ar" => Self::Ar,
             "K" => Self::K,
@@ -59,8 +58,8 @@ impl FromStr for crate::Element {
             "Zn" => Self::Zn,
             "Ga" => Self::Ga,
             "Ge" => Self::Ge,
-            "As" | "as" => Self::As,
-            "Se" | "se" => Self::Se,
+            "As" => Self::As,
+            "Se" => Self::Se,
             "Br" => Self::Br,
             "Kr" => Self::Kr,
             "Rb" => Self::Rb,
@@ -154,5 +153,69 @@ impl FromStr for crate::Element {
                 return Err(crate::errors::Error::Element(characters));
             }
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_from_str() {
+        for element in crate::Element::iter() {
+            let symbol: &str = element.as_ref();
+
+            // Test standard case parsing
+            let parsed: Result<crate::Element, _> = symbol.parse();
+            assert!(
+                parsed.is_ok(),
+                "Failed to parse standard symbol '{}' for {:?}",
+                symbol,
+                element
+            );
+            assert_eq!(
+                parsed.unwrap(),
+                element,
+                "Parsed element doesn't match for symbol '{}'",
+                symbol
+            );
+        }
+    }
+
+    #[test]
+    fn test_invalid_symbols() {
+        // Test various invalid inputs
+        let invalid_symbols = vec![
+            "",    // empty string
+            "X",   // non-existent element
+            "Zz",  // non-existent element
+            "ABC", // too long
+            "H2",  // valid element with number
+            "He2", // valid element with number
+            "123", // numbers only
+            " ",   // space only
+            "  ",  // multiple spaces
+            "c",   // lowercase should not work
+            "n",   // lowercase should not work
+            "o",   // lowercase should not work
+        ];
+
+        for invalid in invalid_symbols {
+            let result: Result<crate::Element, _> = invalid.parse();
+            assert!(result.is_err(), "Should fail to parse invalid symbol '{}'", invalid);
+        }
+    }
+
+    #[test]
+    fn test_roundtrip_via_string() {
+        for element in crate::Element::iter() {
+            let symbol: &str = element.as_ref();
+
+            // Parse back to element
+            let parsed: crate::Element = symbol.parse().unwrap();
+
+            // Should be the same element
+            assert_eq!(parsed, element, "Roundtrip failed for {:?}", element);
+        }
     }
 }

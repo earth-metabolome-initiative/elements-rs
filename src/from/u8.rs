@@ -271,3 +271,52 @@ impl TryFrom<u8> for Element {
         })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use super::*;
+
+    #[test]
+    fn test_from_element_to_u8() {
+        for element in Element::iter() {
+            let atomic_number: u8 = element.into();
+            // Each element should have a valid atomic number between 1 and 118
+            assert!((1..=118).contains(&atomic_number));
+        }
+    }
+
+    #[test]
+    fn test_try_from_u8_to_element() {
+        for element in Element::iter() {
+            let atomic_number: u8 = element.into();
+            let result: Result<Element, crate::errors::Error> = atomic_number.try_into();
+            assert_eq!(result, Ok(element));
+        }
+    }
+
+    #[test]
+    fn test_roundtrip_via_u8() {
+        for element in Element::iter() {
+            let atomic_number: u8 = element.into();
+            let roundtrip_element: Element = atomic_number.try_into().unwrap();
+            assert_eq!(roundtrip_element, element);
+        }
+    }
+
+    #[test]
+    fn test_invalid_atomic_numbers() {
+        // Test atomic number 0 (invalid)
+        let result: Result<Element, crate::errors::Error> = 0u8.try_into();
+        assert_eq!(result, Err(crate::errors::Error::AtomicNumber(0)));
+
+        // Test atomic number 119 (invalid, beyond known elements)
+        let result: Result<Element, crate::errors::Error> = 119u8.try_into();
+        assert_eq!(result, Err(crate::errors::Error::AtomicNumber(119)));
+
+        // Test atomic number 255 (invalid, maximum u8 value)
+        let result: Result<Element, crate::errors::Error> = 255u8.try_into();
+        assert_eq!(result, Err(crate::errors::Error::AtomicNumber(255)));
+    }
+}
