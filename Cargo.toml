@@ -1,0 +1,56 @@
+[package]
+name = "elements-rs"
+version = "0.1.0"
+authors = ["Earth Metabolome Initiative"]
+license = "GPL-3.0"
+repository = "https://github.com/earth-metabolome-initiative/elements-rs"
+edition = "2024"
+description = "A comprehensive library for chemical elements and their isotopes with rich metadata"
+readme = "README.md"
+keywords = ["chemistry", "periodic-table", "elements", "isotopes", "science"]
+categories = ["science", "database"]
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
+
+[dependencies]
+strum_macros = "0.27.2"
+strum = { version = "0.27.2", features = ["derive"] }
+multi_ranged = "0.1.1"
+
+serde = { version = "1.0", features = ["derive"], optional = true }
+diesel = { version = "2.3.5", optional = true }
+
+[features]
+default = ["serde"]
+serde = ["dep:serde"]
+diesel = ["dep:diesel"]
+sqlite = ["diesel", "diesel/sqlite"]
+postgres = ["diesel", "diesel/postgres"]
+
+[workspace.lints.rust]
+missing_docs = "forbid"
+unused_macro_rules = "forbid"
+unconditional_recursion = "forbid"
+unreachable_patterns = "forbid"
+unused_import_braces = "forbid"
+unused_must_use = "forbid"
+deprecated = "deny"
+
+[workspace.lints.rustdoc]
+broken_intra_doc_links = "forbid"
+bare_urls = "forbid"
+invalid_codeblock_attributes = "forbid"
+invalid_html_tags = "forbid"
+missing_crate_level_docs = "forbid"
+unescaped_backticks = "forbid"
+redundant_explicit_links = "forbid"
+invalid_rust_codeblocks = "forbid"
+
+[workspace.lints.clippy]
+unreadable_literal = "allow"
+missing_panics_doc = "allow"
+new_ret_no_self = "allow"
+struct_excessive_bools = "allow"
+should_panic_without_expect = "allow"
+doc_markdown = "allow"
+clone_on_copy = "forbid"
+pedantic = { level = "deny", priority = -1 }
