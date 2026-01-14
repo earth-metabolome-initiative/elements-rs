@@ -6,6 +6,17 @@ impl crate::Element {
     #[must_use]
     #[allow(clippy::too_many_lines)]
     /// Returns the orbitals associated to the element.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{Element, AtomicOrbitalType};
+    ///
+    /// let orbitals = Element::H.orbitals();
+    /// assert_eq!(orbitals.len(), 1);
+    /// assert_eq!(orbitals[0].orbital_type(), AtomicOrbitalType::S);
+    /// assert_eq!(orbitals[0].number_of_electrons(), 1);
+    /// ```
     pub fn orbitals(&self) -> Vec<AtomicOrbital> {
         match self {
             Self::H => vec![AtomicOrbital::new(1, AtomicOrbitalType::S, 1)],

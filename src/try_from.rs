@@ -12,6 +12,18 @@ impl TryFrom<char> for crate::Element {
     /// while in chemical formulas element symbols are capitalized,
     /// in other contexts such as SMILES strings they may appear in lowercase
     /// to represent aromatic atoms.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let hydrogen = Element::try_from('H').unwrap();
+    /// assert_eq!(hydrogen, Element::H);
+    ///
+    /// let carbon = Element::try_from('C').unwrap();
+    /// assert_eq!(carbon, Element::C);
+    /// ```
     fn try_from(value: char) -> Result<Self, Self::Error> {
         Ok(match value {
             'H' => Self::H,
@@ -38,6 +50,19 @@ impl TryFrom<char> for crate::Element {
 impl TryFrom<[char; 2]> for crate::Element {
     type Error = crate::errors::Error;
 
+    /// Parses two-character element symbols.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let helium = Element::try_from(['H', 'e']).unwrap();
+    /// assert_eq!(helium, Element::He);
+    ///
+    /// let lithium = Element::try_from(['L', 'i']).unwrap();
+    /// assert_eq!(lithium, Element::Li);
+    /// ```
     #[allow(clippy::too_many_lines)]
     fn try_from(value: [char; 2]) -> Result<Self, Self::Error> {
         Ok(match value {
@@ -155,6 +180,19 @@ impl TryFrom<[char; 2]> for crate::Element {
 impl TryFrom<&str> for crate::Element {
     type Error = crate::errors::Error;
 
+    /// Parses element symbols from string slices.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let oxygen = Element::try_from("O").unwrap();
+    /// assert_eq!(oxygen, Element::O);
+    ///
+    /// let magnesium = Element::try_from("Mg").unwrap();
+    /// assert_eq!(magnesium, Element::Mg);
+    /// ```
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         <Self as std::str::FromStr>::from_str(value)
     }
@@ -163,6 +201,16 @@ impl TryFrom<&str> for crate::Element {
 impl TryFrom<String> for crate::Element {
     type Error = crate::errors::Error;
 
+    /// Parses element symbols from owned strings.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let oxygen = Element::try_from("O".to_string()).unwrap();
+    /// assert_eq!(oxygen, Element::O);
+    /// ```
     fn try_from(value: String) -> Result<Self, Self::Error> {
         Self::try_from(value.as_str())
     }

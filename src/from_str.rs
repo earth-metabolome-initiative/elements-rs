@@ -5,6 +5,24 @@ use std::str::FromStr;
 impl FromStr for crate::Element {
     type Err = crate::errors::Error;
 
+    /// Parses an element from its symbol string.
+    ///
+    /// Supports case-insensitive parsing for some elements (e.g., "c" for Carbon).
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let hydrogen: Element = "H".parse().unwrap();
+    /// assert_eq!(hydrogen, Element::H);
+    ///
+    /// let oxygen: Element = "O".parse().unwrap();
+    /// assert_eq!(oxygen, Element::O);
+    ///
+    /// let carbon: Element = "c".parse().unwrap();
+    /// assert_eq!(carbon, Element::C);
+    /// ```
     #[allow(clippy::too_many_lines)]
     fn from_str(value: &str) -> Result<Self, Self::Err> {
         Ok(match value {

@@ -5,9 +5,30 @@ use crate::isotopes::ElementVariant;
 /// Minimum and maximum number of bonds an element can form.
 pub trait BondsNumber {
     /// Returns `(min_bonds, max_bonds)` for the element.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{Element, BondsNumber};
+    ///
+    /// let (min, max) = Element::H.number_of_bonds();
+    /// assert_eq!((min, max), (1, 1));
+    ///
+    /// let (min, max) = Element::C.number_of_bonds();
+    /// assert_eq!((min, max), (4, 4));
+    /// ```
     fn number_of_bonds(&self) -> (u8, u8);
 
     /// Returns `true` for noble gases (elements with zero bonds).
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{Element, BondsNumber};
+    ///
+    /// assert!(Element::He.is_noble_gas());
+    /// assert!(!Element::H.is_noble_gas());
+    /// ```
     fn is_noble_gas(&self) -> bool {
         self.number_of_bonds() == (0, 0)
     }
@@ -143,5 +164,27 @@ impl BondsNumber for crate::Element {
 impl BondsNumber for crate::Isotope {
     fn number_of_bonds(&self) -> (u8, u8) {
         self.element().number_of_bonds()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::BondsNumber;
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_number_of_bonds() {
+        for element in crate::Element::iter() {
+            let (min, max) = element.number_of_bonds();
+            assert!(min <= max, "Min bonds should be <= max bonds for {:?}", element);
+            assert!(max <= 8, "Max bonds should be <= 8 for {:?}", element); // Some elements have higher
+        }
+    }
+
+    #[test]
+    fn test_is_noble_gas() {
+        for element in crate::Element::iter() {
+            let _ = element.is_noble_gas(); // Just ensure it doesn't panic
+        }
     }
 }

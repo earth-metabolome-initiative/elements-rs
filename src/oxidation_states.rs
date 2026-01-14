@@ -3,12 +3,32 @@
 use multi_ranged::{MultiRange, MultiRanged};
 impl super::Element {
     /// Returns whether the oxidation state is valid for this element.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// assert!(Element::O.is_valid_oxidation_state(-2));
+    /// assert!(!Element::O.is_valid_oxidation_state(3));
+    /// ```
     #[must_use]
     pub fn is_valid_oxidation_state(&self, state: i16) -> bool {
         self.oxidation_states().contains(state)
     }
 
     /// Returns all valid oxidation states.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    /// use multi_ranged::multi_ranged::MultiRanged;
+    ///
+    /// let states = Element::H.oxidation_states();
+    /// assert!(states.contains(1));
+    /// assert!(states.contains(-1));
+    /// ```
     #[must_use]
     #[inline]
     pub fn oxidation_states(&self) -> MultiRange<i16> {
@@ -102,5 +122,20 @@ impl super::Element {
         );
 
         multi_ranged
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_oxidation_states() {
+        for element in crate::Element::iter() {
+            let states = element.oxidation_states();
+            assert!(states.into_iter().count() > 0, "Oxidation states should not be empty for {:?}", element);
+            // Test is_valid_oxidation_state for 0 (common oxidation state)
+            let _ = element.is_valid_oxidation_state(0); // Just ensure it doesn't panic
+        }
     }
 }

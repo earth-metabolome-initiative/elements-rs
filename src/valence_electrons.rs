@@ -5,6 +5,15 @@ use crate::isotopes::ElementVariant;
 /// Number of electrons in the outermost shell that participate in bonding.
 pub trait ValenceElectrons: Sized {
     /// Returns the number of valence electrons.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{Element, ValenceElectrons};
+    ///
+    /// assert_eq!(Element::H.valence_electrons(), 1);
+    /// assert_eq!(Element::C.valence_electrons(), 4);
+    /// ```
     fn valence_electrons(&self) -> u8;
 }
 
@@ -102,5 +111,19 @@ impl ValenceElectrons for crate::Element {
 impl ValenceElectrons for crate::Isotope {
     fn valence_electrons(&self) -> u8 {
         self.element().valence_electrons()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ValenceElectrons;
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_valence_electrons() {
+        for element in crate::Element::iter() {
+            let valence = element.valence_electrons();
+            assert!((1..=16).contains(&valence), "Valence electrons should be between 1 and 16 for {:?}", element);
+        }
     }
 }

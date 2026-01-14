@@ -5,6 +5,15 @@ use crate::isotopes::ElementVariant;
 /// Number of electron shells in the atom.
 pub trait PrincipalQuantumNumber {
     /// Returns the principal quantum number (shell number).
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{Element, PrincipalQuantumNumber};
+    ///
+    /// assert_eq!(Element::H.principal_quantum_number(), 1);
+    /// assert_eq!(Element::Li.principal_quantum_number(), 2);
+    /// ```
     fn principal_quantum_number(&self) -> u8;
 }
 
@@ -124,5 +133,19 @@ impl PrincipalQuantumNumber for crate::Element {
 impl PrincipalQuantumNumber for crate::Isotope {
     fn principal_quantum_number(&self) -> u8 {
         self.element().principal_quantum_number()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::PrincipalQuantumNumber;
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_principal_quantum_number() {
+        for element in crate::Element::iter() {
+            let n = element.principal_quantum_number();
+            assert!((1..=7).contains(&n), "Principal quantum number should be between 1 and 7 for {:?}", element);
+        }
     }
 }

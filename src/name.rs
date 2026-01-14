@@ -4,6 +4,15 @@ impl crate::Element {
     #[must_use]
     #[allow(clippy::too_many_lines)]
     /// Returns the full element name (e.g., "Carbon").
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// assert_eq!(Element::H.name(), "Hydrogen");
+    /// assert_eq!(Element::O.name(), "Oxygen");
+    /// ```
     pub fn name(&self) -> &str {
         match self {
             Self::H => "Hydrogen",
@@ -124,6 +133,20 @@ impl crate::Element {
             Self::Lv => "Livermorium",
             Self::Ts => "Tennessine",
             Self::Og => "Oganesson",
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_name() {
+        for element in crate::Element::iter() {
+            let name = element.name();
+            assert!(!name.is_empty(), "Name should not be empty for {:?}", element);
+            assert!(name.chars().next().unwrap().is_uppercase(), "Name should start with uppercase letter for {:?}", element);
         }
     }
 }

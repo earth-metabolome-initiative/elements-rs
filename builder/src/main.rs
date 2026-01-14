@@ -248,10 +248,13 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                 .unwrap()
         })
         .unwrap();
+
     let most_abundant_isotope_ident = Ident::new(
         &format!("{}{}", most_abundant_isotope.atomic_symbol, most_abundant_isotope.mass_number),
         proc_macro2::Span::call_site(),
     );
+    let _first_variant = &enum_variants[0];
+    let _first_isotope_name = &isotope_names[0];
 
     let element_symbol_ident: Ident =
         Ident::new(&isotopes[0].atomic_symbol, proc_macro2::Span::call_site());
@@ -358,6 +361,91 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
                 match self {
                     #(Self::#enum_variants => write!(f, #isotope_names),)*
+                }
+            }
+        }
+
+        #[cfg(test)]
+        mod tests {
+            use super::*;
+            use strum::IntoEnumIterator;
+            use crate::isotopes::{RelativeAtomicMass, ElementVariant, MassNumber, IsotopicComposition, MostAbundantIsotope};
+
+            #[test]
+            fn test_relative_atomic_mass() {
+                for isotope in #isotope_ident::iter() {
+                    let mass = isotope.relative_atomic_mass();
+                    assert!(mass > 0.0, "Mass should be positive for {:?}", isotope);
+                }
+            }
+
+            #[test]
+            fn test_element() {
+                for isotope in #isotope_ident::iter() {
+                    let element = isotope.element();
+                    assert_eq!(element, crate::Element::#element_symbol_ident, "Element should be correct for {:?}", isotope);
+                }
+            }
+
+            #[test]
+            fn test_mass_number() {
+                for isotope in #isotope_ident::iter() {
+                    let mass_number = isotope.mass_number();
+                    assert!(mass_number > 0 && mass_number < 300, "Mass number should be reasonable for {:?}", isotope);
+                }
+            }
+
+            #[test]
+            fn test_isotopic_composition() {
+                for isotope in #isotope_ident::iter() {
+                    let comp = isotope.isotopic_composition();
+                    if let Some(c) = comp {
+                        assert!(c >= 0.0 && c <= 1.0, "Composition should be between 0 and 1 for {:?}", isotope);
+                    }
+                }
+            }
+
+            #[test]
+            fn test_most_abundant() {
+                let most_abundant = #isotope_ident::most_abundant_isotope();
+                // Just check it's a valid variant
+                let _ = most_abundant.relative_atomic_mass();
+            }
+
+            #[test]
+            fn test_from_isotope() {
+                for isotope in #isotope_ident::iter() {
+                    let iso: crate::Isotope = isotope.into();
+                    // Check it matches
+                    match iso {
+                        crate::Isotope::#element_symbol_ident(i) => assert_eq!(i, isotope),
+                        _ => panic!("Wrong isotope type"),
+                    }
+                }
+            }
+
+            #[test]
+            fn test_from_element() {
+                for isotope in #isotope_ident::iter() {
+                    let elem: crate::Element = isotope.into();
+                    assert_eq!(elem, crate::Element::#element_symbol_ident);
+                }
+            }
+
+            #[test]
+            fn test_try_from_mass_number() {
+                for isotope in #isotope_ident::iter() {
+                    let mass = isotope.mass_number();
+                    let iso = #isotope_ident::try_from(mass).unwrap();
+                    assert_eq!(iso, isotope);
+                }
+            }
+
+            #[test]
+            fn test_display() {
+                for isotope in #isotope_ident::iter() {
+                    let s = format!("{}", isotope);
+                    assert!(!s.is_empty(), "Display should not be empty for {:?}", isotope);
                 }
             }
         }

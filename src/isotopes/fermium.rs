@@ -175,3 +175,87 @@ impl std::fmt::Display for FermiumIsotope {
         }
     }
 }
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    use super::*;
+    use crate::isotopes::{
+        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, RelativeAtomicMass,
+    };
+    #[test]
+    fn test_relative_atomic_mass() {
+        for isotope in FermiumIsotope::iter() {
+            let mass = isotope.relative_atomic_mass();
+            assert!(mass > 0.0, "Mass should be positive for {:?}", isotope);
+        }
+    }
+    #[test]
+    fn test_element() {
+        for isotope in FermiumIsotope::iter() {
+            let element = isotope.element();
+            assert_eq!(element, crate::Element::Fm, "Element should be correct for {:?}", isotope);
+        }
+    }
+    #[test]
+    fn test_mass_number() {
+        for isotope in FermiumIsotope::iter() {
+            let mass_number = isotope.mass_number();
+            assert!(
+                mass_number > 0 && mass_number < 300,
+                "Mass number should be reasonable for {:?}",
+                isotope
+            );
+        }
+    }
+    #[test]
+    fn test_isotopic_composition() {
+        for isotope in FermiumIsotope::iter() {
+            let comp = isotope.isotopic_composition();
+            if let Some(c) = comp {
+                assert!(
+                    (0.0..=1.0).contains(&c),
+                    "Composition should be between 0 and 1 for {:?}",
+                    isotope
+                );
+            }
+        }
+    }
+    #[test]
+    fn test_most_abundant() {
+        let most_abundant = FermiumIsotope::most_abundant_isotope();
+        let _ = most_abundant.relative_atomic_mass();
+    }
+    #[test]
+    fn test_from_isotope() {
+        for isotope in FermiumIsotope::iter() {
+            let iso: crate::Isotope = isotope.into();
+            match iso {
+                crate::Isotope::Fm(i) => assert_eq!(i, isotope),
+                _ => panic!("Wrong isotope type"),
+            }
+        }
+    }
+    #[test]
+    fn test_from_element() {
+        for isotope in FermiumIsotope::iter() {
+            let elem: crate::Element = isotope.into();
+            assert_eq!(elem, crate::Element::Fm);
+        }
+    }
+    #[test]
+    fn test_try_from_mass_number() {
+        for isotope in FermiumIsotope::iter() {
+            let mass = isotope.mass_number();
+            let iso = FermiumIsotope::try_from(mass).unwrap();
+            assert_eq!(iso, isotope);
+        }
+    }
+    #[test]
+    fn test_display() {
+        for isotope in FermiumIsotope::iter() {
+            let s = format!("{}", isotope);
+            assert!(!s.is_empty(), "Display should not be empty for {:?}", isotope);
+        }
+    }
+}

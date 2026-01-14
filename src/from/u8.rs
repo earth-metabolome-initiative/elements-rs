@@ -3,6 +3,19 @@
 use crate::Element;
 
 impl From<crate::Element> for u8 {
+    /// Converts an element to its atomic number.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// let atomic_number: u8 = Element::H.into();
+    /// assert_eq!(atomic_number, 1);
+    ///
+    /// let oxygen: u8 = Element::O.into();
+    /// assert_eq!(oxygen, 8);
+    /// ```
     #[allow(clippy::too_many_lines)]
     fn from(element: crate::Element) -> Self {
         match element {

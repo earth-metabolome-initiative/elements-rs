@@ -3,6 +3,15 @@
 impl crate::Element {
     #[allow(clippy::too_many_lines)]
     /// Returns the standard atomic weight.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::Element;
+    ///
+    /// assert_eq!(Element::H.standard_atomic_weight(), 1.008);
+    /// assert_eq!(Element::O.standard_atomic_weight(), 15.999);
+    /// ```
     #[must_use]
     pub fn standard_atomic_weight(&self) -> f64 {
         match self {
@@ -121,6 +130,19 @@ impl crate::Element {
             Self::Mc => 288.0,
             Self::Lv => 293.0,
             Self::Ts | Self::Og => 294.0,
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use strum::IntoEnumIterator;
+
+    #[test]
+    fn test_standard_atomic_weight() {
+        for element in crate::Element::iter() {
+            let weight = element.standard_atomic_weight();
+            assert!(weight > 0.0, "Standard atomic weight should be positive for {:?}", element);
         }
     }
 }
