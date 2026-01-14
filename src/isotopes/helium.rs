@@ -182,6 +182,8 @@ mod tests {
             let iso = HeliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(HeliumIsotope::try_from(0).is_err());
+        assert!(HeliumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

@@ -376,6 +376,8 @@ mod tests {
             let iso = NiobiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(NiobiumIsotope::try_from(0).is_err());
+        assert!(NiobiumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

@@ -404,6 +404,8 @@ mod tests {
             let iso = IndiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(IndiumIsotope::try_from(0).is_err());
+        assert!(IndiumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

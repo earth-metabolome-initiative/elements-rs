@@ -397,6 +397,8 @@ mod tests {
             let iso = TungstenIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(TungstenIsotope::try_from(0).is_err());
+        assert!(TungstenIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

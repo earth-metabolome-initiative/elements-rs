@@ -355,6 +355,8 @@ mod tests {
             let iso = ThoriumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(ThoriumIsotope::try_from(0).is_err());
+        assert!(ThoriumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

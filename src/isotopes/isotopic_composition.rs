@@ -126,3 +126,40 @@ impl super::IsotopicComposition for super::Isotope {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::isotopes::{Isotope, IsotopicComposition};
+
+    #[test]
+    fn test_isotopic_composition_delegation() {
+        // Test that the Isotope enum correctly delegates to individual isotope
+        // implementations Test representative isotopes from different elements
+
+        // Hydrogen isotopes
+        let h1 = Isotope::H(crate::isotopes::HydrogenIsotope::H1);
+        assert_eq!(h1.isotopic_composition(), Some(0.999885f64));
+
+        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        assert_eq!(d2.isotopic_composition(), Some(0.000115f64));
+
+        // Carbon isotopes
+        let c12 = Isotope::C(crate::isotopes::CarbonIsotope::C12);
+        assert_eq!(c12.isotopic_composition(), Some(0.9893f64));
+
+        let c13 = Isotope::C(crate::isotopes::CarbonIsotope::C13);
+        assert_eq!(c13.isotopic_composition(), Some(0.0107f64));
+
+        // Oxygen isotopes
+        let o16 = Isotope::O(crate::isotopes::OxygenIsotope::O16);
+        assert_eq!(o16.isotopic_composition(), Some(0.99757f64));
+
+        // Argon isotopes
+        let ar40 = Isotope::Ar(crate::isotopes::ArgonIsotope::Ar40);
+        assert_eq!(ar40.isotopic_composition(), Some(0.996035f64));
+
+        // Test an isotope with no natural abundance (should return None)
+        let h7 = Isotope::H(crate::isotopes::HydrogenIsotope::H7);
+        assert_eq!(h7.isotopic_composition(), None);
+    }
+}

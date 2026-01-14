@@ -418,6 +418,8 @@ mod tests {
             let iso = IridiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(IridiumIsotope::try_from(0).is_err());
+        assert!(IridiumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

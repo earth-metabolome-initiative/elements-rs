@@ -215,6 +215,8 @@ mod tests {
             let iso = BerylliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(BerylliumIsotope::try_from(0).is_err());
+        assert!(BerylliumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

@@ -126,3 +126,45 @@ impl super::MassNumber for super::Isotope {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::isotopes::{Isotope, MassNumber};
+
+    #[test]
+    fn test_mass_number_delegation() {
+        // Test that the Isotope enum correctly delegates to individual isotope
+        // implementations Test representative isotopes from different elements
+
+        // Hydrogen isotopes
+        let h1 = Isotope::H(crate::isotopes::HydrogenIsotope::H1);
+        assert_eq!(h1.mass_number(), 1);
+
+        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        assert_eq!(d2.mass_number(), 2);
+
+        let t3 = Isotope::H(crate::isotopes::HydrogenIsotope::T3);
+        assert_eq!(t3.mass_number(), 3);
+
+        // Carbon isotopes
+        let c12 = Isotope::C(crate::isotopes::CarbonIsotope::C12);
+        assert_eq!(c12.mass_number(), 12);
+
+        let c13 = Isotope::C(crate::isotopes::CarbonIsotope::C13);
+        assert_eq!(c13.mass_number(), 13);
+
+        let c14 = Isotope::C(crate::isotopes::CarbonIsotope::C14);
+        assert_eq!(c14.mass_number(), 14);
+
+        // Oxygen isotopes
+        let o16 = Isotope::O(crate::isotopes::OxygenIsotope::O16);
+        assert_eq!(o16.mass_number(), 16);
+
+        // Argon isotopes
+        let ar36 = Isotope::Ar(crate::isotopes::ArgonIsotope::Ar36);
+        assert_eq!(ar36.mass_number(), 36);
+
+        let ar40 = Isotope::Ar(crate::isotopes::ArgonIsotope::Ar40);
+        assert_eq!(ar40.mass_number(), 40);
+    }
+}

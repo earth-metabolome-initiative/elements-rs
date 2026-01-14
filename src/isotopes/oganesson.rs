@@ -148,6 +148,8 @@ mod tests {
             let iso = OganessonIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(OganessonIsotope::try_from(0).is_err());
+        assert!(OganessonIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

@@ -432,6 +432,8 @@ mod tests {
             let iso = LeadIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(LeadIsotope::try_from(0).is_err());
+        assert!(LeadIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

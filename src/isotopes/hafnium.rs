@@ -390,6 +390,8 @@ mod tests {
             let iso = HafniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(HafniumIsotope::try_from(0).is_err());
+        assert!(HafniumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {

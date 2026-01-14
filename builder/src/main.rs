@@ -253,8 +253,6 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         &format!("{}{}", most_abundant_isotope.atomic_symbol, most_abundant_isotope.mass_number),
         proc_macro2::Span::call_site(),
     );
-    let _first_variant = &enum_variants[0];
-    let _first_isotope_name = &isotope_names[0];
 
     let element_symbol_ident: Ident =
         Ident::new(&isotopes[0].atomic_symbol, proc_macro2::Span::call_site());
@@ -400,7 +398,11 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                 for isotope in #isotope_ident::iter() {
                     let comp = isotope.isotopic_composition();
                     if let Some(c) = comp {
-                        assert!(c >= 0.0 && c <= 1.0, "Composition should be between 0 and 1 for {:?}", isotope);
+                        assert!(
+                            (0.0..=1.0).contains(&c),
+                            "Composition should be between 0 and 1 for {:?}",
+                            isotope
+                        );
                     }
                 }
             }
@@ -439,6 +441,9 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                     let iso = #isotope_ident::try_from(mass).unwrap();
                     assert_eq!(iso, isotope);
                 }
+                // Test error cases
+                assert!(#isotope_ident::try_from(0).is_err()); // Too low
+                assert!(#isotope_ident::try_from(1000).is_err()); // Way too high
             }
 
             #[test]

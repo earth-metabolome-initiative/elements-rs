@@ -390,6 +390,8 @@ mod tests {
             let iso = GadoliniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
+        assert!(GadoliniumIsotope::try_from(0).is_err());
+        assert!(GadoliniumIsotope::try_from(1000).is_err());
     }
     #[test]
     fn test_display() {
