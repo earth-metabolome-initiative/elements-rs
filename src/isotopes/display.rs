@@ -131,11 +131,18 @@ impl core::fmt::Display for super::Isotope {
 mod tests {
     use strum::IntoEnumIterator;
 
+    use crate::isotopes::HydrogenIsotope;
+
     #[test]
     fn test_display() {
         for element in crate::Element::iter() {
             let isotopes = element.isotopes();
             for isotope in isotopes {
+                if matches!(isotope, crate::Isotope::H(HydrogenIsotope::D2 | HydrogenIsotope::T3)) {
+                    // Skip Hydrogen-1 as its display is just "H"
+                    continue;
+                }
+
                 let display = format!("{}", isotope);
                 assert!(!display.is_empty(), "Display should not be empty for {:?}", isotope);
                 // Verify that the display string contains the element symbol

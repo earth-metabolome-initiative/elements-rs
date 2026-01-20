@@ -7,7 +7,6 @@ impl TryFrom<char> for crate::Isotope {
 
     fn try_from(value: char) -> Result<Self, Self::Error> {
         Ok(match value {
-            'P' => HydrogenIsotope::H1.into(),
             'D' => HydrogenIsotope::D2.into(),
             'T' => HydrogenIsotope::T3.into(),
             _ => {
@@ -21,7 +20,7 @@ impl TryFrom<char> for crate::Isotope {
 mod tests {
     #[test]
     fn test_try_from_char() {
-        for char in ['P', 'D', 'T'] {
+        for char in ['D', 'T'] {
             let result = crate::Isotope::try_from(char);
             assert!(result.is_ok(), "Failed to convert char '{}' to Isotope", char);
         }
