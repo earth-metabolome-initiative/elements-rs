@@ -1,6 +1,5 @@
 //! Valid oxidation states for elements.
 
-use multi_ranged::{MultiRange, MultiRanged};
 impl super::Element {
     /// Returns whether the oxidation state is valid for this element.
     ///
@@ -14,7 +13,7 @@ impl super::Element {
     /// ```
     #[must_use]
     pub fn is_valid_oxidation_state(&self, state: i16) -> bool {
-        self.oxidation_states().contains(state)
+        self.oxidation_states().contains(&state)
     }
 
     /// Returns all valid oxidation states.
@@ -23,16 +22,15 @@ impl super::Element {
     ///
     /// ```rust
     /// use elements_rs::Element;
-    /// use multi_ranged::multi_ranged::MultiRanged;
     ///
     /// let states = Element::H.oxidation_states();
-    /// assert!(states.contains(1));
-    /// assert!(states.contains(-1));
+    /// assert!(states.contains(&1));
+    /// assert!(states.contains(&-1));
     /// ```
     #[must_use]
     #[inline]
-    pub fn oxidation_states(&self) -> MultiRange<i16> {
-        let oxidation_states: &[i16] = match self {
+    pub fn oxidation_states(&self) -> &[i16] {
+        match self {
             Self::B => &[-5, -1, 0, 1, 2, 3],
             Self::C | Self::Si | Self::Ge | Self::Sn => &[-4, -3, -2, -1, 0, 1, 2, 3, 4],
             Self::N | Self::P | Self::As | Self::Sb | Self::Bi => &[-3, -2, -1, 0, 1, 2, 3, 4, 5],
@@ -102,26 +100,7 @@ impl super::Element {
 
             Self::H | Self::Li | Self::Na | Self::K | Self::Rb | Self::Cs => &[-1, 0, 1],
             Self::He | Self::Ne | Self::Ar | Self::Nh | Self::Fl | Self::Mc => &[0],
-        };
-
-        debug_assert!(
-            oxidation_states.contains(&0),
-            "Oxidation states of element `{self}` must contain 0, but it does not: {oxidation_states:?}",
-        );
-        debug_assert!(
-            oxidation_states.windows(2).all(|pair| pair[0] < pair[1]),
-            "Oxidation states of element `{self}` must be sorted, but they are not: {oxidation_states:?}",
-        );
-
-        let multi_ranged = MultiRange::try_from(oxidation_states).unwrap();
-
-        debug_assert_eq!(
-            multi_ranged.clone().collect::<Vec<_>>(),
-            oxidation_states.to_vec(),
-            "Oxidation states of element `{self}` must be valid, but they are not: {oxidation_states:?}",
-        );
-
-        multi_ranged
+        }
     }
 }
 
