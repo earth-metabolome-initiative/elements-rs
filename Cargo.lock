@@ -236,9 +236,8 @@ dependencies = [
 
 [[package]]
 name = "multi_ranged"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9809fbd1a12e6b2303cedb9bff55196574b4d0c9b40209ba0d39aa1bb780cc69"
+version = "0.1.2"
+source = "git+https://github.com/earth-metabolome-initiative/multi_ranged?branch=main#d004835057cae7ab5cf4b54bed94cd6ed923ec19"
 dependencies = [
  "num-traits",
  "serde",
