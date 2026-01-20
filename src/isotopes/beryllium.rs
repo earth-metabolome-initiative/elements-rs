@@ -29,6 +29,7 @@ pub enum BerylliumIsotope {
     Be16,
 }
 impl super::RelativeAtomicMass for BerylliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Be5 => 5.0399f64,
@@ -47,11 +48,13 @@ impl super::RelativeAtomicMass for BerylliumIsotope {
     }
 }
 impl super::ElementVariant for BerylliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Be
     }
 }
 impl super::MassNumber for BerylliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Be5 => 5u16,
@@ -70,6 +73,7 @@ impl super::MassNumber for BerylliumIsotope {
     }
 }
 impl super::IsotopicComposition for BerylliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Be9 => Some(1f64),

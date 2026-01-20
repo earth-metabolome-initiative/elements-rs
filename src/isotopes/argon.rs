@@ -53,6 +53,7 @@ pub enum ArgonIsotope {
     Ar53,
 }
 impl super::RelativeAtomicMass for ArgonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ar30 => 30.02307f64,
@@ -83,11 +84,13 @@ impl super::RelativeAtomicMass for ArgonIsotope {
     }
 }
 impl super::ElementVariant for ArgonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ar
     }
 }
 impl super::MassNumber for ArgonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ar30 => 30u16,
@@ -118,6 +121,7 @@ impl super::MassNumber for ArgonIsotope {
     }
 }
 impl super::IsotopicComposition for ArgonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ar36 => Some(0.003336f64),

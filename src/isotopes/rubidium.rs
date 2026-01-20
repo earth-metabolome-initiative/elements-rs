@@ -71,6 +71,7 @@ pub enum RubidiumIsotope {
     Rb103,
 }
 impl super::RelativeAtomicMass for RubidiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Rb71 => 70.96532f64,
@@ -110,11 +111,13 @@ impl super::RelativeAtomicMass for RubidiumIsotope {
     }
 }
 impl super::ElementVariant for RubidiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Rb
     }
 }
 impl super::MassNumber for RubidiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Rb71 => 71u16,
@@ -154,6 +157,7 @@ impl super::MassNumber for RubidiumIsotope {
     }
 }
 impl super::IsotopicComposition for RubidiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Rb85 => Some(0.7217f64),

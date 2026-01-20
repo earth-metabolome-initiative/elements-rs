@@ -53,6 +53,7 @@ pub enum ChlorineIsotope {
     Cl51,
 }
 impl super::RelativeAtomicMass for ChlorineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cl28 => 28.02954f64,
@@ -83,11 +84,13 @@ impl super::RelativeAtomicMass for ChlorineIsotope {
     }
 }
 impl super::ElementVariant for ChlorineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cl
     }
 }
 impl super::MassNumber for ChlorineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cl28 => 28u16,
@@ -118,6 +121,7 @@ impl super::MassNumber for ChlorineIsotope {
     }
 }
 impl super::IsotopicComposition for ChlorineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cl35 => Some(0.7576f64),

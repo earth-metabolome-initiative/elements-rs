@@ -81,6 +81,7 @@ pub enum PromethiumIsotope {
     Pm163,
 }
 impl super::RelativeAtomicMass for PromethiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pm126 => 125.95792f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for PromethiumIsotope {
     }
 }
 impl super::ElementVariant for PromethiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pm
     }
 }
 impl super::MassNumber for PromethiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pm126 => 126u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for PromethiumIsotope {
     }
 }
 impl super::IsotopicComposition for PromethiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

@@ -83,6 +83,7 @@ pub enum IndiumIsotope {
     In135,
 }
 impl super::RelativeAtomicMass for IndiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::In97 => 96.94934f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for IndiumIsotope {
     }
 }
 impl super::ElementVariant for IndiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::In
     }
 }
 impl super::MassNumber for IndiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::In97 => 97u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for IndiumIsotope {
     }
 }
 impl super::IsotopicComposition for IndiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::In113 => Some(0.0429f64),

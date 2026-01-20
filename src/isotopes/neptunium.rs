@@ -59,6 +59,7 @@ pub enum NeptuniumIsotope {
     Np245,
 }
 impl super::RelativeAtomicMass for NeptuniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Np219 => 219.03143f64,
@@ -92,11 +93,13 @@ impl super::RelativeAtomicMass for NeptuniumIsotope {
     }
 }
 impl super::ElementVariant for NeptuniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Np
     }
 }
 impl super::MassNumber for NeptuniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Np219 => 219u16,
@@ -130,6 +133,7 @@ impl super::MassNumber for NeptuniumIsotope {
     }
 }
 impl super::IsotopicComposition for NeptuniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

@@ -71,6 +71,7 @@ pub enum KryptonIsotope {
     Kr101,
 }
 impl super::RelativeAtomicMass for KryptonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Kr69 => 68.96518f64,
@@ -110,11 +111,13 @@ impl super::RelativeAtomicMass for KryptonIsotope {
     }
 }
 impl super::ElementVariant for KryptonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Kr
     }
 }
 impl super::MassNumber for KryptonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Kr69 => 69u16,
@@ -154,6 +157,7 @@ impl super::MassNumber for KryptonIsotope {
     }
 }
 impl super::IsotopicComposition for KryptonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Kr78 => Some(0.00355f64),

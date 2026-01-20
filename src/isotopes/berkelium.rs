@@ -47,6 +47,7 @@ pub enum BerkeliumIsotope {
     Bk254,
 }
 impl super::RelativeAtomicMass for BerkeliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Bk234 => 234.05727f64,
@@ -74,11 +75,13 @@ impl super::RelativeAtomicMass for BerkeliumIsotope {
     }
 }
 impl super::ElementVariant for BerkeliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Bk
     }
 }
 impl super::MassNumber for BerkeliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Bk234 => 234u16,
@@ -106,6 +109,7 @@ impl super::MassNumber for BerkeliumIsotope {
     }
 }
 impl super::IsotopicComposition for BerkeliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

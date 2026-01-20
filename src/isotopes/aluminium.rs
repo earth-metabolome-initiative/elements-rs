@@ -51,6 +51,7 @@ pub enum AluminiumIsotope {
     Al43,
 }
 impl super::RelativeAtomicMass for AluminiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Al21 => 21.02897f64,
@@ -80,11 +81,13 @@ impl super::RelativeAtomicMass for AluminiumIsotope {
     }
 }
 impl super::ElementVariant for AluminiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Al
     }
 }
 impl super::MassNumber for AluminiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Al21 => 21u16,
@@ -114,6 +117,7 @@ impl super::MassNumber for AluminiumIsotope {
     }
 }
 impl super::IsotopicComposition for AluminiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Al27 => Some(1f64),

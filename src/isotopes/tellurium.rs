@@ -83,6 +83,7 @@ pub enum TelluriumIsotope {
     Te143,
 }
 impl super::RelativeAtomicMass for TelluriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Te105 => 104.9433f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for TelluriumIsotope {
     }
 }
 impl super::ElementVariant for TelluriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Te
     }
 }
 impl super::MassNumber for TelluriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Te105 => 105u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for TelluriumIsotope {
     }
 }
 impl super::IsotopicComposition for TelluriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Te120 => Some(0.0009f64),

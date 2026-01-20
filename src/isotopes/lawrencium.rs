@@ -37,6 +37,7 @@ pub enum LawrenciumIsotope {
     Lr266,
 }
 impl super::RelativeAtomicMass for LawrenciumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Lr251 => 251.09418f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for LawrenciumIsotope {
     }
 }
 impl super::ElementVariant for LawrenciumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Lr
     }
 }
 impl super::MassNumber for LawrenciumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Lr251 => 251u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for LawrenciumIsotope {
     }
 }
 impl super::IsotopicComposition for LawrenciumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

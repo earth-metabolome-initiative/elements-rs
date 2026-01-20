@@ -85,6 +85,7 @@ pub enum LanthanumIsotope {
     La155,
 }
 impl super::RelativeAtomicMass for LanthanumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::La116 => 115.9563f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for LanthanumIsotope {
     }
 }
 impl super::ElementVariant for LanthanumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::La
     }
 }
 impl super::MassNumber for LanthanumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::La116 => 116u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for LanthanumIsotope {
     }
 }
 impl super::IsotopicComposition for LanthanumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::La138 => Some(0.0008881f64),

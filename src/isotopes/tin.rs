@@ -85,6 +85,7 @@ pub enum TinIsotope {
     Sn138,
 }
 impl super::RelativeAtomicMass for TinIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sn99 => 98.94853f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for TinIsotope {
     }
 }
 impl super::ElementVariant for TinIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sn
     }
 }
 impl super::MassNumber for TinIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sn99 => 99u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for TinIsotope {
     }
 }
 impl super::IsotopicComposition for TinIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sn112 => Some(0.0097f64),

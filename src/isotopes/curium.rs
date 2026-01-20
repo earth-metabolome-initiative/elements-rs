@@ -47,6 +47,7 @@ pub enum CuriumIsotope {
     Cm252,
 }
 impl super::RelativeAtomicMass for CuriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cm232 => 232.04982f64,
@@ -74,11 +75,13 @@ impl super::RelativeAtomicMass for CuriumIsotope {
     }
 }
 impl super::ElementVariant for CuriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cm
     }
 }
 impl super::MassNumber for CuriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cm232 => 232u16,
@@ -106,6 +109,7 @@ impl super::MassNumber for CuriumIsotope {
     }
 }
 impl super::IsotopicComposition for CuriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

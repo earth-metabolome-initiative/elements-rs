@@ -37,6 +37,7 @@ pub enum CarbonIsotope {
     C23,
 }
 impl super::RelativeAtomicMass for CarbonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::C8 => 8.037643f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for CarbonIsotope {
     }
 }
 impl super::ElementVariant for CarbonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::C
     }
 }
 impl super::MassNumber for CarbonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::C8 => 8u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for CarbonIsotope {
     }
 }
 impl super::IsotopicComposition for CarbonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::C12 => Some(0.9893f64),

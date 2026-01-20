@@ -81,6 +81,7 @@ pub enum PalladiumIsotope {
     Pd128,
 }
 impl super::RelativeAtomicMass for PalladiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pd91 => 90.95032f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for PalladiumIsotope {
     }
 }
 impl super::ElementVariant for PalladiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pd
     }
 }
 impl super::MassNumber for PalladiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pd91 => 91u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for PalladiumIsotope {
     }
 }
 impl super::IsotopicComposition for PalladiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pd102 => Some(0.0102f64),

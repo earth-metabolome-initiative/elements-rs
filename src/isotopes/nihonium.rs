@@ -25,6 +25,7 @@ pub enum NihoniumIsotope {
     Nh287,
 }
 impl super::RelativeAtomicMass for NihoniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Nh278 => 278.17058f64,
@@ -41,11 +42,13 @@ impl super::RelativeAtomicMass for NihoniumIsotope {
     }
 }
 impl super::ElementVariant for NihoniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Nh
     }
 }
 impl super::MassNumber for NihoniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Nh278 => 278u16,
@@ -62,6 +65,7 @@ impl super::MassNumber for NihoniumIsotope {
     }
 }
 impl super::IsotopicComposition for NihoniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

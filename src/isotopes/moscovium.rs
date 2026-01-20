@@ -15,6 +15,7 @@ pub enum MoscoviumIsotope {
     Mc291,
 }
 impl super::RelativeAtomicMass for MoscoviumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Mc287 => 287.1907f64,
@@ -26,11 +27,13 @@ impl super::RelativeAtomicMass for MoscoviumIsotope {
     }
 }
 impl super::ElementVariant for MoscoviumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Mc
     }
 }
 impl super::MassNumber for MoscoviumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Mc287 => 287u16,
@@ -42,6 +45,7 @@ impl super::MassNumber for MoscoviumIsotope {
     }
 }
 impl super::IsotopicComposition for MoscoviumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

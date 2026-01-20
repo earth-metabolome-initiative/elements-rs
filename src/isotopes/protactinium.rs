@@ -65,6 +65,7 @@ pub enum ProtactiniumIsotope {
     Pa241,
 }
 impl super::RelativeAtomicMass for ProtactiniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pa212 => 212.023203f64,
@@ -101,11 +102,13 @@ impl super::RelativeAtomicMass for ProtactiniumIsotope {
     }
 }
 impl super::ElementVariant for ProtactiniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pa
     }
 }
 impl super::MassNumber for ProtactiniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pa212 => 212u16,
@@ -142,6 +145,7 @@ impl super::MassNumber for ProtactiniumIsotope {
     }
 }
 impl super::IsotopicComposition for ProtactiniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pa231 => Some(1f64),

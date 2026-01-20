@@ -79,6 +79,7 @@ pub enum TerbiumIsotope {
     Tb171,
 }
 impl super::RelativeAtomicMass for TerbiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Tb135 => 134.96476f64,
@@ -122,11 +123,13 @@ impl super::RelativeAtomicMass for TerbiumIsotope {
     }
 }
 impl super::ElementVariant for TerbiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Tb
     }
 }
 impl super::MassNumber for TerbiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Tb135 => 135u16,
@@ -170,6 +173,7 @@ impl super::MassNumber for TerbiumIsotope {
     }
 }
 impl super::IsotopicComposition for TerbiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Tb159 => Some(1f64),

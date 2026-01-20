@@ -37,6 +37,7 @@ pub enum DubniumIsotope {
     Db270,
 }
 impl super::RelativeAtomicMass for DubniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Db255 => 255.10707f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for DubniumIsotope {
     }
 }
 impl super::ElementVariant for DubniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Db
     }
 }
 impl super::MassNumber for DubniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Db255 => 255u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for DubniumIsotope {
     }
 }
 impl super::IsotopicComposition for DubniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

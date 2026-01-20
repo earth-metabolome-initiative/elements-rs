@@ -45,6 +45,7 @@ pub enum SodiumIsotope {
     Na37,
 }
 impl super::RelativeAtomicMass for SodiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Na18 => 18.02688f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for SodiumIsotope {
     }
 }
 impl super::ElementVariant for SodiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Na
     }
 }
 impl super::MassNumber for SodiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Na18 => 18u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for SodiumIsotope {
     }
 }
 impl super::IsotopicComposition for SodiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Na23 => Some(1f64),

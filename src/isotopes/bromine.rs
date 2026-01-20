@@ -69,6 +69,7 @@ pub enum BromineIsotope {
     Br98,
 }
 impl super::RelativeAtomicMass for BromineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Br67 => 66.96465f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for BromineIsotope {
     }
 }
 impl super::ElementVariant for BromineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Br
     }
 }
 impl super::MassNumber for BromineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Br67 => 67u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for BromineIsotope {
     }
 }
 impl super::IsotopicComposition for BromineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Br79 => Some(0.5069f64),

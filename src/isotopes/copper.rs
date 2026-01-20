@@ -67,6 +67,7 @@ pub enum CopperIsotope {
     Cu82,
 }
 impl super::RelativeAtomicMass for CopperIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cu52 => 51.99671f64,
@@ -104,11 +105,13 @@ impl super::RelativeAtomicMass for CopperIsotope {
     }
 }
 impl super::ElementVariant for CopperIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cu
     }
 }
 impl super::MassNumber for CopperIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cu52 => 52u16,
@@ -146,6 +149,7 @@ impl super::MassNumber for CopperIsotope {
     }
 }
 impl super::IsotopicComposition for CopperIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cu63 => Some(0.6915f64),

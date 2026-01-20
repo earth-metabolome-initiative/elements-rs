@@ -39,6 +39,7 @@ pub enum NobeliumIsotope {
     No264,
 }
 impl super::RelativeAtomicMass for NobeliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::No248 => 248.08655f64,
@@ -62,11 +63,13 @@ impl super::RelativeAtomicMass for NobeliumIsotope {
     }
 }
 impl super::ElementVariant for NobeliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::No
     }
 }
 impl super::MassNumber for NobeliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::No248 => 248u16,
@@ -90,6 +93,7 @@ impl super::MassNumber for NobeliumIsotope {
     }
 }
 impl super::IsotopicComposition for NobeliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

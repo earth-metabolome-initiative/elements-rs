@@ -85,6 +85,7 @@ pub enum BariumIsotope {
     Ba153,
 }
 impl super::RelativeAtomicMass for BariumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ba114 => 113.95066f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for BariumIsotope {
     }
 }
 impl super::ElementVariant for BariumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ba
     }
 }
 impl super::MassNumber for BariumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ba114 => 114u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for BariumIsotope {
     }
 }
 impl super::IsotopicComposition for BariumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ba130 => Some(0.00106f64),

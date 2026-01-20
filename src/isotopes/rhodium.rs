@@ -81,6 +81,7 @@ pub enum RhodiumIsotope {
     Rh126,
 }
 impl super::RelativeAtomicMass for RhodiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Rh89 => 88.95058f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for RhodiumIsotope {
     }
 }
 impl super::ElementVariant for RhodiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Rh
     }
 }
 impl super::MassNumber for RhodiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Rh89 => 89u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for RhodiumIsotope {
     }
 }
 impl super::IsotopicComposition for RhodiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Rh103 => Some(1f64),

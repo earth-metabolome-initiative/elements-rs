@@ -39,6 +39,7 @@ pub enum OxygenIsotope {
     O28,
 }
 impl super::RelativeAtomicMass for OxygenIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::O12 => 12.034262f64,
@@ -62,11 +63,13 @@ impl super::RelativeAtomicMass for OxygenIsotope {
     }
 }
 impl super::ElementVariant for OxygenIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::O
     }
 }
 impl super::MassNumber for OxygenIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::O12 => 12u16,
@@ -90,6 +93,7 @@ impl super::MassNumber for OxygenIsotope {
     }
 }
 impl super::IsotopicComposition for OxygenIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::O16 => Some(0.99757f64),

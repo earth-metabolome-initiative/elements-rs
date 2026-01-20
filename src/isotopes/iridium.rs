@@ -87,6 +87,7 @@ pub enum IridiumIsotope {
     Ir204,
 }
 impl super::RelativeAtomicMass for IridiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ir164 => 163.99191f64,
@@ -134,11 +135,13 @@ impl super::RelativeAtomicMass for IridiumIsotope {
     }
 }
 impl super::ElementVariant for IridiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ir
     }
 }
 impl super::MassNumber for IridiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ir164 => 164u16,
@@ -186,6 +189,7 @@ impl super::MassNumber for IridiumIsotope {
     }
 }
 impl super::IsotopicComposition for IridiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ir191 => Some(0.373f64),

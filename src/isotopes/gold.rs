@@ -89,6 +89,7 @@ pub enum GoldIsotope {
     Au210,
 }
 impl super::RelativeAtomicMass for GoldIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Au169 => 168.99808f64,
@@ -137,11 +138,13 @@ impl super::RelativeAtomicMass for GoldIsotope {
     }
 }
 impl super::ElementVariant for GoldIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Au
     }
 }
 impl super::MassNumber for GoldIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Au169 => 169u16,
@@ -190,6 +193,7 @@ impl super::MassNumber for GoldIsotope {
     }
 }
 impl super::IsotopicComposition for GoldIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Au197 => Some(1f64),

@@ -81,6 +81,7 @@ pub enum EuropiumIsotope {
     Eu167,
 }
 impl super::RelativeAtomicMass for EuropiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Eu130 => 129.96369f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for EuropiumIsotope {
     }
 }
 impl super::ElementVariant for EuropiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Eu
     }
 }
 impl super::MassNumber for EuropiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Eu130 => 130u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for EuropiumIsotope {
     }
 }
 impl super::IsotopicComposition for EuropiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Eu151 => Some(0.4781f64),

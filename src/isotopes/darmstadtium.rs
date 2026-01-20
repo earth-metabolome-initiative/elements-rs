@@ -35,6 +35,7 @@ pub enum DarmstadtiumIsotope {
     Ds281,
 }
 impl super::RelativeAtomicMass for DarmstadtiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ds267 => 267.14377f64,
@@ -56,11 +57,13 @@ impl super::RelativeAtomicMass for DarmstadtiumIsotope {
     }
 }
 impl super::ElementVariant for DarmstadtiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ds
     }
 }
 impl super::MassNumber for DarmstadtiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ds267 => 267u16,
@@ -82,6 +85,7 @@ impl super::MassNumber for DarmstadtiumIsotope {
     }
 }
 impl super::IsotopicComposition for DarmstadtiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

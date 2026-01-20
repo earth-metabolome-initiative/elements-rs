@@ -77,6 +77,7 @@ pub enum HolmiumIsotope {
     Ho175,
 }
 impl super::RelativeAtomicMass for HolmiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ho140 => 139.96859f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for HolmiumIsotope {
     }
 }
 impl super::ElementVariant for HolmiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ho
     }
 }
 impl super::MassNumber for HolmiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ho140 => 140u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for HolmiumIsotope {
     }
 }
 impl super::IsotopicComposition for HolmiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ho165 => Some(1f64),

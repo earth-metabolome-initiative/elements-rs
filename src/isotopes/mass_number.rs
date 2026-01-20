@@ -2,6 +2,7 @@
 //! enum.
 
 impl super::MassNumber for super::Isotope {
+    #[inline]
     #[allow(clippy::too_many_lines)]
     fn mass_number(&self) -> u16 {
         match self {

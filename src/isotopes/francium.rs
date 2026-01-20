@@ -75,6 +75,7 @@ pub enum FranciumIsotope {
     Fr233,
 }
 impl super::RelativeAtomicMass for FranciumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Fr199 => 199.007259f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for FranciumIsotope {
     }
 }
 impl super::ElementVariant for FranciumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Fr
     }
 }
 impl super::MassNumber for FranciumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Fr199 => 199u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for FranciumIsotope {
     }
 }
 impl super::IsotopicComposition for FranciumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

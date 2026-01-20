@@ -13,6 +13,7 @@ pub enum TennessineIsotope {
     Ts294,
 }
 impl super::RelativeAtomicMass for TennessineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ts291 => 291.20553f64,
@@ -23,11 +24,13 @@ impl super::RelativeAtomicMass for TennessineIsotope {
     }
 }
 impl super::ElementVariant for TennessineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ts
     }
 }
 impl super::MassNumber for TennessineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ts291 => 291u16,
@@ -38,6 +41,7 @@ impl super::MassNumber for TennessineIsotope {
     }
 }
 impl super::IsotopicComposition for TennessineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

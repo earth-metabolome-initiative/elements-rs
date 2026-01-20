@@ -69,6 +69,7 @@ pub enum ZincIsotope {
     Zn85,
 }
 impl super::RelativeAtomicMass for ZincIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Zn54 => 53.99204f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for ZincIsotope {
     }
 }
 impl super::ElementVariant for ZincIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Zn
     }
 }
 impl super::MassNumber for ZincIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Zn54 => 54u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for ZincIsotope {
     }
 }
 impl super::IsotopicComposition for ZincIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Zn64 => Some(0.4917f64),

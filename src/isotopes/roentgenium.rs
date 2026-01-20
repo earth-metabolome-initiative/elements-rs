@@ -29,6 +29,7 @@ pub enum RoentgeniumIsotope {
     Rg283,
 }
 impl super::RelativeAtomicMass for RoentgeniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Rg272 => 272.15327f64,
@@ -47,11 +48,13 @@ impl super::RelativeAtomicMass for RoentgeniumIsotope {
     }
 }
 impl super::ElementVariant for RoentgeniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Rg
     }
 }
 impl super::MassNumber for RoentgeniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Rg272 => 272u16,
@@ -70,6 +73,7 @@ impl super::MassNumber for RoentgeniumIsotope {
     }
 }
 impl super::IsotopicComposition for RoentgeniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

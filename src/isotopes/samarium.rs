@@ -81,6 +81,7 @@ pub enum SamariumIsotope {
     Sm165,
 }
 impl super::RelativeAtomicMass for SamariumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sm128 => 127.95842f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for SamariumIsotope {
     }
 }
 impl super::ElementVariant for SamariumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sm
     }
 }
 impl super::MassNumber for SamariumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sm128 => 128u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for SamariumIsotope {
     }
 }
 impl super::IsotopicComposition for SamariumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sm144 => Some(0.0307f64),

@@ -19,6 +19,7 @@ pub enum HydrogenIsotope {
     H7,
 }
 impl super::RelativeAtomicMass for HydrogenIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::H1 => 1.00782503223f64,
@@ -32,11 +33,13 @@ impl super::RelativeAtomicMass for HydrogenIsotope {
     }
 }
 impl super::ElementVariant for HydrogenIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::H
     }
 }
 impl super::MassNumber for HydrogenIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::H1 => 1u16,
@@ -50,6 +53,7 @@ impl super::MassNumber for HydrogenIsotope {
     }
 }
 impl super::IsotopicComposition for HydrogenIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::H1 => Some(0.999885f64),

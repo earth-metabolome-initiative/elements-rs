@@ -77,6 +77,7 @@ pub enum ThuliumIsotope {
     Tm179,
 }
 impl super::RelativeAtomicMass for ThuliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Tm144 => 143.97628f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for ThuliumIsotope {
     }
 }
 impl super::ElementVariant for ThuliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Tm
     }
 }
 impl super::MassNumber for ThuliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Tm144 => 144u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for ThuliumIsotope {
     }
 }
 impl super::IsotopicComposition for ThuliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Tm169 => Some(1f64),

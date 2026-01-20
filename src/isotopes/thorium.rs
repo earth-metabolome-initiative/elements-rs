@@ -69,6 +69,7 @@ pub enum ThoriumIsotope {
     Th239,
 }
 impl super::RelativeAtomicMass for ThoriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Th208 => 208.0179f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for ThoriumIsotope {
     }
 }
 impl super::ElementVariant for ThoriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Th
     }
 }
 impl super::MassNumber for ThoriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Th208 => 208u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for ThoriumIsotope {
     }
 }
 impl super::IsotopicComposition for ThoriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Th232 => Some(1f64),

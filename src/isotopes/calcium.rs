@@ -55,6 +55,7 @@ pub enum CalciumIsotope {
     Ca58,
 }
 impl super::RelativeAtomicMass for CalciumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ca34 => 34.01487f64,
@@ -86,11 +87,13 @@ impl super::RelativeAtomicMass for CalciumIsotope {
     }
 }
 impl super::ElementVariant for CalciumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ca
     }
 }
 impl super::MassNumber for CalciumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ca34 => 34u16,
@@ -122,6 +125,7 @@ impl super::MassNumber for CalciumIsotope {
     }
 }
 impl super::IsotopicComposition for CalciumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ca40 => Some(0.96941f64),

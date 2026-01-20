@@ -89,6 +89,7 @@ pub enum PoloniumIsotope {
     Po227,
 }
 impl super::RelativeAtomicMass for PoloniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Po186 => 186.004393f64,
@@ -137,11 +138,13 @@ impl super::RelativeAtomicMass for PoloniumIsotope {
     }
 }
 impl super::ElementVariant for PoloniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Po
     }
 }
 impl super::MassNumber for PoloniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Po186 => 186u16,
@@ -190,6 +193,7 @@ impl super::MassNumber for PoloniumIsotope {
     }
 }
 impl super::IsotopicComposition for PoloniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

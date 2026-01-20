@@ -73,6 +73,7 @@ pub enum YttriumIsotope {
     Y109,
 }
 impl super::RelativeAtomicMass for YttriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Y76 => 75.95856f64,
@@ -113,11 +114,13 @@ impl super::RelativeAtomicMass for YttriumIsotope {
     }
 }
 impl super::ElementVariant for YttriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Y
     }
 }
 impl super::MassNumber for YttriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Y76 => 76u16,
@@ -158,6 +161,7 @@ impl super::MassNumber for YttriumIsotope {
     }
 }
 impl super::IsotopicComposition for YttriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Y89 => Some(1f64),

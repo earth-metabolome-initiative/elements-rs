@@ -53,6 +53,7 @@ pub enum SulfurIsotope {
     S49,
 }
 impl super::RelativeAtomicMass for SulfurIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::S26 => 26.02907f64,
@@ -83,11 +84,13 @@ impl super::RelativeAtomicMass for SulfurIsotope {
     }
 }
 impl super::ElementVariant for SulfurIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::S
     }
 }
 impl super::MassNumber for SulfurIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::S26 => 26u16,
@@ -118,6 +121,7 @@ impl super::MassNumber for SulfurIsotope {
     }
 }
 impl super::IsotopicComposition for SulfurIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::S32 => Some(0.9499f64),

@@ -71,6 +71,7 @@ pub enum ArsenicIsotope {
     As92,
 }
 impl super::RelativeAtomicMass for ArsenicIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::As60 => 59.99388f64,
@@ -110,11 +111,13 @@ impl super::RelativeAtomicMass for ArsenicIsotope {
     }
 }
 impl super::ElementVariant for ArsenicIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::As
     }
 }
 impl super::MassNumber for ArsenicIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::As60 => 60u16,
@@ -154,6 +157,7 @@ impl super::MassNumber for ArsenicIsotope {
     }
 }
 impl super::IsotopicComposition for ArsenicIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::As75 => Some(1f64),

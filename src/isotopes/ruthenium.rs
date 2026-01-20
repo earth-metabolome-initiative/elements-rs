@@ -81,6 +81,7 @@ pub enum RutheniumIsotope {
     Ru124,
 }
 impl super::RelativeAtomicMass for RutheniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ru87 => 86.95069f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for RutheniumIsotope {
     }
 }
 impl super::ElementVariant for RutheniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ru
     }
 }
 impl super::MassNumber for RutheniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ru87 => 87u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for RutheniumIsotope {
     }
 }
 impl super::IsotopicComposition for RutheniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ru96 => Some(0.0554f64),

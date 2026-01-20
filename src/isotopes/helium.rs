@@ -21,6 +21,7 @@ pub enum HeliumIsotope {
     He10,
 }
 impl super::RelativeAtomicMass for HeliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::He3 => 3.0160293201f64,
@@ -35,11 +36,13 @@ impl super::RelativeAtomicMass for HeliumIsotope {
     }
 }
 impl super::ElementVariant for HeliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::He
     }
 }
 impl super::MassNumber for HeliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::He3 => 3u16,
@@ -54,6 +57,7 @@ impl super::MassNumber for HeliumIsotope {
     }
 }
 impl super::IsotopicComposition for HeliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::He3 => Some(0.00000134f64),

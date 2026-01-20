@@ -35,6 +35,7 @@ pub enum HassiumIsotope {
     Hs277,
 }
 impl super::RelativeAtomicMass for HassiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Hs263 => 263.12852f64,
@@ -56,11 +57,13 @@ impl super::RelativeAtomicMass for HassiumIsotope {
     }
 }
 impl super::ElementVariant for HassiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Hs
     }
 }
 impl super::MassNumber for HassiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Hs263 => 263u16,
@@ -82,6 +85,7 @@ impl super::MassNumber for HassiumIsotope {
     }
 }
 impl super::IsotopicComposition for HassiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

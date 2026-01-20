@@ -83,6 +83,7 @@ pub enum PraseodymiumIsotope {
     Pr159,
 }
 impl super::RelativeAtomicMass for PraseodymiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pr121 => 120.95532f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for PraseodymiumIsotope {
     }
 }
 impl super::ElementVariant for PraseodymiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pr
     }
 }
 impl super::MassNumber for PraseodymiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pr121 => 121u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for PraseodymiumIsotope {
     }
 }
 impl super::IsotopicComposition for PraseodymiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pr141 => Some(1f64),

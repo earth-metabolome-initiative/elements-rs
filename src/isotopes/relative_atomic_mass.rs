@@ -2,6 +2,7 @@
 //! enum.
 
 impl super::RelativeAtomicMass for super::Isotope {
+    #[inline]
     #[allow(clippy::too_many_lines)]
     fn relative_atomic_mass(&self) -> f64 {
         match self {

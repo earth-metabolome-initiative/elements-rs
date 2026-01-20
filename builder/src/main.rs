@@ -294,6 +294,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         }
 
         impl super::RelativeAtomicMass for #isotope_ident {
+            #[inline]
             fn relative_atomic_mass(&self) -> f64 {
                 match self {
                     #(Self::#enum_variants => #relative_atomic_masses),*
@@ -302,12 +303,14 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         }
 
         impl super::ElementVariant for #isotope_ident {
+            #[inline]
             fn element(&self) -> crate::Element {
                 crate::Element::#element_symbol_ident
             }
         }
 
         impl super::MassNumber for #isotope_ident {
+            #[inline]
             fn mass_number(&self) -> u16 {
                 match self {
                     #(Self::#enum_variants => #mass_numbers),*
@@ -316,6 +319,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         }
 
         impl super::IsotopicComposition for #isotope_ident {
+            #[inline]
             fn isotopic_composition(&self) -> Option<f64> {
                 #isotopic_composition_impl
             }

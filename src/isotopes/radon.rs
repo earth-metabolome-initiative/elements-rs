@@ -83,6 +83,7 @@ pub enum RadonIsotope {
     Rn231,
 }
 impl super::RelativeAtomicMass for RadonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Rn193 => 193.009708f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for RadonIsotope {
     }
 }
 impl super::ElementVariant for RadonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Rn
     }
 }
 impl super::MassNumber for RadonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Rn193 => 193u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for RadonIsotope {
     }
 }
 impl super::IsotopicComposition for RadonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

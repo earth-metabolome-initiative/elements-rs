@@ -97,6 +97,7 @@ pub enum MercuryIsotope {
     Hg216,
 }
 impl super::RelativeAtomicMass for MercuryIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Hg171 => 171.00353f64,
@@ -149,11 +150,13 @@ impl super::RelativeAtomicMass for MercuryIsotope {
     }
 }
 impl super::ElementVariant for MercuryIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Hg
     }
 }
 impl super::MassNumber for MercuryIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Hg171 => 171u16,
@@ -206,6 +209,7 @@ impl super::MassNumber for MercuryIsotope {
     }
 }
 impl super::IsotopicComposition for MercuryIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Hg196 => Some(0.0015f64),

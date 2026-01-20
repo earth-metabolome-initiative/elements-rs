@@ -77,6 +77,7 @@ pub enum DysprosiumIsotope {
     Dy173,
 }
 impl super::RelativeAtomicMass for DysprosiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Dy138 => 137.9625f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for DysprosiumIsotope {
     }
 }
 impl super::ElementVariant for DysprosiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Dy
     }
 }
 impl super::MassNumber for DysprosiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Dy138 => 138u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for DysprosiumIsotope {
     }
 }
 impl super::IsotopicComposition for DysprosiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Dy156 => Some(0.00056f64),

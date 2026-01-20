@@ -23,6 +23,7 @@ impl FromStr for crate::Element {
     /// let carbon: Element = "C".parse().unwrap();
     /// assert_eq!(carbon, Element::C);
     /// ```
+    #[inline]
     #[allow(clippy::too_many_lines)]
     fn from_str(value: &str) -> Result<Self, Self::Err> {
         Ok(match value {

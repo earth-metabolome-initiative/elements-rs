@@ -83,6 +83,7 @@ pub enum AstatineIsotope {
     At229,
 }
 impl super::RelativeAtomicMass for AstatineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::At191 => 191.004148f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for AstatineIsotope {
     }
 }
 impl super::ElementVariant for AstatineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::At
     }
 }
 impl super::MassNumber for AstatineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::At191 => 191u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for AstatineIsotope {
     }
 }
 impl super::IsotopicComposition for AstatineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

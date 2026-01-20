@@ -59,6 +59,7 @@ pub enum VanadiumIsotope {
     V66,
 }
 impl super::RelativeAtomicMass for VanadiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::V40 => 40.01276f64,
@@ -92,11 +93,13 @@ impl super::RelativeAtomicMass for VanadiumIsotope {
     }
 }
 impl super::ElementVariant for VanadiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::V
     }
 }
 impl super::MassNumber for VanadiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::V40 => 40u16,
@@ -130,6 +133,7 @@ impl super::MassNumber for VanadiumIsotope {
     }
 }
 impl super::IsotopicComposition for VanadiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::V50 => Some(0.0025f64),

@@ -69,6 +69,7 @@ pub enum GalliumIsotope {
     Ga87,
 }
 impl super::RelativeAtomicMass for GalliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ga56 => 55.99536f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for GalliumIsotope {
     }
 }
 impl super::ElementVariant for GalliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ga
     }
 }
 impl super::MassNumber for GalliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ga56 => 56u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for GalliumIsotope {
     }
 }
 impl super::IsotopicComposition for GalliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ga69 => Some(0.60108f64),

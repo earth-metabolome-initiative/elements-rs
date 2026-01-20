@@ -75,6 +75,7 @@ pub enum ZirconiumIsotope {
     Zr112,
 }
 impl super::RelativeAtomicMass for ZirconiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Zr78 => 77.95566f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for ZirconiumIsotope {
     }
 }
 impl super::ElementVariant for ZirconiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Zr
     }
 }
 impl super::MassNumber for ZirconiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Zr78 => 78u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for ZirconiumIsotope {
     }
 }
 impl super::IsotopicComposition for ZirconiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Zr90 => Some(0.5145f64),

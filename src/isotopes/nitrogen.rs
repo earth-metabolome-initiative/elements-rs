@@ -37,6 +37,7 @@ pub enum NitrogenIsotope {
     N25,
 }
 impl super::RelativeAtomicMass for NitrogenIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::N10 => 10.04165f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for NitrogenIsotope {
     }
 }
 impl super::ElementVariant for NitrogenIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::N
     }
 }
 impl super::MassNumber for NitrogenIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::N10 => 10u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for NitrogenIsotope {
     }
 }
 impl super::IsotopicComposition for NitrogenIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::N14 => Some(0.99636f64),

@@ -79,6 +79,7 @@ pub enum HafniumIsotope {
     Hf189,
 }
 impl super::RelativeAtomicMass for HafniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Hf153 => 152.97069f64,
@@ -122,11 +123,13 @@ impl super::RelativeAtomicMass for HafniumIsotope {
     }
 }
 impl super::ElementVariant for HafniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Hf
     }
 }
 impl super::MassNumber for HafniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Hf153 => 153u16,
@@ -170,6 +173,7 @@ impl super::MassNumber for HafniumIsotope {
     }
 }
 impl super::IsotopicComposition for HafniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Hf174 => Some(0.0016f64),

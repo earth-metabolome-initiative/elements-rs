@@ -75,6 +75,7 @@ pub enum RadiumIsotope {
     Ra235,
 }
 impl super::RelativeAtomicMass for RadiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ra201 => 201.01271f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for RadiumIsotope {
     }
 }
 impl super::ElementVariant for RadiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ra
     }
 }
 impl super::MassNumber for RadiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ra201 => 201u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for RadiumIsotope {
     }
 }
 impl super::IsotopicComposition for RadiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

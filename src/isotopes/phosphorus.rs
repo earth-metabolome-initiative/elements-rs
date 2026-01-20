@@ -53,6 +53,7 @@ pub enum PhosphorusIsotope {
     P47,
 }
 impl super::RelativeAtomicMass for PhosphorusIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::P24 => 24.03577f64,
@@ -83,11 +84,13 @@ impl super::RelativeAtomicMass for PhosphorusIsotope {
     }
 }
 impl super::ElementVariant for PhosphorusIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::P
     }
 }
 impl super::MassNumber for PhosphorusIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::P24 => 24u16,
@@ -118,6 +121,7 @@ impl super::MassNumber for PhosphorusIsotope {
     }
 }
 impl super::IsotopicComposition for PhosphorusIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::P31 => Some(1f64),

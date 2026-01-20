@@ -59,6 +59,7 @@ pub enum ChromiumIsotope {
     Cr68,
 }
 impl super::RelativeAtomicMass for ChromiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cr42 => 42.0067f64,
@@ -92,11 +93,13 @@ impl super::RelativeAtomicMass for ChromiumIsotope {
     }
 }
 impl super::ElementVariant for ChromiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cr
     }
 }
 impl super::MassNumber for ChromiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cr42 => 42u16,
@@ -130,6 +133,7 @@ impl super::MassNumber for ChromiumIsotope {
     }
 }
 impl super::IsotopicComposition for ChromiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cr50 => Some(0.04345f64),

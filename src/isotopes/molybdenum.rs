@@ -75,6 +75,7 @@ pub enum MolybdenumIsotope {
     Mo117,
 }
 impl super::RelativeAtomicMass for MolybdenumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Mo83 => 82.94988f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for MolybdenumIsotope {
     }
 }
 impl super::ElementVariant for MolybdenumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Mo
     }
 }
 impl super::MassNumber for MolybdenumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Mo83 => 83u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for MolybdenumIsotope {
     }
 }
 impl super::IsotopicComposition for MolybdenumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Mo92 => Some(0.1453f64),

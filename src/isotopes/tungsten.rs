@@ -81,6 +81,7 @@ pub enum TungstenIsotope {
     W194,
 }
 impl super::RelativeAtomicMass for TungstenIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::W157 => 156.97884f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for TungstenIsotope {
     }
 }
 impl super::ElementVariant for TungstenIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::W
     }
 }
 impl super::MassNumber for TungstenIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::W157 => 157u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for TungstenIsotope {
     }
 }
 impl super::IsotopicComposition for TungstenIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::W180 => Some(0.0012f64),

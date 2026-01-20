@@ -81,6 +81,7 @@ pub enum AntimonyIsotope {
     Sb140,
 }
 impl super::RelativeAtomicMass for AntimonyIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sb103 => 102.93969f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for AntimonyIsotope {
     }
 }
 impl super::ElementVariant for AntimonyIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sb
     }
 }
 impl super::MassNumber for AntimonyIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sb103 => 103u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for AntimonyIsotope {
     }
 }
 impl super::IsotopicComposition for AntimonyIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sb121 => Some(0.5721f64),

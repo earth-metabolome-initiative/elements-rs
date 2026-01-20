@@ -69,6 +69,7 @@ pub enum ActiniumIsotope {
     Ac237,
 }
 impl super::RelativeAtomicMass for ActiniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ac206 => 206.014452f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for ActiniumIsotope {
     }
 }
 impl super::ElementVariant for ActiniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ac
     }
 }
 impl super::MassNumber for ActiniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ac206 => 206u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for ActiniumIsotope {
     }
 }
 impl super::IsotopicComposition for ActiniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

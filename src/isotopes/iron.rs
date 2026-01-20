@@ -65,6 +65,7 @@ pub enum IronIsotope {
     Fe74,
 }
 impl super::RelativeAtomicMass for IronIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Fe45 => 45.01442f64,
@@ -101,11 +102,13 @@ impl super::RelativeAtomicMass for IronIsotope {
     }
 }
 impl super::ElementVariant for IronIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Fe
     }
 }
 impl super::MassNumber for IronIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Fe45 => 45u16,
@@ -142,6 +145,7 @@ impl super::MassNumber for IronIsotope {
     }
 }
 impl super::IsotopicComposition for IronIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Fe54 => Some(0.05845f64),

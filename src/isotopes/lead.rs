@@ -91,6 +91,7 @@ pub enum LeadIsotope {
     Pb220,
 }
 impl super::RelativeAtomicMass for LeadIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pb178 => 178.003831f64,
@@ -140,11 +141,13 @@ impl super::RelativeAtomicMass for LeadIsotope {
     }
 }
 impl super::ElementVariant for LeadIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pb
     }
 }
 impl super::MassNumber for LeadIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pb178 => 178u16,
@@ -194,6 +197,7 @@ impl super::MassNumber for LeadIsotope {
     }
 }
 impl super::IsotopicComposition for LeadIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pb204 => Some(0.014f64),

@@ -45,6 +45,7 @@ pub enum AmericiumIsotope {
     Am249,
 }
 impl super::RelativeAtomicMass for AmericiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Am230 => 230.04609f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for AmericiumIsotope {
     }
 }
 impl super::ElementVariant for AmericiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Am
     }
 }
 impl super::MassNumber for AmericiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Am230 => 230u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for AmericiumIsotope {
     }
 }
 impl super::IsotopicComposition for AmericiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

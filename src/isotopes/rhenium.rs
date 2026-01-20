@@ -85,6 +85,7 @@ pub enum RheniumIsotope {
     Re198,
 }
 impl super::RelativeAtomicMass for RheniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Re159 => 158.98418f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for RheniumIsotope {
     }
 }
 impl super::ElementVariant for RheniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Re
     }
 }
 impl super::MassNumber for RheniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Re159 => 159u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for RheniumIsotope {
     }
 }
 impl super::IsotopicComposition for RheniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Re185 => Some(0.374f64),

@@ -75,6 +75,7 @@ pub enum NiobiumIsotope {
     Nb115,
 }
 impl super::RelativeAtomicMass for NiobiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Nb81 => 80.9496f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for NiobiumIsotope {
     }
 }
 impl super::ElementVariant for NiobiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Nb
     }
 }
 impl super::MassNumber for NiobiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Nb81 => 81u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for NiobiumIsotope {
     }
 }
 impl super::IsotopicComposition for NiobiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Nb93 => Some(1f64),

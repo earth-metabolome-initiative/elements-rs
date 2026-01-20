@@ -83,6 +83,7 @@ pub enum IodineIsotope {
     I145,
 }
 impl super::RelativeAtomicMass for IodineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::I107 => 106.94678f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for IodineIsotope {
     }
 }
 impl super::ElementVariant for IodineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::I
     }
 }
 impl super::MassNumber for IodineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::I107 => 107u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for IodineIsotope {
     }
 }
 impl super::IsotopicComposition for IodineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::I127 => Some(1f64),

@@ -59,6 +59,7 @@ pub enum UraniumIsotope {
     U243,
 }
 impl super::RelativeAtomicMass for UraniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::U217 => 217.02466f64,
@@ -92,11 +93,13 @@ impl super::RelativeAtomicMass for UraniumIsotope {
     }
 }
 impl super::ElementVariant for UraniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::U
     }
 }
 impl super::MassNumber for UraniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::U217 => 217u16,
@@ -130,6 +133,7 @@ impl super::MassNumber for UraniumIsotope {
     }
 }
 impl super::IsotopicComposition for UraniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::U234 => Some(0.000054f64),

@@ -57,6 +57,7 @@ pub enum ScandiumIsotope {
     Sc61,
 }
 impl super::RelativeAtomicMass for ScandiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sc36 => 36.01648f64,
@@ -89,11 +90,13 @@ impl super::RelativeAtomicMass for ScandiumIsotope {
     }
 }
 impl super::ElementVariant for ScandiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sc
     }
 }
 impl super::MassNumber for ScandiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sc36 => 36u16,
@@ -126,6 +129,7 @@ impl super::MassNumber for ScandiumIsotope {
     }
 }
 impl super::IsotopicComposition for ScandiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sc45 => Some(1f64),

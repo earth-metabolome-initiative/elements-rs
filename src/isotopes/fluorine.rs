@@ -41,6 +41,7 @@ pub enum FluorineIsotope {
     F31,
 }
 impl super::RelativeAtomicMass for FluorineIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::F14 => 14.034315f64,
@@ -65,11 +66,13 @@ impl super::RelativeAtomicMass for FluorineIsotope {
     }
 }
 impl super::ElementVariant for FluorineIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::F
     }
 }
 impl super::MassNumber for FluorineIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::F14 => 14u16,
@@ -94,6 +97,7 @@ impl super::MassNumber for FluorineIsotope {
     }
 }
 impl super::IsotopicComposition for FluorineIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::F19 => Some(1f64),

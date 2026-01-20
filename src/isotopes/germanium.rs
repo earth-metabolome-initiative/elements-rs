@@ -71,6 +71,7 @@ pub enum GermaniumIsotope {
     Ge90,
 }
 impl super::RelativeAtomicMass for GermaniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ge58 => 57.99172f64,
@@ -110,11 +111,13 @@ impl super::RelativeAtomicMass for GermaniumIsotope {
     }
 }
 impl super::ElementVariant for GermaniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ge
     }
 }
 impl super::MassNumber for GermaniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ge58 => 58u16,
@@ -154,6 +157,7 @@ impl super::MassNumber for GermaniumIsotope {
     }
 }
 impl super::IsotopicComposition for GermaniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ge70 => Some(0.2057f64),

@@ -77,6 +77,7 @@ pub enum ErbiumIsotope {
     Er177,
 }
 impl super::RelativeAtomicMass for ErbiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Er142 => 141.9701f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for ErbiumIsotope {
     }
 }
 impl super::ElementVariant for ErbiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Er
     }
 }
 impl super::MassNumber for ErbiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Er142 => 142u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for ErbiumIsotope {
     }
 }
 impl super::IsotopicComposition for ErbiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Er162 => Some(0.00139f64),

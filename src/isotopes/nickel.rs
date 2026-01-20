@@ -69,6 +69,7 @@ pub enum NickelIsotope {
     Ni79,
 }
 impl super::RelativeAtomicMass for NickelIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ni48 => 48.01769f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for NickelIsotope {
     }
 }
 impl super::ElementVariant for NickelIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ni
     }
 }
 impl super::MassNumber for NickelIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ni48 => 48u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for NickelIsotope {
     }
 }
 impl super::IsotopicComposition for NickelIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ni58 => Some(0.68077f64),

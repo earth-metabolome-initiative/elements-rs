@@ -65,6 +65,7 @@ pub enum CobaltIsotope {
     Co76,
 }
 impl super::RelativeAtomicMass for CobaltIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Co47 => 47.01057f64,
@@ -101,11 +102,13 @@ impl super::RelativeAtomicMass for CobaltIsotope {
     }
 }
 impl super::ElementVariant for CobaltIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Co
     }
 }
 impl super::MassNumber for CobaltIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Co47 => 47u16,
@@ -142,6 +145,7 @@ impl super::MassNumber for CobaltIsotope {
     }
 }
 impl super::IsotopicComposition for CobaltIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Co59 => Some(1f64),

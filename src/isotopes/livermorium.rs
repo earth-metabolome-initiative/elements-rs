@@ -15,6 +15,7 @@ pub enum LivermoriumIsotope {
     Lv293,
 }
 impl super::RelativeAtomicMass for LivermoriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Lv289 => 289.19816f64,
@@ -26,11 +27,13 @@ impl super::RelativeAtomicMass for LivermoriumIsotope {
     }
 }
 impl super::ElementVariant for LivermoriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Lv
     }
 }
 impl super::MassNumber for LivermoriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Lv289 => 289u16,
@@ -42,6 +45,7 @@ impl super::MassNumber for LivermoriumIsotope {
     }
 }
 impl super::IsotopicComposition for LivermoriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

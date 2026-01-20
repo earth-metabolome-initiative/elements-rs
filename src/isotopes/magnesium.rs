@@ -49,6 +49,7 @@ pub enum MagnesiumIsotope {
     Mg40,
 }
 impl super::RelativeAtomicMass for MagnesiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Mg19 => 19.034169f64,
@@ -77,11 +78,13 @@ impl super::RelativeAtomicMass for MagnesiumIsotope {
     }
 }
 impl super::ElementVariant for MagnesiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Mg
     }
 }
 impl super::MassNumber for MagnesiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Mg19 => 19u16,
@@ -110,6 +113,7 @@ impl super::MassNumber for MagnesiumIsotope {
     }
 }
 impl super::IsotopicComposition for MagnesiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Mg24 => Some(0.7899f64),

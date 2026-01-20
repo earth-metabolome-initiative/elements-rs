@@ -75,6 +75,7 @@ pub enum StrontiumIsotope {
     Sr107,
 }
 impl super::RelativeAtomicMass for StrontiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sr73 => 72.9657f64,
@@ -116,11 +117,13 @@ impl super::RelativeAtomicMass for StrontiumIsotope {
     }
 }
 impl super::ElementVariant for StrontiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sr
     }
 }
 impl super::MassNumber for StrontiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sr73 => 73u16,
@@ -162,6 +165,7 @@ impl super::MassNumber for StrontiumIsotope {
     }
 }
 impl super::IsotopicComposition for StrontiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sr84 => Some(0.0056f64),

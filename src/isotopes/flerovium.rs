@@ -15,6 +15,7 @@ pub enum FleroviumIsotope {
     Fl289,
 }
 impl super::RelativeAtomicMass for FleroviumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Fl285 => 285.18364f64,
@@ -26,11 +27,13 @@ impl super::RelativeAtomicMass for FleroviumIsotope {
     }
 }
 impl super::ElementVariant for FleroviumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Fl
     }
 }
 impl super::MassNumber for FleroviumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Fl285 => 285u16,
@@ -42,6 +45,7 @@ impl super::MassNumber for FleroviumIsotope {
     }
 }
 impl super::IsotopicComposition for FleroviumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

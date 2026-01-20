@@ -79,6 +79,7 @@ pub enum GadoliniumIsotope {
     Gd169,
 }
 impl super::RelativeAtomicMass for GadoliniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Gd133 => 132.96133f64,
@@ -122,11 +123,13 @@ impl super::RelativeAtomicMass for GadoliniumIsotope {
     }
 }
 impl super::ElementVariant for GadoliniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Gd
     }
 }
 impl super::MassNumber for GadoliniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Gd133 => 133u16,
@@ -170,6 +173,7 @@ impl super::MassNumber for GadoliniumIsotope {
     }
 }
 impl super::IsotopicComposition for GadoliniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Gd152 => Some(0.002f64),

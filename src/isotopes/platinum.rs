@@ -87,6 +87,7 @@ pub enum PlatinumIsotope {
     Pt206,
 }
 impl super::RelativeAtomicMass for PlatinumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pt166 => 165.99486f64,
@@ -134,11 +135,13 @@ impl super::RelativeAtomicMass for PlatinumIsotope {
     }
 }
 impl super::ElementVariant for PlatinumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pt
     }
 }
 impl super::MassNumber for PlatinumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pt166 => 166u16,
@@ -186,6 +189,7 @@ impl super::MassNumber for PlatinumIsotope {
     }
 }
 impl super::IsotopicComposition for PlatinumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pt190 => Some(0.00012f64),

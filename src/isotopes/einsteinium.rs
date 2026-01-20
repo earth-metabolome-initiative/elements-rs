@@ -45,6 +45,7 @@ pub enum EinsteiniumIsotope {
     Es258,
 }
 impl super::RelativeAtomicMass for EinsteiniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Es239 => 239.06823f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for EinsteiniumIsotope {
     }
 }
 impl super::ElementVariant for EinsteiniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Es
     }
 }
 impl super::MassNumber for EinsteiniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Es239 => 239u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for EinsteiniumIsotope {
     }
 }
 impl super::IsotopicComposition for EinsteiniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

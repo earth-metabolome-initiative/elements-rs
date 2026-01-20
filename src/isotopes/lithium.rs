@@ -27,6 +27,7 @@ pub enum LithiumIsotope {
     Li13,
 }
 impl super::RelativeAtomicMass for LithiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Li3 => 3.0308f64,
@@ -44,11 +45,13 @@ impl super::RelativeAtomicMass for LithiumIsotope {
     }
 }
 impl super::ElementVariant for LithiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Li
     }
 }
 impl super::MassNumber for LithiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Li3 => 3u16,
@@ -66,6 +69,7 @@ impl super::MassNumber for LithiumIsotope {
     }
 }
 impl super::IsotopicComposition for LithiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Li6 => Some(0.0759f64),

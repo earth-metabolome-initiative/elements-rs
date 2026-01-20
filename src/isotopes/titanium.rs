@@ -57,6 +57,7 @@ pub enum TitaniumIsotope {
     Ti63,
 }
 impl super::RelativeAtomicMass for TitaniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ti38 => 38.01145f64,
@@ -89,11 +90,13 @@ impl super::RelativeAtomicMass for TitaniumIsotope {
     }
 }
 impl super::ElementVariant for TitaniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ti
     }
 }
 impl super::MassNumber for TitaniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ti38 => 38u16,
@@ -126,6 +129,7 @@ impl super::MassNumber for TitaniumIsotope {
     }
 }
 impl super::IsotopicComposition for TitaniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ti46 => Some(0.0825f64),

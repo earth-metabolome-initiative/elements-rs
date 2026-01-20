@@ -83,6 +83,7 @@ pub enum CeriumIsotope {
     Ce157,
 }
 impl super::RelativeAtomicMass for CeriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ce119 => 118.95271f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for CeriumIsotope {
     }
 }
 impl super::ElementVariant for CeriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ce
     }
 }
 impl super::MassNumber for CeriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ce119 => 119u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for CeriumIsotope {
     }
 }
 impl super::IsotopicComposition for CeriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ce136 => Some(0.00185f64),

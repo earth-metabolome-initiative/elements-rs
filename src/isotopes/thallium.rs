@@ -91,6 +91,7 @@ pub enum ThalliumIsotope {
     Tl218,
 }
 impl super::RelativeAtomicMass for ThalliumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Tl176 => 176.000624f64,
@@ -140,11 +141,13 @@ impl super::RelativeAtomicMass for ThalliumIsotope {
     }
 }
 impl super::ElementVariant for ThalliumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Tl
     }
 }
 impl super::MassNumber for ThalliumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Tl176 => 176u16,
@@ -194,6 +197,7 @@ impl super::MassNumber for ThalliumIsotope {
     }
 }
 impl super::IsotopicComposition for ThalliumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Tl203 => Some(0.2952f64),

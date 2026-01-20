@@ -41,6 +41,7 @@ pub enum MendeleviumIsotope {
     Md262,
 }
 impl super::RelativeAtomicMass for MendeleviumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Md245 => 245.08081f64,
@@ -65,11 +66,13 @@ impl super::RelativeAtomicMass for MendeleviumIsotope {
     }
 }
 impl super::ElementVariant for MendeleviumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Md
     }
 }
 impl super::MassNumber for MendeleviumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Md245 => 245u16,
@@ -94,6 +97,7 @@ impl super::MassNumber for MendeleviumIsotope {
     }
 }
 impl super::IsotopicComposition for MendeleviumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

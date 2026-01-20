@@ -83,6 +83,7 @@ pub enum CadmiumIsotope {
     Cd133,
 }
 impl super::RelativeAtomicMass for CadmiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cd95 => 94.94994f64,
@@ -128,11 +129,13 @@ impl super::RelativeAtomicMass for CadmiumIsotope {
     }
 }
 impl super::ElementVariant for CadmiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cd
     }
 }
 impl super::MassNumber for CadmiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cd95 => 95u16,
@@ -178,6 +181,7 @@ impl super::MassNumber for CadmiumIsotope {
     }
 }
 impl super::IsotopicComposition for CadmiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cd106 => Some(0.0125f64),

@@ -81,6 +81,7 @@ pub enum SilverIsotope {
     Ag130,
 }
 impl super::RelativeAtomicMass for SilverIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ag93 => 92.95033f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for SilverIsotope {
     }
 }
 impl super::ElementVariant for SilverIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ag
     }
 }
 impl super::MassNumber for SilverIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ag93 => 93u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for SilverIsotope {
     }
 }
 impl super::IsotopicComposition for SilverIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ag107 => Some(0.51839f64),

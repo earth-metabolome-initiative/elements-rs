@@ -25,6 +25,7 @@ pub enum CoperniciumIsotope {
     Cn285,
 }
 impl super::RelativeAtomicMass for CoperniciumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cn276 => 276.16141f64,
@@ -41,11 +42,13 @@ impl super::RelativeAtomicMass for CoperniciumIsotope {
     }
 }
 impl super::ElementVariant for CoperniciumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cn
     }
 }
 impl super::MassNumber for CoperniciumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cn276 => 276u16,
@@ -62,6 +65,7 @@ impl super::MassNumber for CoperniciumIsotope {
     }
 }
 impl super::IsotopicComposition for CoperniciumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

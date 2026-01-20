@@ -89,6 +89,7 @@ pub enum OsmiumIsotope {
     Os202,
 }
 impl super::RelativeAtomicMass for OsmiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Os161 => 160.98903f64,
@@ -137,11 +138,13 @@ impl super::RelativeAtomicMass for OsmiumIsotope {
     }
 }
 impl super::ElementVariant for OsmiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Os
     }
 }
 impl super::MassNumber for OsmiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Os161 => 161u16,
@@ -190,6 +193,7 @@ impl super::MassNumber for OsmiumIsotope {
     }
 }
 impl super::IsotopicComposition for OsmiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Os184 => Some(0.0002f64),

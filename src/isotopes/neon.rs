@@ -43,6 +43,7 @@ pub enum NeonIsotope {
     Ne34,
 }
 impl super::RelativeAtomicMass for NeonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ne16 => 16.02575f64,
@@ -68,11 +69,13 @@ impl super::RelativeAtomicMass for NeonIsotope {
     }
 }
 impl super::ElementVariant for NeonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ne
     }
 }
 impl super::MassNumber for NeonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ne16 => 16u16,
@@ -98,6 +101,7 @@ impl super::MassNumber for NeonIsotope {
     }
 }
 impl super::IsotopicComposition for NeonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ne20 => Some(0.9048f64),

@@ -81,6 +81,7 @@ pub enum TantalumIsotope {
     Ta192,
 }
 impl super::RelativeAtomicMass for TantalumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ta155 => 154.97424f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for TantalumIsotope {
     }
 }
 impl super::ElementVariant for TantalumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Ta
     }
 }
 impl super::MassNumber for TantalumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Ta155 => 155u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for TantalumIsotope {
     }
 }
 impl super::IsotopicComposition for TantalumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ta180 => Some(0.0001201f64),

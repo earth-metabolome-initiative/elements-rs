@@ -73,6 +73,7 @@ pub enum YtterbiumIsotope {
     Yb181,
 }
 impl super::RelativeAtomicMass for YtterbiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Yb148 => 147.96758f64,
@@ -113,11 +114,13 @@ impl super::RelativeAtomicMass for YtterbiumIsotope {
     }
 }
 impl super::ElementVariant for YtterbiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Yb
     }
 }
 impl super::MassNumber for YtterbiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Yb148 => 148u16,
@@ -158,6 +161,7 @@ impl super::MassNumber for YtterbiumIsotope {
     }
 }
 impl super::IsotopicComposition for YtterbiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Yb168 => Some(0.00123f64),

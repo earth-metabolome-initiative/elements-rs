@@ -37,6 +37,7 @@ pub enum BoronIsotope {
     B21,
 }
 impl super::RelativeAtomicMass for BoronIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::B6 => 6.0508f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for BoronIsotope {
     }
 }
 impl super::ElementVariant for BoronIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::B
     }
 }
 impl super::MassNumber for BoronIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::B6 => 6u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for BoronIsotope {
     }
 }
 impl super::IsotopicComposition for BoronIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::B10 => Some(0.199f64),

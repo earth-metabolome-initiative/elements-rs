@@ -37,6 +37,7 @@ pub enum RutherfordiumIsotope {
     Rf268,
 }
 impl super::RelativeAtomicMass for RutherfordiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Rf253 => 253.10044f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for RutherfordiumIsotope {
     }
 }
 impl super::ElementVariant for RutherfordiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Rf
     }
 }
 impl super::MassNumber for RutherfordiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Rf253 => 253u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for RutherfordiumIsotope {
     }
 }
 impl super::IsotopicComposition for RutherfordiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

@@ -77,6 +77,7 @@ pub enum LutetiumIsotope {
     Lu185,
 }
 impl super::RelativeAtomicMass for LutetiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Lu150 => 149.97355f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for LutetiumIsotope {
     }
 }
 impl super::ElementVariant for LutetiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Lu
     }
 }
 impl super::MassNumber for LutetiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Lu150 => 150u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for LutetiumIsotope {
     }
 }
 impl super::IsotopicComposition for LutetiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Lu175 => Some(0.97401f64),

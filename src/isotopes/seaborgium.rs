@@ -37,6 +37,7 @@ pub enum SeaborgiumIsotope {
     Sg273,
 }
 impl super::RelativeAtomicMass for SeaborgiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Sg258 => 258.11298f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for SeaborgiumIsotope {
     }
 }
 impl super::ElementVariant for SeaborgiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Sg
     }
 }
 impl super::MassNumber for SeaborgiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Sg258 => 258u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for SeaborgiumIsotope {
     }
 }
 impl super::IsotopicComposition for SeaborgiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

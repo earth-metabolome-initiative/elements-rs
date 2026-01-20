@@ -61,6 +61,7 @@ pub enum ManganeseIsotope {
     Mn71,
 }
 impl super::RelativeAtomicMass for ManganeseIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Mn44 => 44.00715f64,
@@ -95,11 +96,13 @@ impl super::RelativeAtomicMass for ManganeseIsotope {
     }
 }
 impl super::ElementVariant for ManganeseIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Mn
     }
 }
 impl super::MassNumber for ManganeseIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Mn44 => 44u16,
@@ -134,6 +137,7 @@ impl super::MassNumber for ManganeseIsotope {
     }
 }
 impl super::IsotopicComposition for ManganeseIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Mn55 => Some(1f64),

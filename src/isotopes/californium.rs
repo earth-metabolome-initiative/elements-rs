@@ -45,6 +45,7 @@ pub enum CaliforniumIsotope {
     Cf256,
 }
 impl super::RelativeAtomicMass for CaliforniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cf237 => 237.062198f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for CaliforniumIsotope {
     }
 }
 impl super::ElementVariant for CaliforniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cf
     }
 }
 impl super::MassNumber for CaliforniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cf237 => 237u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for CaliforniumIsotope {
     }
 }
 impl super::IsotopicComposition for CaliforniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

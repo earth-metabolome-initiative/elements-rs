@@ -37,6 +37,7 @@ pub enum BohriumIsotope {
     Bh275,
 }
 impl super::RelativeAtomicMass for BohriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Bh260 => 260.12166f64,
@@ -59,11 +60,13 @@ impl super::RelativeAtomicMass for BohriumIsotope {
     }
 }
 impl super::ElementVariant for BohriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Bh
     }
 }
 impl super::MassNumber for BohriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Bh260 => 260u16,
@@ -86,6 +89,7 @@ impl super::MassNumber for BohriumIsotope {
     }
 }
 impl super::IsotopicComposition for BohriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

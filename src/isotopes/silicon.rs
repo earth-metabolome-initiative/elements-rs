@@ -53,6 +53,7 @@ pub enum SiliconIsotope {
     Si45,
 }
 impl super::RelativeAtomicMass for SiliconIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Si22 => 22.03579f64,
@@ -83,11 +84,13 @@ impl super::RelativeAtomicMass for SiliconIsotope {
     }
 }
 impl super::ElementVariant for SiliconIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Si
     }
 }
 impl super::MassNumber for SiliconIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Si22 => 22u16,
@@ -118,6 +121,7 @@ impl super::MassNumber for SiliconIsotope {
     }
 }
 impl super::IsotopicComposition for SiliconIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Si28 => Some(0.92223f64),

@@ -35,6 +35,7 @@ pub enum MeitneriumIsotope {
     Mt279,
 }
 impl super::RelativeAtomicMass for MeitneriumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Mt265 => 265.136f64,
@@ -56,11 +57,13 @@ impl super::RelativeAtomicMass for MeitneriumIsotope {
     }
 }
 impl super::ElementVariant for MeitneriumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Mt
     }
 }
 impl super::MassNumber for MeitneriumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Mt265 => 265u16,
@@ -82,6 +85,7 @@ impl super::MassNumber for MeitneriumIsotope {
     }
 }
 impl super::IsotopicComposition for MeitneriumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

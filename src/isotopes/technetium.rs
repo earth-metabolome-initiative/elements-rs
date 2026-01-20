@@ -77,6 +77,7 @@ pub enum TechnetiumIsotope {
     Tc120,
 }
 impl super::RelativeAtomicMass for TechnetiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Tc85 => 84.95058f64,
@@ -119,11 +120,13 @@ impl super::RelativeAtomicMass for TechnetiumIsotope {
     }
 }
 impl super::ElementVariant for TechnetiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Tc
     }
 }
 impl super::MassNumber for TechnetiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Tc85 => 85u16,
@@ -166,6 +169,7 @@ impl super::MassNumber for TechnetiumIsotope {
     }
 }
 impl super::IsotopicComposition for TechnetiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

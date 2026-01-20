@@ -45,6 +45,7 @@ pub enum FermiumIsotope {
     Fm260,
 }
 impl super::RelativeAtomicMass for FermiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Fm241 => 241.07421f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for FermiumIsotope {
     }
 }
 impl super::ElementVariant for FermiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Fm
     }
 }
 impl super::MassNumber for FermiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Fm241 => 241u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for FermiumIsotope {
     }
 }
 impl super::IsotopicComposition for FermiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

@@ -11,6 +11,7 @@ pub enum OganessonIsotope {
     Og295,
 }
 impl super::RelativeAtomicMass for OganessonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Og293 => 293.21356f64,
@@ -20,11 +21,13 @@ impl super::RelativeAtomicMass for OganessonIsotope {
     }
 }
 impl super::ElementVariant for OganessonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Og
     }
 }
 impl super::MassNumber for OganessonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Og293 => 293u16,
@@ -34,6 +37,7 @@ impl super::MassNumber for OganessonIsotope {
     }
 }
 impl super::IsotopicComposition for OganessonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

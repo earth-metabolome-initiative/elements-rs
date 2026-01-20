@@ -85,6 +85,7 @@ pub enum XenonIsotope {
     Xe148,
 }
 impl super::RelativeAtomicMass for XenonIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Xe109 => 108.95043f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for XenonIsotope {
     }
 }
 impl super::ElementVariant for XenonIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Xe
     }
 }
 impl super::MassNumber for XenonIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Xe109 => 109u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for XenonIsotope {
     }
 }
 impl super::IsotopicComposition for XenonIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Xe124 => Some(0.000952f64),

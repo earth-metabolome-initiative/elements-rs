@@ -45,6 +45,7 @@ pub enum PlutoniumIsotope {
     Pu247,
 }
 impl super::RelativeAtomicMass for PlutoniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Pu228 => 228.038732f64,
@@ -71,11 +72,13 @@ impl super::RelativeAtomicMass for PlutoniumIsotope {
     }
 }
 impl super::ElementVariant for PlutoniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Pu
     }
 }
 impl super::MassNumber for PlutoniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Pu228 => 228u16,
@@ -102,6 +105,7 @@ impl super::MassNumber for PlutoniumIsotope {
     }
 }
 impl super::IsotopicComposition for PlutoniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         None
     }

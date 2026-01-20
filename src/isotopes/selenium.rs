@@ -69,6 +69,7 @@ pub enum SeleniumIsotope {
     Se95,
 }
 impl super::RelativeAtomicMass for SeleniumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Se64 => 63.97109f64,
@@ -107,11 +108,13 @@ impl super::RelativeAtomicMass for SeleniumIsotope {
     }
 }
 impl super::ElementVariant for SeleniumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Se
     }
 }
 impl super::MassNumber for SeleniumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Se64 => 64u16,
@@ -150,6 +153,7 @@ impl super::MassNumber for SeleniumIsotope {
     }
 }
 impl super::IsotopicComposition for SeleniumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Se74 => Some(0.0089f64),

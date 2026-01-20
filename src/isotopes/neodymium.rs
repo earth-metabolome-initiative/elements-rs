@@ -81,6 +81,7 @@ pub enum NeodymiumIsotope {
     Nd161,
 }
 impl super::RelativeAtomicMass for NeodymiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Nd124 => 123.9522f64,
@@ -125,11 +126,13 @@ impl super::RelativeAtomicMass for NeodymiumIsotope {
     }
 }
 impl super::ElementVariant for NeodymiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Nd
     }
 }
 impl super::MassNumber for NeodymiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Nd124 => 124u16,
@@ -174,6 +177,7 @@ impl super::MassNumber for NeodymiumIsotope {
     }
 }
 impl super::IsotopicComposition for NeodymiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Nd142 => Some(0.27152f64),

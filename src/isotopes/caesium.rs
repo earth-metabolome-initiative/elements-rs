@@ -85,6 +85,7 @@ pub enum CaesiumIsotope {
     Cs151,
 }
 impl super::RelativeAtomicMass for CaesiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Cs112 => 111.950309f64,
@@ -131,11 +132,13 @@ impl super::RelativeAtomicMass for CaesiumIsotope {
     }
 }
 impl super::ElementVariant for CaesiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Cs
     }
 }
 impl super::MassNumber for CaesiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Cs112 => 112u16,
@@ -182,6 +185,7 @@ impl super::MassNumber for CaesiumIsotope {
     }
 }
 impl super::IsotopicComposition for CaesiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cs133 => Some(1f64),

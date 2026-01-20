@@ -55,6 +55,7 @@ pub enum PotassiumIsotope {
     K56,
 }
 impl super::RelativeAtomicMass for PotassiumIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::K32 => 32.02265f64,
@@ -86,11 +87,13 @@ impl super::RelativeAtomicMass for PotassiumIsotope {
     }
 }
 impl super::ElementVariant for PotassiumIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::K
     }
 }
 impl super::MassNumber for PotassiumIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::K32 => 32u16,
@@ -122,6 +125,7 @@ impl super::MassNumber for PotassiumIsotope {
     }
 }
 impl super::IsotopicComposition for PotassiumIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::K39 => Some(0.932581f64),

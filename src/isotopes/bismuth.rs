@@ -87,6 +87,7 @@ pub enum BismuthIsotope {
     Bi224,
 }
 impl super::RelativeAtomicMass for BismuthIsotope {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Bi184 => 184.001275f64,
@@ -134,11 +135,13 @@ impl super::RelativeAtomicMass for BismuthIsotope {
     }
 }
 impl super::ElementVariant for BismuthIsotope {
+    #[inline]
     fn element(&self) -> crate::Element {
         crate::Element::Bi
     }
 }
 impl super::MassNumber for BismuthIsotope {
+    #[inline]
     fn mass_number(&self) -> u16 {
         match self {
             Self::Bi184 => 184u16,
@@ -186,6 +189,7 @@ impl super::MassNumber for BismuthIsotope {
     }
 }
 impl super::IsotopicComposition for BismuthIsotope {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Bi209 => Some(1f64),

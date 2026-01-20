@@ -587,12 +587,14 @@ pub enum Isotope {
 }
 
 impl IsotopicComposition for crate::Element {
+    #[inline]
     fn isotopic_composition(&self) -> Option<f64> {
         self.most_abundant_isotope().isotopic_composition()
     }
 }
 
 impl RelativeAtomicMass for crate::Element {
+    #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         self.most_abundant_isotope().relative_atomic_mass()
     }
