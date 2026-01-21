@@ -216,46 +216,64 @@ impl From<YtterbiumIsotope> for crate::Element {
         crate::Element::Yb
     }
 }
+impl TryFrom<u64> for YtterbiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            148u64 => Ok(Self::Yb148),
+            149u64 => Ok(Self::Yb149),
+            150u64 => Ok(Self::Yb150),
+            151u64 => Ok(Self::Yb151),
+            152u64 => Ok(Self::Yb152),
+            153u64 => Ok(Self::Yb153),
+            154u64 => Ok(Self::Yb154),
+            155u64 => Ok(Self::Yb155),
+            156u64 => Ok(Self::Yb156),
+            157u64 => Ok(Self::Yb157),
+            158u64 => Ok(Self::Yb158),
+            159u64 => Ok(Self::Yb159),
+            160u64 => Ok(Self::Yb160),
+            161u64 => Ok(Self::Yb161),
+            162u64 => Ok(Self::Yb162),
+            163u64 => Ok(Self::Yb163),
+            164u64 => Ok(Self::Yb164),
+            165u64 => Ok(Self::Yb165),
+            166u64 => Ok(Self::Yb166),
+            167u64 => Ok(Self::Yb167),
+            168u64 => Ok(Self::Yb168),
+            169u64 => Ok(Self::Yb169),
+            170u64 => Ok(Self::Yb170),
+            171u64 => Ok(Self::Yb171),
+            172u64 => Ok(Self::Yb172),
+            173u64 => Ok(Self::Yb173),
+            174u64 => Ok(Self::Yb174),
+            175u64 => Ok(Self::Yb175),
+            176u64 => Ok(Self::Yb176),
+            177u64 => Ok(Self::Yb177),
+            178u64 => Ok(Self::Yb178),
+            179u64 => Ok(Self::Yb179),
+            180u64 => Ok(Self::Yb180),
+            181u64 => Ok(Self::Yb181),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Yb, value)),
+        }
+    }
+}
+impl TryFrom<u8> for YtterbiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for YtterbiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            148u16 => Ok(Self::Yb148),
-            149u16 => Ok(Self::Yb149),
-            150u16 => Ok(Self::Yb150),
-            151u16 => Ok(Self::Yb151),
-            152u16 => Ok(Self::Yb152),
-            153u16 => Ok(Self::Yb153),
-            154u16 => Ok(Self::Yb154),
-            155u16 => Ok(Self::Yb155),
-            156u16 => Ok(Self::Yb156),
-            157u16 => Ok(Self::Yb157),
-            158u16 => Ok(Self::Yb158),
-            159u16 => Ok(Self::Yb159),
-            160u16 => Ok(Self::Yb160),
-            161u16 => Ok(Self::Yb161),
-            162u16 => Ok(Self::Yb162),
-            163u16 => Ok(Self::Yb163),
-            164u16 => Ok(Self::Yb164),
-            165u16 => Ok(Self::Yb165),
-            166u16 => Ok(Self::Yb166),
-            167u16 => Ok(Self::Yb167),
-            168u16 => Ok(Self::Yb168),
-            169u16 => Ok(Self::Yb169),
-            170u16 => Ok(Self::Yb170),
-            171u16 => Ok(Self::Yb171),
-            172u16 => Ok(Self::Yb172),
-            173u16 => Ok(Self::Yb173),
-            174u16 => Ok(Self::Yb174),
-            175u16 => Ok(Self::Yb175),
-            176u16 => Ok(Self::Yb176),
-            177u16 => Ok(Self::Yb177),
-            178u16 => Ok(Self::Yb178),
-            179u16 => Ok(Self::Yb179),
-            180u16 => Ok(Self::Yb180),
-            181u16 => Ok(Self::Yb181),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Yb, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for YtterbiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for YtterbiumIsotope {
@@ -373,8 +391,8 @@ mod tests {
             let iso = YtterbiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(YtterbiumIsotope::try_from(0).is_err());
-        assert!(YtterbiumIsotope::try_from(1000).is_err());
+        assert!(YtterbiumIsotope::try_from(0_u16).is_err());
+        assert!(YtterbiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -231,49 +231,67 @@ impl From<HafniumIsotope> for crate::Element {
         crate::Element::Hf
     }
 }
+impl TryFrom<u64> for HafniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            153u64 => Ok(Self::Hf153),
+            154u64 => Ok(Self::Hf154),
+            155u64 => Ok(Self::Hf155),
+            156u64 => Ok(Self::Hf156),
+            157u64 => Ok(Self::Hf157),
+            158u64 => Ok(Self::Hf158),
+            159u64 => Ok(Self::Hf159),
+            160u64 => Ok(Self::Hf160),
+            161u64 => Ok(Self::Hf161),
+            162u64 => Ok(Self::Hf162),
+            163u64 => Ok(Self::Hf163),
+            164u64 => Ok(Self::Hf164),
+            165u64 => Ok(Self::Hf165),
+            166u64 => Ok(Self::Hf166),
+            167u64 => Ok(Self::Hf167),
+            168u64 => Ok(Self::Hf168),
+            169u64 => Ok(Self::Hf169),
+            170u64 => Ok(Self::Hf170),
+            171u64 => Ok(Self::Hf171),
+            172u64 => Ok(Self::Hf172),
+            173u64 => Ok(Self::Hf173),
+            174u64 => Ok(Self::Hf174),
+            175u64 => Ok(Self::Hf175),
+            176u64 => Ok(Self::Hf176),
+            177u64 => Ok(Self::Hf177),
+            178u64 => Ok(Self::Hf178),
+            179u64 => Ok(Self::Hf179),
+            180u64 => Ok(Self::Hf180),
+            181u64 => Ok(Self::Hf181),
+            182u64 => Ok(Self::Hf182),
+            183u64 => Ok(Self::Hf183),
+            184u64 => Ok(Self::Hf184),
+            185u64 => Ok(Self::Hf185),
+            186u64 => Ok(Self::Hf186),
+            187u64 => Ok(Self::Hf187),
+            188u64 => Ok(Self::Hf188),
+            189u64 => Ok(Self::Hf189),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Hf, value)),
+        }
+    }
+}
+impl TryFrom<u8> for HafniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for HafniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            153u16 => Ok(Self::Hf153),
-            154u16 => Ok(Self::Hf154),
-            155u16 => Ok(Self::Hf155),
-            156u16 => Ok(Self::Hf156),
-            157u16 => Ok(Self::Hf157),
-            158u16 => Ok(Self::Hf158),
-            159u16 => Ok(Self::Hf159),
-            160u16 => Ok(Self::Hf160),
-            161u16 => Ok(Self::Hf161),
-            162u16 => Ok(Self::Hf162),
-            163u16 => Ok(Self::Hf163),
-            164u16 => Ok(Self::Hf164),
-            165u16 => Ok(Self::Hf165),
-            166u16 => Ok(Self::Hf166),
-            167u16 => Ok(Self::Hf167),
-            168u16 => Ok(Self::Hf168),
-            169u16 => Ok(Self::Hf169),
-            170u16 => Ok(Self::Hf170),
-            171u16 => Ok(Self::Hf171),
-            172u16 => Ok(Self::Hf172),
-            173u16 => Ok(Self::Hf173),
-            174u16 => Ok(Self::Hf174),
-            175u16 => Ok(Self::Hf175),
-            176u16 => Ok(Self::Hf176),
-            177u16 => Ok(Self::Hf177),
-            178u16 => Ok(Self::Hf178),
-            179u16 => Ok(Self::Hf179),
-            180u16 => Ok(Self::Hf180),
-            181u16 => Ok(Self::Hf181),
-            182u16 => Ok(Self::Hf182),
-            183u16 => Ok(Self::Hf183),
-            184u16 => Ok(Self::Hf184),
-            185u16 => Ok(Self::Hf185),
-            186u16 => Ok(Self::Hf186),
-            187u16 => Ok(Self::Hf187),
-            188u16 => Ok(Self::Hf188),
-            189u16 => Ok(Self::Hf189),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Hf, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for HafniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for HafniumIsotope {
@@ -394,8 +412,8 @@ mod tests {
             let iso = HafniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(HafniumIsotope::try_from(0).is_err());
-        assert!(HafniumIsotope::try_from(1000).is_err());
+        assert!(HafniumIsotope::try_from(0_u16).is_err());
+        assert!(HafniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

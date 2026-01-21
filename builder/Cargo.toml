@@ -2,6 +2,7 @@
 name = "elements-builder"
 version = "0.1.0"
 edition = "2024"
+publish = false
 
 [dependencies]
 syn = { version = "2.0", features = ["full"] }
@@ -9,5 +10,3 @@ quote = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 proc-macro2 = "1.0"
 serde_json = { version = "1.0" }
-
-[workspace]

@@ -236,50 +236,68 @@ impl From<TungstenIsotope> for crate::Element {
         crate::Element::W
     }
 }
+impl TryFrom<u64> for TungstenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            157u64 => Ok(Self::W157),
+            158u64 => Ok(Self::W158),
+            159u64 => Ok(Self::W159),
+            160u64 => Ok(Self::W160),
+            161u64 => Ok(Self::W161),
+            162u64 => Ok(Self::W162),
+            163u64 => Ok(Self::W163),
+            164u64 => Ok(Self::W164),
+            165u64 => Ok(Self::W165),
+            166u64 => Ok(Self::W166),
+            167u64 => Ok(Self::W167),
+            168u64 => Ok(Self::W168),
+            169u64 => Ok(Self::W169),
+            170u64 => Ok(Self::W170),
+            171u64 => Ok(Self::W171),
+            172u64 => Ok(Self::W172),
+            173u64 => Ok(Self::W173),
+            174u64 => Ok(Self::W174),
+            175u64 => Ok(Self::W175),
+            176u64 => Ok(Self::W176),
+            177u64 => Ok(Self::W177),
+            178u64 => Ok(Self::W178),
+            179u64 => Ok(Self::W179),
+            180u64 => Ok(Self::W180),
+            181u64 => Ok(Self::W181),
+            182u64 => Ok(Self::W182),
+            183u64 => Ok(Self::W183),
+            184u64 => Ok(Self::W184),
+            185u64 => Ok(Self::W185),
+            186u64 => Ok(Self::W186),
+            187u64 => Ok(Self::W187),
+            188u64 => Ok(Self::W188),
+            189u64 => Ok(Self::W189),
+            190u64 => Ok(Self::W190),
+            191u64 => Ok(Self::W191),
+            192u64 => Ok(Self::W192),
+            193u64 => Ok(Self::W193),
+            194u64 => Ok(Self::W194),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::W, value)),
+        }
+    }
+}
+impl TryFrom<u8> for TungstenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for TungstenIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            157u16 => Ok(Self::W157),
-            158u16 => Ok(Self::W158),
-            159u16 => Ok(Self::W159),
-            160u16 => Ok(Self::W160),
-            161u16 => Ok(Self::W161),
-            162u16 => Ok(Self::W162),
-            163u16 => Ok(Self::W163),
-            164u16 => Ok(Self::W164),
-            165u16 => Ok(Self::W165),
-            166u16 => Ok(Self::W166),
-            167u16 => Ok(Self::W167),
-            168u16 => Ok(Self::W168),
-            169u16 => Ok(Self::W169),
-            170u16 => Ok(Self::W170),
-            171u16 => Ok(Self::W171),
-            172u16 => Ok(Self::W172),
-            173u16 => Ok(Self::W173),
-            174u16 => Ok(Self::W174),
-            175u16 => Ok(Self::W175),
-            176u16 => Ok(Self::W176),
-            177u16 => Ok(Self::W177),
-            178u16 => Ok(Self::W178),
-            179u16 => Ok(Self::W179),
-            180u16 => Ok(Self::W180),
-            181u16 => Ok(Self::W181),
-            182u16 => Ok(Self::W182),
-            183u16 => Ok(Self::W183),
-            184u16 => Ok(Self::W184),
-            185u16 => Ok(Self::W185),
-            186u16 => Ok(Self::W186),
-            187u16 => Ok(Self::W187),
-            188u16 => Ok(Self::W188),
-            189u16 => Ok(Self::W189),
-            190u16 => Ok(Self::W190),
-            191u16 => Ok(Self::W191),
-            192u16 => Ok(Self::W192),
-            193u16 => Ok(Self::W193),
-            194u16 => Ok(Self::W194),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::W, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for TungstenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for TungstenIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = TungstenIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(TungstenIsotope::try_from(0).is_err());
-        assert!(TungstenIsotope::try_from(1000).is_err());
+        assert!(TungstenIsotope::try_from(0_u16).is_err());
+        assert!(TungstenIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

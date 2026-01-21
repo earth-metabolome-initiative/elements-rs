@@ -129,33 +129,51 @@ impl From<CuriumIsotope> for crate::Element {
         crate::Element::Cm
     }
 }
+impl TryFrom<u64> for CuriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            232u64 => Ok(Self::Cm232),
+            233u64 => Ok(Self::Cm233),
+            234u64 => Ok(Self::Cm234),
+            235u64 => Ok(Self::Cm235),
+            236u64 => Ok(Self::Cm236),
+            237u64 => Ok(Self::Cm237),
+            238u64 => Ok(Self::Cm238),
+            239u64 => Ok(Self::Cm239),
+            240u64 => Ok(Self::Cm240),
+            241u64 => Ok(Self::Cm241),
+            242u64 => Ok(Self::Cm242),
+            243u64 => Ok(Self::Cm243),
+            244u64 => Ok(Self::Cm244),
+            245u64 => Ok(Self::Cm245),
+            246u64 => Ok(Self::Cm246),
+            247u64 => Ok(Self::Cm247),
+            248u64 => Ok(Self::Cm248),
+            249u64 => Ok(Self::Cm249),
+            250u64 => Ok(Self::Cm250),
+            251u64 => Ok(Self::Cm251),
+            252u64 => Ok(Self::Cm252),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Cm, value)),
+        }
+    }
+}
+impl TryFrom<u8> for CuriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for CuriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            232u16 => Ok(Self::Cm232),
-            233u16 => Ok(Self::Cm233),
-            234u16 => Ok(Self::Cm234),
-            235u16 => Ok(Self::Cm235),
-            236u16 => Ok(Self::Cm236),
-            237u16 => Ok(Self::Cm237),
-            238u16 => Ok(Self::Cm238),
-            239u16 => Ok(Self::Cm239),
-            240u16 => Ok(Self::Cm240),
-            241u16 => Ok(Self::Cm241),
-            242u16 => Ok(Self::Cm242),
-            243u16 => Ok(Self::Cm243),
-            244u16 => Ok(Self::Cm244),
-            245u16 => Ok(Self::Cm245),
-            246u16 => Ok(Self::Cm246),
-            247u16 => Ok(Self::Cm247),
-            248u16 => Ok(Self::Cm248),
-            249u16 => Ok(Self::Cm249),
-            250u16 => Ok(Self::Cm250),
-            251u16 => Ok(Self::Cm251),
-            252u16 => Ok(Self::Cm252),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Cm, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for CuriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for CuriumIsotope {
@@ -260,8 +278,8 @@ mod tests {
             let iso = CuriumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(CuriumIsotope::try_from(0).is_err());
-        assert!(CuriumIsotope::try_from(1000).is_err());
+        assert!(CuriumIsotope::try_from(0_u16).is_err());
+        assert!(CuriumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -125,32 +125,50 @@ impl From<FermiumIsotope> for crate::Element {
         crate::Element::Fm
     }
 }
+impl TryFrom<u64> for FermiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            241u64 => Ok(Self::Fm241),
+            242u64 => Ok(Self::Fm242),
+            243u64 => Ok(Self::Fm243),
+            244u64 => Ok(Self::Fm244),
+            245u64 => Ok(Self::Fm245),
+            246u64 => Ok(Self::Fm246),
+            247u64 => Ok(Self::Fm247),
+            248u64 => Ok(Self::Fm248),
+            249u64 => Ok(Self::Fm249),
+            250u64 => Ok(Self::Fm250),
+            251u64 => Ok(Self::Fm251),
+            252u64 => Ok(Self::Fm252),
+            253u64 => Ok(Self::Fm253),
+            254u64 => Ok(Self::Fm254),
+            255u64 => Ok(Self::Fm255),
+            256u64 => Ok(Self::Fm256),
+            257u64 => Ok(Self::Fm257),
+            258u64 => Ok(Self::Fm258),
+            259u64 => Ok(Self::Fm259),
+            260u64 => Ok(Self::Fm260),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Fm, value)),
+        }
+    }
+}
+impl TryFrom<u8> for FermiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for FermiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            241u16 => Ok(Self::Fm241),
-            242u16 => Ok(Self::Fm242),
-            243u16 => Ok(Self::Fm243),
-            244u16 => Ok(Self::Fm244),
-            245u16 => Ok(Self::Fm245),
-            246u16 => Ok(Self::Fm246),
-            247u16 => Ok(Self::Fm247),
-            248u16 => Ok(Self::Fm248),
-            249u16 => Ok(Self::Fm249),
-            250u16 => Ok(Self::Fm250),
-            251u16 => Ok(Self::Fm251),
-            252u16 => Ok(Self::Fm252),
-            253u16 => Ok(Self::Fm253),
-            254u16 => Ok(Self::Fm254),
-            255u16 => Ok(Self::Fm255),
-            256u16 => Ok(Self::Fm256),
-            257u16 => Ok(Self::Fm257),
-            258u16 => Ok(Self::Fm258),
-            259u16 => Ok(Self::Fm259),
-            260u16 => Ok(Self::Fm260),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Fm, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for FermiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for FermiumIsotope {
@@ -254,8 +272,8 @@ mod tests {
             let iso = FermiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(FermiumIsotope::try_from(0).is_err());
-        assert!(FermiumIsotope::try_from(1000).is_err());
+        assert!(FermiumIsotope::try_from(0_u16).is_err());
+        assert!(FermiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

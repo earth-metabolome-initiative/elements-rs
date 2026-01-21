@@ -181,39 +181,57 @@ impl From<VanadiumIsotope> for crate::Element {
         crate::Element::V
     }
 }
+impl TryFrom<u64> for VanadiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            40u64 => Ok(Self::V40),
+            41u64 => Ok(Self::V41),
+            42u64 => Ok(Self::V42),
+            43u64 => Ok(Self::V43),
+            44u64 => Ok(Self::V44),
+            45u64 => Ok(Self::V45),
+            46u64 => Ok(Self::V46),
+            47u64 => Ok(Self::V47),
+            48u64 => Ok(Self::V48),
+            49u64 => Ok(Self::V49),
+            50u64 => Ok(Self::V50),
+            51u64 => Ok(Self::V51),
+            52u64 => Ok(Self::V52),
+            53u64 => Ok(Self::V53),
+            54u64 => Ok(Self::V54),
+            55u64 => Ok(Self::V55),
+            56u64 => Ok(Self::V56),
+            57u64 => Ok(Self::V57),
+            58u64 => Ok(Self::V58),
+            59u64 => Ok(Self::V59),
+            60u64 => Ok(Self::V60),
+            61u64 => Ok(Self::V61),
+            62u64 => Ok(Self::V62),
+            63u64 => Ok(Self::V63),
+            64u64 => Ok(Self::V64),
+            65u64 => Ok(Self::V65),
+            66u64 => Ok(Self::V66),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::V, value)),
+        }
+    }
+}
+impl TryFrom<u8> for VanadiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for VanadiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            40u16 => Ok(Self::V40),
-            41u16 => Ok(Self::V41),
-            42u16 => Ok(Self::V42),
-            43u16 => Ok(Self::V43),
-            44u16 => Ok(Self::V44),
-            45u16 => Ok(Self::V45),
-            46u16 => Ok(Self::V46),
-            47u16 => Ok(Self::V47),
-            48u16 => Ok(Self::V48),
-            49u16 => Ok(Self::V49),
-            50u16 => Ok(Self::V50),
-            51u16 => Ok(Self::V51),
-            52u16 => Ok(Self::V52),
-            53u16 => Ok(Self::V53),
-            54u16 => Ok(Self::V54),
-            55u16 => Ok(Self::V55),
-            56u16 => Ok(Self::V56),
-            57u16 => Ok(Self::V57),
-            58u16 => Ok(Self::V58),
-            59u16 => Ok(Self::V59),
-            60u16 => Ok(Self::V60),
-            61u16 => Ok(Self::V61),
-            62u16 => Ok(Self::V62),
-            63u16 => Ok(Self::V63),
-            64u16 => Ok(Self::V64),
-            65u16 => Ok(Self::V65),
-            66u16 => Ok(Self::V66),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::V, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for VanadiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for VanadiumIsotope {
@@ -324,8 +342,8 @@ mod tests {
             let iso = VanadiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(VanadiumIsotope::try_from(0).is_err());
-        assert!(VanadiumIsotope::try_from(1000).is_err());
+        assert!(VanadiumIsotope::try_from(0_u16).is_err());
+        assert!(VanadiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

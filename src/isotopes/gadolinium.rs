@@ -231,49 +231,67 @@ impl From<GadoliniumIsotope> for crate::Element {
         crate::Element::Gd
     }
 }
+impl TryFrom<u64> for GadoliniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            133u64 => Ok(Self::Gd133),
+            134u64 => Ok(Self::Gd134),
+            135u64 => Ok(Self::Gd135),
+            136u64 => Ok(Self::Gd136),
+            137u64 => Ok(Self::Gd137),
+            138u64 => Ok(Self::Gd138),
+            139u64 => Ok(Self::Gd139),
+            140u64 => Ok(Self::Gd140),
+            141u64 => Ok(Self::Gd141),
+            142u64 => Ok(Self::Gd142),
+            143u64 => Ok(Self::Gd143),
+            144u64 => Ok(Self::Gd144),
+            145u64 => Ok(Self::Gd145),
+            146u64 => Ok(Self::Gd146),
+            147u64 => Ok(Self::Gd147),
+            148u64 => Ok(Self::Gd148),
+            149u64 => Ok(Self::Gd149),
+            150u64 => Ok(Self::Gd150),
+            151u64 => Ok(Self::Gd151),
+            152u64 => Ok(Self::Gd152),
+            153u64 => Ok(Self::Gd153),
+            154u64 => Ok(Self::Gd154),
+            155u64 => Ok(Self::Gd155),
+            156u64 => Ok(Self::Gd156),
+            157u64 => Ok(Self::Gd157),
+            158u64 => Ok(Self::Gd158),
+            159u64 => Ok(Self::Gd159),
+            160u64 => Ok(Self::Gd160),
+            161u64 => Ok(Self::Gd161),
+            162u64 => Ok(Self::Gd162),
+            163u64 => Ok(Self::Gd163),
+            164u64 => Ok(Self::Gd164),
+            165u64 => Ok(Self::Gd165),
+            166u64 => Ok(Self::Gd166),
+            167u64 => Ok(Self::Gd167),
+            168u64 => Ok(Self::Gd168),
+            169u64 => Ok(Self::Gd169),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Gd, value)),
+        }
+    }
+}
+impl TryFrom<u8> for GadoliniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for GadoliniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            133u16 => Ok(Self::Gd133),
-            134u16 => Ok(Self::Gd134),
-            135u16 => Ok(Self::Gd135),
-            136u16 => Ok(Self::Gd136),
-            137u16 => Ok(Self::Gd137),
-            138u16 => Ok(Self::Gd138),
-            139u16 => Ok(Self::Gd139),
-            140u16 => Ok(Self::Gd140),
-            141u16 => Ok(Self::Gd141),
-            142u16 => Ok(Self::Gd142),
-            143u16 => Ok(Self::Gd143),
-            144u16 => Ok(Self::Gd144),
-            145u16 => Ok(Self::Gd145),
-            146u16 => Ok(Self::Gd146),
-            147u16 => Ok(Self::Gd147),
-            148u16 => Ok(Self::Gd148),
-            149u16 => Ok(Self::Gd149),
-            150u16 => Ok(Self::Gd150),
-            151u16 => Ok(Self::Gd151),
-            152u16 => Ok(Self::Gd152),
-            153u16 => Ok(Self::Gd153),
-            154u16 => Ok(Self::Gd154),
-            155u16 => Ok(Self::Gd155),
-            156u16 => Ok(Self::Gd156),
-            157u16 => Ok(Self::Gd157),
-            158u16 => Ok(Self::Gd158),
-            159u16 => Ok(Self::Gd159),
-            160u16 => Ok(Self::Gd160),
-            161u16 => Ok(Self::Gd161),
-            162u16 => Ok(Self::Gd162),
-            163u16 => Ok(Self::Gd163),
-            164u16 => Ok(Self::Gd164),
-            165u16 => Ok(Self::Gd165),
-            166u16 => Ok(Self::Gd166),
-            167u16 => Ok(Self::Gd167),
-            168u16 => Ok(Self::Gd168),
-            169u16 => Ok(Self::Gd169),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Gd, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for GadoliniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for GadoliniumIsotope {
@@ -394,8 +412,8 @@ mod tests {
             let iso = GadoliniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(GadoliniumIsotope::try_from(0).is_err());
-        assert!(GadoliniumIsotope::try_from(1000).is_err());
+        assert!(GadoliniumIsotope::try_from(0_u16).is_err());
+        assert!(GadoliniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

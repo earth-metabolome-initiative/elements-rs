@@ -236,50 +236,68 @@ impl From<SamariumIsotope> for crate::Element {
         crate::Element::Sm
     }
 }
+impl TryFrom<u64> for SamariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            128u64 => Ok(Self::Sm128),
+            129u64 => Ok(Self::Sm129),
+            130u64 => Ok(Self::Sm130),
+            131u64 => Ok(Self::Sm131),
+            132u64 => Ok(Self::Sm132),
+            133u64 => Ok(Self::Sm133),
+            134u64 => Ok(Self::Sm134),
+            135u64 => Ok(Self::Sm135),
+            136u64 => Ok(Self::Sm136),
+            137u64 => Ok(Self::Sm137),
+            138u64 => Ok(Self::Sm138),
+            139u64 => Ok(Self::Sm139),
+            140u64 => Ok(Self::Sm140),
+            141u64 => Ok(Self::Sm141),
+            142u64 => Ok(Self::Sm142),
+            143u64 => Ok(Self::Sm143),
+            144u64 => Ok(Self::Sm144),
+            145u64 => Ok(Self::Sm145),
+            146u64 => Ok(Self::Sm146),
+            147u64 => Ok(Self::Sm147),
+            148u64 => Ok(Self::Sm148),
+            149u64 => Ok(Self::Sm149),
+            150u64 => Ok(Self::Sm150),
+            151u64 => Ok(Self::Sm151),
+            152u64 => Ok(Self::Sm152),
+            153u64 => Ok(Self::Sm153),
+            154u64 => Ok(Self::Sm154),
+            155u64 => Ok(Self::Sm155),
+            156u64 => Ok(Self::Sm156),
+            157u64 => Ok(Self::Sm157),
+            158u64 => Ok(Self::Sm158),
+            159u64 => Ok(Self::Sm159),
+            160u64 => Ok(Self::Sm160),
+            161u64 => Ok(Self::Sm161),
+            162u64 => Ok(Self::Sm162),
+            163u64 => Ok(Self::Sm163),
+            164u64 => Ok(Self::Sm164),
+            165u64 => Ok(Self::Sm165),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Sm, value)),
+        }
+    }
+}
+impl TryFrom<u8> for SamariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for SamariumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            128u16 => Ok(Self::Sm128),
-            129u16 => Ok(Self::Sm129),
-            130u16 => Ok(Self::Sm130),
-            131u16 => Ok(Self::Sm131),
-            132u16 => Ok(Self::Sm132),
-            133u16 => Ok(Self::Sm133),
-            134u16 => Ok(Self::Sm134),
-            135u16 => Ok(Self::Sm135),
-            136u16 => Ok(Self::Sm136),
-            137u16 => Ok(Self::Sm137),
-            138u16 => Ok(Self::Sm138),
-            139u16 => Ok(Self::Sm139),
-            140u16 => Ok(Self::Sm140),
-            141u16 => Ok(Self::Sm141),
-            142u16 => Ok(Self::Sm142),
-            143u16 => Ok(Self::Sm143),
-            144u16 => Ok(Self::Sm144),
-            145u16 => Ok(Self::Sm145),
-            146u16 => Ok(Self::Sm146),
-            147u16 => Ok(Self::Sm147),
-            148u16 => Ok(Self::Sm148),
-            149u16 => Ok(Self::Sm149),
-            150u16 => Ok(Self::Sm150),
-            151u16 => Ok(Self::Sm151),
-            152u16 => Ok(Self::Sm152),
-            153u16 => Ok(Self::Sm153),
-            154u16 => Ok(Self::Sm154),
-            155u16 => Ok(Self::Sm155),
-            156u16 => Ok(Self::Sm156),
-            157u16 => Ok(Self::Sm157),
-            158u16 => Ok(Self::Sm158),
-            159u16 => Ok(Self::Sm159),
-            160u16 => Ok(Self::Sm160),
-            161u16 => Ok(Self::Sm161),
-            162u16 => Ok(Self::Sm162),
-            163u16 => Ok(Self::Sm163),
-            164u16 => Ok(Self::Sm164),
-            165u16 => Ok(Self::Sm165),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Sm, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for SamariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for SamariumIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = SamariumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(SamariumIsotope::try_from(0).is_err());
-        assert!(SamariumIsotope::try_from(1000).is_err());
+        assert!(SamariumIsotope::try_from(0_u16).is_err());
+        assert!(SamariumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

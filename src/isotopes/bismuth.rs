@@ -251,53 +251,71 @@ impl From<BismuthIsotope> for crate::Element {
         crate::Element::Bi
     }
 }
+impl TryFrom<u64> for BismuthIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            184u64 => Ok(Self::Bi184),
+            185u64 => Ok(Self::Bi185),
+            186u64 => Ok(Self::Bi186),
+            187u64 => Ok(Self::Bi187),
+            188u64 => Ok(Self::Bi188),
+            189u64 => Ok(Self::Bi189),
+            190u64 => Ok(Self::Bi190),
+            191u64 => Ok(Self::Bi191),
+            192u64 => Ok(Self::Bi192),
+            193u64 => Ok(Self::Bi193),
+            194u64 => Ok(Self::Bi194),
+            195u64 => Ok(Self::Bi195),
+            196u64 => Ok(Self::Bi196),
+            197u64 => Ok(Self::Bi197),
+            198u64 => Ok(Self::Bi198),
+            199u64 => Ok(Self::Bi199),
+            200u64 => Ok(Self::Bi200),
+            201u64 => Ok(Self::Bi201),
+            202u64 => Ok(Self::Bi202),
+            203u64 => Ok(Self::Bi203),
+            204u64 => Ok(Self::Bi204),
+            205u64 => Ok(Self::Bi205),
+            206u64 => Ok(Self::Bi206),
+            207u64 => Ok(Self::Bi207),
+            208u64 => Ok(Self::Bi208),
+            209u64 => Ok(Self::Bi209),
+            210u64 => Ok(Self::Bi210),
+            211u64 => Ok(Self::Bi211),
+            212u64 => Ok(Self::Bi212),
+            213u64 => Ok(Self::Bi213),
+            214u64 => Ok(Self::Bi214),
+            215u64 => Ok(Self::Bi215),
+            216u64 => Ok(Self::Bi216),
+            217u64 => Ok(Self::Bi217),
+            218u64 => Ok(Self::Bi218),
+            219u64 => Ok(Self::Bi219),
+            220u64 => Ok(Self::Bi220),
+            221u64 => Ok(Self::Bi221),
+            222u64 => Ok(Self::Bi222),
+            223u64 => Ok(Self::Bi223),
+            224u64 => Ok(Self::Bi224),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Bi, value)),
+        }
+    }
+}
+impl TryFrom<u8> for BismuthIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for BismuthIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            184u16 => Ok(Self::Bi184),
-            185u16 => Ok(Self::Bi185),
-            186u16 => Ok(Self::Bi186),
-            187u16 => Ok(Self::Bi187),
-            188u16 => Ok(Self::Bi188),
-            189u16 => Ok(Self::Bi189),
-            190u16 => Ok(Self::Bi190),
-            191u16 => Ok(Self::Bi191),
-            192u16 => Ok(Self::Bi192),
-            193u16 => Ok(Self::Bi193),
-            194u16 => Ok(Self::Bi194),
-            195u16 => Ok(Self::Bi195),
-            196u16 => Ok(Self::Bi196),
-            197u16 => Ok(Self::Bi197),
-            198u16 => Ok(Self::Bi198),
-            199u16 => Ok(Self::Bi199),
-            200u16 => Ok(Self::Bi200),
-            201u16 => Ok(Self::Bi201),
-            202u16 => Ok(Self::Bi202),
-            203u16 => Ok(Self::Bi203),
-            204u16 => Ok(Self::Bi204),
-            205u16 => Ok(Self::Bi205),
-            206u16 => Ok(Self::Bi206),
-            207u16 => Ok(Self::Bi207),
-            208u16 => Ok(Self::Bi208),
-            209u16 => Ok(Self::Bi209),
-            210u16 => Ok(Self::Bi210),
-            211u16 => Ok(Self::Bi211),
-            212u16 => Ok(Self::Bi212),
-            213u16 => Ok(Self::Bi213),
-            214u16 => Ok(Self::Bi214),
-            215u16 => Ok(Self::Bi215),
-            216u16 => Ok(Self::Bi216),
-            217u16 => Ok(Self::Bi217),
-            218u16 => Ok(Self::Bi218),
-            219u16 => Ok(Self::Bi219),
-            220u16 => Ok(Self::Bi220),
-            221u16 => Ok(Self::Bi221),
-            222u16 => Ok(Self::Bi222),
-            223u16 => Ok(Self::Bi223),
-            224u16 => Ok(Self::Bi224),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Bi, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for BismuthIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for BismuthIsotope {
@@ -422,8 +440,8 @@ mod tests {
             let iso = BismuthIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(BismuthIsotope::try_from(0).is_err());
-        assert!(BismuthIsotope::try_from(1000).is_err());
+        assert!(BismuthIsotope::try_from(0_u16).is_err());
+        assert!(BismuthIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

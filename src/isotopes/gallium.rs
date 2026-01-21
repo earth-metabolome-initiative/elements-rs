@@ -206,44 +206,62 @@ impl From<GalliumIsotope> for crate::Element {
         crate::Element::Ga
     }
 }
+impl TryFrom<u64> for GalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            56u64 => Ok(Self::Ga56),
+            57u64 => Ok(Self::Ga57),
+            58u64 => Ok(Self::Ga58),
+            59u64 => Ok(Self::Ga59),
+            60u64 => Ok(Self::Ga60),
+            61u64 => Ok(Self::Ga61),
+            62u64 => Ok(Self::Ga62),
+            63u64 => Ok(Self::Ga63),
+            64u64 => Ok(Self::Ga64),
+            65u64 => Ok(Self::Ga65),
+            66u64 => Ok(Self::Ga66),
+            67u64 => Ok(Self::Ga67),
+            68u64 => Ok(Self::Ga68),
+            69u64 => Ok(Self::Ga69),
+            70u64 => Ok(Self::Ga70),
+            71u64 => Ok(Self::Ga71),
+            72u64 => Ok(Self::Ga72),
+            73u64 => Ok(Self::Ga73),
+            74u64 => Ok(Self::Ga74),
+            75u64 => Ok(Self::Ga75),
+            76u64 => Ok(Self::Ga76),
+            77u64 => Ok(Self::Ga77),
+            78u64 => Ok(Self::Ga78),
+            79u64 => Ok(Self::Ga79),
+            80u64 => Ok(Self::Ga80),
+            81u64 => Ok(Self::Ga81),
+            82u64 => Ok(Self::Ga82),
+            83u64 => Ok(Self::Ga83),
+            84u64 => Ok(Self::Ga84),
+            85u64 => Ok(Self::Ga85),
+            86u64 => Ok(Self::Ga86),
+            87u64 => Ok(Self::Ga87),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ga, value)),
+        }
+    }
+}
+impl TryFrom<u8> for GalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for GalliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            56u16 => Ok(Self::Ga56),
-            57u16 => Ok(Self::Ga57),
-            58u16 => Ok(Self::Ga58),
-            59u16 => Ok(Self::Ga59),
-            60u16 => Ok(Self::Ga60),
-            61u16 => Ok(Self::Ga61),
-            62u16 => Ok(Self::Ga62),
-            63u16 => Ok(Self::Ga63),
-            64u16 => Ok(Self::Ga64),
-            65u16 => Ok(Self::Ga65),
-            66u16 => Ok(Self::Ga66),
-            67u16 => Ok(Self::Ga67),
-            68u16 => Ok(Self::Ga68),
-            69u16 => Ok(Self::Ga69),
-            70u16 => Ok(Self::Ga70),
-            71u16 => Ok(Self::Ga71),
-            72u16 => Ok(Self::Ga72),
-            73u16 => Ok(Self::Ga73),
-            74u16 => Ok(Self::Ga74),
-            75u16 => Ok(Self::Ga75),
-            76u16 => Ok(Self::Ga76),
-            77u16 => Ok(Self::Ga77),
-            78u16 => Ok(Self::Ga78),
-            79u16 => Ok(Self::Ga79),
-            80u16 => Ok(Self::Ga80),
-            81u16 => Ok(Self::Ga81),
-            82u16 => Ok(Self::Ga82),
-            83u16 => Ok(Self::Ga83),
-            84u16 => Ok(Self::Ga84),
-            85u16 => Ok(Self::Ga85),
-            86u16 => Ok(Self::Ga86),
-            87u16 => Ok(Self::Ga87),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ga, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for GalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for GalliumIsotope {
@@ -359,8 +377,8 @@ mod tests {
             let iso = GalliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(GalliumIsotope::try_from(0).is_err());
-        assert!(GalliumIsotope::try_from(1000).is_err());
+        assert!(GalliumIsotope::try_from(0_u16).is_err());
+        assert!(GalliumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

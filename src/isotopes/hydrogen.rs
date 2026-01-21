@@ -77,19 +77,37 @@ impl From<HydrogenIsotope> for crate::Element {
         crate::Element::H
     }
 }
+impl TryFrom<u64> for HydrogenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            1u64 => Ok(Self::H1),
+            2u64 => Ok(Self::D2),
+            3u64 => Ok(Self::T3),
+            4u64 => Ok(Self::H4),
+            5u64 => Ok(Self::H5),
+            6u64 => Ok(Self::H6),
+            7u64 => Ok(Self::H7),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::H, value)),
+        }
+    }
+}
+impl TryFrom<u8> for HydrogenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for HydrogenIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            1u16 => Ok(Self::H1),
-            2u16 => Ok(Self::D2),
-            3u16 => Ok(Self::T3),
-            4u16 => Ok(Self::H4),
-            5u16 => Ok(Self::H5),
-            6u16 => Ok(Self::H6),
-            7u16 => Ok(Self::H7),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::H, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for HydrogenIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for HydrogenIsotope {
@@ -180,8 +198,8 @@ mod tests {
             let iso = HydrogenIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(HydrogenIsotope::try_from(0).is_err());
-        assert!(HydrogenIsotope::try_from(1000).is_err());
+        assert!(HydrogenIsotope::try_from(0_u16).is_err());
+        assert!(HydrogenIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

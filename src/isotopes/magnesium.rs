@@ -156,34 +156,52 @@ impl From<MagnesiumIsotope> for crate::Element {
         crate::Element::Mg
     }
 }
+impl TryFrom<u64> for MagnesiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            19u64 => Ok(Self::Mg19),
+            20u64 => Ok(Self::Mg20),
+            21u64 => Ok(Self::Mg21),
+            22u64 => Ok(Self::Mg22),
+            23u64 => Ok(Self::Mg23),
+            24u64 => Ok(Self::Mg24),
+            25u64 => Ok(Self::Mg25),
+            26u64 => Ok(Self::Mg26),
+            27u64 => Ok(Self::Mg27),
+            28u64 => Ok(Self::Mg28),
+            29u64 => Ok(Self::Mg29),
+            30u64 => Ok(Self::Mg30),
+            31u64 => Ok(Self::Mg31),
+            32u64 => Ok(Self::Mg32),
+            33u64 => Ok(Self::Mg33),
+            34u64 => Ok(Self::Mg34),
+            35u64 => Ok(Self::Mg35),
+            36u64 => Ok(Self::Mg36),
+            37u64 => Ok(Self::Mg37),
+            38u64 => Ok(Self::Mg38),
+            39u64 => Ok(Self::Mg39),
+            40u64 => Ok(Self::Mg40),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Mg, value)),
+        }
+    }
+}
+impl TryFrom<u8> for MagnesiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for MagnesiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            19u16 => Ok(Self::Mg19),
-            20u16 => Ok(Self::Mg20),
-            21u16 => Ok(Self::Mg21),
-            22u16 => Ok(Self::Mg22),
-            23u16 => Ok(Self::Mg23),
-            24u16 => Ok(Self::Mg24),
-            25u16 => Ok(Self::Mg25),
-            26u16 => Ok(Self::Mg26),
-            27u16 => Ok(Self::Mg27),
-            28u16 => Ok(Self::Mg28),
-            29u16 => Ok(Self::Mg29),
-            30u16 => Ok(Self::Mg30),
-            31u16 => Ok(Self::Mg31),
-            32u16 => Ok(Self::Mg32),
-            33u16 => Ok(Self::Mg33),
-            34u16 => Ok(Self::Mg34),
-            35u16 => Ok(Self::Mg35),
-            36u16 => Ok(Self::Mg36),
-            37u16 => Ok(Self::Mg37),
-            38u16 => Ok(Self::Mg38),
-            39u16 => Ok(Self::Mg39),
-            40u16 => Ok(Self::Mg40),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Mg, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for MagnesiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for MagnesiumIsotope {
@@ -289,8 +307,8 @@ mod tests {
             let iso = MagnesiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(MagnesiumIsotope::try_from(0).is_err());
-        assert!(MagnesiumIsotope::try_from(1000).is_err());
+        assert!(MagnesiumIsotope::try_from(0_u16).is_err());
+        assert!(MagnesiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

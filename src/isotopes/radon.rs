@@ -201,51 +201,69 @@ impl From<RadonIsotope> for crate::Element {
         crate::Element::Rn
     }
 }
+impl TryFrom<u64> for RadonIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            193u64 => Ok(Self::Rn193),
+            194u64 => Ok(Self::Rn194),
+            195u64 => Ok(Self::Rn195),
+            196u64 => Ok(Self::Rn196),
+            197u64 => Ok(Self::Rn197),
+            198u64 => Ok(Self::Rn198),
+            199u64 => Ok(Self::Rn199),
+            200u64 => Ok(Self::Rn200),
+            201u64 => Ok(Self::Rn201),
+            202u64 => Ok(Self::Rn202),
+            203u64 => Ok(Self::Rn203),
+            204u64 => Ok(Self::Rn204),
+            205u64 => Ok(Self::Rn205),
+            206u64 => Ok(Self::Rn206),
+            207u64 => Ok(Self::Rn207),
+            208u64 => Ok(Self::Rn208),
+            209u64 => Ok(Self::Rn209),
+            210u64 => Ok(Self::Rn210),
+            211u64 => Ok(Self::Rn211),
+            212u64 => Ok(Self::Rn212),
+            213u64 => Ok(Self::Rn213),
+            214u64 => Ok(Self::Rn214),
+            215u64 => Ok(Self::Rn215),
+            216u64 => Ok(Self::Rn216),
+            217u64 => Ok(Self::Rn217),
+            218u64 => Ok(Self::Rn218),
+            219u64 => Ok(Self::Rn219),
+            220u64 => Ok(Self::Rn220),
+            221u64 => Ok(Self::Rn221),
+            222u64 => Ok(Self::Rn222),
+            223u64 => Ok(Self::Rn223),
+            224u64 => Ok(Self::Rn224),
+            225u64 => Ok(Self::Rn225),
+            226u64 => Ok(Self::Rn226),
+            227u64 => Ok(Self::Rn227),
+            228u64 => Ok(Self::Rn228),
+            229u64 => Ok(Self::Rn229),
+            230u64 => Ok(Self::Rn230),
+            231u64 => Ok(Self::Rn231),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Rn, value)),
+        }
+    }
+}
+impl TryFrom<u8> for RadonIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for RadonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            193u16 => Ok(Self::Rn193),
-            194u16 => Ok(Self::Rn194),
-            195u16 => Ok(Self::Rn195),
-            196u16 => Ok(Self::Rn196),
-            197u16 => Ok(Self::Rn197),
-            198u16 => Ok(Self::Rn198),
-            199u16 => Ok(Self::Rn199),
-            200u16 => Ok(Self::Rn200),
-            201u16 => Ok(Self::Rn201),
-            202u16 => Ok(Self::Rn202),
-            203u16 => Ok(Self::Rn203),
-            204u16 => Ok(Self::Rn204),
-            205u16 => Ok(Self::Rn205),
-            206u16 => Ok(Self::Rn206),
-            207u16 => Ok(Self::Rn207),
-            208u16 => Ok(Self::Rn208),
-            209u16 => Ok(Self::Rn209),
-            210u16 => Ok(Self::Rn210),
-            211u16 => Ok(Self::Rn211),
-            212u16 => Ok(Self::Rn212),
-            213u16 => Ok(Self::Rn213),
-            214u16 => Ok(Self::Rn214),
-            215u16 => Ok(Self::Rn215),
-            216u16 => Ok(Self::Rn216),
-            217u16 => Ok(Self::Rn217),
-            218u16 => Ok(Self::Rn218),
-            219u16 => Ok(Self::Rn219),
-            220u16 => Ok(Self::Rn220),
-            221u16 => Ok(Self::Rn221),
-            222u16 => Ok(Self::Rn222),
-            223u16 => Ok(Self::Rn223),
-            224u16 => Ok(Self::Rn224),
-            225u16 => Ok(Self::Rn225),
-            226u16 => Ok(Self::Rn226),
-            227u16 => Ok(Self::Rn227),
-            228u16 => Ok(Self::Rn228),
-            229u16 => Ok(Self::Rn229),
-            230u16 => Ok(Self::Rn230),
-            231u16 => Ok(Self::Rn231),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Rn, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for RadonIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for RadonIsotope {
@@ -368,8 +386,8 @@ mod tests {
             let iso = RadonIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(RadonIsotope::try_from(0).is_err());
-        assert!(RadonIsotope::try_from(1000).is_err());
+        assert!(RadonIsotope::try_from(0_u16).is_err());
+        assert!(RadonIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

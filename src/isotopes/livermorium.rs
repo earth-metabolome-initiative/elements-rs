@@ -65,17 +65,35 @@ impl From<LivermoriumIsotope> for crate::Element {
         crate::Element::Lv
     }
 }
+impl TryFrom<u64> for LivermoriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            289u64 => Ok(Self::Lv289),
+            290u64 => Ok(Self::Lv290),
+            291u64 => Ok(Self::Lv291),
+            292u64 => Ok(Self::Lv292),
+            293u64 => Ok(Self::Lv293),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Lv, value)),
+        }
+    }
+}
+impl TryFrom<u8> for LivermoriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for LivermoriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            289u16 => Ok(Self::Lv289),
-            290u16 => Ok(Self::Lv290),
-            291u16 => Ok(Self::Lv291),
-            292u16 => Ok(Self::Lv292),
-            293u16 => Ok(Self::Lv293),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Lv, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for LivermoriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for LivermoriumIsotope {
@@ -164,8 +182,8 @@ mod tests {
             let iso = LivermoriumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(LivermoriumIsotope::try_from(0).is_err());
-        assert!(LivermoriumIsotope::try_from(1000).is_err());
+        assert!(LivermoriumIsotope::try_from(0_u16).is_err());
+        assert!(LivermoriumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -256,54 +256,72 @@ impl From<GoldIsotope> for crate::Element {
         crate::Element::Au
     }
 }
+impl TryFrom<u64> for GoldIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            169u64 => Ok(Self::Au169),
+            170u64 => Ok(Self::Au170),
+            171u64 => Ok(Self::Au171),
+            172u64 => Ok(Self::Au172),
+            173u64 => Ok(Self::Au173),
+            174u64 => Ok(Self::Au174),
+            175u64 => Ok(Self::Au175),
+            176u64 => Ok(Self::Au176),
+            177u64 => Ok(Self::Au177),
+            178u64 => Ok(Self::Au178),
+            179u64 => Ok(Self::Au179),
+            180u64 => Ok(Self::Au180),
+            181u64 => Ok(Self::Au181),
+            182u64 => Ok(Self::Au182),
+            183u64 => Ok(Self::Au183),
+            184u64 => Ok(Self::Au184),
+            185u64 => Ok(Self::Au185),
+            186u64 => Ok(Self::Au186),
+            187u64 => Ok(Self::Au187),
+            188u64 => Ok(Self::Au188),
+            189u64 => Ok(Self::Au189),
+            190u64 => Ok(Self::Au190),
+            191u64 => Ok(Self::Au191),
+            192u64 => Ok(Self::Au192),
+            193u64 => Ok(Self::Au193),
+            194u64 => Ok(Self::Au194),
+            195u64 => Ok(Self::Au195),
+            196u64 => Ok(Self::Au196),
+            197u64 => Ok(Self::Au197),
+            198u64 => Ok(Self::Au198),
+            199u64 => Ok(Self::Au199),
+            200u64 => Ok(Self::Au200),
+            201u64 => Ok(Self::Au201),
+            202u64 => Ok(Self::Au202),
+            203u64 => Ok(Self::Au203),
+            204u64 => Ok(Self::Au204),
+            205u64 => Ok(Self::Au205),
+            206u64 => Ok(Self::Au206),
+            207u64 => Ok(Self::Au207),
+            208u64 => Ok(Self::Au208),
+            209u64 => Ok(Self::Au209),
+            210u64 => Ok(Self::Au210),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Au, value)),
+        }
+    }
+}
+impl TryFrom<u8> for GoldIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for GoldIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            169u16 => Ok(Self::Au169),
-            170u16 => Ok(Self::Au170),
-            171u16 => Ok(Self::Au171),
-            172u16 => Ok(Self::Au172),
-            173u16 => Ok(Self::Au173),
-            174u16 => Ok(Self::Au174),
-            175u16 => Ok(Self::Au175),
-            176u16 => Ok(Self::Au176),
-            177u16 => Ok(Self::Au177),
-            178u16 => Ok(Self::Au178),
-            179u16 => Ok(Self::Au179),
-            180u16 => Ok(Self::Au180),
-            181u16 => Ok(Self::Au181),
-            182u16 => Ok(Self::Au182),
-            183u16 => Ok(Self::Au183),
-            184u16 => Ok(Self::Au184),
-            185u16 => Ok(Self::Au185),
-            186u16 => Ok(Self::Au186),
-            187u16 => Ok(Self::Au187),
-            188u16 => Ok(Self::Au188),
-            189u16 => Ok(Self::Au189),
-            190u16 => Ok(Self::Au190),
-            191u16 => Ok(Self::Au191),
-            192u16 => Ok(Self::Au192),
-            193u16 => Ok(Self::Au193),
-            194u16 => Ok(Self::Au194),
-            195u16 => Ok(Self::Au195),
-            196u16 => Ok(Self::Au196),
-            197u16 => Ok(Self::Au197),
-            198u16 => Ok(Self::Au198),
-            199u16 => Ok(Self::Au199),
-            200u16 => Ok(Self::Au200),
-            201u16 => Ok(Self::Au201),
-            202u16 => Ok(Self::Au202),
-            203u16 => Ok(Self::Au203),
-            204u16 => Ok(Self::Au204),
-            205u16 => Ok(Self::Au205),
-            206u16 => Ok(Self::Au206),
-            207u16 => Ok(Self::Au207),
-            208u16 => Ok(Self::Au208),
-            209u16 => Ok(Self::Au209),
-            210u16 => Ok(Self::Au210),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Au, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for GoldIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for GoldIsotope {
@@ -429,8 +447,8 @@ mod tests {
             let iso = GoldIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(GoldIsotope::try_from(0).is_err());
-        assert!(GoldIsotope::try_from(1000).is_err());
+        assert!(GoldIsotope::try_from(0_u16).is_err());
+        assert!(GoldIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

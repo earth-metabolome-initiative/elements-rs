@@ -61,16 +61,34 @@ impl From<TennessineIsotope> for crate::Element {
         crate::Element::Ts
     }
 }
+impl TryFrom<u64> for TennessineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            291u64 => Ok(Self::Ts291),
+            292u64 => Ok(Self::Ts292),
+            293u64 => Ok(Self::Ts293),
+            294u64 => Ok(Self::Ts294),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ts, value)),
+        }
+    }
+}
+impl TryFrom<u8> for TennessineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for TennessineIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            291u16 => Ok(Self::Ts291),
-            292u16 => Ok(Self::Ts292),
-            293u16 => Ok(Self::Ts293),
-            294u16 => Ok(Self::Ts294),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ts, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for TennessineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for TennessineIsotope {
@@ -158,8 +176,8 @@ mod tests {
             let iso = TennessineIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(TennessineIsotope::try_from(0).is_err());
-        assert!(TennessineIsotope::try_from(1000).is_err());
+        assert!(TennessineIsotope::try_from(0_u16).is_err());
+        assert!(TennessineIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

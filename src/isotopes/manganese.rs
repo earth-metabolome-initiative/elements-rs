@@ -186,40 +186,58 @@ impl From<ManganeseIsotope> for crate::Element {
         crate::Element::Mn
     }
 }
+impl TryFrom<u64> for ManganeseIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            44u64 => Ok(Self::Mn44),
+            45u64 => Ok(Self::Mn45),
+            46u64 => Ok(Self::Mn46),
+            47u64 => Ok(Self::Mn47),
+            48u64 => Ok(Self::Mn48),
+            49u64 => Ok(Self::Mn49),
+            50u64 => Ok(Self::Mn50),
+            51u64 => Ok(Self::Mn51),
+            52u64 => Ok(Self::Mn52),
+            53u64 => Ok(Self::Mn53),
+            54u64 => Ok(Self::Mn54),
+            55u64 => Ok(Self::Mn55),
+            56u64 => Ok(Self::Mn56),
+            57u64 => Ok(Self::Mn57),
+            58u64 => Ok(Self::Mn58),
+            59u64 => Ok(Self::Mn59),
+            60u64 => Ok(Self::Mn60),
+            61u64 => Ok(Self::Mn61),
+            62u64 => Ok(Self::Mn62),
+            63u64 => Ok(Self::Mn63),
+            64u64 => Ok(Self::Mn64),
+            65u64 => Ok(Self::Mn65),
+            66u64 => Ok(Self::Mn66),
+            67u64 => Ok(Self::Mn67),
+            68u64 => Ok(Self::Mn68),
+            69u64 => Ok(Self::Mn69),
+            70u64 => Ok(Self::Mn70),
+            71u64 => Ok(Self::Mn71),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Mn, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ManganeseIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ManganeseIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            44u16 => Ok(Self::Mn44),
-            45u16 => Ok(Self::Mn45),
-            46u16 => Ok(Self::Mn46),
-            47u16 => Ok(Self::Mn47),
-            48u16 => Ok(Self::Mn48),
-            49u16 => Ok(Self::Mn49),
-            50u16 => Ok(Self::Mn50),
-            51u16 => Ok(Self::Mn51),
-            52u16 => Ok(Self::Mn52),
-            53u16 => Ok(Self::Mn53),
-            54u16 => Ok(Self::Mn54),
-            55u16 => Ok(Self::Mn55),
-            56u16 => Ok(Self::Mn56),
-            57u16 => Ok(Self::Mn57),
-            58u16 => Ok(Self::Mn58),
-            59u16 => Ok(Self::Mn59),
-            60u16 => Ok(Self::Mn60),
-            61u16 => Ok(Self::Mn61),
-            62u16 => Ok(Self::Mn62),
-            63u16 => Ok(Self::Mn63),
-            64u16 => Ok(Self::Mn64),
-            65u16 => Ok(Self::Mn65),
-            66u16 => Ok(Self::Mn66),
-            67u16 => Ok(Self::Mn67),
-            68u16 => Ok(Self::Mn68),
-            69u16 => Ok(Self::Mn69),
-            70u16 => Ok(Self::Mn70),
-            71u16 => Ok(Self::Mn71),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Mn, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ManganeseIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ManganeseIsotope {
@@ -331,8 +349,8 @@ mod tests {
             let iso = ManganeseIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ManganeseIsotope::try_from(0).is_err());
-        assert!(ManganeseIsotope::try_from(1000).is_err());
+        assert!(ManganeseIsotope::try_from(0_u16).is_err());
+        assert!(ManganeseIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -171,37 +171,55 @@ impl From<PotassiumIsotope> for crate::Element {
         crate::Element::K
     }
 }
+impl TryFrom<u64> for PotassiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            32u64 => Ok(Self::K32),
+            33u64 => Ok(Self::K33),
+            34u64 => Ok(Self::K34),
+            35u64 => Ok(Self::K35),
+            36u64 => Ok(Self::K36),
+            37u64 => Ok(Self::K37),
+            38u64 => Ok(Self::K38),
+            39u64 => Ok(Self::K39),
+            40u64 => Ok(Self::K40),
+            41u64 => Ok(Self::K41),
+            42u64 => Ok(Self::K42),
+            43u64 => Ok(Self::K43),
+            44u64 => Ok(Self::K44),
+            45u64 => Ok(Self::K45),
+            46u64 => Ok(Self::K46),
+            47u64 => Ok(Self::K47),
+            48u64 => Ok(Self::K48),
+            49u64 => Ok(Self::K49),
+            50u64 => Ok(Self::K50),
+            51u64 => Ok(Self::K51),
+            52u64 => Ok(Self::K52),
+            53u64 => Ok(Self::K53),
+            54u64 => Ok(Self::K54),
+            55u64 => Ok(Self::K55),
+            56u64 => Ok(Self::K56),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::K, value)),
+        }
+    }
+}
+impl TryFrom<u8> for PotassiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for PotassiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            32u16 => Ok(Self::K32),
-            33u16 => Ok(Self::K33),
-            34u16 => Ok(Self::K34),
-            35u16 => Ok(Self::K35),
-            36u16 => Ok(Self::K36),
-            37u16 => Ok(Self::K37),
-            38u16 => Ok(Self::K38),
-            39u16 => Ok(Self::K39),
-            40u16 => Ok(Self::K40),
-            41u16 => Ok(Self::K41),
-            42u16 => Ok(Self::K42),
-            43u16 => Ok(Self::K43),
-            44u16 => Ok(Self::K44),
-            45u16 => Ok(Self::K45),
-            46u16 => Ok(Self::K46),
-            47u16 => Ok(Self::K47),
-            48u16 => Ok(Self::K48),
-            49u16 => Ok(Self::K49),
-            50u16 => Ok(Self::K50),
-            51u16 => Ok(Self::K51),
-            52u16 => Ok(Self::K52),
-            53u16 => Ok(Self::K53),
-            54u16 => Ok(Self::K54),
-            55u16 => Ok(Self::K55),
-            56u16 => Ok(Self::K56),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::K, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for PotassiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for PotassiumIsotope {
@@ -310,8 +328,8 @@ mod tests {
             let iso = PotassiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(PotassiumIsotope::try_from(0).is_err());
-        assert!(PotassiumIsotope::try_from(1000).is_err());
+        assert!(PotassiumIsotope::try_from(0_u16).is_err());
+        assert!(PotassiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

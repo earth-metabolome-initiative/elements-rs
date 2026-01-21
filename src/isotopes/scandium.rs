@@ -176,38 +176,56 @@ impl From<ScandiumIsotope> for crate::Element {
         crate::Element::Sc
     }
 }
+impl TryFrom<u64> for ScandiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            36u64 => Ok(Self::Sc36),
+            37u64 => Ok(Self::Sc37),
+            38u64 => Ok(Self::Sc38),
+            39u64 => Ok(Self::Sc39),
+            40u64 => Ok(Self::Sc40),
+            41u64 => Ok(Self::Sc41),
+            42u64 => Ok(Self::Sc42),
+            43u64 => Ok(Self::Sc43),
+            44u64 => Ok(Self::Sc44),
+            45u64 => Ok(Self::Sc45),
+            46u64 => Ok(Self::Sc46),
+            47u64 => Ok(Self::Sc47),
+            48u64 => Ok(Self::Sc48),
+            49u64 => Ok(Self::Sc49),
+            50u64 => Ok(Self::Sc50),
+            51u64 => Ok(Self::Sc51),
+            52u64 => Ok(Self::Sc52),
+            53u64 => Ok(Self::Sc53),
+            54u64 => Ok(Self::Sc54),
+            55u64 => Ok(Self::Sc55),
+            56u64 => Ok(Self::Sc56),
+            57u64 => Ok(Self::Sc57),
+            58u64 => Ok(Self::Sc58),
+            59u64 => Ok(Self::Sc59),
+            60u64 => Ok(Self::Sc60),
+            61u64 => Ok(Self::Sc61),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Sc, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ScandiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ScandiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            36u16 => Ok(Self::Sc36),
-            37u16 => Ok(Self::Sc37),
-            38u16 => Ok(Self::Sc38),
-            39u16 => Ok(Self::Sc39),
-            40u16 => Ok(Self::Sc40),
-            41u16 => Ok(Self::Sc41),
-            42u16 => Ok(Self::Sc42),
-            43u16 => Ok(Self::Sc43),
-            44u16 => Ok(Self::Sc44),
-            45u16 => Ok(Self::Sc45),
-            46u16 => Ok(Self::Sc46),
-            47u16 => Ok(Self::Sc47),
-            48u16 => Ok(Self::Sc48),
-            49u16 => Ok(Self::Sc49),
-            50u16 => Ok(Self::Sc50),
-            51u16 => Ok(Self::Sc51),
-            52u16 => Ok(Self::Sc52),
-            53u16 => Ok(Self::Sc53),
-            54u16 => Ok(Self::Sc54),
-            55u16 => Ok(Self::Sc55),
-            56u16 => Ok(Self::Sc56),
-            57u16 => Ok(Self::Sc57),
-            58u16 => Ok(Self::Sc58),
-            59u16 => Ok(Self::Sc59),
-            60u16 => Ok(Self::Sc60),
-            61u16 => Ok(Self::Sc61),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Sc, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ScandiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ScandiumIsotope {
@@ -317,8 +335,8 @@ mod tests {
             let iso = ScandiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ScandiumIsotope::try_from(0).is_err());
-        assert!(ScandiumIsotope::try_from(1000).is_err());
+        assert!(ScandiumIsotope::try_from(0_u16).is_err());
+        assert!(ScandiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

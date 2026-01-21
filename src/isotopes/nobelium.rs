@@ -113,29 +113,47 @@ impl From<NobeliumIsotope> for crate::Element {
         crate::Element::No
     }
 }
+impl TryFrom<u64> for NobeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            248u64 => Ok(Self::No248),
+            249u64 => Ok(Self::No249),
+            250u64 => Ok(Self::No250),
+            251u64 => Ok(Self::No251),
+            252u64 => Ok(Self::No252),
+            253u64 => Ok(Self::No253),
+            254u64 => Ok(Self::No254),
+            255u64 => Ok(Self::No255),
+            256u64 => Ok(Self::No256),
+            257u64 => Ok(Self::No257),
+            258u64 => Ok(Self::No258),
+            259u64 => Ok(Self::No259),
+            260u64 => Ok(Self::No260),
+            261u64 => Ok(Self::No261),
+            262u64 => Ok(Self::No262),
+            263u64 => Ok(Self::No263),
+            264u64 => Ok(Self::No264),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::No, value)),
+        }
+    }
+}
+impl TryFrom<u8> for NobeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for NobeliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            248u16 => Ok(Self::No248),
-            249u16 => Ok(Self::No249),
-            250u16 => Ok(Self::No250),
-            251u16 => Ok(Self::No251),
-            252u16 => Ok(Self::No252),
-            253u16 => Ok(Self::No253),
-            254u16 => Ok(Self::No254),
-            255u16 => Ok(Self::No255),
-            256u16 => Ok(Self::No256),
-            257u16 => Ok(Self::No257),
-            258u16 => Ok(Self::No258),
-            259u16 => Ok(Self::No259),
-            260u16 => Ok(Self::No260),
-            261u16 => Ok(Self::No261),
-            262u16 => Ok(Self::No262),
-            263u16 => Ok(Self::No263),
-            264u16 => Ok(Self::No264),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::No, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for NobeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for NobeliumIsotope {
@@ -236,8 +254,8 @@ mod tests {
             let iso = NobeliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(NobeliumIsotope::try_from(0).is_err());
-        assert!(NobeliumIsotope::try_from(1000).is_err());
+        assert!(NobeliumIsotope::try_from(0_u16).is_err());
+        assert!(NobeliumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -81,20 +81,38 @@ impl From<HeliumIsotope> for crate::Element {
         crate::Element::He
     }
 }
+impl TryFrom<u64> for HeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            3u64 => Ok(Self::He3),
+            4u64 => Ok(Self::He4),
+            5u64 => Ok(Self::He5),
+            6u64 => Ok(Self::He6),
+            7u64 => Ok(Self::He7),
+            8u64 => Ok(Self::He8),
+            9u64 => Ok(Self::He9),
+            10u64 => Ok(Self::He10),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::He, value)),
+        }
+    }
+}
+impl TryFrom<u8> for HeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for HeliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            3u16 => Ok(Self::He3),
-            4u16 => Ok(Self::He4),
-            5u16 => Ok(Self::He5),
-            6u16 => Ok(Self::He6),
-            7u16 => Ok(Self::He7),
-            8u16 => Ok(Self::He8),
-            9u16 => Ok(Self::He9),
-            10u16 => Ok(Self::He10),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::He, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for HeliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for HeliumIsotope {
@@ -186,8 +204,8 @@ mod tests {
             let iso = HeliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(HeliumIsotope::try_from(0).is_err());
-        assert!(HeliumIsotope::try_from(1000).is_err());
+        assert!(HeliumIsotope::try_from(0_u16).is_err());
+        assert!(HeliumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -261,55 +261,73 @@ impl From<ThalliumIsotope> for crate::Element {
         crate::Element::Tl
     }
 }
+impl TryFrom<u64> for ThalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            176u64 => Ok(Self::Tl176),
+            177u64 => Ok(Self::Tl177),
+            178u64 => Ok(Self::Tl178),
+            179u64 => Ok(Self::Tl179),
+            180u64 => Ok(Self::Tl180),
+            181u64 => Ok(Self::Tl181),
+            182u64 => Ok(Self::Tl182),
+            183u64 => Ok(Self::Tl183),
+            184u64 => Ok(Self::Tl184),
+            185u64 => Ok(Self::Tl185),
+            186u64 => Ok(Self::Tl186),
+            187u64 => Ok(Self::Tl187),
+            188u64 => Ok(Self::Tl188),
+            189u64 => Ok(Self::Tl189),
+            190u64 => Ok(Self::Tl190),
+            191u64 => Ok(Self::Tl191),
+            192u64 => Ok(Self::Tl192),
+            193u64 => Ok(Self::Tl193),
+            194u64 => Ok(Self::Tl194),
+            195u64 => Ok(Self::Tl195),
+            196u64 => Ok(Self::Tl196),
+            197u64 => Ok(Self::Tl197),
+            198u64 => Ok(Self::Tl198),
+            199u64 => Ok(Self::Tl199),
+            200u64 => Ok(Self::Tl200),
+            201u64 => Ok(Self::Tl201),
+            202u64 => Ok(Self::Tl202),
+            203u64 => Ok(Self::Tl203),
+            204u64 => Ok(Self::Tl204),
+            205u64 => Ok(Self::Tl205),
+            206u64 => Ok(Self::Tl206),
+            207u64 => Ok(Self::Tl207),
+            208u64 => Ok(Self::Tl208),
+            209u64 => Ok(Self::Tl209),
+            210u64 => Ok(Self::Tl210),
+            211u64 => Ok(Self::Tl211),
+            212u64 => Ok(Self::Tl212),
+            213u64 => Ok(Self::Tl213),
+            214u64 => Ok(Self::Tl214),
+            215u64 => Ok(Self::Tl215),
+            216u64 => Ok(Self::Tl216),
+            217u64 => Ok(Self::Tl217),
+            218u64 => Ok(Self::Tl218),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Tl, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ThalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ThalliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            176u16 => Ok(Self::Tl176),
-            177u16 => Ok(Self::Tl177),
-            178u16 => Ok(Self::Tl178),
-            179u16 => Ok(Self::Tl179),
-            180u16 => Ok(Self::Tl180),
-            181u16 => Ok(Self::Tl181),
-            182u16 => Ok(Self::Tl182),
-            183u16 => Ok(Self::Tl183),
-            184u16 => Ok(Self::Tl184),
-            185u16 => Ok(Self::Tl185),
-            186u16 => Ok(Self::Tl186),
-            187u16 => Ok(Self::Tl187),
-            188u16 => Ok(Self::Tl188),
-            189u16 => Ok(Self::Tl189),
-            190u16 => Ok(Self::Tl190),
-            191u16 => Ok(Self::Tl191),
-            192u16 => Ok(Self::Tl192),
-            193u16 => Ok(Self::Tl193),
-            194u16 => Ok(Self::Tl194),
-            195u16 => Ok(Self::Tl195),
-            196u16 => Ok(Self::Tl196),
-            197u16 => Ok(Self::Tl197),
-            198u16 => Ok(Self::Tl198),
-            199u16 => Ok(Self::Tl199),
-            200u16 => Ok(Self::Tl200),
-            201u16 => Ok(Self::Tl201),
-            202u16 => Ok(Self::Tl202),
-            203u16 => Ok(Self::Tl203),
-            204u16 => Ok(Self::Tl204),
-            205u16 => Ok(Self::Tl205),
-            206u16 => Ok(Self::Tl206),
-            207u16 => Ok(Self::Tl207),
-            208u16 => Ok(Self::Tl208),
-            209u16 => Ok(Self::Tl209),
-            210u16 => Ok(Self::Tl210),
-            211u16 => Ok(Self::Tl211),
-            212u16 => Ok(Self::Tl212),
-            213u16 => Ok(Self::Tl213),
-            214u16 => Ok(Self::Tl214),
-            215u16 => Ok(Self::Tl215),
-            216u16 => Ok(Self::Tl216),
-            217u16 => Ok(Self::Tl217),
-            218u16 => Ok(Self::Tl218),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Tl, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ThalliumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ThalliumIsotope {
@@ -436,8 +454,8 @@ mod tests {
             let iso = ThalliumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ThalliumIsotope::try_from(0).is_err());
-        assert!(ThalliumIsotope::try_from(1000).is_err());
+        assert!(ThalliumIsotope::try_from(0_u16).is_err());
+        assert!(ThalliumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

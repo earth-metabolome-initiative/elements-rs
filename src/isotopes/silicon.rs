@@ -166,36 +166,54 @@ impl From<SiliconIsotope> for crate::Element {
         crate::Element::Si
     }
 }
+impl TryFrom<u64> for SiliconIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            22u64 => Ok(Self::Si22),
+            23u64 => Ok(Self::Si23),
+            24u64 => Ok(Self::Si24),
+            25u64 => Ok(Self::Si25),
+            26u64 => Ok(Self::Si26),
+            27u64 => Ok(Self::Si27),
+            28u64 => Ok(Self::Si28),
+            29u64 => Ok(Self::Si29),
+            30u64 => Ok(Self::Si30),
+            31u64 => Ok(Self::Si31),
+            32u64 => Ok(Self::Si32),
+            33u64 => Ok(Self::Si33),
+            34u64 => Ok(Self::Si34),
+            35u64 => Ok(Self::Si35),
+            36u64 => Ok(Self::Si36),
+            37u64 => Ok(Self::Si37),
+            38u64 => Ok(Self::Si38),
+            39u64 => Ok(Self::Si39),
+            40u64 => Ok(Self::Si40),
+            41u64 => Ok(Self::Si41),
+            42u64 => Ok(Self::Si42),
+            43u64 => Ok(Self::Si43),
+            44u64 => Ok(Self::Si44),
+            45u64 => Ok(Self::Si45),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Si, value)),
+        }
+    }
+}
+impl TryFrom<u8> for SiliconIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for SiliconIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            22u16 => Ok(Self::Si22),
-            23u16 => Ok(Self::Si23),
-            24u16 => Ok(Self::Si24),
-            25u16 => Ok(Self::Si25),
-            26u16 => Ok(Self::Si26),
-            27u16 => Ok(Self::Si27),
-            28u16 => Ok(Self::Si28),
-            29u16 => Ok(Self::Si29),
-            30u16 => Ok(Self::Si30),
-            31u16 => Ok(Self::Si31),
-            32u16 => Ok(Self::Si32),
-            33u16 => Ok(Self::Si33),
-            34u16 => Ok(Self::Si34),
-            35u16 => Ok(Self::Si35),
-            36u16 => Ok(Self::Si36),
-            37u16 => Ok(Self::Si37),
-            38u16 => Ok(Self::Si38),
-            39u16 => Ok(Self::Si39),
-            40u16 => Ok(Self::Si40),
-            41u16 => Ok(Self::Si41),
-            42u16 => Ok(Self::Si42),
-            43u16 => Ok(Self::Si43),
-            44u16 => Ok(Self::Si44),
-            45u16 => Ok(Self::Si45),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Si, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for SiliconIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for SiliconIsotope {
@@ -303,8 +321,8 @@ mod tests {
             let iso = SiliconIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(SiliconIsotope::try_from(0).is_err());
-        assert!(SiliconIsotope::try_from(1000).is_err());
+        assert!(SiliconIsotope::try_from(0_u16).is_err());
+        assert!(SiliconIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

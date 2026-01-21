@@ -246,52 +246,70 @@ impl From<RheniumIsotope> for crate::Element {
         crate::Element::Re
     }
 }
+impl TryFrom<u64> for RheniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            159u64 => Ok(Self::Re159),
+            160u64 => Ok(Self::Re160),
+            161u64 => Ok(Self::Re161),
+            162u64 => Ok(Self::Re162),
+            163u64 => Ok(Self::Re163),
+            164u64 => Ok(Self::Re164),
+            165u64 => Ok(Self::Re165),
+            166u64 => Ok(Self::Re166),
+            167u64 => Ok(Self::Re167),
+            168u64 => Ok(Self::Re168),
+            169u64 => Ok(Self::Re169),
+            170u64 => Ok(Self::Re170),
+            171u64 => Ok(Self::Re171),
+            172u64 => Ok(Self::Re172),
+            173u64 => Ok(Self::Re173),
+            174u64 => Ok(Self::Re174),
+            175u64 => Ok(Self::Re175),
+            176u64 => Ok(Self::Re176),
+            177u64 => Ok(Self::Re177),
+            178u64 => Ok(Self::Re178),
+            179u64 => Ok(Self::Re179),
+            180u64 => Ok(Self::Re180),
+            181u64 => Ok(Self::Re181),
+            182u64 => Ok(Self::Re182),
+            183u64 => Ok(Self::Re183),
+            184u64 => Ok(Self::Re184),
+            185u64 => Ok(Self::Re185),
+            186u64 => Ok(Self::Re186),
+            187u64 => Ok(Self::Re187),
+            188u64 => Ok(Self::Re188),
+            189u64 => Ok(Self::Re189),
+            190u64 => Ok(Self::Re190),
+            191u64 => Ok(Self::Re191),
+            192u64 => Ok(Self::Re192),
+            193u64 => Ok(Self::Re193),
+            194u64 => Ok(Self::Re194),
+            195u64 => Ok(Self::Re195),
+            196u64 => Ok(Self::Re196),
+            197u64 => Ok(Self::Re197),
+            198u64 => Ok(Self::Re198),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Re, value)),
+        }
+    }
+}
+impl TryFrom<u8> for RheniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for RheniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            159u16 => Ok(Self::Re159),
-            160u16 => Ok(Self::Re160),
-            161u16 => Ok(Self::Re161),
-            162u16 => Ok(Self::Re162),
-            163u16 => Ok(Self::Re163),
-            164u16 => Ok(Self::Re164),
-            165u16 => Ok(Self::Re165),
-            166u16 => Ok(Self::Re166),
-            167u16 => Ok(Self::Re167),
-            168u16 => Ok(Self::Re168),
-            169u16 => Ok(Self::Re169),
-            170u16 => Ok(Self::Re170),
-            171u16 => Ok(Self::Re171),
-            172u16 => Ok(Self::Re172),
-            173u16 => Ok(Self::Re173),
-            174u16 => Ok(Self::Re174),
-            175u16 => Ok(Self::Re175),
-            176u16 => Ok(Self::Re176),
-            177u16 => Ok(Self::Re177),
-            178u16 => Ok(Self::Re178),
-            179u16 => Ok(Self::Re179),
-            180u16 => Ok(Self::Re180),
-            181u16 => Ok(Self::Re181),
-            182u16 => Ok(Self::Re182),
-            183u16 => Ok(Self::Re183),
-            184u16 => Ok(Self::Re184),
-            185u16 => Ok(Self::Re185),
-            186u16 => Ok(Self::Re186),
-            187u16 => Ok(Self::Re187),
-            188u16 => Ok(Self::Re188),
-            189u16 => Ok(Self::Re189),
-            190u16 => Ok(Self::Re190),
-            191u16 => Ok(Self::Re191),
-            192u16 => Ok(Self::Re192),
-            193u16 => Ok(Self::Re193),
-            194u16 => Ok(Self::Re194),
-            195u16 => Ok(Self::Re195),
-            196u16 => Ok(Self::Re196),
-            197u16 => Ok(Self::Re197),
-            198u16 => Ok(Self::Re198),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Re, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for RheniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for RheniumIsotope {
@@ -415,8 +433,8 @@ mod tests {
             let iso = RheniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(RheniumIsotope::try_from(0).is_err());
-        assert!(RheniumIsotope::try_from(1000).is_err());
+        assert!(RheniumIsotope::try_from(0_u16).is_err());
+        assert!(RheniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -17,5 +17,5 @@ pub enum Error {
     CharacterIsotope(char),
     #[error("Unknown isotope for element {0:?} with atomic mass {1}")]
     /// The provided combination of Element and atomic mass is unknown.
-    Isotope(Element, u16),
+    Isotope(Element, u64),
 }

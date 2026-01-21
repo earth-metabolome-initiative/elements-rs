@@ -241,51 +241,69 @@ impl From<CeriumIsotope> for crate::Element {
         crate::Element::Ce
     }
 }
+impl TryFrom<u64> for CeriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            119u64 => Ok(Self::Ce119),
+            120u64 => Ok(Self::Ce120),
+            121u64 => Ok(Self::Ce121),
+            122u64 => Ok(Self::Ce122),
+            123u64 => Ok(Self::Ce123),
+            124u64 => Ok(Self::Ce124),
+            125u64 => Ok(Self::Ce125),
+            126u64 => Ok(Self::Ce126),
+            127u64 => Ok(Self::Ce127),
+            128u64 => Ok(Self::Ce128),
+            129u64 => Ok(Self::Ce129),
+            130u64 => Ok(Self::Ce130),
+            131u64 => Ok(Self::Ce131),
+            132u64 => Ok(Self::Ce132),
+            133u64 => Ok(Self::Ce133),
+            134u64 => Ok(Self::Ce134),
+            135u64 => Ok(Self::Ce135),
+            136u64 => Ok(Self::Ce136),
+            137u64 => Ok(Self::Ce137),
+            138u64 => Ok(Self::Ce138),
+            139u64 => Ok(Self::Ce139),
+            140u64 => Ok(Self::Ce140),
+            141u64 => Ok(Self::Ce141),
+            142u64 => Ok(Self::Ce142),
+            143u64 => Ok(Self::Ce143),
+            144u64 => Ok(Self::Ce144),
+            145u64 => Ok(Self::Ce145),
+            146u64 => Ok(Self::Ce146),
+            147u64 => Ok(Self::Ce147),
+            148u64 => Ok(Self::Ce148),
+            149u64 => Ok(Self::Ce149),
+            150u64 => Ok(Self::Ce150),
+            151u64 => Ok(Self::Ce151),
+            152u64 => Ok(Self::Ce152),
+            153u64 => Ok(Self::Ce153),
+            154u64 => Ok(Self::Ce154),
+            155u64 => Ok(Self::Ce155),
+            156u64 => Ok(Self::Ce156),
+            157u64 => Ok(Self::Ce157),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ce, value)),
+        }
+    }
+}
+impl TryFrom<u8> for CeriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for CeriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            119u16 => Ok(Self::Ce119),
-            120u16 => Ok(Self::Ce120),
-            121u16 => Ok(Self::Ce121),
-            122u16 => Ok(Self::Ce122),
-            123u16 => Ok(Self::Ce123),
-            124u16 => Ok(Self::Ce124),
-            125u16 => Ok(Self::Ce125),
-            126u16 => Ok(Self::Ce126),
-            127u16 => Ok(Self::Ce127),
-            128u16 => Ok(Self::Ce128),
-            129u16 => Ok(Self::Ce129),
-            130u16 => Ok(Self::Ce130),
-            131u16 => Ok(Self::Ce131),
-            132u16 => Ok(Self::Ce132),
-            133u16 => Ok(Self::Ce133),
-            134u16 => Ok(Self::Ce134),
-            135u16 => Ok(Self::Ce135),
-            136u16 => Ok(Self::Ce136),
-            137u16 => Ok(Self::Ce137),
-            138u16 => Ok(Self::Ce138),
-            139u16 => Ok(Self::Ce139),
-            140u16 => Ok(Self::Ce140),
-            141u16 => Ok(Self::Ce141),
-            142u16 => Ok(Self::Ce142),
-            143u16 => Ok(Self::Ce143),
-            144u16 => Ok(Self::Ce144),
-            145u16 => Ok(Self::Ce145),
-            146u16 => Ok(Self::Ce146),
-            147u16 => Ok(Self::Ce147),
-            148u16 => Ok(Self::Ce148),
-            149u16 => Ok(Self::Ce149),
-            150u16 => Ok(Self::Ce150),
-            151u16 => Ok(Self::Ce151),
-            152u16 => Ok(Self::Ce152),
-            153u16 => Ok(Self::Ce153),
-            154u16 => Ok(Self::Ce154),
-            155u16 => Ok(Self::Ce155),
-            156u16 => Ok(Self::Ce156),
-            157u16 => Ok(Self::Ce157),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ce, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for CeriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for CeriumIsotope {
@@ -408,8 +426,8 @@ mod tests {
             let iso = CeriumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(CeriumIsotope::try_from(0).is_err());
-        assert!(CeriumIsotope::try_from(1000).is_err());
+        assert!(CeriumIsotope::try_from(0_u16).is_err());
+        assert!(CeriumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

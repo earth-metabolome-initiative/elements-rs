@@ -136,30 +136,48 @@ impl From<FluorineIsotope> for crate::Element {
         crate::Element::F
     }
 }
+impl TryFrom<u64> for FluorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            14u64 => Ok(Self::F14),
+            15u64 => Ok(Self::F15),
+            16u64 => Ok(Self::F16),
+            17u64 => Ok(Self::F17),
+            18u64 => Ok(Self::F18),
+            19u64 => Ok(Self::F19),
+            20u64 => Ok(Self::F20),
+            21u64 => Ok(Self::F21),
+            22u64 => Ok(Self::F22),
+            23u64 => Ok(Self::F23),
+            24u64 => Ok(Self::F24),
+            25u64 => Ok(Self::F25),
+            26u64 => Ok(Self::F26),
+            27u64 => Ok(Self::F27),
+            28u64 => Ok(Self::F28),
+            29u64 => Ok(Self::F29),
+            30u64 => Ok(Self::F30),
+            31u64 => Ok(Self::F31),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::F, value)),
+        }
+    }
+}
+impl TryFrom<u8> for FluorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for FluorineIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            14u16 => Ok(Self::F14),
-            15u16 => Ok(Self::F15),
-            16u16 => Ok(Self::F16),
-            17u16 => Ok(Self::F17),
-            18u16 => Ok(Self::F18),
-            19u16 => Ok(Self::F19),
-            20u16 => Ok(Self::F20),
-            21u16 => Ok(Self::F21),
-            22u16 => Ok(Self::F22),
-            23u16 => Ok(Self::F23),
-            24u16 => Ok(Self::F24),
-            25u16 => Ok(Self::F25),
-            26u16 => Ok(Self::F26),
-            27u16 => Ok(Self::F27),
-            28u16 => Ok(Self::F28),
-            29u16 => Ok(Self::F29),
-            30u16 => Ok(Self::F30),
-            31u16 => Ok(Self::F31),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::F, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for FluorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for FluorineIsotope {
@@ -261,8 +279,8 @@ mod tests {
             let iso = FluorineIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(FluorineIsotope::try_from(0).is_err());
-        assert!(FluorineIsotope::try_from(1000).is_err());
+        assert!(FluorineIsotope::try_from(0_u16).is_err());
+        assert!(FluorineIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

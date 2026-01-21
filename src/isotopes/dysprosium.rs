@@ -226,48 +226,66 @@ impl From<DysprosiumIsotope> for crate::Element {
         crate::Element::Dy
     }
 }
+impl TryFrom<u64> for DysprosiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            138u64 => Ok(Self::Dy138),
+            139u64 => Ok(Self::Dy139),
+            140u64 => Ok(Self::Dy140),
+            141u64 => Ok(Self::Dy141),
+            142u64 => Ok(Self::Dy142),
+            143u64 => Ok(Self::Dy143),
+            144u64 => Ok(Self::Dy144),
+            145u64 => Ok(Self::Dy145),
+            146u64 => Ok(Self::Dy146),
+            147u64 => Ok(Self::Dy147),
+            148u64 => Ok(Self::Dy148),
+            149u64 => Ok(Self::Dy149),
+            150u64 => Ok(Self::Dy150),
+            151u64 => Ok(Self::Dy151),
+            152u64 => Ok(Self::Dy152),
+            153u64 => Ok(Self::Dy153),
+            154u64 => Ok(Self::Dy154),
+            155u64 => Ok(Self::Dy155),
+            156u64 => Ok(Self::Dy156),
+            157u64 => Ok(Self::Dy157),
+            158u64 => Ok(Self::Dy158),
+            159u64 => Ok(Self::Dy159),
+            160u64 => Ok(Self::Dy160),
+            161u64 => Ok(Self::Dy161),
+            162u64 => Ok(Self::Dy162),
+            163u64 => Ok(Self::Dy163),
+            164u64 => Ok(Self::Dy164),
+            165u64 => Ok(Self::Dy165),
+            166u64 => Ok(Self::Dy166),
+            167u64 => Ok(Self::Dy167),
+            168u64 => Ok(Self::Dy168),
+            169u64 => Ok(Self::Dy169),
+            170u64 => Ok(Self::Dy170),
+            171u64 => Ok(Self::Dy171),
+            172u64 => Ok(Self::Dy172),
+            173u64 => Ok(Self::Dy173),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Dy, value)),
+        }
+    }
+}
+impl TryFrom<u8> for DysprosiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for DysprosiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            138u16 => Ok(Self::Dy138),
-            139u16 => Ok(Self::Dy139),
-            140u16 => Ok(Self::Dy140),
-            141u16 => Ok(Self::Dy141),
-            142u16 => Ok(Self::Dy142),
-            143u16 => Ok(Self::Dy143),
-            144u16 => Ok(Self::Dy144),
-            145u16 => Ok(Self::Dy145),
-            146u16 => Ok(Self::Dy146),
-            147u16 => Ok(Self::Dy147),
-            148u16 => Ok(Self::Dy148),
-            149u16 => Ok(Self::Dy149),
-            150u16 => Ok(Self::Dy150),
-            151u16 => Ok(Self::Dy151),
-            152u16 => Ok(Self::Dy152),
-            153u16 => Ok(Self::Dy153),
-            154u16 => Ok(Self::Dy154),
-            155u16 => Ok(Self::Dy155),
-            156u16 => Ok(Self::Dy156),
-            157u16 => Ok(Self::Dy157),
-            158u16 => Ok(Self::Dy158),
-            159u16 => Ok(Self::Dy159),
-            160u16 => Ok(Self::Dy160),
-            161u16 => Ok(Self::Dy161),
-            162u16 => Ok(Self::Dy162),
-            163u16 => Ok(Self::Dy163),
-            164u16 => Ok(Self::Dy164),
-            165u16 => Ok(Self::Dy165),
-            166u16 => Ok(Self::Dy166),
-            167u16 => Ok(Self::Dy167),
-            168u16 => Ok(Self::Dy168),
-            169u16 => Ok(Self::Dy169),
-            170u16 => Ok(Self::Dy170),
-            171u16 => Ok(Self::Dy171),
-            172u16 => Ok(Self::Dy172),
-            173u16 => Ok(Self::Dy173),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Dy, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for DysprosiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for DysprosiumIsotope {
@@ -387,8 +405,8 @@ mod tests {
             let iso = DysprosiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(DysprosiumIsotope::try_from(0).is_err());
-        assert!(DysprosiumIsotope::try_from(1000).is_err());
+        assert!(DysprosiumIsotope::try_from(0_u16).is_err());
+        assert!(DysprosiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

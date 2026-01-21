@@ -213,54 +213,72 @@ impl From<PoloniumIsotope> for crate::Element {
         crate::Element::Po
     }
 }
+impl TryFrom<u64> for PoloniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            186u64 => Ok(Self::Po186),
+            187u64 => Ok(Self::Po187),
+            188u64 => Ok(Self::Po188),
+            189u64 => Ok(Self::Po189),
+            190u64 => Ok(Self::Po190),
+            191u64 => Ok(Self::Po191),
+            192u64 => Ok(Self::Po192),
+            193u64 => Ok(Self::Po193),
+            194u64 => Ok(Self::Po194),
+            195u64 => Ok(Self::Po195),
+            196u64 => Ok(Self::Po196),
+            197u64 => Ok(Self::Po197),
+            198u64 => Ok(Self::Po198),
+            199u64 => Ok(Self::Po199),
+            200u64 => Ok(Self::Po200),
+            201u64 => Ok(Self::Po201),
+            202u64 => Ok(Self::Po202),
+            203u64 => Ok(Self::Po203),
+            204u64 => Ok(Self::Po204),
+            205u64 => Ok(Self::Po205),
+            206u64 => Ok(Self::Po206),
+            207u64 => Ok(Self::Po207),
+            208u64 => Ok(Self::Po208),
+            209u64 => Ok(Self::Po209),
+            210u64 => Ok(Self::Po210),
+            211u64 => Ok(Self::Po211),
+            212u64 => Ok(Self::Po212),
+            213u64 => Ok(Self::Po213),
+            214u64 => Ok(Self::Po214),
+            215u64 => Ok(Self::Po215),
+            216u64 => Ok(Self::Po216),
+            217u64 => Ok(Self::Po217),
+            218u64 => Ok(Self::Po218),
+            219u64 => Ok(Self::Po219),
+            220u64 => Ok(Self::Po220),
+            221u64 => Ok(Self::Po221),
+            222u64 => Ok(Self::Po222),
+            223u64 => Ok(Self::Po223),
+            224u64 => Ok(Self::Po224),
+            225u64 => Ok(Self::Po225),
+            226u64 => Ok(Self::Po226),
+            227u64 => Ok(Self::Po227),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Po, value)),
+        }
+    }
+}
+impl TryFrom<u8> for PoloniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for PoloniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            186u16 => Ok(Self::Po186),
-            187u16 => Ok(Self::Po187),
-            188u16 => Ok(Self::Po188),
-            189u16 => Ok(Self::Po189),
-            190u16 => Ok(Self::Po190),
-            191u16 => Ok(Self::Po191),
-            192u16 => Ok(Self::Po192),
-            193u16 => Ok(Self::Po193),
-            194u16 => Ok(Self::Po194),
-            195u16 => Ok(Self::Po195),
-            196u16 => Ok(Self::Po196),
-            197u16 => Ok(Self::Po197),
-            198u16 => Ok(Self::Po198),
-            199u16 => Ok(Self::Po199),
-            200u16 => Ok(Self::Po200),
-            201u16 => Ok(Self::Po201),
-            202u16 => Ok(Self::Po202),
-            203u16 => Ok(Self::Po203),
-            204u16 => Ok(Self::Po204),
-            205u16 => Ok(Self::Po205),
-            206u16 => Ok(Self::Po206),
-            207u16 => Ok(Self::Po207),
-            208u16 => Ok(Self::Po208),
-            209u16 => Ok(Self::Po209),
-            210u16 => Ok(Self::Po210),
-            211u16 => Ok(Self::Po211),
-            212u16 => Ok(Self::Po212),
-            213u16 => Ok(Self::Po213),
-            214u16 => Ok(Self::Po214),
-            215u16 => Ok(Self::Po215),
-            216u16 => Ok(Self::Po216),
-            217u16 => Ok(Self::Po217),
-            218u16 => Ok(Self::Po218),
-            219u16 => Ok(Self::Po219),
-            220u16 => Ok(Self::Po220),
-            221u16 => Ok(Self::Po221),
-            222u16 => Ok(Self::Po222),
-            223u16 => Ok(Self::Po223),
-            224u16 => Ok(Self::Po224),
-            225u16 => Ok(Self::Po225),
-            226u16 => Ok(Self::Po226),
-            227u16 => Ok(Self::Po227),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Po, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for PoloniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for PoloniumIsotope {
@@ -386,8 +404,8 @@ mod tests {
             let iso = PoloniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(PoloniumIsotope::try_from(0).is_err());
-        assert!(PoloniumIsotope::try_from(1000).is_err());
+        assert!(PoloniumIsotope::try_from(0_u16).is_err());
+        assert!(PoloniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

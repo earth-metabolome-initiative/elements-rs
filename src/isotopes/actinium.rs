@@ -173,44 +173,62 @@ impl From<ActiniumIsotope> for crate::Element {
         crate::Element::Ac
     }
 }
+impl TryFrom<u64> for ActiniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            206u64 => Ok(Self::Ac206),
+            207u64 => Ok(Self::Ac207),
+            208u64 => Ok(Self::Ac208),
+            209u64 => Ok(Self::Ac209),
+            210u64 => Ok(Self::Ac210),
+            211u64 => Ok(Self::Ac211),
+            212u64 => Ok(Self::Ac212),
+            213u64 => Ok(Self::Ac213),
+            214u64 => Ok(Self::Ac214),
+            215u64 => Ok(Self::Ac215),
+            216u64 => Ok(Self::Ac216),
+            217u64 => Ok(Self::Ac217),
+            218u64 => Ok(Self::Ac218),
+            219u64 => Ok(Self::Ac219),
+            220u64 => Ok(Self::Ac220),
+            221u64 => Ok(Self::Ac221),
+            222u64 => Ok(Self::Ac222),
+            223u64 => Ok(Self::Ac223),
+            224u64 => Ok(Self::Ac224),
+            225u64 => Ok(Self::Ac225),
+            226u64 => Ok(Self::Ac226),
+            227u64 => Ok(Self::Ac227),
+            228u64 => Ok(Self::Ac228),
+            229u64 => Ok(Self::Ac229),
+            230u64 => Ok(Self::Ac230),
+            231u64 => Ok(Self::Ac231),
+            232u64 => Ok(Self::Ac232),
+            233u64 => Ok(Self::Ac233),
+            234u64 => Ok(Self::Ac234),
+            235u64 => Ok(Self::Ac235),
+            236u64 => Ok(Self::Ac236),
+            237u64 => Ok(Self::Ac237),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ac, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ActiniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ActiniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            206u16 => Ok(Self::Ac206),
-            207u16 => Ok(Self::Ac207),
-            208u16 => Ok(Self::Ac208),
-            209u16 => Ok(Self::Ac209),
-            210u16 => Ok(Self::Ac210),
-            211u16 => Ok(Self::Ac211),
-            212u16 => Ok(Self::Ac212),
-            213u16 => Ok(Self::Ac213),
-            214u16 => Ok(Self::Ac214),
-            215u16 => Ok(Self::Ac215),
-            216u16 => Ok(Self::Ac216),
-            217u16 => Ok(Self::Ac217),
-            218u16 => Ok(Self::Ac218),
-            219u16 => Ok(Self::Ac219),
-            220u16 => Ok(Self::Ac220),
-            221u16 => Ok(Self::Ac221),
-            222u16 => Ok(Self::Ac222),
-            223u16 => Ok(Self::Ac223),
-            224u16 => Ok(Self::Ac224),
-            225u16 => Ok(Self::Ac225),
-            226u16 => Ok(Self::Ac226),
-            227u16 => Ok(Self::Ac227),
-            228u16 => Ok(Self::Ac228),
-            229u16 => Ok(Self::Ac229),
-            230u16 => Ok(Self::Ac230),
-            231u16 => Ok(Self::Ac231),
-            232u16 => Ok(Self::Ac232),
-            233u16 => Ok(Self::Ac233),
-            234u16 => Ok(Self::Ac234),
-            235u16 => Ok(Self::Ac235),
-            236u16 => Ok(Self::Ac236),
-            237u16 => Ok(Self::Ac237),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ac, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ActiniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ActiniumIsotope {
@@ -326,8 +344,8 @@ mod tests {
             let iso = ActiniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ActiniumIsotope::try_from(0).is_err());
-        assert!(ActiniumIsotope::try_from(1000).is_err());
+        assert!(ActiniumIsotope::try_from(0_u16).is_err());
+        assert!(ActiniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

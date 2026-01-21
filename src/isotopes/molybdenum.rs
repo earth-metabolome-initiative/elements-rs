@@ -221,47 +221,65 @@ impl From<MolybdenumIsotope> for crate::Element {
         crate::Element::Mo
     }
 }
+impl TryFrom<u64> for MolybdenumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            83u64 => Ok(Self::Mo83),
+            84u64 => Ok(Self::Mo84),
+            85u64 => Ok(Self::Mo85),
+            86u64 => Ok(Self::Mo86),
+            87u64 => Ok(Self::Mo87),
+            88u64 => Ok(Self::Mo88),
+            89u64 => Ok(Self::Mo89),
+            90u64 => Ok(Self::Mo90),
+            91u64 => Ok(Self::Mo91),
+            92u64 => Ok(Self::Mo92),
+            93u64 => Ok(Self::Mo93),
+            94u64 => Ok(Self::Mo94),
+            95u64 => Ok(Self::Mo95),
+            96u64 => Ok(Self::Mo96),
+            97u64 => Ok(Self::Mo97),
+            98u64 => Ok(Self::Mo98),
+            99u64 => Ok(Self::Mo99),
+            100u64 => Ok(Self::Mo100),
+            101u64 => Ok(Self::Mo101),
+            102u64 => Ok(Self::Mo102),
+            103u64 => Ok(Self::Mo103),
+            104u64 => Ok(Self::Mo104),
+            105u64 => Ok(Self::Mo105),
+            106u64 => Ok(Self::Mo106),
+            107u64 => Ok(Self::Mo107),
+            108u64 => Ok(Self::Mo108),
+            109u64 => Ok(Self::Mo109),
+            110u64 => Ok(Self::Mo110),
+            111u64 => Ok(Self::Mo111),
+            112u64 => Ok(Self::Mo112),
+            113u64 => Ok(Self::Mo113),
+            114u64 => Ok(Self::Mo114),
+            115u64 => Ok(Self::Mo115),
+            116u64 => Ok(Self::Mo116),
+            117u64 => Ok(Self::Mo117),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Mo, value)),
+        }
+    }
+}
+impl TryFrom<u8> for MolybdenumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for MolybdenumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            83u16 => Ok(Self::Mo83),
-            84u16 => Ok(Self::Mo84),
-            85u16 => Ok(Self::Mo85),
-            86u16 => Ok(Self::Mo86),
-            87u16 => Ok(Self::Mo87),
-            88u16 => Ok(Self::Mo88),
-            89u16 => Ok(Self::Mo89),
-            90u16 => Ok(Self::Mo90),
-            91u16 => Ok(Self::Mo91),
-            92u16 => Ok(Self::Mo92),
-            93u16 => Ok(Self::Mo93),
-            94u16 => Ok(Self::Mo94),
-            95u16 => Ok(Self::Mo95),
-            96u16 => Ok(Self::Mo96),
-            97u16 => Ok(Self::Mo97),
-            98u16 => Ok(Self::Mo98),
-            99u16 => Ok(Self::Mo99),
-            100u16 => Ok(Self::Mo100),
-            101u16 => Ok(Self::Mo101),
-            102u16 => Ok(Self::Mo102),
-            103u16 => Ok(Self::Mo103),
-            104u16 => Ok(Self::Mo104),
-            105u16 => Ok(Self::Mo105),
-            106u16 => Ok(Self::Mo106),
-            107u16 => Ok(Self::Mo107),
-            108u16 => Ok(Self::Mo108),
-            109u16 => Ok(Self::Mo109),
-            110u16 => Ok(Self::Mo110),
-            111u16 => Ok(Self::Mo111),
-            112u16 => Ok(Self::Mo112),
-            113u16 => Ok(Self::Mo113),
-            114u16 => Ok(Self::Mo114),
-            115u16 => Ok(Self::Mo115),
-            116u16 => Ok(Self::Mo116),
-            117u16 => Ok(Self::Mo117),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Mo, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for MolybdenumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for MolybdenumIsotope {
@@ -380,8 +398,8 @@ mod tests {
             let iso = MolybdenumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(MolybdenumIsotope::try_from(0).is_err());
-        assert!(MolybdenumIsotope::try_from(1000).is_err());
+        assert!(MolybdenumIsotope::try_from(0_u16).is_err());
+        assert!(MolybdenumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

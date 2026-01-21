@@ -85,22 +85,40 @@ impl From<CoperniciumIsotope> for crate::Element {
         crate::Element::Cn
     }
 }
+impl TryFrom<u64> for CoperniciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            276u64 => Ok(Self::Cn276),
+            277u64 => Ok(Self::Cn277),
+            278u64 => Ok(Self::Cn278),
+            279u64 => Ok(Self::Cn279),
+            280u64 => Ok(Self::Cn280),
+            281u64 => Ok(Self::Cn281),
+            282u64 => Ok(Self::Cn282),
+            283u64 => Ok(Self::Cn283),
+            284u64 => Ok(Self::Cn284),
+            285u64 => Ok(Self::Cn285),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Cn, value)),
+        }
+    }
+}
+impl TryFrom<u8> for CoperniciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for CoperniciumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            276u16 => Ok(Self::Cn276),
-            277u16 => Ok(Self::Cn277),
-            278u16 => Ok(Self::Cn278),
-            279u16 => Ok(Self::Cn279),
-            280u16 => Ok(Self::Cn280),
-            281u16 => Ok(Self::Cn281),
-            282u16 => Ok(Self::Cn282),
-            283u16 => Ok(Self::Cn283),
-            284u16 => Ok(Self::Cn284),
-            285u16 => Ok(Self::Cn285),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Cn, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for CoperniciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for CoperniciumIsotope {
@@ -194,8 +212,8 @@ mod tests {
             let iso = CoperniciumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(CoperniciumIsotope::try_from(0).is_err());
-        assert!(CoperniciumIsotope::try_from(1000).is_err());
+        assert!(CoperniciumIsotope::try_from(0_u16).is_err());
+        assert!(CoperniciumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -216,46 +216,64 @@ impl From<YttriumIsotope> for crate::Element {
         crate::Element::Y
     }
 }
+impl TryFrom<u64> for YttriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            76u64 => Ok(Self::Y76),
+            77u64 => Ok(Self::Y77),
+            78u64 => Ok(Self::Y78),
+            79u64 => Ok(Self::Y79),
+            80u64 => Ok(Self::Y80),
+            81u64 => Ok(Self::Y81),
+            82u64 => Ok(Self::Y82),
+            83u64 => Ok(Self::Y83),
+            84u64 => Ok(Self::Y84),
+            85u64 => Ok(Self::Y85),
+            86u64 => Ok(Self::Y86),
+            87u64 => Ok(Self::Y87),
+            88u64 => Ok(Self::Y88),
+            89u64 => Ok(Self::Y89),
+            90u64 => Ok(Self::Y90),
+            91u64 => Ok(Self::Y91),
+            92u64 => Ok(Self::Y92),
+            93u64 => Ok(Self::Y93),
+            94u64 => Ok(Self::Y94),
+            95u64 => Ok(Self::Y95),
+            96u64 => Ok(Self::Y96),
+            97u64 => Ok(Self::Y97),
+            98u64 => Ok(Self::Y98),
+            99u64 => Ok(Self::Y99),
+            100u64 => Ok(Self::Y100),
+            101u64 => Ok(Self::Y101),
+            102u64 => Ok(Self::Y102),
+            103u64 => Ok(Self::Y103),
+            104u64 => Ok(Self::Y104),
+            105u64 => Ok(Self::Y105),
+            106u64 => Ok(Self::Y106),
+            107u64 => Ok(Self::Y107),
+            108u64 => Ok(Self::Y108),
+            109u64 => Ok(Self::Y109),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Y, value)),
+        }
+    }
+}
+impl TryFrom<u8> for YttriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for YttriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            76u16 => Ok(Self::Y76),
-            77u16 => Ok(Self::Y77),
-            78u16 => Ok(Self::Y78),
-            79u16 => Ok(Self::Y79),
-            80u16 => Ok(Self::Y80),
-            81u16 => Ok(Self::Y81),
-            82u16 => Ok(Self::Y82),
-            83u16 => Ok(Self::Y83),
-            84u16 => Ok(Self::Y84),
-            85u16 => Ok(Self::Y85),
-            86u16 => Ok(Self::Y86),
-            87u16 => Ok(Self::Y87),
-            88u16 => Ok(Self::Y88),
-            89u16 => Ok(Self::Y89),
-            90u16 => Ok(Self::Y90),
-            91u16 => Ok(Self::Y91),
-            92u16 => Ok(Self::Y92),
-            93u16 => Ok(Self::Y93),
-            94u16 => Ok(Self::Y94),
-            95u16 => Ok(Self::Y95),
-            96u16 => Ok(Self::Y96),
-            97u16 => Ok(Self::Y97),
-            98u16 => Ok(Self::Y98),
-            99u16 => Ok(Self::Y99),
-            100u16 => Ok(Self::Y100),
-            101u16 => Ok(Self::Y101),
-            102u16 => Ok(Self::Y102),
-            103u16 => Ok(Self::Y103),
-            104u16 => Ok(Self::Y104),
-            105u16 => Ok(Self::Y105),
-            106u16 => Ok(Self::Y106),
-            107u16 => Ok(Self::Y107),
-            108u16 => Ok(Self::Y108),
-            109u16 => Ok(Self::Y109),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Y, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for YttriumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for YttriumIsotope {
@@ -373,8 +391,8 @@ mod tests {
             let iso = YttriumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(YttriumIsotope::try_from(0).is_err());
-        assert!(YttriumIsotope::try_from(1000).is_err());
+        assert!(YttriumIsotope::try_from(0_u16).is_err());
+        assert!(YttriumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

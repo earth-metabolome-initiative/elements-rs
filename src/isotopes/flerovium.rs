@@ -65,17 +65,35 @@ impl From<FleroviumIsotope> for crate::Element {
         crate::Element::Fl
     }
 }
+impl TryFrom<u64> for FleroviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            285u64 => Ok(Self::Fl285),
+            286u64 => Ok(Self::Fl286),
+            287u64 => Ok(Self::Fl287),
+            288u64 => Ok(Self::Fl288),
+            289u64 => Ok(Self::Fl289),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Fl, value)),
+        }
+    }
+}
+impl TryFrom<u8> for FleroviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for FleroviumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            285u16 => Ok(Self::Fl285),
-            286u16 => Ok(Self::Fl286),
-            287u16 => Ok(Self::Fl287),
-            288u16 => Ok(Self::Fl288),
-            289u16 => Ok(Self::Fl289),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Fl, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for FleroviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for FleroviumIsotope {
@@ -164,8 +182,8 @@ mod tests {
             let iso = FleroviumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(FleroviumIsotope::try_from(0).is_err());
-        assert!(FleroviumIsotope::try_from(1000).is_err());
+        assert!(FleroviumIsotope::try_from(0_u16).is_err());
+        assert!(FleroviumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

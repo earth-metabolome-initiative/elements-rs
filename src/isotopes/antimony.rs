@@ -236,50 +236,68 @@ impl From<AntimonyIsotope> for crate::Element {
         crate::Element::Sb
     }
 }
+impl TryFrom<u64> for AntimonyIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            103u64 => Ok(Self::Sb103),
+            104u64 => Ok(Self::Sb104),
+            105u64 => Ok(Self::Sb105),
+            106u64 => Ok(Self::Sb106),
+            107u64 => Ok(Self::Sb107),
+            108u64 => Ok(Self::Sb108),
+            109u64 => Ok(Self::Sb109),
+            110u64 => Ok(Self::Sb110),
+            111u64 => Ok(Self::Sb111),
+            112u64 => Ok(Self::Sb112),
+            113u64 => Ok(Self::Sb113),
+            114u64 => Ok(Self::Sb114),
+            115u64 => Ok(Self::Sb115),
+            116u64 => Ok(Self::Sb116),
+            117u64 => Ok(Self::Sb117),
+            118u64 => Ok(Self::Sb118),
+            119u64 => Ok(Self::Sb119),
+            120u64 => Ok(Self::Sb120),
+            121u64 => Ok(Self::Sb121),
+            122u64 => Ok(Self::Sb122),
+            123u64 => Ok(Self::Sb123),
+            124u64 => Ok(Self::Sb124),
+            125u64 => Ok(Self::Sb125),
+            126u64 => Ok(Self::Sb126),
+            127u64 => Ok(Self::Sb127),
+            128u64 => Ok(Self::Sb128),
+            129u64 => Ok(Self::Sb129),
+            130u64 => Ok(Self::Sb130),
+            131u64 => Ok(Self::Sb131),
+            132u64 => Ok(Self::Sb132),
+            133u64 => Ok(Self::Sb133),
+            134u64 => Ok(Self::Sb134),
+            135u64 => Ok(Self::Sb135),
+            136u64 => Ok(Self::Sb136),
+            137u64 => Ok(Self::Sb137),
+            138u64 => Ok(Self::Sb138),
+            139u64 => Ok(Self::Sb139),
+            140u64 => Ok(Self::Sb140),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Sb, value)),
+        }
+    }
+}
+impl TryFrom<u8> for AntimonyIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for AntimonyIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            103u16 => Ok(Self::Sb103),
-            104u16 => Ok(Self::Sb104),
-            105u16 => Ok(Self::Sb105),
-            106u16 => Ok(Self::Sb106),
-            107u16 => Ok(Self::Sb107),
-            108u16 => Ok(Self::Sb108),
-            109u16 => Ok(Self::Sb109),
-            110u16 => Ok(Self::Sb110),
-            111u16 => Ok(Self::Sb111),
-            112u16 => Ok(Self::Sb112),
-            113u16 => Ok(Self::Sb113),
-            114u16 => Ok(Self::Sb114),
-            115u16 => Ok(Self::Sb115),
-            116u16 => Ok(Self::Sb116),
-            117u16 => Ok(Self::Sb117),
-            118u16 => Ok(Self::Sb118),
-            119u16 => Ok(Self::Sb119),
-            120u16 => Ok(Self::Sb120),
-            121u16 => Ok(Self::Sb121),
-            122u16 => Ok(Self::Sb122),
-            123u16 => Ok(Self::Sb123),
-            124u16 => Ok(Self::Sb124),
-            125u16 => Ok(Self::Sb125),
-            126u16 => Ok(Self::Sb126),
-            127u16 => Ok(Self::Sb127),
-            128u16 => Ok(Self::Sb128),
-            129u16 => Ok(Self::Sb129),
-            130u16 => Ok(Self::Sb130),
-            131u16 => Ok(Self::Sb131),
-            132u16 => Ok(Self::Sb132),
-            133u16 => Ok(Self::Sb133),
-            134u16 => Ok(Self::Sb134),
-            135u16 => Ok(Self::Sb135),
-            136u16 => Ok(Self::Sb136),
-            137u16 => Ok(Self::Sb137),
-            138u16 => Ok(Self::Sb138),
-            139u16 => Ok(Self::Sb139),
-            140u16 => Ok(Self::Sb140),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Sb, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for AntimonyIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for AntimonyIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = AntimonyIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(AntimonyIsotope::try_from(0).is_err());
-        assert!(AntimonyIsotope::try_from(1000).is_err());
+        assert!(AntimonyIsotope::try_from(0_u16).is_err());
+        assert!(AntimonyIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

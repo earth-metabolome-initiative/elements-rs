@@ -105,27 +105,45 @@ impl From<DarmstadtiumIsotope> for crate::Element {
         crate::Element::Ds
     }
 }
+impl TryFrom<u64> for DarmstadtiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            267u64 => Ok(Self::Ds267),
+            268u64 => Ok(Self::Ds268),
+            269u64 => Ok(Self::Ds269),
+            270u64 => Ok(Self::Ds270),
+            271u64 => Ok(Self::Ds271),
+            272u64 => Ok(Self::Ds272),
+            273u64 => Ok(Self::Ds273),
+            274u64 => Ok(Self::Ds274),
+            275u64 => Ok(Self::Ds275),
+            276u64 => Ok(Self::Ds276),
+            277u64 => Ok(Self::Ds277),
+            278u64 => Ok(Self::Ds278),
+            279u64 => Ok(Self::Ds279),
+            280u64 => Ok(Self::Ds280),
+            281u64 => Ok(Self::Ds281),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ds, value)),
+        }
+    }
+}
+impl TryFrom<u8> for DarmstadtiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for DarmstadtiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            267u16 => Ok(Self::Ds267),
-            268u16 => Ok(Self::Ds268),
-            269u16 => Ok(Self::Ds269),
-            270u16 => Ok(Self::Ds270),
-            271u16 => Ok(Self::Ds271),
-            272u16 => Ok(Self::Ds272),
-            273u16 => Ok(Self::Ds273),
-            274u16 => Ok(Self::Ds274),
-            275u16 => Ok(Self::Ds275),
-            276u16 => Ok(Self::Ds276),
-            277u16 => Ok(Self::Ds277),
-            278u16 => Ok(Self::Ds278),
-            279u16 => Ok(Self::Ds279),
-            280u16 => Ok(Self::Ds280),
-            281u16 => Ok(Self::Ds281),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ds, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for DarmstadtiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for DarmstadtiumIsotope {
@@ -224,8 +242,8 @@ mod tests {
             let iso = DarmstadtiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(DarmstadtiumIsotope::try_from(0).is_err());
-        assert!(DarmstadtiumIsotope::try_from(1000).is_err());
+        assert!(DarmstadtiumIsotope::try_from(0_u16).is_err());
+        assert!(DarmstadtiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

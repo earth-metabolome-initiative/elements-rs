@@ -166,36 +166,54 @@ impl From<PhosphorusIsotope> for crate::Element {
         crate::Element::P
     }
 }
+impl TryFrom<u64> for PhosphorusIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            24u64 => Ok(Self::P24),
+            25u64 => Ok(Self::P25),
+            26u64 => Ok(Self::P26),
+            27u64 => Ok(Self::P27),
+            28u64 => Ok(Self::P28),
+            29u64 => Ok(Self::P29),
+            30u64 => Ok(Self::P30),
+            31u64 => Ok(Self::P31),
+            32u64 => Ok(Self::P32),
+            33u64 => Ok(Self::P33),
+            34u64 => Ok(Self::P34),
+            35u64 => Ok(Self::P35),
+            36u64 => Ok(Self::P36),
+            37u64 => Ok(Self::P37),
+            38u64 => Ok(Self::P38),
+            39u64 => Ok(Self::P39),
+            40u64 => Ok(Self::P40),
+            41u64 => Ok(Self::P41),
+            42u64 => Ok(Self::P42),
+            43u64 => Ok(Self::P43),
+            44u64 => Ok(Self::P44),
+            45u64 => Ok(Self::P45),
+            46u64 => Ok(Self::P46),
+            47u64 => Ok(Self::P47),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::P, value)),
+        }
+    }
+}
+impl TryFrom<u8> for PhosphorusIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for PhosphorusIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            24u16 => Ok(Self::P24),
-            25u16 => Ok(Self::P25),
-            26u16 => Ok(Self::P26),
-            27u16 => Ok(Self::P27),
-            28u16 => Ok(Self::P28),
-            29u16 => Ok(Self::P29),
-            30u16 => Ok(Self::P30),
-            31u16 => Ok(Self::P31),
-            32u16 => Ok(Self::P32),
-            33u16 => Ok(Self::P33),
-            34u16 => Ok(Self::P34),
-            35u16 => Ok(Self::P35),
-            36u16 => Ok(Self::P36),
-            37u16 => Ok(Self::P37),
-            38u16 => Ok(Self::P38),
-            39u16 => Ok(Self::P39),
-            40u16 => Ok(Self::P40),
-            41u16 => Ok(Self::P41),
-            42u16 => Ok(Self::P42),
-            43u16 => Ok(Self::P43),
-            44u16 => Ok(Self::P44),
-            45u16 => Ok(Self::P45),
-            46u16 => Ok(Self::P46),
-            47u16 => Ok(Self::P47),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::P, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for PhosphorusIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for PhosphorusIsotope {
@@ -303,8 +321,8 @@ mod tests {
             let iso = PhosphorusIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(PhosphorusIsotope::try_from(0).is_err());
-        assert!(PhosphorusIsotope::try_from(1000).is_err());
+        assert!(PhosphorusIsotope::try_from(0_u16).is_err());
+        assert!(PhosphorusIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

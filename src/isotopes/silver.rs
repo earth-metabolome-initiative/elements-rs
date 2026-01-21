@@ -236,50 +236,68 @@ impl From<SilverIsotope> for crate::Element {
         crate::Element::Ag
     }
 }
+impl TryFrom<u64> for SilverIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            93u64 => Ok(Self::Ag93),
+            94u64 => Ok(Self::Ag94),
+            95u64 => Ok(Self::Ag95),
+            96u64 => Ok(Self::Ag96),
+            97u64 => Ok(Self::Ag97),
+            98u64 => Ok(Self::Ag98),
+            99u64 => Ok(Self::Ag99),
+            100u64 => Ok(Self::Ag100),
+            101u64 => Ok(Self::Ag101),
+            102u64 => Ok(Self::Ag102),
+            103u64 => Ok(Self::Ag103),
+            104u64 => Ok(Self::Ag104),
+            105u64 => Ok(Self::Ag105),
+            106u64 => Ok(Self::Ag106),
+            107u64 => Ok(Self::Ag107),
+            108u64 => Ok(Self::Ag108),
+            109u64 => Ok(Self::Ag109),
+            110u64 => Ok(Self::Ag110),
+            111u64 => Ok(Self::Ag111),
+            112u64 => Ok(Self::Ag112),
+            113u64 => Ok(Self::Ag113),
+            114u64 => Ok(Self::Ag114),
+            115u64 => Ok(Self::Ag115),
+            116u64 => Ok(Self::Ag116),
+            117u64 => Ok(Self::Ag117),
+            118u64 => Ok(Self::Ag118),
+            119u64 => Ok(Self::Ag119),
+            120u64 => Ok(Self::Ag120),
+            121u64 => Ok(Self::Ag121),
+            122u64 => Ok(Self::Ag122),
+            123u64 => Ok(Self::Ag123),
+            124u64 => Ok(Self::Ag124),
+            125u64 => Ok(Self::Ag125),
+            126u64 => Ok(Self::Ag126),
+            127u64 => Ok(Self::Ag127),
+            128u64 => Ok(Self::Ag128),
+            129u64 => Ok(Self::Ag129),
+            130u64 => Ok(Self::Ag130),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ag, value)),
+        }
+    }
+}
+impl TryFrom<u8> for SilverIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for SilverIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            93u16 => Ok(Self::Ag93),
-            94u16 => Ok(Self::Ag94),
-            95u16 => Ok(Self::Ag95),
-            96u16 => Ok(Self::Ag96),
-            97u16 => Ok(Self::Ag97),
-            98u16 => Ok(Self::Ag98),
-            99u16 => Ok(Self::Ag99),
-            100u16 => Ok(Self::Ag100),
-            101u16 => Ok(Self::Ag101),
-            102u16 => Ok(Self::Ag102),
-            103u16 => Ok(Self::Ag103),
-            104u16 => Ok(Self::Ag104),
-            105u16 => Ok(Self::Ag105),
-            106u16 => Ok(Self::Ag106),
-            107u16 => Ok(Self::Ag107),
-            108u16 => Ok(Self::Ag108),
-            109u16 => Ok(Self::Ag109),
-            110u16 => Ok(Self::Ag110),
-            111u16 => Ok(Self::Ag111),
-            112u16 => Ok(Self::Ag112),
-            113u16 => Ok(Self::Ag113),
-            114u16 => Ok(Self::Ag114),
-            115u16 => Ok(Self::Ag115),
-            116u16 => Ok(Self::Ag116),
-            117u16 => Ok(Self::Ag117),
-            118u16 => Ok(Self::Ag118),
-            119u16 => Ok(Self::Ag119),
-            120u16 => Ok(Self::Ag120),
-            121u16 => Ok(Self::Ag121),
-            122u16 => Ok(Self::Ag122),
-            123u16 => Ok(Self::Ag123),
-            124u16 => Ok(Self::Ag124),
-            125u16 => Ok(Self::Ag125),
-            126u16 => Ok(Self::Ag126),
-            127u16 => Ok(Self::Ag127),
-            128u16 => Ok(Self::Ag128),
-            129u16 => Ok(Self::Ag129),
-            130u16 => Ok(Self::Ag130),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ag, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for SilverIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for SilverIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = SilverIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(SilverIsotope::try_from(0).is_err());
-        assert!(SilverIsotope::try_from(1000).is_err());
+        assert!(SilverIsotope::try_from(0_u16).is_err());
+        assert!(SilverIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

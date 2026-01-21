@@ -125,32 +125,50 @@ impl From<PlutoniumIsotope> for crate::Element {
         crate::Element::Pu
     }
 }
+impl TryFrom<u64> for PlutoniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            228u64 => Ok(Self::Pu228),
+            229u64 => Ok(Self::Pu229),
+            230u64 => Ok(Self::Pu230),
+            231u64 => Ok(Self::Pu231),
+            232u64 => Ok(Self::Pu232),
+            233u64 => Ok(Self::Pu233),
+            234u64 => Ok(Self::Pu234),
+            235u64 => Ok(Self::Pu235),
+            236u64 => Ok(Self::Pu236),
+            237u64 => Ok(Self::Pu237),
+            238u64 => Ok(Self::Pu238),
+            239u64 => Ok(Self::Pu239),
+            240u64 => Ok(Self::Pu240),
+            241u64 => Ok(Self::Pu241),
+            242u64 => Ok(Self::Pu242),
+            243u64 => Ok(Self::Pu243),
+            244u64 => Ok(Self::Pu244),
+            245u64 => Ok(Self::Pu245),
+            246u64 => Ok(Self::Pu246),
+            247u64 => Ok(Self::Pu247),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Pu, value)),
+        }
+    }
+}
+impl TryFrom<u8> for PlutoniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for PlutoniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            228u16 => Ok(Self::Pu228),
-            229u16 => Ok(Self::Pu229),
-            230u16 => Ok(Self::Pu230),
-            231u16 => Ok(Self::Pu231),
-            232u16 => Ok(Self::Pu232),
-            233u16 => Ok(Self::Pu233),
-            234u16 => Ok(Self::Pu234),
-            235u16 => Ok(Self::Pu235),
-            236u16 => Ok(Self::Pu236),
-            237u16 => Ok(Self::Pu237),
-            238u16 => Ok(Self::Pu238),
-            239u16 => Ok(Self::Pu239),
-            240u16 => Ok(Self::Pu240),
-            241u16 => Ok(Self::Pu241),
-            242u16 => Ok(Self::Pu242),
-            243u16 => Ok(Self::Pu243),
-            244u16 => Ok(Self::Pu244),
-            245u16 => Ok(Self::Pu245),
-            246u16 => Ok(Self::Pu246),
-            247u16 => Ok(Self::Pu247),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Pu, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for PlutoniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for PlutoniumIsotope {
@@ -254,8 +272,8 @@ mod tests {
             let iso = PlutoniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(PlutoniumIsotope::try_from(0).is_err());
-        assert!(PlutoniumIsotope::try_from(1000).is_err());
+        assert!(PlutoniumIsotope::try_from(0_u16).is_err());
+        assert!(PlutoniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

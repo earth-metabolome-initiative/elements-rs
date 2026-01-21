@@ -185,47 +185,65 @@ impl From<FranciumIsotope> for crate::Element {
         crate::Element::Fr
     }
 }
+impl TryFrom<u64> for FranciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            199u64 => Ok(Self::Fr199),
+            200u64 => Ok(Self::Fr200),
+            201u64 => Ok(Self::Fr201),
+            202u64 => Ok(Self::Fr202),
+            203u64 => Ok(Self::Fr203),
+            204u64 => Ok(Self::Fr204),
+            205u64 => Ok(Self::Fr205),
+            206u64 => Ok(Self::Fr206),
+            207u64 => Ok(Self::Fr207),
+            208u64 => Ok(Self::Fr208),
+            209u64 => Ok(Self::Fr209),
+            210u64 => Ok(Self::Fr210),
+            211u64 => Ok(Self::Fr211),
+            212u64 => Ok(Self::Fr212),
+            213u64 => Ok(Self::Fr213),
+            214u64 => Ok(Self::Fr214),
+            215u64 => Ok(Self::Fr215),
+            216u64 => Ok(Self::Fr216),
+            217u64 => Ok(Self::Fr217),
+            218u64 => Ok(Self::Fr218),
+            219u64 => Ok(Self::Fr219),
+            220u64 => Ok(Self::Fr220),
+            221u64 => Ok(Self::Fr221),
+            222u64 => Ok(Self::Fr222),
+            223u64 => Ok(Self::Fr223),
+            224u64 => Ok(Self::Fr224),
+            225u64 => Ok(Self::Fr225),
+            226u64 => Ok(Self::Fr226),
+            227u64 => Ok(Self::Fr227),
+            228u64 => Ok(Self::Fr228),
+            229u64 => Ok(Self::Fr229),
+            230u64 => Ok(Self::Fr230),
+            231u64 => Ok(Self::Fr231),
+            232u64 => Ok(Self::Fr232),
+            233u64 => Ok(Self::Fr233),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Fr, value)),
+        }
+    }
+}
+impl TryFrom<u8> for FranciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for FranciumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            199u16 => Ok(Self::Fr199),
-            200u16 => Ok(Self::Fr200),
-            201u16 => Ok(Self::Fr201),
-            202u16 => Ok(Self::Fr202),
-            203u16 => Ok(Self::Fr203),
-            204u16 => Ok(Self::Fr204),
-            205u16 => Ok(Self::Fr205),
-            206u16 => Ok(Self::Fr206),
-            207u16 => Ok(Self::Fr207),
-            208u16 => Ok(Self::Fr208),
-            209u16 => Ok(Self::Fr209),
-            210u16 => Ok(Self::Fr210),
-            211u16 => Ok(Self::Fr211),
-            212u16 => Ok(Self::Fr212),
-            213u16 => Ok(Self::Fr213),
-            214u16 => Ok(Self::Fr214),
-            215u16 => Ok(Self::Fr215),
-            216u16 => Ok(Self::Fr216),
-            217u16 => Ok(Self::Fr217),
-            218u16 => Ok(Self::Fr218),
-            219u16 => Ok(Self::Fr219),
-            220u16 => Ok(Self::Fr220),
-            221u16 => Ok(Self::Fr221),
-            222u16 => Ok(Self::Fr222),
-            223u16 => Ok(Self::Fr223),
-            224u16 => Ok(Self::Fr224),
-            225u16 => Ok(Self::Fr225),
-            226u16 => Ok(Self::Fr226),
-            227u16 => Ok(Self::Fr227),
-            228u16 => Ok(Self::Fr228),
-            229u16 => Ok(Self::Fr229),
-            230u16 => Ok(Self::Fr230),
-            231u16 => Ok(Self::Fr231),
-            232u16 => Ok(Self::Fr232),
-            233u16 => Ok(Self::Fr233),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Fr, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for FranciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for FranciumIsotope {
@@ -344,8 +362,8 @@ mod tests {
             let iso = FranciumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(FranciumIsotope::try_from(0).is_err());
-        assert!(FranciumIsotope::try_from(1000).is_err());
+        assert!(FranciumIsotope::try_from(0_u16).is_err());
+        assert!(FranciumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

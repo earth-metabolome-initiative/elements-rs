@@ -236,50 +236,68 @@ impl From<TantalumIsotope> for crate::Element {
         crate::Element::Ta
     }
 }
+impl TryFrom<u64> for TantalumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            155u64 => Ok(Self::Ta155),
+            156u64 => Ok(Self::Ta156),
+            157u64 => Ok(Self::Ta157),
+            158u64 => Ok(Self::Ta158),
+            159u64 => Ok(Self::Ta159),
+            160u64 => Ok(Self::Ta160),
+            161u64 => Ok(Self::Ta161),
+            162u64 => Ok(Self::Ta162),
+            163u64 => Ok(Self::Ta163),
+            164u64 => Ok(Self::Ta164),
+            165u64 => Ok(Self::Ta165),
+            166u64 => Ok(Self::Ta166),
+            167u64 => Ok(Self::Ta167),
+            168u64 => Ok(Self::Ta168),
+            169u64 => Ok(Self::Ta169),
+            170u64 => Ok(Self::Ta170),
+            171u64 => Ok(Self::Ta171),
+            172u64 => Ok(Self::Ta172),
+            173u64 => Ok(Self::Ta173),
+            174u64 => Ok(Self::Ta174),
+            175u64 => Ok(Self::Ta175),
+            176u64 => Ok(Self::Ta176),
+            177u64 => Ok(Self::Ta177),
+            178u64 => Ok(Self::Ta178),
+            179u64 => Ok(Self::Ta179),
+            180u64 => Ok(Self::Ta180),
+            181u64 => Ok(Self::Ta181),
+            182u64 => Ok(Self::Ta182),
+            183u64 => Ok(Self::Ta183),
+            184u64 => Ok(Self::Ta184),
+            185u64 => Ok(Self::Ta185),
+            186u64 => Ok(Self::Ta186),
+            187u64 => Ok(Self::Ta187),
+            188u64 => Ok(Self::Ta188),
+            189u64 => Ok(Self::Ta189),
+            190u64 => Ok(Self::Ta190),
+            191u64 => Ok(Self::Ta191),
+            192u64 => Ok(Self::Ta192),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ta, value)),
+        }
+    }
+}
+impl TryFrom<u8> for TantalumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for TantalumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            155u16 => Ok(Self::Ta155),
-            156u16 => Ok(Self::Ta156),
-            157u16 => Ok(Self::Ta157),
-            158u16 => Ok(Self::Ta158),
-            159u16 => Ok(Self::Ta159),
-            160u16 => Ok(Self::Ta160),
-            161u16 => Ok(Self::Ta161),
-            162u16 => Ok(Self::Ta162),
-            163u16 => Ok(Self::Ta163),
-            164u16 => Ok(Self::Ta164),
-            165u16 => Ok(Self::Ta165),
-            166u16 => Ok(Self::Ta166),
-            167u16 => Ok(Self::Ta167),
-            168u16 => Ok(Self::Ta168),
-            169u16 => Ok(Self::Ta169),
-            170u16 => Ok(Self::Ta170),
-            171u16 => Ok(Self::Ta171),
-            172u16 => Ok(Self::Ta172),
-            173u16 => Ok(Self::Ta173),
-            174u16 => Ok(Self::Ta174),
-            175u16 => Ok(Self::Ta175),
-            176u16 => Ok(Self::Ta176),
-            177u16 => Ok(Self::Ta177),
-            178u16 => Ok(Self::Ta178),
-            179u16 => Ok(Self::Ta179),
-            180u16 => Ok(Self::Ta180),
-            181u16 => Ok(Self::Ta181),
-            182u16 => Ok(Self::Ta182),
-            183u16 => Ok(Self::Ta183),
-            184u16 => Ok(Self::Ta184),
-            185u16 => Ok(Self::Ta185),
-            186u16 => Ok(Self::Ta186),
-            187u16 => Ok(Self::Ta187),
-            188u16 => Ok(Self::Ta188),
-            189u16 => Ok(Self::Ta189),
-            190u16 => Ok(Self::Ta190),
-            191u16 => Ok(Self::Ta191),
-            192u16 => Ok(Self::Ta192),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ta, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for TantalumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for TantalumIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = TantalumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(TantalumIsotope::try_from(0).is_err());
-        assert!(TantalumIsotope::try_from(1000).is_err());
+        assert!(TantalumIsotope::try_from(0_u16).is_err());
+        assert!(TantalumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

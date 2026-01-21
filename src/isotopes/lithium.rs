@@ -101,23 +101,41 @@ impl From<LithiumIsotope> for crate::Element {
         crate::Element::Li
     }
 }
+impl TryFrom<u64> for LithiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            3u64 => Ok(Self::Li3),
+            4u64 => Ok(Self::Li4),
+            5u64 => Ok(Self::Li5),
+            6u64 => Ok(Self::Li6),
+            7u64 => Ok(Self::Li7),
+            8u64 => Ok(Self::Li8),
+            9u64 => Ok(Self::Li9),
+            10u64 => Ok(Self::Li10),
+            11u64 => Ok(Self::Li11),
+            12u64 => Ok(Self::Li12),
+            13u64 => Ok(Self::Li13),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Li, value)),
+        }
+    }
+}
+impl TryFrom<u8> for LithiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for LithiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            3u16 => Ok(Self::Li3),
-            4u16 => Ok(Self::Li4),
-            5u16 => Ok(Self::Li5),
-            6u16 => Ok(Self::Li6),
-            7u16 => Ok(Self::Li7),
-            8u16 => Ok(Self::Li8),
-            9u16 => Ok(Self::Li9),
-            10u16 => Ok(Self::Li10),
-            11u16 => Ok(Self::Li11),
-            12u16 => Ok(Self::Li12),
-            13u16 => Ok(Self::Li13),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Li, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for LithiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for LithiumIsotope {
@@ -212,8 +230,8 @@ mod tests {
             let iso = LithiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(LithiumIsotope::try_from(0).is_err());
-        assert!(LithiumIsotope::try_from(1000).is_err());
+        assert!(LithiumIsotope::try_from(0_u16).is_err());
+        assert!(LithiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

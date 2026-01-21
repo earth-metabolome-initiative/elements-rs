@@ -201,43 +201,61 @@ impl From<CopperIsotope> for crate::Element {
         crate::Element::Cu
     }
 }
+impl TryFrom<u64> for CopperIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            52u64 => Ok(Self::Cu52),
+            53u64 => Ok(Self::Cu53),
+            54u64 => Ok(Self::Cu54),
+            55u64 => Ok(Self::Cu55),
+            56u64 => Ok(Self::Cu56),
+            57u64 => Ok(Self::Cu57),
+            58u64 => Ok(Self::Cu58),
+            59u64 => Ok(Self::Cu59),
+            60u64 => Ok(Self::Cu60),
+            61u64 => Ok(Self::Cu61),
+            62u64 => Ok(Self::Cu62),
+            63u64 => Ok(Self::Cu63),
+            64u64 => Ok(Self::Cu64),
+            65u64 => Ok(Self::Cu65),
+            66u64 => Ok(Self::Cu66),
+            67u64 => Ok(Self::Cu67),
+            68u64 => Ok(Self::Cu68),
+            69u64 => Ok(Self::Cu69),
+            70u64 => Ok(Self::Cu70),
+            71u64 => Ok(Self::Cu71),
+            72u64 => Ok(Self::Cu72),
+            73u64 => Ok(Self::Cu73),
+            74u64 => Ok(Self::Cu74),
+            75u64 => Ok(Self::Cu75),
+            76u64 => Ok(Self::Cu76),
+            77u64 => Ok(Self::Cu77),
+            78u64 => Ok(Self::Cu78),
+            79u64 => Ok(Self::Cu79),
+            80u64 => Ok(Self::Cu80),
+            81u64 => Ok(Self::Cu81),
+            82u64 => Ok(Self::Cu82),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Cu, value)),
+        }
+    }
+}
+impl TryFrom<u8> for CopperIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for CopperIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            52u16 => Ok(Self::Cu52),
-            53u16 => Ok(Self::Cu53),
-            54u16 => Ok(Self::Cu54),
-            55u16 => Ok(Self::Cu55),
-            56u16 => Ok(Self::Cu56),
-            57u16 => Ok(Self::Cu57),
-            58u16 => Ok(Self::Cu58),
-            59u16 => Ok(Self::Cu59),
-            60u16 => Ok(Self::Cu60),
-            61u16 => Ok(Self::Cu61),
-            62u16 => Ok(Self::Cu62),
-            63u16 => Ok(Self::Cu63),
-            64u16 => Ok(Self::Cu64),
-            65u16 => Ok(Self::Cu65),
-            66u16 => Ok(Self::Cu66),
-            67u16 => Ok(Self::Cu67),
-            68u16 => Ok(Self::Cu68),
-            69u16 => Ok(Self::Cu69),
-            70u16 => Ok(Self::Cu70),
-            71u16 => Ok(Self::Cu71),
-            72u16 => Ok(Self::Cu72),
-            73u16 => Ok(Self::Cu73),
-            74u16 => Ok(Self::Cu74),
-            75u16 => Ok(Self::Cu75),
-            76u16 => Ok(Self::Cu76),
-            77u16 => Ok(Self::Cu77),
-            78u16 => Ok(Self::Cu78),
-            79u16 => Ok(Self::Cu79),
-            80u16 => Ok(Self::Cu80),
-            81u16 => Ok(Self::Cu81),
-            82u16 => Ok(Self::Cu82),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Cu, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for CopperIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for CopperIsotope {
@@ -352,8 +370,8 @@ mod tests {
             let iso = CopperIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(CopperIsotope::try_from(0).is_err());
-        assert!(CopperIsotope::try_from(1000).is_err());
+        assert!(CopperIsotope::try_from(0_u16).is_err());
+        assert!(CopperIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

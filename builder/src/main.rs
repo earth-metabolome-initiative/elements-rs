@@ -211,6 +211,8 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         isotopes.iter().map(|isotope| isotope.relative_atomic_mass).collect::<Vec<_>>();
 
     let mass_numbers = isotopes.iter().map(|isotope| isotope.mass_number).collect::<Vec<_>>();
+    let mass_numbers_u64 =
+        isotopes.iter().map(|isotope| u64::from(isotope.mass_number)).collect::<Vec<_>>();
 
     let known_isotopic_compositions: Vec<TokenStream> = isotopes
         .iter()
@@ -343,19 +345,43 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             }
         }
 
-        impl TryFrom<u16> for #isotope_ident {
+        impl TryFrom<u64> for #isotope_ident {
             type Error = crate::errors::Error;
 
-            fn try_from(value: u16) -> Result<Self, Self::Error> {
+            fn try_from(value: u64) -> Result<Self, Self::Error> {
                 match value {
                     #(
-                        #mass_numbers => Ok(Self::#enum_variants),
+                        #mass_numbers_u64 => Ok(Self::#enum_variants),
                     )*
                     _ => Err(crate::errors::Error::Isotope(
                         crate::Element::#element_symbol_ident,
                         value,
                     )),
                 }
+            }
+        }
+
+        impl TryFrom<u8> for #isotope_ident {
+            type Error = crate::errors::Error;
+
+            fn try_from(value: u8) -> Result<Self, Self::Error> {
+                Self::try_from(u64::from(value))
+            }
+        }
+
+        impl TryFrom<u16> for #isotope_ident {
+            type Error = crate::errors::Error;
+
+            fn try_from(value: u16) -> Result<Self, Self::Error> {
+                Self::try_from(u64::from(value))
+            }
+        }
+
+        impl TryFrom<u32> for #isotope_ident {
+            type Error = crate::errors::Error;
+
+            fn try_from(value: u32) -> Result<Self, Self::Error> {
+                Self::try_from(u64::from(value))
             }
         }
 
@@ -446,8 +472,8 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                     assert_eq!(iso, isotope);
                 }
                 // Test error cases
-                assert!(#isotope_ident::try_from(0).is_err()); // Too low
-                assert!(#isotope_ident::try_from(1000).is_err()); // Way too high
+                assert!(#isotope_ident::try_from(0_u16).is_err()); // Too low
+                assert!(#isotope_ident::try_from(1000_u16).is_err()); // Way too high
             }
 
             #[test]

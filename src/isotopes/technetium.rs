@@ -189,48 +189,66 @@ impl From<TechnetiumIsotope> for crate::Element {
         crate::Element::Tc
     }
 }
+impl TryFrom<u64> for TechnetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            85u64 => Ok(Self::Tc85),
+            86u64 => Ok(Self::Tc86),
+            87u64 => Ok(Self::Tc87),
+            88u64 => Ok(Self::Tc88),
+            89u64 => Ok(Self::Tc89),
+            90u64 => Ok(Self::Tc90),
+            91u64 => Ok(Self::Tc91),
+            92u64 => Ok(Self::Tc92),
+            93u64 => Ok(Self::Tc93),
+            94u64 => Ok(Self::Tc94),
+            95u64 => Ok(Self::Tc95),
+            96u64 => Ok(Self::Tc96),
+            97u64 => Ok(Self::Tc97),
+            98u64 => Ok(Self::Tc98),
+            99u64 => Ok(Self::Tc99),
+            100u64 => Ok(Self::Tc100),
+            101u64 => Ok(Self::Tc101),
+            102u64 => Ok(Self::Tc102),
+            103u64 => Ok(Self::Tc103),
+            104u64 => Ok(Self::Tc104),
+            105u64 => Ok(Self::Tc105),
+            106u64 => Ok(Self::Tc106),
+            107u64 => Ok(Self::Tc107),
+            108u64 => Ok(Self::Tc108),
+            109u64 => Ok(Self::Tc109),
+            110u64 => Ok(Self::Tc110),
+            111u64 => Ok(Self::Tc111),
+            112u64 => Ok(Self::Tc112),
+            113u64 => Ok(Self::Tc113),
+            114u64 => Ok(Self::Tc114),
+            115u64 => Ok(Self::Tc115),
+            116u64 => Ok(Self::Tc116),
+            117u64 => Ok(Self::Tc117),
+            118u64 => Ok(Self::Tc118),
+            119u64 => Ok(Self::Tc119),
+            120u64 => Ok(Self::Tc120),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Tc, value)),
+        }
+    }
+}
+impl TryFrom<u8> for TechnetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for TechnetiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            85u16 => Ok(Self::Tc85),
-            86u16 => Ok(Self::Tc86),
-            87u16 => Ok(Self::Tc87),
-            88u16 => Ok(Self::Tc88),
-            89u16 => Ok(Self::Tc89),
-            90u16 => Ok(Self::Tc90),
-            91u16 => Ok(Self::Tc91),
-            92u16 => Ok(Self::Tc92),
-            93u16 => Ok(Self::Tc93),
-            94u16 => Ok(Self::Tc94),
-            95u16 => Ok(Self::Tc95),
-            96u16 => Ok(Self::Tc96),
-            97u16 => Ok(Self::Tc97),
-            98u16 => Ok(Self::Tc98),
-            99u16 => Ok(Self::Tc99),
-            100u16 => Ok(Self::Tc100),
-            101u16 => Ok(Self::Tc101),
-            102u16 => Ok(Self::Tc102),
-            103u16 => Ok(Self::Tc103),
-            104u16 => Ok(Self::Tc104),
-            105u16 => Ok(Self::Tc105),
-            106u16 => Ok(Self::Tc106),
-            107u16 => Ok(Self::Tc107),
-            108u16 => Ok(Self::Tc108),
-            109u16 => Ok(Self::Tc109),
-            110u16 => Ok(Self::Tc110),
-            111u16 => Ok(Self::Tc111),
-            112u16 => Ok(Self::Tc112),
-            113u16 => Ok(Self::Tc113),
-            114u16 => Ok(Self::Tc114),
-            115u16 => Ok(Self::Tc115),
-            116u16 => Ok(Self::Tc116),
-            117u16 => Ok(Self::Tc117),
-            118u16 => Ok(Self::Tc118),
-            119u16 => Ok(Self::Tc119),
-            120u16 => Ok(Self::Tc120),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Tc, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for TechnetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for TechnetiumIsotope {
@@ -350,8 +368,8 @@ mod tests {
             let iso = TechnetiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(TechnetiumIsotope::try_from(0).is_err());
-        assert!(TechnetiumIsotope::try_from(1000).is_err());
+        assert!(TechnetiumIsotope::try_from(0_u16).is_err());
+        assert!(TechnetiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

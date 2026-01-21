@@ -181,39 +181,57 @@ impl From<ChromiumIsotope> for crate::Element {
         crate::Element::Cr
     }
 }
+impl TryFrom<u64> for ChromiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            42u64 => Ok(Self::Cr42),
+            43u64 => Ok(Self::Cr43),
+            44u64 => Ok(Self::Cr44),
+            45u64 => Ok(Self::Cr45),
+            46u64 => Ok(Self::Cr46),
+            47u64 => Ok(Self::Cr47),
+            48u64 => Ok(Self::Cr48),
+            49u64 => Ok(Self::Cr49),
+            50u64 => Ok(Self::Cr50),
+            51u64 => Ok(Self::Cr51),
+            52u64 => Ok(Self::Cr52),
+            53u64 => Ok(Self::Cr53),
+            54u64 => Ok(Self::Cr54),
+            55u64 => Ok(Self::Cr55),
+            56u64 => Ok(Self::Cr56),
+            57u64 => Ok(Self::Cr57),
+            58u64 => Ok(Self::Cr58),
+            59u64 => Ok(Self::Cr59),
+            60u64 => Ok(Self::Cr60),
+            61u64 => Ok(Self::Cr61),
+            62u64 => Ok(Self::Cr62),
+            63u64 => Ok(Self::Cr63),
+            64u64 => Ok(Self::Cr64),
+            65u64 => Ok(Self::Cr65),
+            66u64 => Ok(Self::Cr66),
+            67u64 => Ok(Self::Cr67),
+            68u64 => Ok(Self::Cr68),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Cr, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ChromiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ChromiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            42u16 => Ok(Self::Cr42),
-            43u16 => Ok(Self::Cr43),
-            44u16 => Ok(Self::Cr44),
-            45u16 => Ok(Self::Cr45),
-            46u16 => Ok(Self::Cr46),
-            47u16 => Ok(Self::Cr47),
-            48u16 => Ok(Self::Cr48),
-            49u16 => Ok(Self::Cr49),
-            50u16 => Ok(Self::Cr50),
-            51u16 => Ok(Self::Cr51),
-            52u16 => Ok(Self::Cr52),
-            53u16 => Ok(Self::Cr53),
-            54u16 => Ok(Self::Cr54),
-            55u16 => Ok(Self::Cr55),
-            56u16 => Ok(Self::Cr56),
-            57u16 => Ok(Self::Cr57),
-            58u16 => Ok(Self::Cr58),
-            59u16 => Ok(Self::Cr59),
-            60u16 => Ok(Self::Cr60),
-            61u16 => Ok(Self::Cr61),
-            62u16 => Ok(Self::Cr62),
-            63u16 => Ok(Self::Cr63),
-            64u16 => Ok(Self::Cr64),
-            65u16 => Ok(Self::Cr65),
-            66u16 => Ok(Self::Cr66),
-            67u16 => Ok(Self::Cr67),
-            68u16 => Ok(Self::Cr68),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Cr, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ChromiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ChromiumIsotope {
@@ -324,8 +342,8 @@ mod tests {
             let iso = ChromiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ChromiumIsotope::try_from(0).is_err());
-        assert!(ChromiumIsotope::try_from(1000).is_err());
+        assert!(ChromiumIsotope::try_from(0_u16).is_err());
+        assert!(ChromiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

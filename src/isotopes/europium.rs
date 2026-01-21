@@ -236,50 +236,68 @@ impl From<EuropiumIsotope> for crate::Element {
         crate::Element::Eu
     }
 }
+impl TryFrom<u64> for EuropiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            130u64 => Ok(Self::Eu130),
+            131u64 => Ok(Self::Eu131),
+            132u64 => Ok(Self::Eu132),
+            133u64 => Ok(Self::Eu133),
+            134u64 => Ok(Self::Eu134),
+            135u64 => Ok(Self::Eu135),
+            136u64 => Ok(Self::Eu136),
+            137u64 => Ok(Self::Eu137),
+            138u64 => Ok(Self::Eu138),
+            139u64 => Ok(Self::Eu139),
+            140u64 => Ok(Self::Eu140),
+            141u64 => Ok(Self::Eu141),
+            142u64 => Ok(Self::Eu142),
+            143u64 => Ok(Self::Eu143),
+            144u64 => Ok(Self::Eu144),
+            145u64 => Ok(Self::Eu145),
+            146u64 => Ok(Self::Eu146),
+            147u64 => Ok(Self::Eu147),
+            148u64 => Ok(Self::Eu148),
+            149u64 => Ok(Self::Eu149),
+            150u64 => Ok(Self::Eu150),
+            151u64 => Ok(Self::Eu151),
+            152u64 => Ok(Self::Eu152),
+            153u64 => Ok(Self::Eu153),
+            154u64 => Ok(Self::Eu154),
+            155u64 => Ok(Self::Eu155),
+            156u64 => Ok(Self::Eu156),
+            157u64 => Ok(Self::Eu157),
+            158u64 => Ok(Self::Eu158),
+            159u64 => Ok(Self::Eu159),
+            160u64 => Ok(Self::Eu160),
+            161u64 => Ok(Self::Eu161),
+            162u64 => Ok(Self::Eu162),
+            163u64 => Ok(Self::Eu163),
+            164u64 => Ok(Self::Eu164),
+            165u64 => Ok(Self::Eu165),
+            166u64 => Ok(Self::Eu166),
+            167u64 => Ok(Self::Eu167),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Eu, value)),
+        }
+    }
+}
+impl TryFrom<u8> for EuropiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for EuropiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            130u16 => Ok(Self::Eu130),
-            131u16 => Ok(Self::Eu131),
-            132u16 => Ok(Self::Eu132),
-            133u16 => Ok(Self::Eu133),
-            134u16 => Ok(Self::Eu134),
-            135u16 => Ok(Self::Eu135),
-            136u16 => Ok(Self::Eu136),
-            137u16 => Ok(Self::Eu137),
-            138u16 => Ok(Self::Eu138),
-            139u16 => Ok(Self::Eu139),
-            140u16 => Ok(Self::Eu140),
-            141u16 => Ok(Self::Eu141),
-            142u16 => Ok(Self::Eu142),
-            143u16 => Ok(Self::Eu143),
-            144u16 => Ok(Self::Eu144),
-            145u16 => Ok(Self::Eu145),
-            146u16 => Ok(Self::Eu146),
-            147u16 => Ok(Self::Eu147),
-            148u16 => Ok(Self::Eu148),
-            149u16 => Ok(Self::Eu149),
-            150u16 => Ok(Self::Eu150),
-            151u16 => Ok(Self::Eu151),
-            152u16 => Ok(Self::Eu152),
-            153u16 => Ok(Self::Eu153),
-            154u16 => Ok(Self::Eu154),
-            155u16 => Ok(Self::Eu155),
-            156u16 => Ok(Self::Eu156),
-            157u16 => Ok(Self::Eu157),
-            158u16 => Ok(Self::Eu158),
-            159u16 => Ok(Self::Eu159),
-            160u16 => Ok(Self::Eu160),
-            161u16 => Ok(Self::Eu161),
-            162u16 => Ok(Self::Eu162),
-            163u16 => Ok(Self::Eu163),
-            164u16 => Ok(Self::Eu164),
-            165u16 => Ok(Self::Eu165),
-            166u16 => Ok(Self::Eu166),
-            167u16 => Ok(Self::Eu167),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Eu, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for EuropiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for EuropiumIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = EuropiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(EuropiumIsotope::try_from(0).is_err());
-        assert!(EuropiumIsotope::try_from(1000).is_err());
+        assert!(EuropiumIsotope::try_from(0_u16).is_err());
+        assert!(EuropiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

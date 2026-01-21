@@ -109,28 +109,46 @@ impl From<SeaborgiumIsotope> for crate::Element {
         crate::Element::Sg
     }
 }
+impl TryFrom<u64> for SeaborgiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            258u64 => Ok(Self::Sg258),
+            259u64 => Ok(Self::Sg259),
+            260u64 => Ok(Self::Sg260),
+            261u64 => Ok(Self::Sg261),
+            262u64 => Ok(Self::Sg262),
+            263u64 => Ok(Self::Sg263),
+            264u64 => Ok(Self::Sg264),
+            265u64 => Ok(Self::Sg265),
+            266u64 => Ok(Self::Sg266),
+            267u64 => Ok(Self::Sg267),
+            268u64 => Ok(Self::Sg268),
+            269u64 => Ok(Self::Sg269),
+            270u64 => Ok(Self::Sg270),
+            271u64 => Ok(Self::Sg271),
+            272u64 => Ok(Self::Sg272),
+            273u64 => Ok(Self::Sg273),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Sg, value)),
+        }
+    }
+}
+impl TryFrom<u8> for SeaborgiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for SeaborgiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            258u16 => Ok(Self::Sg258),
-            259u16 => Ok(Self::Sg259),
-            260u16 => Ok(Self::Sg260),
-            261u16 => Ok(Self::Sg261),
-            262u16 => Ok(Self::Sg262),
-            263u16 => Ok(Self::Sg263),
-            264u16 => Ok(Self::Sg264),
-            265u16 => Ok(Self::Sg265),
-            266u16 => Ok(Self::Sg266),
-            267u16 => Ok(Self::Sg267),
-            268u16 => Ok(Self::Sg268),
-            269u16 => Ok(Self::Sg269),
-            270u16 => Ok(Self::Sg270),
-            271u16 => Ok(Self::Sg271),
-            272u16 => Ok(Self::Sg272),
-            273u16 => Ok(Self::Sg273),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Sg, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for SeaborgiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for SeaborgiumIsotope {
@@ -230,8 +248,8 @@ mod tests {
             let iso = SeaborgiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(SeaborgiumIsotope::try_from(0).is_err());
-        assert!(SeaborgiumIsotope::try_from(1000).is_err());
+        assert!(SeaborgiumIsotope::try_from(0_u16).is_err());
+        assert!(SeaborgiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

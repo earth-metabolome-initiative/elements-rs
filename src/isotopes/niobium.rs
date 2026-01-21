@@ -221,47 +221,65 @@ impl From<NiobiumIsotope> for crate::Element {
         crate::Element::Nb
     }
 }
+impl TryFrom<u64> for NiobiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            81u64 => Ok(Self::Nb81),
+            82u64 => Ok(Self::Nb82),
+            83u64 => Ok(Self::Nb83),
+            84u64 => Ok(Self::Nb84),
+            85u64 => Ok(Self::Nb85),
+            86u64 => Ok(Self::Nb86),
+            87u64 => Ok(Self::Nb87),
+            88u64 => Ok(Self::Nb88),
+            89u64 => Ok(Self::Nb89),
+            90u64 => Ok(Self::Nb90),
+            91u64 => Ok(Self::Nb91),
+            92u64 => Ok(Self::Nb92),
+            93u64 => Ok(Self::Nb93),
+            94u64 => Ok(Self::Nb94),
+            95u64 => Ok(Self::Nb95),
+            96u64 => Ok(Self::Nb96),
+            97u64 => Ok(Self::Nb97),
+            98u64 => Ok(Self::Nb98),
+            99u64 => Ok(Self::Nb99),
+            100u64 => Ok(Self::Nb100),
+            101u64 => Ok(Self::Nb101),
+            102u64 => Ok(Self::Nb102),
+            103u64 => Ok(Self::Nb103),
+            104u64 => Ok(Self::Nb104),
+            105u64 => Ok(Self::Nb105),
+            106u64 => Ok(Self::Nb106),
+            107u64 => Ok(Self::Nb107),
+            108u64 => Ok(Self::Nb108),
+            109u64 => Ok(Self::Nb109),
+            110u64 => Ok(Self::Nb110),
+            111u64 => Ok(Self::Nb111),
+            112u64 => Ok(Self::Nb112),
+            113u64 => Ok(Self::Nb113),
+            114u64 => Ok(Self::Nb114),
+            115u64 => Ok(Self::Nb115),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Nb, value)),
+        }
+    }
+}
+impl TryFrom<u8> for NiobiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for NiobiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            81u16 => Ok(Self::Nb81),
-            82u16 => Ok(Self::Nb82),
-            83u16 => Ok(Self::Nb83),
-            84u16 => Ok(Self::Nb84),
-            85u16 => Ok(Self::Nb85),
-            86u16 => Ok(Self::Nb86),
-            87u16 => Ok(Self::Nb87),
-            88u16 => Ok(Self::Nb88),
-            89u16 => Ok(Self::Nb89),
-            90u16 => Ok(Self::Nb90),
-            91u16 => Ok(Self::Nb91),
-            92u16 => Ok(Self::Nb92),
-            93u16 => Ok(Self::Nb93),
-            94u16 => Ok(Self::Nb94),
-            95u16 => Ok(Self::Nb95),
-            96u16 => Ok(Self::Nb96),
-            97u16 => Ok(Self::Nb97),
-            98u16 => Ok(Self::Nb98),
-            99u16 => Ok(Self::Nb99),
-            100u16 => Ok(Self::Nb100),
-            101u16 => Ok(Self::Nb101),
-            102u16 => Ok(Self::Nb102),
-            103u16 => Ok(Self::Nb103),
-            104u16 => Ok(Self::Nb104),
-            105u16 => Ok(Self::Nb105),
-            106u16 => Ok(Self::Nb106),
-            107u16 => Ok(Self::Nb107),
-            108u16 => Ok(Self::Nb108),
-            109u16 => Ok(Self::Nb109),
-            110u16 => Ok(Self::Nb110),
-            111u16 => Ok(Self::Nb111),
-            112u16 => Ok(Self::Nb112),
-            113u16 => Ok(Self::Nb113),
-            114u16 => Ok(Self::Nb114),
-            115u16 => Ok(Self::Nb115),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Nb, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for NiobiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for NiobiumIsotope {
@@ -380,8 +398,8 @@ mod tests {
             let iso = NiobiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(NiobiumIsotope::try_from(0).is_err());
-        assert!(NiobiumIsotope::try_from(1000).is_err());
+        assert!(NiobiumIsotope::try_from(0_u16).is_err());
+        assert!(NiobiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

@@ -166,36 +166,54 @@ impl From<ChlorineIsotope> for crate::Element {
         crate::Element::Cl
     }
 }
+impl TryFrom<u64> for ChlorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            28u64 => Ok(Self::Cl28),
+            29u64 => Ok(Self::Cl29),
+            30u64 => Ok(Self::Cl30),
+            31u64 => Ok(Self::Cl31),
+            32u64 => Ok(Self::Cl32),
+            33u64 => Ok(Self::Cl33),
+            34u64 => Ok(Self::Cl34),
+            35u64 => Ok(Self::Cl35),
+            36u64 => Ok(Self::Cl36),
+            37u64 => Ok(Self::Cl37),
+            38u64 => Ok(Self::Cl38),
+            39u64 => Ok(Self::Cl39),
+            40u64 => Ok(Self::Cl40),
+            41u64 => Ok(Self::Cl41),
+            42u64 => Ok(Self::Cl42),
+            43u64 => Ok(Self::Cl43),
+            44u64 => Ok(Self::Cl44),
+            45u64 => Ok(Self::Cl45),
+            46u64 => Ok(Self::Cl46),
+            47u64 => Ok(Self::Cl47),
+            48u64 => Ok(Self::Cl48),
+            49u64 => Ok(Self::Cl49),
+            50u64 => Ok(Self::Cl50),
+            51u64 => Ok(Self::Cl51),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Cl, value)),
+        }
+    }
+}
+impl TryFrom<u8> for ChlorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for ChlorineIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            28u16 => Ok(Self::Cl28),
-            29u16 => Ok(Self::Cl29),
-            30u16 => Ok(Self::Cl30),
-            31u16 => Ok(Self::Cl31),
-            32u16 => Ok(Self::Cl32),
-            33u16 => Ok(Self::Cl33),
-            34u16 => Ok(Self::Cl34),
-            35u16 => Ok(Self::Cl35),
-            36u16 => Ok(Self::Cl36),
-            37u16 => Ok(Self::Cl37),
-            38u16 => Ok(Self::Cl38),
-            39u16 => Ok(Self::Cl39),
-            40u16 => Ok(Self::Cl40),
-            41u16 => Ok(Self::Cl41),
-            42u16 => Ok(Self::Cl42),
-            43u16 => Ok(Self::Cl43),
-            44u16 => Ok(Self::Cl44),
-            45u16 => Ok(Self::Cl45),
-            46u16 => Ok(Self::Cl46),
-            47u16 => Ok(Self::Cl47),
-            48u16 => Ok(Self::Cl48),
-            49u16 => Ok(Self::Cl49),
-            50u16 => Ok(Self::Cl50),
-            51u16 => Ok(Self::Cl51),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Cl, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for ChlorineIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for ChlorineIsotope {
@@ -303,8 +321,8 @@ mod tests {
             let iso = ChlorineIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(ChlorineIsotope::try_from(0).is_err());
-        assert!(ChlorineIsotope::try_from(1000).is_err());
+        assert!(ChlorineIsotope::try_from(0_u16).is_err());
+        assert!(ChlorineIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

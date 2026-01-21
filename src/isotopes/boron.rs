@@ -126,28 +126,46 @@ impl From<BoronIsotope> for crate::Element {
         crate::Element::B
     }
 }
+impl TryFrom<u64> for BoronIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            6u64 => Ok(Self::B6),
+            7u64 => Ok(Self::B7),
+            8u64 => Ok(Self::B8),
+            9u64 => Ok(Self::B9),
+            10u64 => Ok(Self::B10),
+            11u64 => Ok(Self::B11),
+            12u64 => Ok(Self::B12),
+            13u64 => Ok(Self::B13),
+            14u64 => Ok(Self::B14),
+            15u64 => Ok(Self::B15),
+            16u64 => Ok(Self::B16),
+            17u64 => Ok(Self::B17),
+            18u64 => Ok(Self::B18),
+            19u64 => Ok(Self::B19),
+            20u64 => Ok(Self::B20),
+            21u64 => Ok(Self::B21),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::B, value)),
+        }
+    }
+}
+impl TryFrom<u8> for BoronIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for BoronIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            6u16 => Ok(Self::B6),
-            7u16 => Ok(Self::B7),
-            8u16 => Ok(Self::B8),
-            9u16 => Ok(Self::B9),
-            10u16 => Ok(Self::B10),
-            11u16 => Ok(Self::B11),
-            12u16 => Ok(Self::B12),
-            13u16 => Ok(Self::B13),
-            14u16 => Ok(Self::B14),
-            15u16 => Ok(Self::B15),
-            16u16 => Ok(Self::B16),
-            17u16 => Ok(Self::B17),
-            18u16 => Ok(Self::B18),
-            19u16 => Ok(Self::B19),
-            20u16 => Ok(Self::B20),
-            21u16 => Ok(Self::B21),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::B, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for BoronIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for BoronIsotope {
@@ -247,8 +265,8 @@ mod tests {
             let iso = BoronIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(BoronIsotope::try_from(0).is_err());
-        assert!(BoronIsotope::try_from(1000).is_err());
+        assert!(BoronIsotope::try_from(0_u16).is_err());
+        assert!(BoronIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

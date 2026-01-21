@@ -246,52 +246,70 @@ impl From<TinIsotope> for crate::Element {
         crate::Element::Sn
     }
 }
+impl TryFrom<u64> for TinIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            99u64 => Ok(Self::Sn99),
+            100u64 => Ok(Self::Sn100),
+            101u64 => Ok(Self::Sn101),
+            102u64 => Ok(Self::Sn102),
+            103u64 => Ok(Self::Sn103),
+            104u64 => Ok(Self::Sn104),
+            105u64 => Ok(Self::Sn105),
+            106u64 => Ok(Self::Sn106),
+            107u64 => Ok(Self::Sn107),
+            108u64 => Ok(Self::Sn108),
+            109u64 => Ok(Self::Sn109),
+            110u64 => Ok(Self::Sn110),
+            111u64 => Ok(Self::Sn111),
+            112u64 => Ok(Self::Sn112),
+            113u64 => Ok(Self::Sn113),
+            114u64 => Ok(Self::Sn114),
+            115u64 => Ok(Self::Sn115),
+            116u64 => Ok(Self::Sn116),
+            117u64 => Ok(Self::Sn117),
+            118u64 => Ok(Self::Sn118),
+            119u64 => Ok(Self::Sn119),
+            120u64 => Ok(Self::Sn120),
+            121u64 => Ok(Self::Sn121),
+            122u64 => Ok(Self::Sn122),
+            123u64 => Ok(Self::Sn123),
+            124u64 => Ok(Self::Sn124),
+            125u64 => Ok(Self::Sn125),
+            126u64 => Ok(Self::Sn126),
+            127u64 => Ok(Self::Sn127),
+            128u64 => Ok(Self::Sn128),
+            129u64 => Ok(Self::Sn129),
+            130u64 => Ok(Self::Sn130),
+            131u64 => Ok(Self::Sn131),
+            132u64 => Ok(Self::Sn132),
+            133u64 => Ok(Self::Sn133),
+            134u64 => Ok(Self::Sn134),
+            135u64 => Ok(Self::Sn135),
+            136u64 => Ok(Self::Sn136),
+            137u64 => Ok(Self::Sn137),
+            138u64 => Ok(Self::Sn138),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Sn, value)),
+        }
+    }
+}
+impl TryFrom<u8> for TinIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for TinIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            99u16 => Ok(Self::Sn99),
-            100u16 => Ok(Self::Sn100),
-            101u16 => Ok(Self::Sn101),
-            102u16 => Ok(Self::Sn102),
-            103u16 => Ok(Self::Sn103),
-            104u16 => Ok(Self::Sn104),
-            105u16 => Ok(Self::Sn105),
-            106u16 => Ok(Self::Sn106),
-            107u16 => Ok(Self::Sn107),
-            108u16 => Ok(Self::Sn108),
-            109u16 => Ok(Self::Sn109),
-            110u16 => Ok(Self::Sn110),
-            111u16 => Ok(Self::Sn111),
-            112u16 => Ok(Self::Sn112),
-            113u16 => Ok(Self::Sn113),
-            114u16 => Ok(Self::Sn114),
-            115u16 => Ok(Self::Sn115),
-            116u16 => Ok(Self::Sn116),
-            117u16 => Ok(Self::Sn117),
-            118u16 => Ok(Self::Sn118),
-            119u16 => Ok(Self::Sn119),
-            120u16 => Ok(Self::Sn120),
-            121u16 => Ok(Self::Sn121),
-            122u16 => Ok(Self::Sn122),
-            123u16 => Ok(Self::Sn123),
-            124u16 => Ok(Self::Sn124),
-            125u16 => Ok(Self::Sn125),
-            126u16 => Ok(Self::Sn126),
-            127u16 => Ok(Self::Sn127),
-            128u16 => Ok(Self::Sn128),
-            129u16 => Ok(Self::Sn129),
-            130u16 => Ok(Self::Sn130),
-            131u16 => Ok(Self::Sn131),
-            132u16 => Ok(Self::Sn132),
-            133u16 => Ok(Self::Sn133),
-            134u16 => Ok(Self::Sn134),
-            135u16 => Ok(Self::Sn135),
-            136u16 => Ok(Self::Sn136),
-            137u16 => Ok(Self::Sn137),
-            138u16 => Ok(Self::Sn138),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Sn, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for TinIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for TinIsotope {
@@ -415,8 +433,8 @@ mod tests {
             let iso = TinIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(TinIsotope::try_from(0).is_err());
-        assert!(TinIsotope::try_from(1000).is_err());
+        assert!(TinIsotope::try_from(0_u16).is_err());
+        assert!(TinIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

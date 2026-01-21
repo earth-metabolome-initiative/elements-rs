@@ -246,52 +246,70 @@ impl From<BariumIsotope> for crate::Element {
         crate::Element::Ba
     }
 }
+impl TryFrom<u64> for BariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            114u64 => Ok(Self::Ba114),
+            115u64 => Ok(Self::Ba115),
+            116u64 => Ok(Self::Ba116),
+            117u64 => Ok(Self::Ba117),
+            118u64 => Ok(Self::Ba118),
+            119u64 => Ok(Self::Ba119),
+            120u64 => Ok(Self::Ba120),
+            121u64 => Ok(Self::Ba121),
+            122u64 => Ok(Self::Ba122),
+            123u64 => Ok(Self::Ba123),
+            124u64 => Ok(Self::Ba124),
+            125u64 => Ok(Self::Ba125),
+            126u64 => Ok(Self::Ba126),
+            127u64 => Ok(Self::Ba127),
+            128u64 => Ok(Self::Ba128),
+            129u64 => Ok(Self::Ba129),
+            130u64 => Ok(Self::Ba130),
+            131u64 => Ok(Self::Ba131),
+            132u64 => Ok(Self::Ba132),
+            133u64 => Ok(Self::Ba133),
+            134u64 => Ok(Self::Ba134),
+            135u64 => Ok(Self::Ba135),
+            136u64 => Ok(Self::Ba136),
+            137u64 => Ok(Self::Ba137),
+            138u64 => Ok(Self::Ba138),
+            139u64 => Ok(Self::Ba139),
+            140u64 => Ok(Self::Ba140),
+            141u64 => Ok(Self::Ba141),
+            142u64 => Ok(Self::Ba142),
+            143u64 => Ok(Self::Ba143),
+            144u64 => Ok(Self::Ba144),
+            145u64 => Ok(Self::Ba145),
+            146u64 => Ok(Self::Ba146),
+            147u64 => Ok(Self::Ba147),
+            148u64 => Ok(Self::Ba148),
+            149u64 => Ok(Self::Ba149),
+            150u64 => Ok(Self::Ba150),
+            151u64 => Ok(Self::Ba151),
+            152u64 => Ok(Self::Ba152),
+            153u64 => Ok(Self::Ba153),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ba, value)),
+        }
+    }
+}
+impl TryFrom<u8> for BariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for BariumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            114u16 => Ok(Self::Ba114),
-            115u16 => Ok(Self::Ba115),
-            116u16 => Ok(Self::Ba116),
-            117u16 => Ok(Self::Ba117),
-            118u16 => Ok(Self::Ba118),
-            119u16 => Ok(Self::Ba119),
-            120u16 => Ok(Self::Ba120),
-            121u16 => Ok(Self::Ba121),
-            122u16 => Ok(Self::Ba122),
-            123u16 => Ok(Self::Ba123),
-            124u16 => Ok(Self::Ba124),
-            125u16 => Ok(Self::Ba125),
-            126u16 => Ok(Self::Ba126),
-            127u16 => Ok(Self::Ba127),
-            128u16 => Ok(Self::Ba128),
-            129u16 => Ok(Self::Ba129),
-            130u16 => Ok(Self::Ba130),
-            131u16 => Ok(Self::Ba131),
-            132u16 => Ok(Self::Ba132),
-            133u16 => Ok(Self::Ba133),
-            134u16 => Ok(Self::Ba134),
-            135u16 => Ok(Self::Ba135),
-            136u16 => Ok(Self::Ba136),
-            137u16 => Ok(Self::Ba137),
-            138u16 => Ok(Self::Ba138),
-            139u16 => Ok(Self::Ba139),
-            140u16 => Ok(Self::Ba140),
-            141u16 => Ok(Self::Ba141),
-            142u16 => Ok(Self::Ba142),
-            143u16 => Ok(Self::Ba143),
-            144u16 => Ok(Self::Ba144),
-            145u16 => Ok(Self::Ba145),
-            146u16 => Ok(Self::Ba146),
-            147u16 => Ok(Self::Ba147),
-            148u16 => Ok(Self::Ba148),
-            149u16 => Ok(Self::Ba149),
-            150u16 => Ok(Self::Ba150),
-            151u16 => Ok(Self::Ba151),
-            152u16 => Ok(Self::Ba152),
-            153u16 => Ok(Self::Ba153),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ba, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for BariumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for BariumIsotope {
@@ -415,8 +433,8 @@ mod tests {
             let iso = BariumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(BariumIsotope::try_from(0).is_err());
-        assert!(BariumIsotope::try_from(1000).is_err());
+        assert!(BariumIsotope::try_from(0_u16).is_err());
+        assert!(BariumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

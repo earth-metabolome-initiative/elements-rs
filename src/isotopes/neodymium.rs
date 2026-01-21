@@ -236,50 +236,68 @@ impl From<NeodymiumIsotope> for crate::Element {
         crate::Element::Nd
     }
 }
+impl TryFrom<u64> for NeodymiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            124u64 => Ok(Self::Nd124),
+            125u64 => Ok(Self::Nd125),
+            126u64 => Ok(Self::Nd126),
+            127u64 => Ok(Self::Nd127),
+            128u64 => Ok(Self::Nd128),
+            129u64 => Ok(Self::Nd129),
+            130u64 => Ok(Self::Nd130),
+            131u64 => Ok(Self::Nd131),
+            132u64 => Ok(Self::Nd132),
+            133u64 => Ok(Self::Nd133),
+            134u64 => Ok(Self::Nd134),
+            135u64 => Ok(Self::Nd135),
+            136u64 => Ok(Self::Nd136),
+            137u64 => Ok(Self::Nd137),
+            138u64 => Ok(Self::Nd138),
+            139u64 => Ok(Self::Nd139),
+            140u64 => Ok(Self::Nd140),
+            141u64 => Ok(Self::Nd141),
+            142u64 => Ok(Self::Nd142),
+            143u64 => Ok(Self::Nd143),
+            144u64 => Ok(Self::Nd144),
+            145u64 => Ok(Self::Nd145),
+            146u64 => Ok(Self::Nd146),
+            147u64 => Ok(Self::Nd147),
+            148u64 => Ok(Self::Nd148),
+            149u64 => Ok(Self::Nd149),
+            150u64 => Ok(Self::Nd150),
+            151u64 => Ok(Self::Nd151),
+            152u64 => Ok(Self::Nd152),
+            153u64 => Ok(Self::Nd153),
+            154u64 => Ok(Self::Nd154),
+            155u64 => Ok(Self::Nd155),
+            156u64 => Ok(Self::Nd156),
+            157u64 => Ok(Self::Nd157),
+            158u64 => Ok(Self::Nd158),
+            159u64 => Ok(Self::Nd159),
+            160u64 => Ok(Self::Nd160),
+            161u64 => Ok(Self::Nd161),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Nd, value)),
+        }
+    }
+}
+impl TryFrom<u8> for NeodymiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for NeodymiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            124u16 => Ok(Self::Nd124),
-            125u16 => Ok(Self::Nd125),
-            126u16 => Ok(Self::Nd126),
-            127u16 => Ok(Self::Nd127),
-            128u16 => Ok(Self::Nd128),
-            129u16 => Ok(Self::Nd129),
-            130u16 => Ok(Self::Nd130),
-            131u16 => Ok(Self::Nd131),
-            132u16 => Ok(Self::Nd132),
-            133u16 => Ok(Self::Nd133),
-            134u16 => Ok(Self::Nd134),
-            135u16 => Ok(Self::Nd135),
-            136u16 => Ok(Self::Nd136),
-            137u16 => Ok(Self::Nd137),
-            138u16 => Ok(Self::Nd138),
-            139u16 => Ok(Self::Nd139),
-            140u16 => Ok(Self::Nd140),
-            141u16 => Ok(Self::Nd141),
-            142u16 => Ok(Self::Nd142),
-            143u16 => Ok(Self::Nd143),
-            144u16 => Ok(Self::Nd144),
-            145u16 => Ok(Self::Nd145),
-            146u16 => Ok(Self::Nd146),
-            147u16 => Ok(Self::Nd147),
-            148u16 => Ok(Self::Nd148),
-            149u16 => Ok(Self::Nd149),
-            150u16 => Ok(Self::Nd150),
-            151u16 => Ok(Self::Nd151),
-            152u16 => Ok(Self::Nd152),
-            153u16 => Ok(Self::Nd153),
-            154u16 => Ok(Self::Nd154),
-            155u16 => Ok(Self::Nd155),
-            156u16 => Ok(Self::Nd156),
-            157u16 => Ok(Self::Nd157),
-            158u16 => Ok(Self::Nd158),
-            159u16 => Ok(Self::Nd159),
-            160u16 => Ok(Self::Nd160),
-            161u16 => Ok(Self::Nd161),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Nd, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for NeodymiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for NeodymiumIsotope {
@@ -401,8 +419,8 @@ mod tests {
             let iso = NeodymiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(NeodymiumIsotope::try_from(0).is_err());
-        assert!(NeodymiumIsotope::try_from(1000).is_err());
+        assert!(NeodymiumIsotope::try_from(0_u16).is_err());
+        assert!(NeodymiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

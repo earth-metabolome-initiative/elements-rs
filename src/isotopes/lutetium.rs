@@ -226,48 +226,66 @@ impl From<LutetiumIsotope> for crate::Element {
         crate::Element::Lu
     }
 }
+impl TryFrom<u64> for LutetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            150u64 => Ok(Self::Lu150),
+            151u64 => Ok(Self::Lu151),
+            152u64 => Ok(Self::Lu152),
+            153u64 => Ok(Self::Lu153),
+            154u64 => Ok(Self::Lu154),
+            155u64 => Ok(Self::Lu155),
+            156u64 => Ok(Self::Lu156),
+            157u64 => Ok(Self::Lu157),
+            158u64 => Ok(Self::Lu158),
+            159u64 => Ok(Self::Lu159),
+            160u64 => Ok(Self::Lu160),
+            161u64 => Ok(Self::Lu161),
+            162u64 => Ok(Self::Lu162),
+            163u64 => Ok(Self::Lu163),
+            164u64 => Ok(Self::Lu164),
+            165u64 => Ok(Self::Lu165),
+            166u64 => Ok(Self::Lu166),
+            167u64 => Ok(Self::Lu167),
+            168u64 => Ok(Self::Lu168),
+            169u64 => Ok(Self::Lu169),
+            170u64 => Ok(Self::Lu170),
+            171u64 => Ok(Self::Lu171),
+            172u64 => Ok(Self::Lu172),
+            173u64 => Ok(Self::Lu173),
+            174u64 => Ok(Self::Lu174),
+            175u64 => Ok(Self::Lu175),
+            176u64 => Ok(Self::Lu176),
+            177u64 => Ok(Self::Lu177),
+            178u64 => Ok(Self::Lu178),
+            179u64 => Ok(Self::Lu179),
+            180u64 => Ok(Self::Lu180),
+            181u64 => Ok(Self::Lu181),
+            182u64 => Ok(Self::Lu182),
+            183u64 => Ok(Self::Lu183),
+            184u64 => Ok(Self::Lu184),
+            185u64 => Ok(Self::Lu185),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Lu, value)),
+        }
+    }
+}
+impl TryFrom<u8> for LutetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for LutetiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            150u16 => Ok(Self::Lu150),
-            151u16 => Ok(Self::Lu151),
-            152u16 => Ok(Self::Lu152),
-            153u16 => Ok(Self::Lu153),
-            154u16 => Ok(Self::Lu154),
-            155u16 => Ok(Self::Lu155),
-            156u16 => Ok(Self::Lu156),
-            157u16 => Ok(Self::Lu157),
-            158u16 => Ok(Self::Lu158),
-            159u16 => Ok(Self::Lu159),
-            160u16 => Ok(Self::Lu160),
-            161u16 => Ok(Self::Lu161),
-            162u16 => Ok(Self::Lu162),
-            163u16 => Ok(Self::Lu163),
-            164u16 => Ok(Self::Lu164),
-            165u16 => Ok(Self::Lu165),
-            166u16 => Ok(Self::Lu166),
-            167u16 => Ok(Self::Lu167),
-            168u16 => Ok(Self::Lu168),
-            169u16 => Ok(Self::Lu169),
-            170u16 => Ok(Self::Lu170),
-            171u16 => Ok(Self::Lu171),
-            172u16 => Ok(Self::Lu172),
-            173u16 => Ok(Self::Lu173),
-            174u16 => Ok(Self::Lu174),
-            175u16 => Ok(Self::Lu175),
-            176u16 => Ok(Self::Lu176),
-            177u16 => Ok(Self::Lu177),
-            178u16 => Ok(Self::Lu178),
-            179u16 => Ok(Self::Lu179),
-            180u16 => Ok(Self::Lu180),
-            181u16 => Ok(Self::Lu181),
-            182u16 => Ok(Self::Lu182),
-            183u16 => Ok(Self::Lu183),
-            184u16 => Ok(Self::Lu184),
-            185u16 => Ok(Self::Lu185),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Lu, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for LutetiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for LutetiumIsotope {
@@ -387,8 +405,8 @@ mod tests {
             let iso = LutetiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(LutetiumIsotope::try_from(0).is_err());
-        assert!(LutetiumIsotope::try_from(1000).is_err());
+        assert!(LutetiumIsotope::try_from(0_u16).is_err());
+        assert!(LutetiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

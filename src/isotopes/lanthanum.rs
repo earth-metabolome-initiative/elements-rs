@@ -246,52 +246,70 @@ impl From<LanthanumIsotope> for crate::Element {
         crate::Element::La
     }
 }
+impl TryFrom<u64> for LanthanumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            116u64 => Ok(Self::La116),
+            117u64 => Ok(Self::La117),
+            118u64 => Ok(Self::La118),
+            119u64 => Ok(Self::La119),
+            120u64 => Ok(Self::La120),
+            121u64 => Ok(Self::La121),
+            122u64 => Ok(Self::La122),
+            123u64 => Ok(Self::La123),
+            124u64 => Ok(Self::La124),
+            125u64 => Ok(Self::La125),
+            126u64 => Ok(Self::La126),
+            127u64 => Ok(Self::La127),
+            128u64 => Ok(Self::La128),
+            129u64 => Ok(Self::La129),
+            130u64 => Ok(Self::La130),
+            131u64 => Ok(Self::La131),
+            132u64 => Ok(Self::La132),
+            133u64 => Ok(Self::La133),
+            134u64 => Ok(Self::La134),
+            135u64 => Ok(Self::La135),
+            136u64 => Ok(Self::La136),
+            137u64 => Ok(Self::La137),
+            138u64 => Ok(Self::La138),
+            139u64 => Ok(Self::La139),
+            140u64 => Ok(Self::La140),
+            141u64 => Ok(Self::La141),
+            142u64 => Ok(Self::La142),
+            143u64 => Ok(Self::La143),
+            144u64 => Ok(Self::La144),
+            145u64 => Ok(Self::La145),
+            146u64 => Ok(Self::La146),
+            147u64 => Ok(Self::La147),
+            148u64 => Ok(Self::La148),
+            149u64 => Ok(Self::La149),
+            150u64 => Ok(Self::La150),
+            151u64 => Ok(Self::La151),
+            152u64 => Ok(Self::La152),
+            153u64 => Ok(Self::La153),
+            154u64 => Ok(Self::La154),
+            155u64 => Ok(Self::La155),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::La, value)),
+        }
+    }
+}
+impl TryFrom<u8> for LanthanumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for LanthanumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            116u16 => Ok(Self::La116),
-            117u16 => Ok(Self::La117),
-            118u16 => Ok(Self::La118),
-            119u16 => Ok(Self::La119),
-            120u16 => Ok(Self::La120),
-            121u16 => Ok(Self::La121),
-            122u16 => Ok(Self::La122),
-            123u16 => Ok(Self::La123),
-            124u16 => Ok(Self::La124),
-            125u16 => Ok(Self::La125),
-            126u16 => Ok(Self::La126),
-            127u16 => Ok(Self::La127),
-            128u16 => Ok(Self::La128),
-            129u16 => Ok(Self::La129),
-            130u16 => Ok(Self::La130),
-            131u16 => Ok(Self::La131),
-            132u16 => Ok(Self::La132),
-            133u16 => Ok(Self::La133),
-            134u16 => Ok(Self::La134),
-            135u16 => Ok(Self::La135),
-            136u16 => Ok(Self::La136),
-            137u16 => Ok(Self::La137),
-            138u16 => Ok(Self::La138),
-            139u16 => Ok(Self::La139),
-            140u16 => Ok(Self::La140),
-            141u16 => Ok(Self::La141),
-            142u16 => Ok(Self::La142),
-            143u16 => Ok(Self::La143),
-            144u16 => Ok(Self::La144),
-            145u16 => Ok(Self::La145),
-            146u16 => Ok(Self::La146),
-            147u16 => Ok(Self::La147),
-            148u16 => Ok(Self::La148),
-            149u16 => Ok(Self::La149),
-            150u16 => Ok(Self::La150),
-            151u16 => Ok(Self::La151),
-            152u16 => Ok(Self::La152),
-            153u16 => Ok(Self::La153),
-            154u16 => Ok(Self::La154),
-            155u16 => Ok(Self::La155),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::La, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for LanthanumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for LanthanumIsotope {
@@ -415,8 +433,8 @@ mod tests {
             let iso = LanthanumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(LanthanumIsotope::try_from(0).is_err());
-        assert!(LanthanumIsotope::try_from(1000).is_err());
+        assert!(LanthanumIsotope::try_from(0_u16).is_err());
+        assert!(LanthanumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

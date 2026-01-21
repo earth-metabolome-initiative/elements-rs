@@ -211,45 +211,63 @@ impl From<GermaniumIsotope> for crate::Element {
         crate::Element::Ge
     }
 }
+impl TryFrom<u64> for GermaniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            58u64 => Ok(Self::Ge58),
+            59u64 => Ok(Self::Ge59),
+            60u64 => Ok(Self::Ge60),
+            61u64 => Ok(Self::Ge61),
+            62u64 => Ok(Self::Ge62),
+            63u64 => Ok(Self::Ge63),
+            64u64 => Ok(Self::Ge64),
+            65u64 => Ok(Self::Ge65),
+            66u64 => Ok(Self::Ge66),
+            67u64 => Ok(Self::Ge67),
+            68u64 => Ok(Self::Ge68),
+            69u64 => Ok(Self::Ge69),
+            70u64 => Ok(Self::Ge70),
+            71u64 => Ok(Self::Ge71),
+            72u64 => Ok(Self::Ge72),
+            73u64 => Ok(Self::Ge73),
+            74u64 => Ok(Self::Ge74),
+            75u64 => Ok(Self::Ge75),
+            76u64 => Ok(Self::Ge76),
+            77u64 => Ok(Self::Ge77),
+            78u64 => Ok(Self::Ge78),
+            79u64 => Ok(Self::Ge79),
+            80u64 => Ok(Self::Ge80),
+            81u64 => Ok(Self::Ge81),
+            82u64 => Ok(Self::Ge82),
+            83u64 => Ok(Self::Ge83),
+            84u64 => Ok(Self::Ge84),
+            85u64 => Ok(Self::Ge85),
+            86u64 => Ok(Self::Ge86),
+            87u64 => Ok(Self::Ge87),
+            88u64 => Ok(Self::Ge88),
+            89u64 => Ok(Self::Ge89),
+            90u64 => Ok(Self::Ge90),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Ge, value)),
+        }
+    }
+}
+impl TryFrom<u8> for GermaniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for GermaniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            58u16 => Ok(Self::Ge58),
-            59u16 => Ok(Self::Ge59),
-            60u16 => Ok(Self::Ge60),
-            61u16 => Ok(Self::Ge61),
-            62u16 => Ok(Self::Ge62),
-            63u16 => Ok(Self::Ge63),
-            64u16 => Ok(Self::Ge64),
-            65u16 => Ok(Self::Ge65),
-            66u16 => Ok(Self::Ge66),
-            67u16 => Ok(Self::Ge67),
-            68u16 => Ok(Self::Ge68),
-            69u16 => Ok(Self::Ge69),
-            70u16 => Ok(Self::Ge70),
-            71u16 => Ok(Self::Ge71),
-            72u16 => Ok(Self::Ge72),
-            73u16 => Ok(Self::Ge73),
-            74u16 => Ok(Self::Ge74),
-            75u16 => Ok(Self::Ge75),
-            76u16 => Ok(Self::Ge76),
-            77u16 => Ok(Self::Ge77),
-            78u16 => Ok(Self::Ge78),
-            79u16 => Ok(Self::Ge79),
-            80u16 => Ok(Self::Ge80),
-            81u16 => Ok(Self::Ge81),
-            82u16 => Ok(Self::Ge82),
-            83u16 => Ok(Self::Ge83),
-            84u16 => Ok(Self::Ge84),
-            85u16 => Ok(Self::Ge85),
-            86u16 => Ok(Self::Ge86),
-            87u16 => Ok(Self::Ge87),
-            88u16 => Ok(Self::Ge88),
-            89u16 => Ok(Self::Ge89),
-            90u16 => Ok(Self::Ge90),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Ge, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for GermaniumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for GermaniumIsotope {
@@ -366,8 +384,8 @@ mod tests {
             let iso = GermaniumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(GermaniumIsotope::try_from(0).is_err());
-        assert!(GermaniumIsotope::try_from(1000).is_err());
+        assert!(GermaniumIsotope::try_from(0_u16).is_err());
+        assert!(GermaniumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

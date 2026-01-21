@@ -109,28 +109,46 @@ impl From<LawrenciumIsotope> for crate::Element {
         crate::Element::Lr
     }
 }
+impl TryFrom<u64> for LawrenciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            251u64 => Ok(Self::Lr251),
+            252u64 => Ok(Self::Lr252),
+            253u64 => Ok(Self::Lr253),
+            254u64 => Ok(Self::Lr254),
+            255u64 => Ok(Self::Lr255),
+            256u64 => Ok(Self::Lr256),
+            257u64 => Ok(Self::Lr257),
+            258u64 => Ok(Self::Lr258),
+            259u64 => Ok(Self::Lr259),
+            260u64 => Ok(Self::Lr260),
+            261u64 => Ok(Self::Lr261),
+            262u64 => Ok(Self::Lr262),
+            263u64 => Ok(Self::Lr263),
+            264u64 => Ok(Self::Lr264),
+            265u64 => Ok(Self::Lr265),
+            266u64 => Ok(Self::Lr266),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Lr, value)),
+        }
+    }
+}
+impl TryFrom<u8> for LawrenciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for LawrenciumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            251u16 => Ok(Self::Lr251),
-            252u16 => Ok(Self::Lr252),
-            253u16 => Ok(Self::Lr253),
-            254u16 => Ok(Self::Lr254),
-            255u16 => Ok(Self::Lr255),
-            256u16 => Ok(Self::Lr256),
-            257u16 => Ok(Self::Lr257),
-            258u16 => Ok(Self::Lr258),
-            259u16 => Ok(Self::Lr259),
-            260u16 => Ok(Self::Lr260),
-            261u16 => Ok(Self::Lr261),
-            262u16 => Ok(Self::Lr262),
-            263u16 => Ok(Self::Lr263),
-            264u16 => Ok(Self::Lr264),
-            265u16 => Ok(Self::Lr265),
-            266u16 => Ok(Self::Lr266),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Lr, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for LawrenciumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for LawrenciumIsotope {
@@ -230,8 +248,8 @@ mod tests {
             let iso = LawrenciumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(LawrenciumIsotope::try_from(0).is_err());
-        assert!(LawrenciumIsotope::try_from(1000).is_err());
+        assert!(LawrenciumIsotope::try_from(0_u16).is_err());
+        assert!(LawrenciumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

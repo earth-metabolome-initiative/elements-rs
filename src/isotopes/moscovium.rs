@@ -65,17 +65,35 @@ impl From<MoscoviumIsotope> for crate::Element {
         crate::Element::Mc
     }
 }
+impl TryFrom<u64> for MoscoviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            287u64 => Ok(Self::Mc287),
+            288u64 => Ok(Self::Mc288),
+            289u64 => Ok(Self::Mc289),
+            290u64 => Ok(Self::Mc290),
+            291u64 => Ok(Self::Mc291),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Mc, value)),
+        }
+    }
+}
+impl TryFrom<u8> for MoscoviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for MoscoviumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            287u16 => Ok(Self::Mc287),
-            288u16 => Ok(Self::Mc288),
-            289u16 => Ok(Self::Mc289),
-            290u16 => Ok(Self::Mc290),
-            291u16 => Ok(Self::Mc291),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Mc, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for MoscoviumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for MoscoviumIsotope {
@@ -164,8 +182,8 @@ mod tests {
             let iso = MoscoviumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(MoscoviumIsotope::try_from(0).is_err());
-        assert!(MoscoviumIsotope::try_from(1000).is_err());
+        assert!(MoscoviumIsotope::try_from(0_u16).is_err());
+        assert!(MoscoviumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {

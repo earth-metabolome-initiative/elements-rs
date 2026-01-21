@@ -197,50 +197,68 @@ impl From<PromethiumIsotope> for crate::Element {
         crate::Element::Pm
     }
 }
+impl TryFrom<u64> for PromethiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u64) -> Result<Self, Self::Error> {
+        match value {
+            126u64 => Ok(Self::Pm126),
+            127u64 => Ok(Self::Pm127),
+            128u64 => Ok(Self::Pm128),
+            129u64 => Ok(Self::Pm129),
+            130u64 => Ok(Self::Pm130),
+            131u64 => Ok(Self::Pm131),
+            132u64 => Ok(Self::Pm132),
+            133u64 => Ok(Self::Pm133),
+            134u64 => Ok(Self::Pm134),
+            135u64 => Ok(Self::Pm135),
+            136u64 => Ok(Self::Pm136),
+            137u64 => Ok(Self::Pm137),
+            138u64 => Ok(Self::Pm138),
+            139u64 => Ok(Self::Pm139),
+            140u64 => Ok(Self::Pm140),
+            141u64 => Ok(Self::Pm141),
+            142u64 => Ok(Self::Pm142),
+            143u64 => Ok(Self::Pm143),
+            144u64 => Ok(Self::Pm144),
+            145u64 => Ok(Self::Pm145),
+            146u64 => Ok(Self::Pm146),
+            147u64 => Ok(Self::Pm147),
+            148u64 => Ok(Self::Pm148),
+            149u64 => Ok(Self::Pm149),
+            150u64 => Ok(Self::Pm150),
+            151u64 => Ok(Self::Pm151),
+            152u64 => Ok(Self::Pm152),
+            153u64 => Ok(Self::Pm153),
+            154u64 => Ok(Self::Pm154),
+            155u64 => Ok(Self::Pm155),
+            156u64 => Ok(Self::Pm156),
+            157u64 => Ok(Self::Pm157),
+            158u64 => Ok(Self::Pm158),
+            159u64 => Ok(Self::Pm159),
+            160u64 => Ok(Self::Pm160),
+            161u64 => Ok(Self::Pm161),
+            162u64 => Ok(Self::Pm162),
+            163u64 => Ok(Self::Pm163),
+            _ => Err(crate::errors::Error::Isotope(crate::Element::Pm, value)),
+        }
+    }
+}
+impl TryFrom<u8> for PromethiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
+    }
+}
 impl TryFrom<u16> for PromethiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u16) -> Result<Self, Self::Error> {
-        match value {
-            126u16 => Ok(Self::Pm126),
-            127u16 => Ok(Self::Pm127),
-            128u16 => Ok(Self::Pm128),
-            129u16 => Ok(Self::Pm129),
-            130u16 => Ok(Self::Pm130),
-            131u16 => Ok(Self::Pm131),
-            132u16 => Ok(Self::Pm132),
-            133u16 => Ok(Self::Pm133),
-            134u16 => Ok(Self::Pm134),
-            135u16 => Ok(Self::Pm135),
-            136u16 => Ok(Self::Pm136),
-            137u16 => Ok(Self::Pm137),
-            138u16 => Ok(Self::Pm138),
-            139u16 => Ok(Self::Pm139),
-            140u16 => Ok(Self::Pm140),
-            141u16 => Ok(Self::Pm141),
-            142u16 => Ok(Self::Pm142),
-            143u16 => Ok(Self::Pm143),
-            144u16 => Ok(Self::Pm144),
-            145u16 => Ok(Self::Pm145),
-            146u16 => Ok(Self::Pm146),
-            147u16 => Ok(Self::Pm147),
-            148u16 => Ok(Self::Pm148),
-            149u16 => Ok(Self::Pm149),
-            150u16 => Ok(Self::Pm150),
-            151u16 => Ok(Self::Pm151),
-            152u16 => Ok(Self::Pm152),
-            153u16 => Ok(Self::Pm153),
-            154u16 => Ok(Self::Pm154),
-            155u16 => Ok(Self::Pm155),
-            156u16 => Ok(Self::Pm156),
-            157u16 => Ok(Self::Pm157),
-            158u16 => Ok(Self::Pm158),
-            159u16 => Ok(Self::Pm159),
-            160u16 => Ok(Self::Pm160),
-            161u16 => Ok(Self::Pm161),
-            162u16 => Ok(Self::Pm162),
-            163u16 => Ok(Self::Pm163),
-            _ => Err(crate::errors::Error::Isotope(crate::Element::Pm, value)),
-        }
+        Self::try_from(u64::from(value))
+    }
+}
+impl TryFrom<u32> for PromethiumIsotope {
+    type Error = crate::errors::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from(u64::from(value))
     }
 }
 impl std::fmt::Display for PromethiumIsotope {
@@ -362,8 +380,8 @@ mod tests {
             let iso = PromethiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
         }
-        assert!(PromethiumIsotope::try_from(0).is_err());
-        assert!(PromethiumIsotope::try_from(1000).is_err());
+        assert!(PromethiumIsotope::try_from(0_u16).is_err());
+        assert!(PromethiumIsotope::try_from(1000_u16).is_err());
     }
     #[test]
     fn test_display() {
