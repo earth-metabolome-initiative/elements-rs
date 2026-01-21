@@ -31,11 +31,11 @@ use crate::{
     },
 };
 
-impl TryFrom<(Element, u16)> for crate::Isotope {
+impl TryFrom<(Element, u64)> for crate::Isotope {
     type Error = crate::errors::Error;
 
     #[allow(clippy::too_many_lines)]
-    fn try_from((element, mass): (Element, u16)) -> Result<Self, Self::Error> {
+    fn try_from((element, mass): (Element, u64)) -> Result<Self, Self::Error> {
         Ok(match element {
             Element::H => Self::H(HydrogenIsotope::try_from(mass)?),
             Element::He => Self::He(HeliumIsotope::try_from(mass)?),
@@ -159,6 +159,33 @@ impl TryFrom<(Element, u16)> for crate::Isotope {
     }
 }
 
+impl TryFrom<(Element, u32)> for crate::Isotope {
+    type Error = crate::errors::Error;
+
+    #[allow(clippy::too_many_lines)]
+    fn try_from((element, mass): (Element, u32)) -> Result<Self, Self::Error> {
+        Self::try_from((element, u64::from(mass)))
+    }
+}
+
+impl TryFrom<(Element, u16)> for crate::Isotope {
+    type Error = crate::errors::Error;
+
+    #[allow(clippy::too_many_lines)]
+    fn try_from((element, mass): (Element, u16)) -> Result<Self, Self::Error> {
+        Self::try_from((element, u64::from(mass)))
+    }
+}
+
+impl TryFrom<(Element, u8)> for crate::Isotope {
+    type Error = crate::errors::Error;
+
+    #[allow(clippy::too_many_lines)]
+    fn try_from((element, mass): (Element, u8)) -> Result<Self, Self::Error> {
+        Self::try_from((element, u64::from(mass)))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::{Element, isotopes::Isotope};
@@ -169,46 +196,46 @@ mod tests {
         // implementations Test representative isotopes from different elements
 
         // Hydrogen
-        let h1 = Isotope::try_from((Element::H, 1)).unwrap();
+        let h1 = Isotope::try_from((Element::H, 1_u8)).unwrap();
         assert_eq!(h1, Isotope::H(crate::isotopes::HydrogenIsotope::H1));
 
-        let d2 = Isotope::try_from((Element::H, 2)).unwrap();
+        let d2 = Isotope::try_from((Element::H, 2_u8)).unwrap();
         assert_eq!(d2, Isotope::H(crate::isotopes::HydrogenIsotope::D2));
 
-        let t3 = Isotope::try_from((Element::H, 3)).unwrap();
+        let t3 = Isotope::try_from((Element::H, 3_u8)).unwrap();
         assert_eq!(t3, Isotope::H(crate::isotopes::HydrogenIsotope::T3));
 
         // Carbon
-        let c12 = Isotope::try_from((Element::C, 12)).unwrap();
+        let c12 = Isotope::try_from((Element::C, 12_u8)).unwrap();
         assert_eq!(c12, Isotope::C(crate::isotopes::CarbonIsotope::C12));
 
-        let c13 = Isotope::try_from((Element::C, 13)).unwrap();
+        let c13 = Isotope::try_from((Element::C, 13_u8)).unwrap();
         assert_eq!(c13, Isotope::C(crate::isotopes::CarbonIsotope::C13));
 
-        let c14 = Isotope::try_from((Element::C, 14)).unwrap();
+        let c14 = Isotope::try_from((Element::C, 14_u8)).unwrap();
         assert_eq!(c14, Isotope::C(crate::isotopes::CarbonIsotope::C14));
 
         // Oxygen
-        let o16 = Isotope::try_from((Element::O, 16)).unwrap();
+        let o16 = Isotope::try_from((Element::O, 16_u8)).unwrap();
         assert_eq!(o16, Isotope::O(crate::isotopes::OxygenIsotope::O16));
 
         // Argon
-        let ar36 = Isotope::try_from((Element::Ar, 36)).unwrap();
+        let ar36 = Isotope::try_from((Element::Ar, 36_u8)).unwrap();
         assert_eq!(ar36, Isotope::Ar(crate::isotopes::ArgonIsotope::Ar36));
 
-        let ar40 = Isotope::try_from((Element::Ar, 40)).unwrap();
+        let ar40 = Isotope::try_from((Element::Ar, 40_u8)).unwrap();
         assert_eq!(ar40, Isotope::Ar(crate::isotopes::ArgonIsotope::Ar40));
     }
 
     #[test]
     fn test_try_from_element_invalid_mass() {
         // Test invalid mass numbers for various elements
-        assert!(Isotope::try_from((Element::H, 0)).is_err());
-        assert!(Isotope::try_from((Element::H, 8)).is_err()); // H7 is the highest for hydrogen
-        assert!(Isotope::try_from((Element::C, 7)).is_err()); // C8 is the lowest for carbon
-        assert!(Isotope::try_from((Element::C, 24)).is_err()); // C23 is the highest for carbon
-        assert!(Isotope::try_from((Element::O, 11)).is_err()); // O12 is the lowest for oxygen
-        assert!(Isotope::try_from((Element::O, 29)).is_err()); // O28 is the highest for oxygen
+        assert!(Isotope::try_from((Element::H, 0_u8)).is_err());
+        assert!(Isotope::try_from((Element::H, 8_u8)).is_err()); // H7 is the highest for hydrogen
+        assert!(Isotope::try_from((Element::C, 7_u8)).is_err()); // C8 is the lowest for carbon
+        assert!(Isotope::try_from((Element::C, 24_u8)).is_err()); // C23 is the highest for carbon
+        assert!(Isotope::try_from((Element::O, 11_u8)).is_err()); // O12 is the lowest for oxygen
+        assert!(Isotope::try_from((Element::O, 29_u8)).is_err()); // O28 is the highest for oxygen
     }
 
     #[test]
