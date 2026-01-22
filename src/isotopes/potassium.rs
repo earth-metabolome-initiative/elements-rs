@@ -131,28 +131,7 @@ impl super::IsotopicComposition for PotassiumIsotope {
             Self::K39 => Some(0.932581f64),
             Self::K40 => Some(0.000117f64),
             Self::K41 => Some(0.067302f64),
-            Self::K32
-            | Self::K33
-            | Self::K34
-            | Self::K35
-            | Self::K36
-            | Self::K37
-            | Self::K38
-            | Self::K42
-            | Self::K43
-            | Self::K44
-            | Self::K45
-            | Self::K46
-            | Self::K47
-            | Self::K48
-            | Self::K49
-            | Self::K50
-            | Self::K51
-            | Self::K52
-            | Self::K53
-            | Self::K54
-            | Self::K55
-            | Self::K56 => None,
+            _ => None,
         }
     }
 }

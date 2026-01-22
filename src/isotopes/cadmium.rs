@@ -192,37 +192,7 @@ impl super::IsotopicComposition for CadmiumIsotope {
             Self::Cd113 => Some(0.1222f64),
             Self::Cd114 => Some(0.2873f64),
             Self::Cd116 => Some(0.0749f64),
-            Self::Cd95
-            | Self::Cd96
-            | Self::Cd97
-            | Self::Cd98
-            | Self::Cd99
-            | Self::Cd100
-            | Self::Cd101
-            | Self::Cd102
-            | Self::Cd103
-            | Self::Cd104
-            | Self::Cd105
-            | Self::Cd107
-            | Self::Cd109
-            | Self::Cd115
-            | Self::Cd117
-            | Self::Cd118
-            | Self::Cd119
-            | Self::Cd120
-            | Self::Cd121
-            | Self::Cd122
-            | Self::Cd123
-            | Self::Cd124
-            | Self::Cd125
-            | Self::Cd126
-            | Self::Cd127
-            | Self::Cd128
-            | Self::Cd129
-            | Self::Cd130
-            | Self::Cd131
-            | Self::Cd132
-            | Self::Cd133 => None,
+            _ => None,
         }
     }
 }

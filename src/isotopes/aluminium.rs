@@ -121,28 +121,7 @@ impl super::IsotopicComposition for AluminiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Al27 => Some(1f64),
-            Self::Al21
-            | Self::Al22
-            | Self::Al23
-            | Self::Al24
-            | Self::Al25
-            | Self::Al26
-            | Self::Al28
-            | Self::Al29
-            | Self::Al30
-            | Self::Al31
-            | Self::Al32
-            | Self::Al33
-            | Self::Al34
-            | Self::Al35
-            | Self::Al36
-            | Self::Al37
-            | Self::Al38
-            | Self::Al39
-            | Self::Al40
-            | Self::Al41
-            | Self::Al42
-            | Self::Al43 => None,
+            _ => None,
         }
     }
 }

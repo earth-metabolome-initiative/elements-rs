@@ -166,33 +166,7 @@ impl super::IsotopicComposition for KryptonIsotope {
             Self::Kr83 => Some(0.115f64),
             Self::Kr84 => Some(0.56987f64),
             Self::Kr86 => Some(0.17279f64),
-            Self::Kr69
-            | Self::Kr70
-            | Self::Kr71
-            | Self::Kr72
-            | Self::Kr73
-            | Self::Kr74
-            | Self::Kr75
-            | Self::Kr76
-            | Self::Kr77
-            | Self::Kr79
-            | Self::Kr81
-            | Self::Kr85
-            | Self::Kr87
-            | Self::Kr88
-            | Self::Kr89
-            | Self::Kr90
-            | Self::Kr91
-            | Self::Kr92
-            | Self::Kr93
-            | Self::Kr94
-            | Self::Kr95
-            | Self::Kr96
-            | Self::Kr97
-            | Self::Kr98
-            | Self::Kr99
-            | Self::Kr100
-            | Self::Kr101 => None,
+            _ => None,
         }
     }
 }

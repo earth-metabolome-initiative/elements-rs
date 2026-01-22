@@ -178,36 +178,7 @@ impl super::IsotopicComposition for ErbiumIsotope {
             Self::Er167 => Some(0.22869f64),
             Self::Er168 => Some(0.26978f64),
             Self::Er170 => Some(0.1491f64),
-            Self::Er142
-            | Self::Er143
-            | Self::Er144
-            | Self::Er145
-            | Self::Er146
-            | Self::Er147
-            | Self::Er148
-            | Self::Er149
-            | Self::Er150
-            | Self::Er151
-            | Self::Er152
-            | Self::Er153
-            | Self::Er154
-            | Self::Er155
-            | Self::Er156
-            | Self::Er157
-            | Self::Er158
-            | Self::Er159
-            | Self::Er160
-            | Self::Er161
-            | Self::Er163
-            | Self::Er165
-            | Self::Er169
-            | Self::Er171
-            | Self::Er172
-            | Self::Er173
-            | Self::Er174
-            | Self::Er175
-            | Self::Er176
-            | Self::Er177 => None,
+            _ => None,
         }
     }
 }

@@ -194,45 +194,7 @@ impl super::IsotopicComposition for IridiumIsotope {
         match self {
             Self::Ir191 => Some(0.373f64),
             Self::Ir193 => Some(0.627f64),
-            Self::Ir164
-            | Self::Ir165
-            | Self::Ir166
-            | Self::Ir167
-            | Self::Ir168
-            | Self::Ir169
-            | Self::Ir170
-            | Self::Ir171
-            | Self::Ir172
-            | Self::Ir173
-            | Self::Ir174
-            | Self::Ir175
-            | Self::Ir176
-            | Self::Ir177
-            | Self::Ir178
-            | Self::Ir179
-            | Self::Ir180
-            | Self::Ir181
-            | Self::Ir182
-            | Self::Ir183
-            | Self::Ir184
-            | Self::Ir185
-            | Self::Ir186
-            | Self::Ir187
-            | Self::Ir188
-            | Self::Ir189
-            | Self::Ir190
-            | Self::Ir192
-            | Self::Ir194
-            | Self::Ir195
-            | Self::Ir196
-            | Self::Ir197
-            | Self::Ir198
-            | Self::Ir199
-            | Self::Ir200
-            | Self::Ir201
-            | Self::Ir202
-            | Self::Ir203
-            | Self::Ir204 => None,
+            _ => None,
         }
     }
 }

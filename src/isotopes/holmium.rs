@@ -173,41 +173,7 @@ impl super::IsotopicComposition for HolmiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Ho165 => Some(1f64),
-            Self::Ho140
-            | Self::Ho141
-            | Self::Ho142
-            | Self::Ho143
-            | Self::Ho144
-            | Self::Ho145
-            | Self::Ho146
-            | Self::Ho147
-            | Self::Ho148
-            | Self::Ho149
-            | Self::Ho150
-            | Self::Ho151
-            | Self::Ho152
-            | Self::Ho153
-            | Self::Ho154
-            | Self::Ho155
-            | Self::Ho156
-            | Self::Ho157
-            | Self::Ho158
-            | Self::Ho159
-            | Self::Ho160
-            | Self::Ho161
-            | Self::Ho162
-            | Self::Ho163
-            | Self::Ho164
-            | Self::Ho166
-            | Self::Ho167
-            | Self::Ho168
-            | Self::Ho169
-            | Self::Ho170
-            | Self::Ho171
-            | Self::Ho172
-            | Self::Ho173
-            | Self::Ho174
-            | Self::Ho175 => None,
+            _ => None,
         }
     }
 }

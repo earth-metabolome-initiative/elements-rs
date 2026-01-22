@@ -165,39 +165,7 @@ impl super::IsotopicComposition for YttriumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Y89 => Some(1f64),
-            Self::Y76
-            | Self::Y77
-            | Self::Y78
-            | Self::Y79
-            | Self::Y80
-            | Self::Y81
-            | Self::Y82
-            | Self::Y83
-            | Self::Y84
-            | Self::Y85
-            | Self::Y86
-            | Self::Y87
-            | Self::Y88
-            | Self::Y90
-            | Self::Y91
-            | Self::Y92
-            | Self::Y93
-            | Self::Y94
-            | Self::Y95
-            | Self::Y96
-            | Self::Y97
-            | Self::Y98
-            | Self::Y99
-            | Self::Y100
-            | Self::Y101
-            | Self::Y102
-            | Self::Y103
-            | Self::Y104
-            | Self::Y105
-            | Self::Y106
-            | Self::Y107
-            | Self::Y108
-            | Self::Y109 => None,
+            _ => None,
         }
     }
 }

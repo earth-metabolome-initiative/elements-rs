@@ -126,28 +126,7 @@ impl super::IsotopicComposition for ChlorineIsotope {
         match self {
             Self::Cl35 => Some(0.7576f64),
             Self::Cl37 => Some(0.2424f64),
-            Self::Cl28
-            | Self::Cl29
-            | Self::Cl30
-            | Self::Cl31
-            | Self::Cl32
-            | Self::Cl33
-            | Self::Cl34
-            | Self::Cl36
-            | Self::Cl38
-            | Self::Cl39
-            | Self::Cl40
-            | Self::Cl41
-            | Self::Cl42
-            | Self::Cl43
-            | Self::Cl44
-            | Self::Cl45
-            | Self::Cl46
-            | Self::Cl47
-            | Self::Cl48
-            | Self::Cl49
-            | Self::Cl50
-            | Self::Cl51 => None,
+            _ => None,
         }
     }
 }

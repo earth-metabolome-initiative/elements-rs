@@ -101,23 +101,7 @@ impl super::IsotopicComposition for FluorineIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::F19 => Some(1f64),
-            Self::F14
-            | Self::F15
-            | Self::F16
-            | Self::F17
-            | Self::F18
-            | Self::F20
-            | Self::F21
-            | Self::F22
-            | Self::F23
-            | Self::F24
-            | Self::F25
-            | Self::F26
-            | Self::F27
-            | Self::F28
-            | Self::F29
-            | Self::F30
-            | Self::F31 => None,
+            _ => None,
         }
     }
 }

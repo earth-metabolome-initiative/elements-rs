@@ -190,44 +190,7 @@ impl super::IsotopicComposition for LanthanumIsotope {
         match self {
             Self::La138 => Some(0.0008881f64),
             Self::La139 => Some(0.9991119f64),
-            Self::La116
-            | Self::La117
-            | Self::La118
-            | Self::La119
-            | Self::La120
-            | Self::La121
-            | Self::La122
-            | Self::La123
-            | Self::La124
-            | Self::La125
-            | Self::La126
-            | Self::La127
-            | Self::La128
-            | Self::La129
-            | Self::La130
-            | Self::La131
-            | Self::La132
-            | Self::La133
-            | Self::La134
-            | Self::La135
-            | Self::La136
-            | Self::La137
-            | Self::La140
-            | Self::La141
-            | Self::La142
-            | Self::La143
-            | Self::La144
-            | Self::La145
-            | Self::La146
-            | Self::La147
-            | Self::La148
-            | Self::La149
-            | Self::La150
-            | Self::La151
-            | Self::La152
-            | Self::La153
-            | Self::La154
-            | Self::La155 => None,
+            _ => None,
         }
     }
 }

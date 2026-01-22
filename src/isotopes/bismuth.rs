@@ -193,46 +193,7 @@ impl super::IsotopicComposition for BismuthIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Bi209 => Some(1f64),
-            Self::Bi184
-            | Self::Bi185
-            | Self::Bi186
-            | Self::Bi187
-            | Self::Bi188
-            | Self::Bi189
-            | Self::Bi190
-            | Self::Bi191
-            | Self::Bi192
-            | Self::Bi193
-            | Self::Bi194
-            | Self::Bi195
-            | Self::Bi196
-            | Self::Bi197
-            | Self::Bi198
-            | Self::Bi199
-            | Self::Bi200
-            | Self::Bi201
-            | Self::Bi202
-            | Self::Bi203
-            | Self::Bi204
-            | Self::Bi205
-            | Self::Bi206
-            | Self::Bi207
-            | Self::Bi208
-            | Self::Bi210
-            | Self::Bi211
-            | Self::Bi212
-            | Self::Bi213
-            | Self::Bi214
-            | Self::Bi215
-            | Self::Bi216
-            | Self::Bi217
-            | Self::Bi218
-            | Self::Bi219
-            | Self::Bi220
-            | Self::Bi221
-            | Self::Bi222
-            | Self::Bi223
-            | Self::Bi224 => None,
+            _ => None,
         }
     }
 }

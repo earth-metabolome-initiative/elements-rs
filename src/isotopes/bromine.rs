@@ -158,36 +158,7 @@ impl super::IsotopicComposition for BromineIsotope {
         match self {
             Self::Br79 => Some(0.5069f64),
             Self::Br81 => Some(0.4931f64),
-            Self::Br67
-            | Self::Br68
-            | Self::Br69
-            | Self::Br70
-            | Self::Br71
-            | Self::Br72
-            | Self::Br73
-            | Self::Br74
-            | Self::Br75
-            | Self::Br76
-            | Self::Br77
-            | Self::Br78
-            | Self::Br80
-            | Self::Br82
-            | Self::Br83
-            | Self::Br84
-            | Self::Br85
-            | Self::Br86
-            | Self::Br87
-            | Self::Br88
-            | Self::Br89
-            | Self::Br90
-            | Self::Br91
-            | Self::Br92
-            | Self::Br93
-            | Self::Br94
-            | Self::Br95
-            | Self::Br96
-            | Self::Br97
-            | Self::Br98 => None,
+            _ => None,
         }
     }
 }

@@ -107,22 +107,7 @@ impl super::IsotopicComposition for NeonIsotope {
             Self::Ne20 => Some(0.9048f64),
             Self::Ne21 => Some(0.0027f64),
             Self::Ne22 => Some(0.0925f64),
-            Self::Ne16
-            | Self::Ne17
-            | Self::Ne18
-            | Self::Ne19
-            | Self::Ne23
-            | Self::Ne24
-            | Self::Ne25
-            | Self::Ne26
-            | Self::Ne27
-            | Self::Ne28
-            | Self::Ne29
-            | Self::Ne30
-            | Self::Ne31
-            | Self::Ne32
-            | Self::Ne33
-            | Self::Ne34 => None,
+            _ => None,
         }
     }
 }

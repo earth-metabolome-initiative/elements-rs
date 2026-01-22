@@ -181,43 +181,7 @@ impl super::IsotopicComposition for RhodiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Rh103 => Some(1f64),
-            Self::Rh89
-            | Self::Rh90
-            | Self::Rh91
-            | Self::Rh92
-            | Self::Rh93
-            | Self::Rh94
-            | Self::Rh95
-            | Self::Rh96
-            | Self::Rh97
-            | Self::Rh98
-            | Self::Rh99
-            | Self::Rh100
-            | Self::Rh101
-            | Self::Rh102
-            | Self::Rh104
-            | Self::Rh105
-            | Self::Rh106
-            | Self::Rh107
-            | Self::Rh108
-            | Self::Rh109
-            | Self::Rh110
-            | Self::Rh111
-            | Self::Rh112
-            | Self::Rh113
-            | Self::Rh114
-            | Self::Rh115
-            | Self::Rh116
-            | Self::Rh117
-            | Self::Rh118
-            | Self::Rh119
-            | Self::Rh120
-            | Self::Rh121
-            | Self::Rh122
-            | Self::Rh123
-            | Self::Rh124
-            | Self::Rh125
-            | Self::Rh126 => None,
+            _ => None,
         }
     }
 }

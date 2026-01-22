@@ -138,31 +138,7 @@ impl super::IsotopicComposition for VanadiumIsotope {
         match self {
             Self::V50 => Some(0.0025f64),
             Self::V51 => Some(0.9975f64),
-            Self::V40
-            | Self::V41
-            | Self::V42
-            | Self::V43
-            | Self::V44
-            | Self::V45
-            | Self::V46
-            | Self::V47
-            | Self::V48
-            | Self::V49
-            | Self::V52
-            | Self::V53
-            | Self::V54
-            | Self::V55
-            | Self::V56
-            | Self::V57
-            | Self::V58
-            | Self::V59
-            | Self::V60
-            | Self::V61
-            | Self::V62
-            | Self::V63
-            | Self::V64
-            | Self::V65
-            | Self::V66 => None,
+            _ => None,
         }
     }
 }

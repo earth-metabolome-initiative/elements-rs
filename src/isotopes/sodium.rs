@@ -109,25 +109,7 @@ impl super::IsotopicComposition for SodiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Na23 => Some(1f64),
-            Self::Na18
-            | Self::Na19
-            | Self::Na20
-            | Self::Na21
-            | Self::Na22
-            | Self::Na24
-            | Self::Na25
-            | Self::Na26
-            | Self::Na27
-            | Self::Na28
-            | Self::Na29
-            | Self::Na30
-            | Self::Na31
-            | Self::Na32
-            | Self::Na33
-            | Self::Na34
-            | Self::Na35
-            | Self::Na36
-            | Self::Na37 => None,
+            _ => None,
         }
     }
 }

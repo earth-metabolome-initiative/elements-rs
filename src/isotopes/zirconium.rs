@@ -173,36 +173,7 @@ impl super::IsotopicComposition for ZirconiumIsotope {
             Self::Zr92 => Some(0.1715f64),
             Self::Zr94 => Some(0.1738f64),
             Self::Zr96 => Some(0.028f64),
-            Self::Zr78
-            | Self::Zr79
-            | Self::Zr80
-            | Self::Zr81
-            | Self::Zr82
-            | Self::Zr83
-            | Self::Zr84
-            | Self::Zr85
-            | Self::Zr86
-            | Self::Zr87
-            | Self::Zr88
-            | Self::Zr89
-            | Self::Zr93
-            | Self::Zr95
-            | Self::Zr97
-            | Self::Zr98
-            | Self::Zr99
-            | Self::Zr100
-            | Self::Zr101
-            | Self::Zr102
-            | Self::Zr103
-            | Self::Zr104
-            | Self::Zr105
-            | Self::Zr106
-            | Self::Zr107
-            | Self::Zr108
-            | Self::Zr109
-            | Self::Zr110
-            | Self::Zr111
-            | Self::Zr112 => None,
+            _ => None,
         }
     }
 }

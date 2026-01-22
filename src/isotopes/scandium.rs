@@ -133,31 +133,7 @@ impl super::IsotopicComposition for ScandiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Sc45 => Some(1f64),
-            Self::Sc36
-            | Self::Sc37
-            | Self::Sc38
-            | Self::Sc39
-            | Self::Sc40
-            | Self::Sc41
-            | Self::Sc42
-            | Self::Sc43
-            | Self::Sc44
-            | Self::Sc46
-            | Self::Sc47
-            | Self::Sc48
-            | Self::Sc49
-            | Self::Sc50
-            | Self::Sc51
-            | Self::Sc52
-            | Self::Sc53
-            | Self::Sc54
-            | Self::Sc55
-            | Self::Sc56
-            | Self::Sc57
-            | Self::Sc58
-            | Self::Sc59
-            | Self::Sc60
-            | Self::Sc61 => None,
+            _ => None,
         }
     }
 }

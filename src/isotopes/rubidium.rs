@@ -162,37 +162,7 @@ impl super::IsotopicComposition for RubidiumIsotope {
         match self {
             Self::Rb85 => Some(0.7217f64),
             Self::Rb87 => Some(0.2783f64),
-            Self::Rb71
-            | Self::Rb72
-            | Self::Rb73
-            | Self::Rb74
-            | Self::Rb75
-            | Self::Rb76
-            | Self::Rb77
-            | Self::Rb78
-            | Self::Rb79
-            | Self::Rb80
-            | Self::Rb81
-            | Self::Rb82
-            | Self::Rb83
-            | Self::Rb84
-            | Self::Rb86
-            | Self::Rb88
-            | Self::Rb89
-            | Self::Rb90
-            | Self::Rb91
-            | Self::Rb92
-            | Self::Rb93
-            | Self::Rb94
-            | Self::Rb95
-            | Self::Rb96
-            | Self::Rb97
-            | Self::Rb98
-            | Self::Rb99
-            | Self::Rb100
-            | Self::Rb101
-            | Self::Rb102
-            | Self::Rb103 => None,
+            _ => None,
         }
     }
 }

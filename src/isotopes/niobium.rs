@@ -169,40 +169,7 @@ impl super::IsotopicComposition for NiobiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Nb93 => Some(1f64),
-            Self::Nb81
-            | Self::Nb82
-            | Self::Nb83
-            | Self::Nb84
-            | Self::Nb85
-            | Self::Nb86
-            | Self::Nb87
-            | Self::Nb88
-            | Self::Nb89
-            | Self::Nb90
-            | Self::Nb91
-            | Self::Nb92
-            | Self::Nb94
-            | Self::Nb95
-            | Self::Nb96
-            | Self::Nb97
-            | Self::Nb98
-            | Self::Nb99
-            | Self::Nb100
-            | Self::Nb101
-            | Self::Nb102
-            | Self::Nb103
-            | Self::Nb104
-            | Self::Nb105
-            | Self::Nb106
-            | Self::Nb107
-            | Self::Nb108
-            | Self::Nb109
-            | Self::Nb110
-            | Self::Nb111
-            | Self::Nb112
-            | Self::Nb113
-            | Self::Nb114
-            | Self::Nb115 => None,
+            _ => None,
         }
     }
 }

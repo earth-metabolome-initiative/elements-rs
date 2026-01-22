@@ -188,41 +188,7 @@ impl super::IsotopicComposition for CeriumIsotope {
             Self::Ce138 => Some(0.00251f64),
             Self::Ce140 => Some(0.8845f64),
             Self::Ce142 => Some(0.11114f64),
-            Self::Ce119
-            | Self::Ce120
-            | Self::Ce121
-            | Self::Ce122
-            | Self::Ce123
-            | Self::Ce124
-            | Self::Ce125
-            | Self::Ce126
-            | Self::Ce127
-            | Self::Ce128
-            | Self::Ce129
-            | Self::Ce130
-            | Self::Ce131
-            | Self::Ce132
-            | Self::Ce133
-            | Self::Ce134
-            | Self::Ce135
-            | Self::Ce137
-            | Self::Ce139
-            | Self::Ce141
-            | Self::Ce143
-            | Self::Ce144
-            | Self::Ce145
-            | Self::Ce146
-            | Self::Ce147
-            | Self::Ce148
-            | Self::Ce149
-            | Self::Ce150
-            | Self::Ce151
-            | Self::Ce152
-            | Self::Ce153
-            | Self::Ce154
-            | Self::Ce155
-            | Self::Ce156
-            | Self::Ce157 => None,
+            _ => None,
         }
     }
 }

@@ -187,37 +187,7 @@ impl super::IsotopicComposition for NeodymiumIsotope {
             Self::Nd146 => Some(0.17189f64),
             Self::Nd148 => Some(0.05756f64),
             Self::Nd150 => Some(0.05638f64),
-            Self::Nd124
-            | Self::Nd125
-            | Self::Nd126
-            | Self::Nd127
-            | Self::Nd128
-            | Self::Nd129
-            | Self::Nd130
-            | Self::Nd131
-            | Self::Nd132
-            | Self::Nd133
-            | Self::Nd134
-            | Self::Nd135
-            | Self::Nd136
-            | Self::Nd137
-            | Self::Nd138
-            | Self::Nd139
-            | Self::Nd140
-            | Self::Nd141
-            | Self::Nd147
-            | Self::Nd149
-            | Self::Nd151
-            | Self::Nd152
-            | Self::Nd153
-            | Self::Nd154
-            | Self::Nd155
-            | Self::Nd156
-            | Self::Nd157
-            | Self::Nd158
-            | Self::Nd159
-            | Self::Nd160
-            | Self::Nd161 => None,
+            _ => None,
         }
     }
 }

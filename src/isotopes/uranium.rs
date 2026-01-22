@@ -139,30 +139,7 @@ impl super::IsotopicComposition for UraniumIsotope {
             Self::U234 => Some(0.000054f64),
             Self::U235 => Some(0.007204f64),
             Self::U238 => Some(0.992742f64),
-            Self::U217
-            | Self::U218
-            | Self::U219
-            | Self::U220
-            | Self::U221
-            | Self::U222
-            | Self::U223
-            | Self::U224
-            | Self::U225
-            | Self::U226
-            | Self::U227
-            | Self::U228
-            | Self::U229
-            | Self::U230
-            | Self::U231
-            | Self::U232
-            | Self::U233
-            | Self::U236
-            | Self::U237
-            | Self::U239
-            | Self::U240
-            | Self::U241
-            | Self::U242
-            | Self::U243 => None,
+            _ => None,
         }
     }
 }

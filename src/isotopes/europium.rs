@@ -182,42 +182,7 @@ impl super::IsotopicComposition for EuropiumIsotope {
         match self {
             Self::Eu151 => Some(0.4781f64),
             Self::Eu153 => Some(0.5219f64),
-            Self::Eu130
-            | Self::Eu131
-            | Self::Eu132
-            | Self::Eu133
-            | Self::Eu134
-            | Self::Eu135
-            | Self::Eu136
-            | Self::Eu137
-            | Self::Eu138
-            | Self::Eu139
-            | Self::Eu140
-            | Self::Eu141
-            | Self::Eu142
-            | Self::Eu143
-            | Self::Eu144
-            | Self::Eu145
-            | Self::Eu146
-            | Self::Eu147
-            | Self::Eu148
-            | Self::Eu149
-            | Self::Eu150
-            | Self::Eu152
-            | Self::Eu154
-            | Self::Eu155
-            | Self::Eu156
-            | Self::Eu157
-            | Self::Eu158
-            | Self::Eu159
-            | Self::Eu160
-            | Self::Eu161
-            | Self::Eu162
-            | Self::Eu163
-            | Self::Eu164
-            | Self::Eu165
-            | Self::Eu166
-            | Self::Eu167 => None,
+            _ => None,
         }
     }
 }

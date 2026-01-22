@@ -185,44 +185,7 @@ impl super::IsotopicComposition for IodineIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::I127 => Some(1f64),
-            Self::I107
-            | Self::I108
-            | Self::I109
-            | Self::I110
-            | Self::I111
-            | Self::I112
-            | Self::I113
-            | Self::I114
-            | Self::I115
-            | Self::I116
-            | Self::I117
-            | Self::I118
-            | Self::I119
-            | Self::I120
-            | Self::I121
-            | Self::I122
-            | Self::I123
-            | Self::I124
-            | Self::I125
-            | Self::I126
-            | Self::I128
-            | Self::I129
-            | Self::I130
-            | Self::I131
-            | Self::I132
-            | Self::I133
-            | Self::I134
-            | Self::I135
-            | Self::I136
-            | Self::I137
-            | Self::I138
-            | Self::I139
-            | Self::I140
-            | Self::I141
-            | Self::I142
-            | Self::I143
-            | Self::I144
-            | Self::I145 => None,
+            _ => None,
         }
     }
 }

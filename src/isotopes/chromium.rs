@@ -140,29 +140,7 @@ impl super::IsotopicComposition for ChromiumIsotope {
             Self::Cr52 => Some(0.83789f64),
             Self::Cr53 => Some(0.09501f64),
             Self::Cr54 => Some(0.02365f64),
-            Self::Cr42
-            | Self::Cr43
-            | Self::Cr44
-            | Self::Cr45
-            | Self::Cr46
-            | Self::Cr47
-            | Self::Cr48
-            | Self::Cr49
-            | Self::Cr51
-            | Self::Cr55
-            | Self::Cr56
-            | Self::Cr57
-            | Self::Cr58
-            | Self::Cr59
-            | Self::Cr60
-            | Self::Cr61
-            | Self::Cr62
-            | Self::Cr63
-            | Self::Cr64
-            | Self::Cr65
-            | Self::Cr66
-            | Self::Cr67
-            | Self::Cr68 => None,
+            _ => None,
         }
     }
 }

@@ -149,35 +149,7 @@ impl super::IsotopicComposition for ProtactiniumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pa231 => Some(1f64),
-            Self::Pa212
-            | Self::Pa213
-            | Self::Pa214
-            | Self::Pa215
-            | Self::Pa216
-            | Self::Pa217
-            | Self::Pa218
-            | Self::Pa219
-            | Self::Pa220
-            | Self::Pa221
-            | Self::Pa222
-            | Self::Pa223
-            | Self::Pa224
-            | Self::Pa225
-            | Self::Pa226
-            | Self::Pa227
-            | Self::Pa228
-            | Self::Pa229
-            | Self::Pa230
-            | Self::Pa232
-            | Self::Pa233
-            | Self::Pa234
-            | Self::Pa235
-            | Self::Pa236
-            | Self::Pa237
-            | Self::Pa238
-            | Self::Pa239
-            | Self::Pa240
-            | Self::Pa241 => None,
+            _ => None,
         }
     }
 }

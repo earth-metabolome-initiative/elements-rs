@@ -177,42 +177,7 @@ impl super::IsotopicComposition for TerbiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Tb159 => Some(1f64),
-            Self::Tb135
-            | Self::Tb136
-            | Self::Tb137
-            | Self::Tb138
-            | Self::Tb139
-            | Self::Tb140
-            | Self::Tb141
-            | Self::Tb142
-            | Self::Tb143
-            | Self::Tb144
-            | Self::Tb145
-            | Self::Tb146
-            | Self::Tb147
-            | Self::Tb148
-            | Self::Tb149
-            | Self::Tb150
-            | Self::Tb151
-            | Self::Tb152
-            | Self::Tb153
-            | Self::Tb154
-            | Self::Tb155
-            | Self::Tb156
-            | Self::Tb157
-            | Self::Tb158
-            | Self::Tb160
-            | Self::Tb161
-            | Self::Tb162
-            | Self::Tb163
-            | Self::Tb164
-            | Self::Tb165
-            | Self::Tb166
-            | Self::Tb167
-            | Self::Tb168
-            | Self::Tb169
-            | Self::Tb170
-            | Self::Tb171 => None,
+            _ => None,
         }
     }
 }

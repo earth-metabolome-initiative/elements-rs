@@ -134,25 +134,7 @@ impl super::IsotopicComposition for CalciumIsotope {
             Self::Ca44 => Some(0.02086f64),
             Self::Ca46 => Some(0.00004f64),
             Self::Ca48 => Some(0.00187f64),
-            Self::Ca34
-            | Self::Ca35
-            | Self::Ca36
-            | Self::Ca37
-            | Self::Ca38
-            | Self::Ca39
-            | Self::Ca41
-            | Self::Ca45
-            | Self::Ca47
-            | Self::Ca49
-            | Self::Ca50
-            | Self::Ca51
-            | Self::Ca52
-            | Self::Ca53
-            | Self::Ca54
-            | Self::Ca55
-            | Self::Ca56
-            | Self::Ca57
-            | Self::Ca58 => None,
+            _ => None,
         }
     }
 }

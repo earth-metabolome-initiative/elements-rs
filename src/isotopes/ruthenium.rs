@@ -187,37 +187,7 @@ impl super::IsotopicComposition for RutheniumIsotope {
             Self::Ru101 => Some(0.1706f64),
             Self::Ru102 => Some(0.3155f64),
             Self::Ru104 => Some(0.1862f64),
-            Self::Ru87
-            | Self::Ru88
-            | Self::Ru89
-            | Self::Ru90
-            | Self::Ru91
-            | Self::Ru92
-            | Self::Ru93
-            | Self::Ru94
-            | Self::Ru95
-            | Self::Ru97
-            | Self::Ru103
-            | Self::Ru105
-            | Self::Ru106
-            | Self::Ru107
-            | Self::Ru108
-            | Self::Ru109
-            | Self::Ru110
-            | Self::Ru111
-            | Self::Ru112
-            | Self::Ru113
-            | Self::Ru114
-            | Self::Ru115
-            | Self::Ru116
-            | Self::Ru117
-            | Self::Ru118
-            | Self::Ru119
-            | Self::Ru120
-            | Self::Ru121
-            | Self::Ru122
-            | Self::Ru123
-            | Self::Ru124 => None,
+            _ => None,
         }
     }
 }

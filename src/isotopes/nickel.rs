@@ -161,33 +161,7 @@ impl super::IsotopicComposition for NickelIsotope {
             Self::Ni61 => Some(0.011399f64),
             Self::Ni62 => Some(0.036346f64),
             Self::Ni64 => Some(0.009255f64),
-            Self::Ni48
-            | Self::Ni49
-            | Self::Ni50
-            | Self::Ni51
-            | Self::Ni52
-            | Self::Ni53
-            | Self::Ni54
-            | Self::Ni55
-            | Self::Ni56
-            | Self::Ni57
-            | Self::Ni59
-            | Self::Ni63
-            | Self::Ni65
-            | Self::Ni66
-            | Self::Ni67
-            | Self::Ni68
-            | Self::Ni69
-            | Self::Ni70
-            | Self::Ni71
-            | Self::Ni72
-            | Self::Ni73
-            | Self::Ni74
-            | Self::Ni75
-            | Self::Ni76
-            | Self::Ni77
-            | Self::Ni78
-            | Self::Ni79 => None,
+            _ => None,
         }
     }
 }

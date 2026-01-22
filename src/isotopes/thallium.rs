@@ -202,47 +202,7 @@ impl super::IsotopicComposition for ThalliumIsotope {
         match self {
             Self::Tl203 => Some(0.2952f64),
             Self::Tl205 => Some(0.7048f64),
-            Self::Tl176
-            | Self::Tl177
-            | Self::Tl178
-            | Self::Tl179
-            | Self::Tl180
-            | Self::Tl181
-            | Self::Tl182
-            | Self::Tl183
-            | Self::Tl184
-            | Self::Tl185
-            | Self::Tl186
-            | Self::Tl187
-            | Self::Tl188
-            | Self::Tl189
-            | Self::Tl190
-            | Self::Tl191
-            | Self::Tl192
-            | Self::Tl193
-            | Self::Tl194
-            | Self::Tl195
-            | Self::Tl196
-            | Self::Tl197
-            | Self::Tl198
-            | Self::Tl199
-            | Self::Tl200
-            | Self::Tl201
-            | Self::Tl202
-            | Self::Tl204
-            | Self::Tl206
-            | Self::Tl207
-            | Self::Tl208
-            | Self::Tl209
-            | Self::Tl210
-            | Self::Tl211
-            | Self::Tl212
-            | Self::Tl213
-            | Self::Tl214
-            | Self::Tl215
-            | Self::Tl216
-            | Self::Tl217
-            | Self::Tl218 => None,
+            _ => None,
         }
     }
 }

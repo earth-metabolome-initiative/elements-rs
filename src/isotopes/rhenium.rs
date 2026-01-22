@@ -190,44 +190,7 @@ impl super::IsotopicComposition for RheniumIsotope {
         match self {
             Self::Re185 => Some(0.374f64),
             Self::Re187 => Some(0.626f64),
-            Self::Re159
-            | Self::Re160
-            | Self::Re161
-            | Self::Re162
-            | Self::Re163
-            | Self::Re164
-            | Self::Re165
-            | Self::Re166
-            | Self::Re167
-            | Self::Re168
-            | Self::Re169
-            | Self::Re170
-            | Self::Re171
-            | Self::Re172
-            | Self::Re173
-            | Self::Re174
-            | Self::Re175
-            | Self::Re176
-            | Self::Re177
-            | Self::Re178
-            | Self::Re179
-            | Self::Re180
-            | Self::Re181
-            | Self::Re182
-            | Self::Re183
-            | Self::Re184
-            | Self::Re186
-            | Self::Re188
-            | Self::Re189
-            | Self::Re190
-            | Self::Re191
-            | Self::Re192
-            | Self::Re193
-            | Self::Re194
-            | Self::Re195
-            | Self::Re196
-            | Self::Re197
-            | Self::Re198 => None,
+            _ => None,
         }
     }
 }

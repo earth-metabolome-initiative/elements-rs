@@ -158,36 +158,7 @@ impl super::IsotopicComposition for GalliumIsotope {
         match self {
             Self::Ga69 => Some(0.60108f64),
             Self::Ga71 => Some(0.39892f64),
-            Self::Ga56
-            | Self::Ga57
-            | Self::Ga58
-            | Self::Ga59
-            | Self::Ga60
-            | Self::Ga61
-            | Self::Ga62
-            | Self::Ga63
-            | Self::Ga64
-            | Self::Ga65
-            | Self::Ga66
-            | Self::Ga67
-            | Self::Ga68
-            | Self::Ga70
-            | Self::Ga72
-            | Self::Ga73
-            | Self::Ga74
-            | Self::Ga75
-            | Self::Ga76
-            | Self::Ga77
-            | Self::Ga78
-            | Self::Ga79
-            | Self::Ga80
-            | Self::Ga81
-            | Self::Ga82
-            | Self::Ga83
-            | Self::Ga84
-            | Self::Ga85
-            | Self::Ga86
-            | Self::Ga87 => None,
+            _ => None,
         }
     }
 }

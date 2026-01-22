@@ -182,42 +182,7 @@ impl super::IsotopicComposition for SilverIsotope {
         match self {
             Self::Ag107 => Some(0.51839f64),
             Self::Ag109 => Some(0.48161f64),
-            Self::Ag93
-            | Self::Ag94
-            | Self::Ag95
-            | Self::Ag96
-            | Self::Ag97
-            | Self::Ag98
-            | Self::Ag99
-            | Self::Ag100
-            | Self::Ag101
-            | Self::Ag102
-            | Self::Ag103
-            | Self::Ag104
-            | Self::Ag105
-            | Self::Ag106
-            | Self::Ag108
-            | Self::Ag110
-            | Self::Ag111
-            | Self::Ag112
-            | Self::Ag113
-            | Self::Ag114
-            | Self::Ag115
-            | Self::Ag116
-            | Self::Ag117
-            | Self::Ag118
-            | Self::Ag119
-            | Self::Ag120
-            | Self::Ag121
-            | Self::Ag122
-            | Self::Ag123
-            | Self::Ag124
-            | Self::Ag125
-            | Self::Ag126
-            | Self::Ag127
-            | Self::Ag128
-            | Self::Ag129
-            | Self::Ag130 => None,
+            _ => None,
         }
     }
 }

@@ -149,35 +149,7 @@ impl super::IsotopicComposition for CobaltIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Co59 => Some(1f64),
-            Self::Co47
-            | Self::Co48
-            | Self::Co49
-            | Self::Co50
-            | Self::Co51
-            | Self::Co52
-            | Self::Co53
-            | Self::Co54
-            | Self::Co55
-            | Self::Co56
-            | Self::Co57
-            | Self::Co58
-            | Self::Co60
-            | Self::Co61
-            | Self::Co62
-            | Self::Co63
-            | Self::Co64
-            | Self::Co65
-            | Self::Co66
-            | Self::Co67
-            | Self::Co68
-            | Self::Co69
-            | Self::Co70
-            | Self::Co71
-            | Self::Co72
-            | Self::Co73
-            | Self::Co74
-            | Self::Co75
-            | Self::Co76 => None,
+            _ => None,
         }
     }
 }

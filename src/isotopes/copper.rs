@@ -154,35 +154,7 @@ impl super::IsotopicComposition for CopperIsotope {
         match self {
             Self::Cu63 => Some(0.6915f64),
             Self::Cu65 => Some(0.3085f64),
-            Self::Cu52
-            | Self::Cu53
-            | Self::Cu54
-            | Self::Cu55
-            | Self::Cu56
-            | Self::Cu57
-            | Self::Cu58
-            | Self::Cu59
-            | Self::Cu60
-            | Self::Cu61
-            | Self::Cu62
-            | Self::Cu64
-            | Self::Cu66
-            | Self::Cu67
-            | Self::Cu68
-            | Self::Cu69
-            | Self::Cu70
-            | Self::Cu71
-            | Self::Cu72
-            | Self::Cu73
-            | Self::Cu74
-            | Self::Cu75
-            | Self::Cu76
-            | Self::Cu77
-            | Self::Cu78
-            | Self::Cu79
-            | Self::Cu80
-            | Self::Cu81
-            | Self::Cu82 => None,
+            _ => None,
         }
     }
 }

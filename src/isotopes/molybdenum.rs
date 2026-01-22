@@ -175,34 +175,7 @@ impl super::IsotopicComposition for MolybdenumIsotope {
             Self::Mo97 => Some(0.096f64),
             Self::Mo98 => Some(0.2439f64),
             Self::Mo100 => Some(0.0982f64),
-            Self::Mo83
-            | Self::Mo84
-            | Self::Mo85
-            | Self::Mo86
-            | Self::Mo87
-            | Self::Mo88
-            | Self::Mo89
-            | Self::Mo90
-            | Self::Mo91
-            | Self::Mo93
-            | Self::Mo99
-            | Self::Mo101
-            | Self::Mo102
-            | Self::Mo103
-            | Self::Mo104
-            | Self::Mo105
-            | Self::Mo106
-            | Self::Mo107
-            | Self::Mo108
-            | Self::Mo109
-            | Self::Mo110
-            | Self::Mo111
-            | Self::Mo112
-            | Self::Mo113
-            | Self::Mo114
-            | Self::Mo115
-            | Self::Mo116
-            | Self::Mo117 => None,
+            _ => None,
         }
     }
 }

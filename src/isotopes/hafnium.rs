@@ -182,37 +182,7 @@ impl super::IsotopicComposition for HafniumIsotope {
             Self::Hf178 => Some(0.2728f64),
             Self::Hf179 => Some(0.1362f64),
             Self::Hf180 => Some(0.3508f64),
-            Self::Hf153
-            | Self::Hf154
-            | Self::Hf155
-            | Self::Hf156
-            | Self::Hf157
-            | Self::Hf158
-            | Self::Hf159
-            | Self::Hf160
-            | Self::Hf161
-            | Self::Hf162
-            | Self::Hf163
-            | Self::Hf164
-            | Self::Hf165
-            | Self::Hf166
-            | Self::Hf167
-            | Self::Hf168
-            | Self::Hf169
-            | Self::Hf170
-            | Self::Hf171
-            | Self::Hf172
-            | Self::Hf173
-            | Self::Hf175
-            | Self::Hf181
-            | Self::Hf182
-            | Self::Hf183
-            | Self::Hf184
-            | Self::Hf185
-            | Self::Hf186
-            | Self::Hf187
-            | Self::Hf188
-            | Self::Hf189 => None,
+            _ => None,
         }
     }
 }

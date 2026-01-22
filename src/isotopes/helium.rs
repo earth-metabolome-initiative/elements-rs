@@ -62,7 +62,7 @@ impl super::IsotopicComposition for HeliumIsotope {
         match self {
             Self::He3 => Some(0.00000134f64),
             Self::He4 => Some(0.99999866f64),
-            Self::He5 | Self::He6 | Self::He7 | Self::He8 | Self::He9 | Self::He10 => None,
+            _ => None,
         }
     }
 }

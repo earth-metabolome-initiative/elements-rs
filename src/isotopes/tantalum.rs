@@ -182,42 +182,7 @@ impl super::IsotopicComposition for TantalumIsotope {
         match self {
             Self::Ta180 => Some(0.0001201f64),
             Self::Ta181 => Some(0.9998799f64),
-            Self::Ta155
-            | Self::Ta156
-            | Self::Ta157
-            | Self::Ta158
-            | Self::Ta159
-            | Self::Ta160
-            | Self::Ta161
-            | Self::Ta162
-            | Self::Ta163
-            | Self::Ta164
-            | Self::Ta165
-            | Self::Ta166
-            | Self::Ta167
-            | Self::Ta168
-            | Self::Ta169
-            | Self::Ta170
-            | Self::Ta171
-            | Self::Ta172
-            | Self::Ta173
-            | Self::Ta174
-            | Self::Ta175
-            | Self::Ta176
-            | Self::Ta177
-            | Self::Ta178
-            | Self::Ta179
-            | Self::Ta182
-            | Self::Ta183
-            | Self::Ta184
-            | Self::Ta185
-            | Self::Ta186
-            | Self::Ta187
-            | Self::Ta188
-            | Self::Ta189
-            | Self::Ta190
-            | Self::Ta191
-            | Self::Ta192 => None,
+            _ => None,
         }
     }
 }

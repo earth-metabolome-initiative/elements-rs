@@ -198,36 +198,7 @@ impl super::IsotopicComposition for TinIsotope {
             Self::Sn120 => Some(0.3258f64),
             Self::Sn122 => Some(0.0463f64),
             Self::Sn124 => Some(0.0579f64),
-            Self::Sn99
-            | Self::Sn100
-            | Self::Sn101
-            | Self::Sn102
-            | Self::Sn103
-            | Self::Sn104
-            | Self::Sn105
-            | Self::Sn106
-            | Self::Sn107
-            | Self::Sn108
-            | Self::Sn109
-            | Self::Sn110
-            | Self::Sn111
-            | Self::Sn113
-            | Self::Sn121
-            | Self::Sn123
-            | Self::Sn125
-            | Self::Sn126
-            | Self::Sn127
-            | Self::Sn128
-            | Self::Sn129
-            | Self::Sn130
-            | Self::Sn131
-            | Self::Sn132
-            | Self::Sn133
-            | Self::Sn134
-            | Self::Sn135
-            | Self::Sn136
-            | Self::Sn137
-            | Self::Sn138 => None,
+            _ => None,
         }
     }
 }

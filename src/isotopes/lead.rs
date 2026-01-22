@@ -204,45 +204,7 @@ impl super::IsotopicComposition for LeadIsotope {
             Self::Pb206 => Some(0.241f64),
             Self::Pb207 => Some(0.221f64),
             Self::Pb208 => Some(0.524f64),
-            Self::Pb178
-            | Self::Pb179
-            | Self::Pb180
-            | Self::Pb181
-            | Self::Pb182
-            | Self::Pb183
-            | Self::Pb184
-            | Self::Pb185
-            | Self::Pb186
-            | Self::Pb187
-            | Self::Pb188
-            | Self::Pb189
-            | Self::Pb190
-            | Self::Pb191
-            | Self::Pb192
-            | Self::Pb193
-            | Self::Pb194
-            | Self::Pb195
-            | Self::Pb196
-            | Self::Pb197
-            | Self::Pb198
-            | Self::Pb199
-            | Self::Pb200
-            | Self::Pb201
-            | Self::Pb202
-            | Self::Pb203
-            | Self::Pb205
-            | Self::Pb209
-            | Self::Pb210
-            | Self::Pb211
-            | Self::Pb212
-            | Self::Pb213
-            | Self::Pb214
-            | Self::Pb215
-            | Self::Pb216
-            | Self::Pb217
-            | Self::Pb218
-            | Self::Pb219
-            | Self::Pb220 => None,
+            _ => None,
         }
     }
 }

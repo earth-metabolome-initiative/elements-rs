@@ -182,42 +182,7 @@ impl super::IsotopicComposition for AntimonyIsotope {
         match self {
             Self::Sb121 => Some(0.5721f64),
             Self::Sb123 => Some(0.4279f64),
-            Self::Sb103
-            | Self::Sb104
-            | Self::Sb105
-            | Self::Sb106
-            | Self::Sb107
-            | Self::Sb108
-            | Self::Sb109
-            | Self::Sb110
-            | Self::Sb111
-            | Self::Sb112
-            | Self::Sb113
-            | Self::Sb114
-            | Self::Sb115
-            | Self::Sb116
-            | Self::Sb117
-            | Self::Sb118
-            | Self::Sb119
-            | Self::Sb120
-            | Self::Sb122
-            | Self::Sb124
-            | Self::Sb125
-            | Self::Sb126
-            | Self::Sb127
-            | Self::Sb128
-            | Self::Sb129
-            | Self::Sb130
-            | Self::Sb131
-            | Self::Sb132
-            | Self::Sb133
-            | Self::Sb134
-            | Self::Sb135
-            | Self::Sb136
-            | Self::Sb137
-            | Self::Sb138
-            | Self::Sb139
-            | Self::Sb140 => None,
+            _ => None,
         }
     }
 }

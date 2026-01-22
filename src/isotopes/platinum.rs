@@ -198,41 +198,7 @@ impl super::IsotopicComposition for PlatinumIsotope {
             Self::Pt195 => Some(0.3378f64),
             Self::Pt196 => Some(0.2521f64),
             Self::Pt198 => Some(0.07356f64),
-            Self::Pt166
-            | Self::Pt167
-            | Self::Pt168
-            | Self::Pt169
-            | Self::Pt170
-            | Self::Pt171
-            | Self::Pt172
-            | Self::Pt173
-            | Self::Pt174
-            | Self::Pt175
-            | Self::Pt176
-            | Self::Pt177
-            | Self::Pt178
-            | Self::Pt179
-            | Self::Pt180
-            | Self::Pt181
-            | Self::Pt182
-            | Self::Pt183
-            | Self::Pt184
-            | Self::Pt185
-            | Self::Pt186
-            | Self::Pt187
-            | Self::Pt188
-            | Self::Pt189
-            | Self::Pt191
-            | Self::Pt193
-            | Self::Pt197
-            | Self::Pt199
-            | Self::Pt200
-            | Self::Pt201
-            | Self::Pt202
-            | Self::Pt203
-            | Self::Pt204
-            | Self::Pt205
-            | Self::Pt206 => None,
+            _ => None,
         }
     }
 }

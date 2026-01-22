@@ -172,37 +172,7 @@ impl super::IsotopicComposition for StrontiumIsotope {
             Self::Sr86 => Some(0.0986f64),
             Self::Sr87 => Some(0.07f64),
             Self::Sr88 => Some(0.8258f64),
-            Self::Sr73
-            | Self::Sr74
-            | Self::Sr75
-            | Self::Sr76
-            | Self::Sr77
-            | Self::Sr78
-            | Self::Sr79
-            | Self::Sr80
-            | Self::Sr81
-            | Self::Sr82
-            | Self::Sr83
-            | Self::Sr85
-            | Self::Sr89
-            | Self::Sr90
-            | Self::Sr91
-            | Self::Sr92
-            | Self::Sr93
-            | Self::Sr94
-            | Self::Sr95
-            | Self::Sr96
-            | Self::Sr97
-            | Self::Sr98
-            | Self::Sr99
-            | Self::Sr100
-            | Self::Sr101
-            | Self::Sr102
-            | Self::Sr103
-            | Self::Sr104
-            | Self::Sr105
-            | Self::Sr106
-            | Self::Sr107 => None,
+            _ => None,
         }
     }
 }

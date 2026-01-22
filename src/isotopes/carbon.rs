@@ -94,20 +94,7 @@ impl super::IsotopicComposition for CarbonIsotope {
         match self {
             Self::C12 => Some(0.9893f64),
             Self::C13 => Some(0.0107f64),
-            Self::C8
-            | Self::C9
-            | Self::C10
-            | Self::C11
-            | Self::C14
-            | Self::C15
-            | Self::C16
-            | Self::C17
-            | Self::C18
-            | Self::C19
-            | Self::C20
-            | Self::C21
-            | Self::C22
-            | Self::C23 => None,
+            _ => None,
         }
     }
 }

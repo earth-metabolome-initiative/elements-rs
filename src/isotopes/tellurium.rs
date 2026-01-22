@@ -192,37 +192,7 @@ impl super::IsotopicComposition for TelluriumIsotope {
             Self::Te126 => Some(0.1884f64),
             Self::Te128 => Some(0.3174f64),
             Self::Te130 => Some(0.3408f64),
-            Self::Te105
-            | Self::Te106
-            | Self::Te107
-            | Self::Te108
-            | Self::Te109
-            | Self::Te110
-            | Self::Te111
-            | Self::Te112
-            | Self::Te113
-            | Self::Te114
-            | Self::Te115
-            | Self::Te116
-            | Self::Te117
-            | Self::Te118
-            | Self::Te119
-            | Self::Te121
-            | Self::Te127
-            | Self::Te129
-            | Self::Te131
-            | Self::Te132
-            | Self::Te133
-            | Self::Te134
-            | Self::Te135
-            | Self::Te136
-            | Self::Te137
-            | Self::Te138
-            | Self::Te139
-            | Self::Te140
-            | Self::Te141
-            | Self::Te142
-            | Self::Te143 => None,
+            _ => None,
         }
     }
 }

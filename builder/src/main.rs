@@ -231,20 +231,6 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             })
         })
         .collect::<Vec<_>>();
-    let unknown_isotopic_compositions: Vec<TokenStream> = isotopes
-        .iter()
-        .zip(isotope_names.iter())
-        .filter_map(|(isotope, isotope_name)| {
-            if isotope.isotopic_composition.is_none() {
-                let isotope_ident = Ident::new(isotope_name, proc_macro2::Span::call_site());
-                Some(quote! {
-                    Self::#isotope_ident
-                })
-            } else {
-                None
-            }
-        })
-        .collect::<Vec<_>>();
 
     let most_abundant_isotope = isotopes
         .iter()
@@ -283,9 +269,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         quote! {
             match self {
                 #(#known_isotopic_compositions),*,
-                #(
-                    #unknown_isotopic_compositions
-                )|* => None,
+                _ => None,
             }
         }
     };

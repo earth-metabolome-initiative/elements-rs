@@ -152,32 +152,7 @@ impl super::IsotopicComposition for IronIsotope {
             Self::Fe56 => Some(0.91754f64),
             Self::Fe57 => Some(0.02119f64),
             Self::Fe58 => Some(0.00282f64),
-            Self::Fe45
-            | Self::Fe46
-            | Self::Fe47
-            | Self::Fe48
-            | Self::Fe49
-            | Self::Fe50
-            | Self::Fe51
-            | Self::Fe52
-            | Self::Fe53
-            | Self::Fe55
-            | Self::Fe59
-            | Self::Fe60
-            | Self::Fe61
-            | Self::Fe62
-            | Self::Fe63
-            | Self::Fe64
-            | Self::Fe65
-            | Self::Fe66
-            | Self::Fe67
-            | Self::Fe68
-            | Self::Fe69
-            | Self::Fe70
-            | Self::Fe71
-            | Self::Fe72
-            | Self::Fe73
-            | Self::Fe74 => None,
+            _ => None,
         }
     }
 }

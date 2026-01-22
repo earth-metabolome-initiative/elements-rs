@@ -157,37 +157,7 @@ impl super::IsotopicComposition for ThoriumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Th232 => Some(1f64),
-            Self::Th208
-            | Self::Th209
-            | Self::Th210
-            | Self::Th211
-            | Self::Th212
-            | Self::Th213
-            | Self::Th214
-            | Self::Th215
-            | Self::Th216
-            | Self::Th217
-            | Self::Th218
-            | Self::Th219
-            | Self::Th220
-            | Self::Th221
-            | Self::Th222
-            | Self::Th223
-            | Self::Th224
-            | Self::Th225
-            | Self::Th226
-            | Self::Th227
-            | Self::Th228
-            | Self::Th229
-            | Self::Th230
-            | Self::Th231
-            | Self::Th233
-            | Self::Th234
-            | Self::Th235
-            | Self::Th236
-            | Self::Th237
-            | Self::Th238
-            | Self::Th239 => None,
+            _ => None,
         }
     }
 }

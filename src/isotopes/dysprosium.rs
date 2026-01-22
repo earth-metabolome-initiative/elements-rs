@@ -179,35 +179,7 @@ impl super::IsotopicComposition for DysprosiumIsotope {
             Self::Dy162 => Some(0.25475f64),
             Self::Dy163 => Some(0.24896f64),
             Self::Dy164 => Some(0.2826f64),
-            Self::Dy138
-            | Self::Dy139
-            | Self::Dy140
-            | Self::Dy141
-            | Self::Dy142
-            | Self::Dy143
-            | Self::Dy144
-            | Self::Dy145
-            | Self::Dy146
-            | Self::Dy147
-            | Self::Dy148
-            | Self::Dy149
-            | Self::Dy150
-            | Self::Dy151
-            | Self::Dy152
-            | Self::Dy153
-            | Self::Dy154
-            | Self::Dy155
-            | Self::Dy157
-            | Self::Dy159
-            | Self::Dy165
-            | Self::Dy166
-            | Self::Dy167
-            | Self::Dy168
-            | Self::Dy169
-            | Self::Dy170
-            | Self::Dy171
-            | Self::Dy172
-            | Self::Dy173 => None,
+            _ => None,
         }
     }
 }

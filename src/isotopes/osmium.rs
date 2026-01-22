@@ -203,41 +203,7 @@ impl super::IsotopicComposition for OsmiumIsotope {
             Self::Os189 => Some(0.1615f64),
             Self::Os190 => Some(0.2626f64),
             Self::Os192 => Some(0.4078f64),
-            Self::Os161
-            | Self::Os162
-            | Self::Os163
-            | Self::Os164
-            | Self::Os165
-            | Self::Os166
-            | Self::Os167
-            | Self::Os168
-            | Self::Os169
-            | Self::Os170
-            | Self::Os171
-            | Self::Os172
-            | Self::Os173
-            | Self::Os174
-            | Self::Os175
-            | Self::Os176
-            | Self::Os177
-            | Self::Os178
-            | Self::Os179
-            | Self::Os180
-            | Self::Os181
-            | Self::Os182
-            | Self::Os183
-            | Self::Os185
-            | Self::Os191
-            | Self::Os193
-            | Self::Os194
-            | Self::Os195
-            | Self::Os196
-            | Self::Os197
-            | Self::Os198
-            | Self::Os199
-            | Self::Os200
-            | Self::Os201
-            | Self::Os202 => None,
+            _ => None,
         }
     }
 }

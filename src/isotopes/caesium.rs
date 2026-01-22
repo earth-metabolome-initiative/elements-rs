@@ -189,45 +189,7 @@ impl super::IsotopicComposition for CaesiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Cs133 => Some(1f64),
-            Self::Cs112
-            | Self::Cs113
-            | Self::Cs114
-            | Self::Cs115
-            | Self::Cs116
-            | Self::Cs117
-            | Self::Cs118
-            | Self::Cs119
-            | Self::Cs120
-            | Self::Cs121
-            | Self::Cs122
-            | Self::Cs123
-            | Self::Cs124
-            | Self::Cs125
-            | Self::Cs126
-            | Self::Cs127
-            | Self::Cs128
-            | Self::Cs129
-            | Self::Cs130
-            | Self::Cs131
-            | Self::Cs132
-            | Self::Cs134
-            | Self::Cs135
-            | Self::Cs136
-            | Self::Cs137
-            | Self::Cs138
-            | Self::Cs139
-            | Self::Cs140
-            | Self::Cs141
-            | Self::Cs142
-            | Self::Cs143
-            | Self::Cs144
-            | Self::Cs145
-            | Self::Cs146
-            | Self::Cs147
-            | Self::Cs148
-            | Self::Cs149
-            | Self::Cs150
-            | Self::Cs151 => None,
+            _ => None,
         }
     }
 }

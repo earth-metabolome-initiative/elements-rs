@@ -127,27 +127,7 @@ impl super::IsotopicComposition for SiliconIsotope {
             Self::Si28 => Some(0.92223f64),
             Self::Si29 => Some(0.04685f64),
             Self::Si30 => Some(0.03092f64),
-            Self::Si22
-            | Self::Si23
-            | Self::Si24
-            | Self::Si25
-            | Self::Si26
-            | Self::Si27
-            | Self::Si31
-            | Self::Si32
-            | Self::Si33
-            | Self::Si34
-            | Self::Si35
-            | Self::Si36
-            | Self::Si37
-            | Self::Si38
-            | Self::Si39
-            | Self::Si40
-            | Self::Si41
-            | Self::Si42
-            | Self::Si43
-            | Self::Si44
-            | Self::Si45 => None,
+            _ => None,
         }
     }
 }

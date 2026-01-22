@@ -161,38 +161,7 @@ impl super::IsotopicComposition for ArsenicIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::As75 => Some(1f64),
-            Self::As60
-            | Self::As61
-            | Self::As62
-            | Self::As63
-            | Self::As64
-            | Self::As65
-            | Self::As66
-            | Self::As67
-            | Self::As68
-            | Self::As69
-            | Self::As70
-            | Self::As71
-            | Self::As72
-            | Self::As73
-            | Self::As74
-            | Self::As76
-            | Self::As77
-            | Self::As78
-            | Self::As79
-            | Self::As80
-            | Self::As81
-            | Self::As82
-            | Self::As83
-            | Self::As84
-            | Self::As85
-            | Self::As86
-            | Self::As87
-            | Self::As88
-            | Self::As89
-            | Self::As90
-            | Self::As91
-            | Self::As92 => None,
+            _ => None,
         }
     }
 }

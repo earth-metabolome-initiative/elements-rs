@@ -186,43 +186,7 @@ impl super::IsotopicComposition for IndiumIsotope {
         match self {
             Self::In113 => Some(0.0429f64),
             Self::In115 => Some(0.9571f64),
-            Self::In97
-            | Self::In98
-            | Self::In99
-            | Self::In100
-            | Self::In101
-            | Self::In102
-            | Self::In103
-            | Self::In104
-            | Self::In105
-            | Self::In106
-            | Self::In107
-            | Self::In108
-            | Self::In109
-            | Self::In110
-            | Self::In111
-            | Self::In112
-            | Self::In114
-            | Self::In116
-            | Self::In117
-            | Self::In118
-            | Self::In119
-            | Self::In120
-            | Self::In121
-            | Self::In122
-            | Self::In123
-            | Self::In124
-            | Self::In125
-            | Self::In126
-            | Self::In127
-            | Self::In128
-            | Self::In129
-            | Self::In130
-            | Self::In131
-            | Self::In132
-            | Self::In133
-            | Self::In134
-            | Self::In135 => None,
+            _ => None,
         }
     }
 }

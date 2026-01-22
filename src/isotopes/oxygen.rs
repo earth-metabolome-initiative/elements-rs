@@ -99,20 +99,7 @@ impl super::IsotopicComposition for OxygenIsotope {
             Self::O16 => Some(0.99757f64),
             Self::O17 => Some(0.00038f64),
             Self::O18 => Some(0.00205f64),
-            Self::O12
-            | Self::O13
-            | Self::O14
-            | Self::O15
-            | Self::O19
-            | Self::O20
-            | Self::O21
-            | Self::O22
-            | Self::O23
-            | Self::O24
-            | Self::O25
-            | Self::O26
-            | Self::O27
-            | Self::O28 => None,
+            _ => None,
         }
     }
 }

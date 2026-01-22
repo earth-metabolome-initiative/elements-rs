@@ -94,20 +94,7 @@ impl super::IsotopicComposition for NitrogenIsotope {
         match self {
             Self::N14 => Some(0.99636f64),
             Self::N15 => Some(0.00364f64),
-            Self::N10
-            | Self::N11
-            | Self::N12
-            | Self::N13
-            | Self::N16
-            | Self::N17
-            | Self::N18
-            | Self::N19
-            | Self::N20
-            | Self::N21
-            | Self::N22
-            | Self::N23
-            | Self::N24
-            | Self::N25 => None,
+            _ => None,
         }
     }
 }

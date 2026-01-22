@@ -125,29 +125,7 @@ impl super::IsotopicComposition for PhosphorusIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::P31 => Some(1f64),
-            Self::P24
-            | Self::P25
-            | Self::P26
-            | Self::P27
-            | Self::P28
-            | Self::P29
-            | Self::P30
-            | Self::P32
-            | Self::P33
-            | Self::P34
-            | Self::P35
-            | Self::P36
-            | Self::P37
-            | Self::P38
-            | Self::P39
-            | Self::P40
-            | Self::P41
-            | Self::P42
-            | Self::P43
-            | Self::P44
-            | Self::P45
-            | Self::P46
-            | Self::P47 => None,
+            _ => None,
         }
     }
 }

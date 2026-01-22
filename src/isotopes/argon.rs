@@ -127,27 +127,7 @@ impl super::IsotopicComposition for ArgonIsotope {
             Self::Ar36 => Some(0.003336f64),
             Self::Ar38 => Some(0.000629f64),
             Self::Ar40 => Some(0.996035f64),
-            Self::Ar30
-            | Self::Ar31
-            | Self::Ar32
-            | Self::Ar33
-            | Self::Ar34
-            | Self::Ar35
-            | Self::Ar37
-            | Self::Ar39
-            | Self::Ar41
-            | Self::Ar42
-            | Self::Ar43
-            | Self::Ar44
-            | Self::Ar45
-            | Self::Ar46
-            | Self::Ar47
-            | Self::Ar48
-            | Self::Ar49
-            | Self::Ar50
-            | Self::Ar51
-            | Self::Ar52
-            | Self::Ar53 => None,
+            _ => None,
         }
     }
 }

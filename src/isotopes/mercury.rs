@@ -219,45 +219,7 @@ impl super::IsotopicComposition for MercuryIsotope {
             Self::Hg201 => Some(0.1318f64),
             Self::Hg202 => Some(0.2986f64),
             Self::Hg204 => Some(0.0687f64),
-            Self::Hg171
-            | Self::Hg172
-            | Self::Hg173
-            | Self::Hg174
-            | Self::Hg175
-            | Self::Hg176
-            | Self::Hg177
-            | Self::Hg178
-            | Self::Hg179
-            | Self::Hg180
-            | Self::Hg181
-            | Self::Hg182
-            | Self::Hg183
-            | Self::Hg184
-            | Self::Hg185
-            | Self::Hg186
-            | Self::Hg187
-            | Self::Hg188
-            | Self::Hg189
-            | Self::Hg190
-            | Self::Hg191
-            | Self::Hg192
-            | Self::Hg193
-            | Self::Hg194
-            | Self::Hg195
-            | Self::Hg197
-            | Self::Hg203
-            | Self::Hg205
-            | Self::Hg206
-            | Self::Hg207
-            | Self::Hg208
-            | Self::Hg209
-            | Self::Hg210
-            | Self::Hg211
-            | Self::Hg212
-            | Self::Hg213
-            | Self::Hg214
-            | Self::Hg215
-            | Self::Hg216 => None,
+            _ => None,
         }
     }
 }

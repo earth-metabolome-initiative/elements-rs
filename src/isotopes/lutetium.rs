@@ -174,40 +174,7 @@ impl super::IsotopicComposition for LutetiumIsotope {
         match self {
             Self::Lu175 => Some(0.97401f64),
             Self::Lu176 => Some(0.02599f64),
-            Self::Lu150
-            | Self::Lu151
-            | Self::Lu152
-            | Self::Lu153
-            | Self::Lu154
-            | Self::Lu155
-            | Self::Lu156
-            | Self::Lu157
-            | Self::Lu158
-            | Self::Lu159
-            | Self::Lu160
-            | Self::Lu161
-            | Self::Lu162
-            | Self::Lu163
-            | Self::Lu164
-            | Self::Lu165
-            | Self::Lu166
-            | Self::Lu167
-            | Self::Lu168
-            | Self::Lu169
-            | Self::Lu170
-            | Self::Lu171
-            | Self::Lu172
-            | Self::Lu173
-            | Self::Lu174
-            | Self::Lu177
-            | Self::Lu178
-            | Self::Lu179
-            | Self::Lu180
-            | Self::Lu181
-            | Self::Lu182
-            | Self::Lu183
-            | Self::Lu184
-            | Self::Lu185 => None,
+            _ => None,
         }
     }
 }

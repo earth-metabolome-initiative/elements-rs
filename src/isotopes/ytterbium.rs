@@ -171,33 +171,7 @@ impl super::IsotopicComposition for YtterbiumIsotope {
             Self::Yb173 => Some(0.16103f64),
             Self::Yb174 => Some(0.32026f64),
             Self::Yb176 => Some(0.12996f64),
-            Self::Yb148
-            | Self::Yb149
-            | Self::Yb150
-            | Self::Yb151
-            | Self::Yb152
-            | Self::Yb153
-            | Self::Yb154
-            | Self::Yb155
-            | Self::Yb156
-            | Self::Yb157
-            | Self::Yb158
-            | Self::Yb159
-            | Self::Yb160
-            | Self::Yb161
-            | Self::Yb162
-            | Self::Yb163
-            | Self::Yb164
-            | Self::Yb165
-            | Self::Yb166
-            | Self::Yb167
-            | Self::Yb169
-            | Self::Yb175
-            | Self::Yb177
-            | Self::Yb178
-            | Self::Yb179
-            | Self::Yb180
-            | Self::Yb181 => None,
+            _ => None,
         }
     }
 }

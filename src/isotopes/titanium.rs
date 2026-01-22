@@ -137,27 +137,7 @@ impl super::IsotopicComposition for TitaniumIsotope {
             Self::Ti48 => Some(0.7372f64),
             Self::Ti49 => Some(0.0541f64),
             Self::Ti50 => Some(0.0518f64),
-            Self::Ti38
-            | Self::Ti39
-            | Self::Ti40
-            | Self::Ti41
-            | Self::Ti42
-            | Self::Ti43
-            | Self::Ti44
-            | Self::Ti45
-            | Self::Ti51
-            | Self::Ti52
-            | Self::Ti53
-            | Self::Ti54
-            | Self::Ti55
-            | Self::Ti56
-            | Self::Ti57
-            | Self::Ti58
-            | Self::Ti59
-            | Self::Ti60
-            | Self::Ti61
-            | Self::Ti62
-            | Self::Ti63 => None,
+            _ => None,
         }
     }
 }

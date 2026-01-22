@@ -197,47 +197,7 @@ impl super::IsotopicComposition for GoldIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Au197 => Some(1f64),
-            Self::Au169
-            | Self::Au170
-            | Self::Au171
-            | Self::Au172
-            | Self::Au173
-            | Self::Au174
-            | Self::Au175
-            | Self::Au176
-            | Self::Au177
-            | Self::Au178
-            | Self::Au179
-            | Self::Au180
-            | Self::Au181
-            | Self::Au182
-            | Self::Au183
-            | Self::Au184
-            | Self::Au185
-            | Self::Au186
-            | Self::Au187
-            | Self::Au188
-            | Self::Au189
-            | Self::Au190
-            | Self::Au191
-            | Self::Au192
-            | Self::Au193
-            | Self::Au194
-            | Self::Au195
-            | Self::Au196
-            | Self::Au198
-            | Self::Au199
-            | Self::Au200
-            | Self::Au201
-            | Self::Au202
-            | Self::Au203
-            | Self::Au204
-            | Self::Au205
-            | Self::Au206
-            | Self::Au207
-            | Self::Au208
-            | Self::Au209
-            | Self::Au210 => None,
+            _ => None,
         }
     }
 }

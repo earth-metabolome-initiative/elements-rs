@@ -185,39 +185,7 @@ impl super::IsotopicComposition for TungstenIsotope {
             Self::W183 => Some(0.1431f64),
             Self::W184 => Some(0.3064f64),
             Self::W186 => Some(0.2843f64),
-            Self::W157
-            | Self::W158
-            | Self::W159
-            | Self::W160
-            | Self::W161
-            | Self::W162
-            | Self::W163
-            | Self::W164
-            | Self::W165
-            | Self::W166
-            | Self::W167
-            | Self::W168
-            | Self::W169
-            | Self::W170
-            | Self::W171
-            | Self::W172
-            | Self::W173
-            | Self::W174
-            | Self::W175
-            | Self::W176
-            | Self::W177
-            | Self::W178
-            | Self::W179
-            | Self::W181
-            | Self::W185
-            | Self::W187
-            | Self::W188
-            | Self::W189
-            | Self::W190
-            | Self::W191
-            | Self::W192
-            | Self::W193
-            | Self::W194 => None,
+            _ => None,
         }
     }
 }

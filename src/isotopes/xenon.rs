@@ -197,37 +197,7 @@ impl super::IsotopicComposition for XenonIsotope {
             Self::Xe132 => Some(0.269086f64),
             Self::Xe134 => Some(0.104357f64),
             Self::Xe136 => Some(0.088573f64),
-            Self::Xe109
-            | Self::Xe110
-            | Self::Xe111
-            | Self::Xe112
-            | Self::Xe113
-            | Self::Xe114
-            | Self::Xe115
-            | Self::Xe116
-            | Self::Xe117
-            | Self::Xe118
-            | Self::Xe119
-            | Self::Xe120
-            | Self::Xe121
-            | Self::Xe122
-            | Self::Xe123
-            | Self::Xe125
-            | Self::Xe127
-            | Self::Xe133
-            | Self::Xe135
-            | Self::Xe137
-            | Self::Xe138
-            | Self::Xe139
-            | Self::Xe140
-            | Self::Xe141
-            | Self::Xe142
-            | Self::Xe143
-            | Self::Xe144
-            | Self::Xe145
-            | Self::Xe146
-            | Self::Xe147
-            | Self::Xe148 => None,
+            _ => None,
         }
     }
 }

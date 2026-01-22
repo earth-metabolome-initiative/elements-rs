@@ -165,34 +165,7 @@ impl super::IsotopicComposition for GermaniumIsotope {
             Self::Ge73 => Some(0.0775f64),
             Self::Ge74 => Some(0.365f64),
             Self::Ge76 => Some(0.0773f64),
-            Self::Ge58
-            | Self::Ge59
-            | Self::Ge60
-            | Self::Ge61
-            | Self::Ge62
-            | Self::Ge63
-            | Self::Ge64
-            | Self::Ge65
-            | Self::Ge66
-            | Self::Ge67
-            | Self::Ge68
-            | Self::Ge69
-            | Self::Ge71
-            | Self::Ge75
-            | Self::Ge77
-            | Self::Ge78
-            | Self::Ge79
-            | Self::Ge80
-            | Self::Ge81
-            | Self::Ge82
-            | Self::Ge83
-            | Self::Ge84
-            | Self::Ge85
-            | Self::Ge86
-            | Self::Ge87
-            | Self::Ge88
-            | Self::Ge89
-            | Self::Ge90 => None,
+            _ => None,
         }
     }
 }

@@ -74,15 +74,7 @@ impl super::IsotopicComposition for LithiumIsotope {
         match self {
             Self::Li6 => Some(0.0759f64),
             Self::Li7 => Some(0.9241f64),
-            Self::Li3
-            | Self::Li4
-            | Self::Li5
-            | Self::Li8
-            | Self::Li9
-            | Self::Li10
-            | Self::Li11
-            | Self::Li12
-            | Self::Li13 => None,
+            _ => None,
         }
     }
 }

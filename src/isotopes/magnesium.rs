@@ -119,25 +119,7 @@ impl super::IsotopicComposition for MagnesiumIsotope {
             Self::Mg24 => Some(0.7899f64),
             Self::Mg25 => Some(0.1f64),
             Self::Mg26 => Some(0.1101f64),
-            Self::Mg19
-            | Self::Mg20
-            | Self::Mg21
-            | Self::Mg22
-            | Self::Mg23
-            | Self::Mg27
-            | Self::Mg28
-            | Self::Mg29
-            | Self::Mg30
-            | Self::Mg31
-            | Self::Mg32
-            | Self::Mg33
-            | Self::Mg34
-            | Self::Mg35
-            | Self::Mg36
-            | Self::Mg37
-            | Self::Mg38
-            | Self::Mg39
-            | Self::Mg40 => None,
+            _ => None,
         }
     }
 }

@@ -173,41 +173,7 @@ impl super::IsotopicComposition for ThuliumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Tm169 => Some(1f64),
-            Self::Tm144
-            | Self::Tm145
-            | Self::Tm146
-            | Self::Tm147
-            | Self::Tm148
-            | Self::Tm149
-            | Self::Tm150
-            | Self::Tm151
-            | Self::Tm152
-            | Self::Tm153
-            | Self::Tm154
-            | Self::Tm155
-            | Self::Tm156
-            | Self::Tm157
-            | Self::Tm158
-            | Self::Tm159
-            | Self::Tm160
-            | Self::Tm161
-            | Self::Tm162
-            | Self::Tm163
-            | Self::Tm164
-            | Self::Tm165
-            | Self::Tm166
-            | Self::Tm167
-            | Self::Tm168
-            | Self::Tm170
-            | Self::Tm171
-            | Self::Tm172
-            | Self::Tm173
-            | Self::Tm174
-            | Self::Tm175
-            | Self::Tm176
-            | Self::Tm177
-            | Self::Tm178
-            | Self::Tm179 => None,
+            _ => None,
         }
     }
 }

@@ -141,33 +141,7 @@ impl super::IsotopicComposition for ManganeseIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Mn55 => Some(1f64),
-            Self::Mn44
-            | Self::Mn45
-            | Self::Mn46
-            | Self::Mn47
-            | Self::Mn48
-            | Self::Mn49
-            | Self::Mn50
-            | Self::Mn51
-            | Self::Mn52
-            | Self::Mn53
-            | Self::Mn54
-            | Self::Mn56
-            | Self::Mn57
-            | Self::Mn58
-            | Self::Mn59
-            | Self::Mn60
-            | Self::Mn61
-            | Self::Mn62
-            | Self::Mn63
-            | Self::Mn64
-            | Self::Mn65
-            | Self::Mn66
-            | Self::Mn67
-            | Self::Mn68
-            | Self::Mn69
-            | Self::Mn70
-            | Self::Mn71 => None,
+            _ => None,
         }
     }
 }

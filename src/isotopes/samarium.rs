@@ -187,37 +187,7 @@ impl super::IsotopicComposition for SamariumIsotope {
             Self::Sm150 => Some(0.0738f64),
             Self::Sm152 => Some(0.2675f64),
             Self::Sm154 => Some(0.2275f64),
-            Self::Sm128
-            | Self::Sm129
-            | Self::Sm130
-            | Self::Sm131
-            | Self::Sm132
-            | Self::Sm133
-            | Self::Sm134
-            | Self::Sm135
-            | Self::Sm136
-            | Self::Sm137
-            | Self::Sm138
-            | Self::Sm139
-            | Self::Sm140
-            | Self::Sm141
-            | Self::Sm142
-            | Self::Sm143
-            | Self::Sm145
-            | Self::Sm146
-            | Self::Sm151
-            | Self::Sm153
-            | Self::Sm155
-            | Self::Sm156
-            | Self::Sm157
-            | Self::Sm158
-            | Self::Sm159
-            | Self::Sm160
-            | Self::Sm161
-            | Self::Sm162
-            | Self::Sm163
-            | Self::Sm164
-            | Self::Sm165 => None,
+            _ => None,
         }
     }
 }

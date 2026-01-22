@@ -162,32 +162,7 @@ impl super::IsotopicComposition for SeleniumIsotope {
             Self::Se78 => Some(0.2377f64),
             Self::Se80 => Some(0.4961f64),
             Self::Se82 => Some(0.0873f64),
-            Self::Se64
-            | Self::Se65
-            | Self::Se66
-            | Self::Se67
-            | Self::Se68
-            | Self::Se69
-            | Self::Se70
-            | Self::Se71
-            | Self::Se72
-            | Self::Se73
-            | Self::Se75
-            | Self::Se79
-            | Self::Se81
-            | Self::Se83
-            | Self::Se84
-            | Self::Se85
-            | Self::Se86
-            | Self::Se87
-            | Self::Se88
-            | Self::Se89
-            | Self::Se90
-            | Self::Se91
-            | Self::Se92
-            | Self::Se93
-            | Self::Se94
-            | Self::Se95 => None,
+            _ => None,
         }
     }
 }

@@ -186,38 +186,7 @@ impl super::IsotopicComposition for PalladiumIsotope {
             Self::Pd106 => Some(0.2733f64),
             Self::Pd108 => Some(0.2646f64),
             Self::Pd110 => Some(0.1172f64),
-            Self::Pd91
-            | Self::Pd92
-            | Self::Pd93
-            | Self::Pd94
-            | Self::Pd95
-            | Self::Pd96
-            | Self::Pd97
-            | Self::Pd98
-            | Self::Pd99
-            | Self::Pd100
-            | Self::Pd101
-            | Self::Pd103
-            | Self::Pd107
-            | Self::Pd109
-            | Self::Pd111
-            | Self::Pd112
-            | Self::Pd113
-            | Self::Pd114
-            | Self::Pd115
-            | Self::Pd116
-            | Self::Pd117
-            | Self::Pd118
-            | Self::Pd119
-            | Self::Pd120
-            | Self::Pd121
-            | Self::Pd122
-            | Self::Pd123
-            | Self::Pd124
-            | Self::Pd125
-            | Self::Pd126
-            | Self::Pd127
-            | Self::Pd128 => None,
+            _ => None,
         }
     }
 }

@@ -185,44 +185,7 @@ impl super::IsotopicComposition for PraseodymiumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Pr141 => Some(1f64),
-            Self::Pr121
-            | Self::Pr122
-            | Self::Pr123
-            | Self::Pr124
-            | Self::Pr125
-            | Self::Pr126
-            | Self::Pr127
-            | Self::Pr128
-            | Self::Pr129
-            | Self::Pr130
-            | Self::Pr131
-            | Self::Pr132
-            | Self::Pr133
-            | Self::Pr134
-            | Self::Pr135
-            | Self::Pr136
-            | Self::Pr137
-            | Self::Pr138
-            | Self::Pr139
-            | Self::Pr140
-            | Self::Pr142
-            | Self::Pr143
-            | Self::Pr144
-            | Self::Pr145
-            | Self::Pr146
-            | Self::Pr147
-            | Self::Pr148
-            | Self::Pr149
-            | Self::Pr150
-            | Self::Pr151
-            | Self::Pr152
-            | Self::Pr153
-            | Self::Pr154
-            | Self::Pr155
-            | Self::Pr156
-            | Self::Pr157
-            | Self::Pr158
-            | Self::Pr159 => None,
+            _ => None,
         }
     }
 }

@@ -128,26 +128,7 @@ impl super::IsotopicComposition for SulfurIsotope {
             Self::S33 => Some(0.0075f64),
             Self::S34 => Some(0.0425f64),
             Self::S36 => Some(0.0001f64),
-            Self::S26
-            | Self::S27
-            | Self::S28
-            | Self::S29
-            | Self::S30
-            | Self::S31
-            | Self::S35
-            | Self::S37
-            | Self::S38
-            | Self::S39
-            | Self::S40
-            | Self::S41
-            | Self::S42
-            | Self::S43
-            | Self::S44
-            | Self::S45
-            | Self::S46
-            | Self::S47
-            | Self::S48
-            | Self::S49 => None,
+            _ => None,
         }
     }
 }

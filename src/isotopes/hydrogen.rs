@@ -58,7 +58,7 @@ impl super::IsotopicComposition for HydrogenIsotope {
         match self {
             Self::H1 => Some(0.999885f64),
             Self::D => Some(0.000115f64),
-            Self::T | Self::H4 | Self::H5 | Self::H6 | Self::H7 => None,
+            _ => None,
         }
     }
 }

@@ -183,36 +183,7 @@ impl super::IsotopicComposition for GadoliniumIsotope {
             Self::Gd157 => Some(0.1565f64),
             Self::Gd158 => Some(0.2484f64),
             Self::Gd160 => Some(0.2186f64),
-            Self::Gd133
-            | Self::Gd134
-            | Self::Gd135
-            | Self::Gd136
-            | Self::Gd137
-            | Self::Gd138
-            | Self::Gd139
-            | Self::Gd140
-            | Self::Gd141
-            | Self::Gd142
-            | Self::Gd143
-            | Self::Gd144
-            | Self::Gd145
-            | Self::Gd146
-            | Self::Gd147
-            | Self::Gd148
-            | Self::Gd149
-            | Self::Gd150
-            | Self::Gd151
-            | Self::Gd153
-            | Self::Gd159
-            | Self::Gd161
-            | Self::Gd162
-            | Self::Gd163
-            | Self::Gd164
-            | Self::Gd165
-            | Self::Gd166
-            | Self::Gd167
-            | Self::Gd168
-            | Self::Gd169 => None,
+            _ => None,
         }
     }
 }

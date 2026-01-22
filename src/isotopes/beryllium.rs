@@ -77,17 +77,7 @@ impl super::IsotopicComposition for BerylliumIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::Be9 => Some(1f64),
-            Self::Be5
-            | Self::Be6
-            | Self::Be7
-            | Self::Be8
-            | Self::Be10
-            | Self::Be11
-            | Self::Be12
-            | Self::Be13
-            | Self::Be14
-            | Self::Be15
-            | Self::Be16 => None,
+            _ => None,
         }
     }
 }

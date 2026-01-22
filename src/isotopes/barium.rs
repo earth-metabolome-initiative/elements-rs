@@ -195,39 +195,7 @@ impl super::IsotopicComposition for BariumIsotope {
             Self::Ba136 => Some(0.07854f64),
             Self::Ba137 => Some(0.11232f64),
             Self::Ba138 => Some(0.71698f64),
-            Self::Ba114
-            | Self::Ba115
-            | Self::Ba116
-            | Self::Ba117
-            | Self::Ba118
-            | Self::Ba119
-            | Self::Ba120
-            | Self::Ba121
-            | Self::Ba122
-            | Self::Ba123
-            | Self::Ba124
-            | Self::Ba125
-            | Self::Ba126
-            | Self::Ba127
-            | Self::Ba128
-            | Self::Ba129
-            | Self::Ba131
-            | Self::Ba133
-            | Self::Ba139
-            | Self::Ba140
-            | Self::Ba141
-            | Self::Ba142
-            | Self::Ba143
-            | Self::Ba144
-            | Self::Ba145
-            | Self::Ba146
-            | Self::Ba147
-            | Self::Ba148
-            | Self::Ba149
-            | Self::Ba150
-            | Self::Ba151
-            | Self::Ba152
-            | Self::Ba153 => None,
+            _ => None,
         }
     }
 }

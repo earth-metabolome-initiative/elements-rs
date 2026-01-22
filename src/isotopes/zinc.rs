@@ -161,33 +161,7 @@ impl super::IsotopicComposition for ZincIsotope {
             Self::Zn67 => Some(0.0404f64),
             Self::Zn68 => Some(0.1845f64),
             Self::Zn70 => Some(0.0061f64),
-            Self::Zn54
-            | Self::Zn55
-            | Self::Zn56
-            | Self::Zn57
-            | Self::Zn58
-            | Self::Zn59
-            | Self::Zn60
-            | Self::Zn61
-            | Self::Zn62
-            | Self::Zn63
-            | Self::Zn65
-            | Self::Zn69
-            | Self::Zn71
-            | Self::Zn72
-            | Self::Zn73
-            | Self::Zn74
-            | Self::Zn75
-            | Self::Zn76
-            | Self::Zn77
-            | Self::Zn78
-            | Self::Zn79
-            | Self::Zn80
-            | Self::Zn81
-            | Self::Zn82
-            | Self::Zn83
-            | Self::Zn84
-            | Self::Zn85 => None,
+            _ => None,
         }
     }
 }

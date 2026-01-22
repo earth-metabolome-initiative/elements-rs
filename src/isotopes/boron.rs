@@ -94,20 +94,7 @@ impl super::IsotopicComposition for BoronIsotope {
         match self {
             Self::B10 => Some(0.199f64),
             Self::B11 => Some(0.801f64),
-            Self::B6
-            | Self::B7
-            | Self::B8
-            | Self::B9
-            | Self::B12
-            | Self::B13
-            | Self::B14
-            | Self::B15
-            | Self::B16
-            | Self::B17
-            | Self::B18
-            | Self::B19
-            | Self::B20
-            | Self::B21 => None,
+            _ => None,
         }
     }
 }
