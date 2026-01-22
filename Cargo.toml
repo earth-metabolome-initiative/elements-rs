@@ -1,6 +1,6 @@
 [package]
 name = "elements-rs"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Earth Metabolome Initiative"]
 license = "GPL-3.0"
 repository = "https://github.com/earth-metabolome-initiative/elements-rs"
