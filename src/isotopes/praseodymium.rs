@@ -386,9 +386,18 @@ mod tests {
             let mass = isotope.mass_number();
             let iso = PraseodymiumIsotope::try_from(mass).unwrap();
             assert_eq!(iso, isotope);
+            let iso_u32 = PraseodymiumIsotope::try_from(u32::from(mass)).unwrap();
+            assert_eq!(iso_u32, isotope);
+            if let Ok(mass_u8) = u8::try_from(mass) {
+                let iso_u8 = PraseodymiumIsotope::try_from(mass_u8).unwrap();
+                assert_eq!(iso_u8, isotope);
+            }
         }
         assert!(PraseodymiumIsotope::try_from(0_u16).is_err());
         assert!(PraseodymiumIsotope::try_from(1000_u16).is_err());
+        assert!(PraseodymiumIsotope::try_from(0_u32).is_err());
+        assert!(PraseodymiumIsotope::try_from(1000_u32).is_err());
+        assert!(PraseodymiumIsotope::try_from(0_u8).is_err());
     }
     #[test]
     fn test_display() {

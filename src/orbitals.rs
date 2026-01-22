@@ -27,7 +27,20 @@ pub struct AtomicOrbital {
 }
 
 impl AtomicOrbital {
-    const fn new(
+    #[must_use]
+    /// Creates a new [`AtomicOrbital`].
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{AtomicOrbital, AtomicOrbitalType};
+    ///
+    /// let orbital = AtomicOrbital::new(1, AtomicOrbitalType::S, 2);
+    /// assert_eq!(orbital.principal_quantum_number(), 1);
+    /// assert_eq!(orbital.orbital_type(), AtomicOrbitalType::S);
+    /// assert_eq!(orbital.number_of_electrons(), 2);
+    /// ```
+    pub const fn new(
         principal_quantum_number: u8,
         orbital_type: AtomicOrbitalType,
         number_of_electrons: u8,

@@ -284,3 +284,15 @@ impl AsRef<Element> for Element {
         self
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::Element;
+
+    #[test]
+    fn test_as_ref_element() {
+        let element = Element::C;
+        let element_ref: &Element = element.as_ref();
+        assert_eq!(element_ref, &Element::C);
+    }
+}

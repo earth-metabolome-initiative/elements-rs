@@ -458,10 +458,23 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                     let mass = isotope.mass_number();
                     let iso = #isotope_ident::try_from(mass).unwrap();
                     assert_eq!(iso, isotope);
+
+                    let iso_u32 = #isotope_ident::try_from(u32::from(mass)).unwrap();
+                    assert_eq!(iso_u32, isotope);
+
+                    if let Ok(mass_u8) = u8::try_from(mass) {
+                        let iso_u8 = #isotope_ident::try_from(mass_u8).unwrap();
+                        assert_eq!(iso_u8, isotope);
+                    }
                 }
                 // Test error cases
                 assert!(#isotope_ident::try_from(0_u16).is_err()); // Too low
                 assert!(#isotope_ident::try_from(1000_u16).is_err()); // Way too high
+
+                assert!(#isotope_ident::try_from(0_u32).is_err()); // Too low
+                assert!(#isotope_ident::try_from(1000_u32).is_err()); // Way too high
+
+                assert!(#isotope_ident::try_from(0_u8).is_err()); // Too low
             }
 
             #[test]
