@@ -16,7 +16,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-elements = "0.1"
+elements_rs = "0.1"
 ```
 
 ### Basic Example
