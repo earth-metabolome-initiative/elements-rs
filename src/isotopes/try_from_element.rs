@@ -200,10 +200,10 @@ mod tests {
         assert_eq!(h1, Isotope::H(crate::isotopes::HydrogenIsotope::H1));
 
         let d2 = Isotope::try_from((Element::H, 2_u8)).unwrap();
-        assert_eq!(d2, Isotope::H(crate::isotopes::HydrogenIsotope::D2));
+        assert_eq!(d2, Isotope::H(crate::isotopes::HydrogenIsotope::D));
 
         let t3 = Isotope::try_from((Element::H, 3_u8)).unwrap();
-        assert_eq!(t3, Isotope::H(crate::isotopes::HydrogenIsotope::T3));
+        assert_eq!(t3, Isotope::H(crate::isotopes::HydrogenIsotope::T));
 
         // Carbon
         let c12 = Isotope::try_from((Element::C, 12_u8)).unwrap();

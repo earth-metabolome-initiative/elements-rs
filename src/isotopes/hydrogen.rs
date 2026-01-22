@@ -5,10 +5,10 @@
 pub enum HydrogenIsotope {
     /// Isotope H1 of Hydrogen
     H1,
-    /// Isotope D2 of Hydrogen
-    D2,
-    /// Isotope T3 of Hydrogen
-    T3,
+    /// Isotope D of Hydrogen
+    D,
+    /// Isotope T of Hydrogen
+    T,
     /// Isotope H4 of Hydrogen
     H4,
     /// Isotope H5 of Hydrogen
@@ -23,8 +23,8 @@ impl super::RelativeAtomicMass for HydrogenIsotope {
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::H1 => 1.00782503223f64,
-            Self::D2 => 2.01410177812f64,
-            Self::T3 => 3.0160492779f64,
+            Self::D => 2.01410177812f64,
+            Self::T => 3.0160492779f64,
             Self::H4 => 4.02643f64,
             Self::H5 => 5.035311f64,
             Self::H6 => 6.04496f64,
@@ -43,8 +43,8 @@ impl super::MassNumber for HydrogenIsotope {
     fn mass_number(&self) -> u16 {
         match self {
             Self::H1 => 1u16,
-            Self::D2 => 2u16,
-            Self::T3 => 3u16,
+            Self::D => 2u16,
+            Self::T => 3u16,
             Self::H4 => 4u16,
             Self::H5 => 5u16,
             Self::H6 => 6u16,
@@ -57,8 +57,8 @@ impl super::IsotopicComposition for HydrogenIsotope {
     fn isotopic_composition(&self) -> Option<f64> {
         match self {
             Self::H1 => Some(0.999885f64),
-            Self::D2 => Some(0.000115f64),
-            Self::T3 | Self::H4 | Self::H5 | Self::H6 | Self::H7 => None,
+            Self::D => Some(0.000115f64),
+            Self::T | Self::H4 | Self::H5 | Self::H6 | Self::H7 => None,
         }
     }
 }
@@ -82,8 +82,8 @@ impl TryFrom<u64> for HydrogenIsotope {
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
             1u64 => Ok(Self::H1),
-            2u64 => Ok(Self::D2),
-            3u64 => Ok(Self::T3),
+            2u64 => Ok(Self::D),
+            3u64 => Ok(Self::T),
             4u64 => Ok(Self::H4),
             5u64 => Ok(Self::H5),
             6u64 => Ok(Self::H6),
@@ -114,8 +114,8 @@ impl std::fmt::Display for HydrogenIsotope {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::H1 => write!(f, "H1"),
-            Self::D2 => write!(f, "D2"),
-            Self::T3 => write!(f, "T3"),
+            Self::D => write!(f, "D"),
+            Self::T => write!(f, "T"),
             Self::H4 => write!(f, "H4"),
             Self::H5 => write!(f, "H5"),
             Self::H6 => write!(f, "H6"),

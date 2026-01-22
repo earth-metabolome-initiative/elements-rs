@@ -260,7 +260,7 @@ pub trait RelativeAtomicMass {
     /// let h1 = HydrogenIsotope::H1;
     /// assert_eq!(h1.relative_atomic_mass(), 1.00782503223);
     ///
-    /// let deuterium = HydrogenIsotope::D2;
+    /// let deuterium = HydrogenIsotope::D;
     /// assert_eq!(deuterium.relative_atomic_mass(), 2.01410177812);
     /// ```
     fn relative_atomic_mass(&self) -> f64;
@@ -278,10 +278,10 @@ pub trait MassNumber {
     /// let h1 = HydrogenIsotope::H1;
     /// assert_eq!(h1.mass_number(), 1);
     ///
-    /// let deuterium = HydrogenIsotope::D2;
+    /// let deuterium = HydrogenIsotope::D;
     /// assert_eq!(deuterium.mass_number(), 2);
     ///
-    /// let tritium = HydrogenIsotope::T3;
+    /// let tritium = HydrogenIsotope::T;
     /// assert_eq!(tritium.mass_number(), 3);
     /// ```
     fn mass_number(&self) -> u16;
@@ -302,7 +302,7 @@ pub trait ElementVariant {
     /// let h1 = HydrogenIsotope::H1;
     /// assert_eq!(h1.element(), Element::H);
     ///
-    /// let deuterium = HydrogenIsotope::D2;
+    /// let deuterium = HydrogenIsotope::D;
     /// assert_eq!(deuterium.element(), Element::H);
     /// ```
     fn element(&self) -> crate::Element;
@@ -320,10 +320,10 @@ pub trait IsotopicComposition {
     /// let h1 = HydrogenIsotope::H1;
     /// assert_eq!(h1.isotopic_composition(), Some(0.999885));
     ///
-    /// let deuterium = HydrogenIsotope::D2;
+    /// let deuterium = HydrogenIsotope::D;
     /// assert_eq!(deuterium.isotopic_composition(), Some(0.000115));
     ///
-    /// let tritium = HydrogenIsotope::T3;
+    /// let tritium = HydrogenIsotope::T;
     /// assert_eq!(tritium.isotopic_composition(), None); // No stable natural occurrence
     /// ```
     fn isotopic_composition(&self) -> Option<f64>;

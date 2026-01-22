@@ -160,7 +160,7 @@ mod tests {
         let h1 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::H1);
         assert_eq!(h1.element(), crate::Element::H);
 
-        let d2 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        let d2 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::D);
         assert_eq!(d2.element(), crate::Element::H);
 
         // Carbon isotopes

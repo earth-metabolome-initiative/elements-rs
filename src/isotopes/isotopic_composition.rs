@@ -141,7 +141,7 @@ mod tests {
         let h1 = Isotope::H(crate::isotopes::HydrogenIsotope::H1);
         assert_eq!(h1.isotopic_composition(), Some(0.999885f64));
 
-        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D);
         assert_eq!(d2.isotopic_composition(), Some(0.000115f64));
 
         // Carbon isotopes

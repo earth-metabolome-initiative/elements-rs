@@ -138,7 +138,7 @@ mod tests {
         for element in crate::Element::iter() {
             let isotopes = element.isotopes();
             for isotope in isotopes {
-                if matches!(isotope, crate::Isotope::H(HydrogenIsotope::D2 | HydrogenIsotope::T3)) {
+                if matches!(isotope, crate::Isotope::H(HydrogenIsotope::D | HydrogenIsotope::T)) {
                     // Skip Hydrogen-1 as its display is just "H"
                     continue;
                 }

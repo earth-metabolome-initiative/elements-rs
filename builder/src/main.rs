@@ -173,11 +173,21 @@ fn isotopes() -> Vec<IsotopeMetadata> {
 
 #[allow(clippy::too_many_lines)]
 fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
-    // We generate the enum variants for each isotope
-    let enum_variants = isotopes
+    let isotope_names = isotopes
         .iter()
         .map(|isotope| {
-            let isotope_name = format!("{}{}", isotope.atomic_symbol, isotope.mass_number);
+            if isotope.atomic_symbol == "D" || isotope.atomic_symbol == "T" {
+                isotope.atomic_symbol.clone()
+            } else {
+                format!("{}{}", isotope.atomic_symbol, isotope.mass_number)
+            }
+        })
+        .collect::<Vec<_>>();
+
+    // We generate the enum variants for each isotope
+    let enum_variants = isotope_names
+        .iter()
+        .map(|isotope_name| {
             let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
             quote! {
                 #isotope_ident
@@ -187,8 +197,8 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
 
     let enum_variants_with_documentation = isotopes
         .iter()
-        .map(|isotope| {
-            let isotope_name = format!("{}{}", isotope.atomic_symbol, isotope.mass_number);
+        .zip(isotope_names.iter())
+        .map(|(isotope, isotope_name)| {
             let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
             let documentation = format!(
                 "Isotope {} of {}",
@@ -202,11 +212,6 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         })
         .collect::<Vec<_>>();
 
-    let isotope_names = isotopes
-        .iter()
-        .map(|isotope| format!("{}{}", isotope.atomic_symbol, isotope.mass_number))
-        .collect::<Vec<_>>();
-
     let relative_atomic_masses =
         isotopes.iter().map(|isotope| isotope.relative_atomic_mass).collect::<Vec<_>>();
 
@@ -216,9 +221,9 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
 
     let known_isotopic_compositions: Vec<TokenStream> = isotopes
         .iter()
-        .filter_map(|isotope| {
+        .zip(isotope_names.iter())
+        .filter_map(|(isotope, isotope_name)| {
             isotope.isotopic_composition.map(|isotopic_composition| {
-                let isotope_name = format!("{}{}", isotope.atomic_symbol, isotope.mass_number);
                 let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
                 quote! {
                     Self::#isotope_ident => Some(#isotopic_composition)
@@ -228,9 +233,9 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         .collect::<Vec<_>>();
     let unknown_isotopic_compositions: Vec<TokenStream> = isotopes
         .iter()
-        .filter_map(|isotope| {
+        .zip(isotope_names.iter())
+        .filter_map(|(isotope, isotope_name)| {
             if isotope.isotopic_composition.is_none() {
-                let isotope_name = format!("{}{}", isotope.atomic_symbol, isotope.mass_number);
                 let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
                 Some(quote! {
                     Self::#isotope_ident

@@ -141,10 +141,10 @@ mod tests {
         let h1 = Isotope::H(crate::isotopes::HydrogenIsotope::H1);
         assert_eq!(h1.mass_number(), 1);
 
-        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D2);
+        let d2 = Isotope::H(crate::isotopes::HydrogenIsotope::D);
         assert_eq!(d2.mass_number(), 2);
 
-        let t3 = Isotope::H(crate::isotopes::HydrogenIsotope::T3);
+        let t3 = Isotope::H(crate::isotopes::HydrogenIsotope::T);
         assert_eq!(t3.mass_number(), 3);
 
         // Carbon isotopes

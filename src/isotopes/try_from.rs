@@ -7,8 +7,8 @@ impl TryFrom<char> for crate::Isotope {
 
     fn try_from(value: char) -> Result<Self, Self::Error> {
         Ok(match value {
-            'D' => HydrogenIsotope::D2.into(),
-            'T' => HydrogenIsotope::T3.into(),
+            'D' => HydrogenIsotope::D.into(),
+            'T' => HydrogenIsotope::T.into(),
             _ => {
                 return Err(crate::errors::Error::CharacterIsotope(value));
             }
