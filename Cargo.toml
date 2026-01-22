@@ -15,16 +15,14 @@ include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 strum_macros = "0.27.2"
 strum = { version = "0.27.2", features = ["derive"] }
 thiserror = "2.0"
-
 serde = { version = "1.0", features = ["derive"], optional = true }
-diesel = { version = "2.3.5", optional = true }
 
 [features]
 default = ["serde"]
 serde = ["dep:serde"]
-diesel = ["dep:diesel"]
-sqlite = ["diesel", "diesel/sqlite"]
-postgres = ["diesel", "diesel/postgres"]
+
+[lints]
+workspace = true
 
 [workspace.lints.rust]
 missing_docs = "forbid"

@@ -143,13 +143,11 @@ mod tests {
                 // Verify that relative atomic mass is positive and reasonable
                 assert!(
                     mass > 0.0,
-                    "Relative atomic mass for isotope {:?} should be positive",
-                    isotope
+                    "Relative atomic mass for isotope {isotope:?} should be positive",
                 );
                 assert!(
                     mass < 300.0,
-                    "Relative atomic mass for isotope {:?} should be reasonable (< 300)",
-                    isotope
+                    "Relative atomic mass for isotope {isotope:?} should be reasonable (< 300)",
                 );
             }
         }

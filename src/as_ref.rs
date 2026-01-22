@@ -148,8 +148,8 @@ mod tests {
     fn test_as_ref() {
         for element in crate::Element::iter() {
             let symbol: &str = element.as_ref();
-            assert!(!symbol.is_empty(), "Symbol should not be empty for {:?}", element);
-            assert!(symbol.len() <= 2, "Symbol should be 1 or 2 characters for {:?}", element);
+            assert!(!symbol.is_empty(), "Symbol should not be empty for {element:?}");
+            assert!(symbol.len() <= 2, "Symbol should be 1 or 2 characters for {element:?}");
         }
     }
 }

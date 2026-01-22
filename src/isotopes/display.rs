@@ -143,16 +143,13 @@ mod tests {
                     continue;
                 }
 
-                let display = format!("{}", isotope);
-                assert!(!display.is_empty(), "Display should not be empty for {:?}", isotope);
+                let display = alloc::format!("{isotope}");
+                assert!(!display.is_empty(), "Display should not be empty for {isotope:?}");
                 // Verify that the display string contains the element symbol
-                let element_symbol = format!("{}", element);
+                let element_symbol = alloc::format!("{element}");
                 assert!(
                     display.contains(&element_symbol),
-                    "Display '{}' for isotope {:?} should contain element symbol '{}'",
-                    display,
-                    isotope,
-                    element_symbol
+                    "Display '{display}' for isotope {isotope:?} should contain element symbol '{element_symbol}'",
                 );
             }
         }

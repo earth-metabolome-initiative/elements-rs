@@ -1,6 +1,6 @@
 //! Submodule implementing the `FromStr` trait for the `Element` enum.
 
-use std::str::FromStr;
+use core::str::FromStr;
 
 impl FromStr for crate::Element {
     type Err = crate::errors::Error;
@@ -168,17 +168,11 @@ mod tests {
 
             // Test standard case parsing
             let parsed: Result<crate::Element, _> = symbol.parse();
-            assert!(
-                parsed.is_ok(),
-                "Failed to parse standard symbol '{}' for {:?}",
-                symbol,
-                element
-            );
+            assert!(parsed.is_ok(), "Failed to parse standard symbol '{symbol}' for {element:?}",);
             assert_eq!(
                 parsed.unwrap(),
                 element,
-                "Parsed element doesn't match for symbol '{}'",
-                symbol
+                "Parsed element doesn't match for symbol '{symbol}'",
             );
         }
     }
@@ -186,7 +180,7 @@ mod tests {
     #[test]
     fn test_invalid_symbols() {
         // Test various invalid inputs
-        let invalid_symbols = vec![
+        let invalid_symbols = alloc::vec![
             "",    // empty string
             "X",   // non-existent element
             "Zz",  // non-existent element
@@ -203,7 +197,7 @@ mod tests {
 
         for invalid in invalid_symbols {
             let result: Result<crate::Element, _> = invalid.parse();
-            assert!(result.is_err(), "Should fail to parse invalid symbol '{}'", invalid);
+            assert!(result.is_err(), "Should fail to parse invalid symbol '{invalid}'");
         }
     }
 
@@ -216,7 +210,7 @@ mod tests {
             let parsed: crate::Element = symbol.parse().unwrap();
 
             // Should be the same element
-            assert_eq!(parsed, element, "Roundtrip failed for {:?}", element);
+            assert_eq!(parsed, element, "Roundtrip failed for {element:?}");
         }
     }
 }

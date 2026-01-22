@@ -145,11 +145,10 @@ mod tests {
     fn test_name() {
         for element in crate::Element::iter() {
             let name = element.name();
-            assert!(!name.is_empty(), "Name should not be empty for {:?}", element);
+            assert!(!name.is_empty(), "Name should not be empty for {element:?}");
             assert!(
                 name.chars().next().unwrap().is_uppercase(),
-                "Name should start with uppercase letter for {:?}",
-                element
+                "Name should start with uppercase letter for {element:?}",
             );
         }
     }

@@ -264,8 +264,8 @@ impl TryFrom<u32> for ThoriumIsotope {
         Self::try_from(u64::from(value))
     }
 }
-impl std::fmt::Display for ThoriumIsotope {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl core::fmt::Display for ThoriumIsotope {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Th208 => write!(f, "Th208"),
             Self::Th209 => write!(f, "Th209"),
@@ -314,14 +314,14 @@ mod tests {
     fn test_relative_atomic_mass() {
         for isotope in ThoriumIsotope::iter() {
             let mass = isotope.relative_atomic_mass();
-            assert!(mass > 0.0, "Mass should be positive for {:?}", isotope);
+            assert!(mass > 0.0, "Mass should be positive for {isotope:?}");
         }
     }
     #[test]
     fn test_element() {
         for isotope in ThoriumIsotope::iter() {
             let element = isotope.element();
-            assert_eq!(element, crate::Element::Th, "Element should be correct for {:?}", isotope);
+            assert_eq!(element, crate::Element::Th, "Element should be correct for {isotope:?}");
         }
     }
     #[test]
@@ -330,8 +330,7 @@ mod tests {
             let mass_number = isotope.mass_number();
             assert!(
                 mass_number > 0 && mass_number < 300,
-                "Mass number should be reasonable for {:?}",
-                isotope
+                "Mass number should be reasonable for {isotope:?}"
             );
         }
     }
@@ -342,8 +341,7 @@ mod tests {
             if let Some(c) = comp {
                 assert!(
                     (0.0..=1.0).contains(&c),
-                    "Composition should be between 0 and 1 for {:?}",
-                    isotope
+                    "Composition should be between 0 and 1 for {isotope:?}"
                 );
             }
         }
@@ -383,8 +381,8 @@ mod tests {
     #[test]
     fn test_display() {
         for isotope in ThoriumIsotope::iter() {
-            let s = format!("{}", isotope);
-            assert!(!s.is_empty(), "Display should not be empty for {:?}", isotope);
+            let s = alloc::format!("{isotope}");
+            assert!(!s.is_empty(), "Display should not be empty for {isotope:?}");
         }
     }
 }

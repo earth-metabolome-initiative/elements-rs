@@ -22,7 +22,7 @@ mod tests {
     fn test_try_from_char() {
         for char in ['D', 'T'] {
             let result = crate::Isotope::try_from(char);
-            assert!(result.is_ok(), "Failed to convert char '{}' to Isotope", char);
+            assert!(result.is_ok(), "Failed to convert char '{char}' to Isotope");
         }
 
         // Test an invalid character

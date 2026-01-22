@@ -89,14 +89,13 @@ mod tests {
     fn test_orbitals() {
         for element in crate::Element::iter() {
             let orbitals = element.orbitals();
-            assert!(!orbitals.is_empty(), "Orbitals should not be empty for {:?}", element);
+            assert!(!orbitals.is_empty(), "Orbitals should not be empty for {element:?}");
             let total_electrons: u32 =
-                orbitals.iter().map(|o| o.number_of_electrons() as u32).sum();
-            let atomic_number = u8::from(element) as u32;
+                orbitals.iter().map(|o| u32::from(o.number_of_electrons())).sum();
+            let atomic_number = u32::from(u8::from(element));
             assert_eq!(
                 total_electrons, atomic_number,
-                "Total electrons in orbitals should equal atomic number for {:?}",
-                element
+                "Total electrons in orbitals should equal atomic number for {element:?}",
             );
         }
     }

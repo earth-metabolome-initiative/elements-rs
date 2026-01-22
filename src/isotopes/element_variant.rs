@@ -142,9 +142,7 @@ mod tests {
                 assert_eq!(
                     isotope.element(),
                     element,
-                    "Isotope {:?} should return element {:?}",
-                    isotope,
-                    element
+                    "Isotope {isotope:?} should return element {element:?}",
                 );
             }
         }

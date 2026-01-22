@@ -126,8 +126,7 @@ mod tests {
             let valence = element.valence_electrons();
             assert!(
                 (1..=16).contains(&valence),
-                "Valence electrons should be between 1 and 16 for {:?}",
-                element
+                "Valence electrons should be between 1 and 16 for {element:?}",
             );
         }
     }
@@ -141,8 +140,7 @@ mod tests {
                 let isotope_number = isotope.valence_electrons();
                 assert_eq!(
                     element_number, isotope_number,
-                    "Valence electrons mismatch for isotope {:?} of element {:?}",
-                    isotope, element
+                    "Valence electrons mismatch for isotope {isotope:?} of element {element:?}",
                 );
             }
         }

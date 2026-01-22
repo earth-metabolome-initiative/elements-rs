@@ -142,7 +142,7 @@ mod tests {
     fn test_standard_atomic_weight() {
         for element in crate::Element::iter() {
             let weight = element.standard_atomic_weight();
-            assert!(weight > 0.0, "Standard atomic weight should be positive for {:?}", element);
+            assert!(weight > 0.0, "Standard atomic weight should be positive for {element:?}");
         }
     }
 }

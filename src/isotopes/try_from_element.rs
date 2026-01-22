@@ -251,16 +251,14 @@ mod tests {
                 // Verify that we can create the isotope from (element, mass_number)
                 let reconstructed = crate::Isotope::try_from((element, mass_number)).unwrap();
                 assert_eq!(
-                    reconstructed, isotope,
-                    "Reconstructing isotope {:?} from (element, mass_number) should work",
-                    isotope
+                    reconstructed, *isotope,
+                    "Reconstructing isotope {isotope:?} from (element, mass_number) should work",
                 );
                 // Verify that the reconstructed isotope belongs to the correct element
                 assert_eq!(
                     reconstructed.element(),
                     element,
-                    "Reconstructed isotope should belong to element {:?}",
-                    element
+                    "Reconstructed isotope should belong to element {element:?}",
                 );
             }
         }

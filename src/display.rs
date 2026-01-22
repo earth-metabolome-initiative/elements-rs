@@ -7,12 +7,13 @@ impl core::fmt::Display for crate::Element {
     /// # Examples
     ///
     /// ```rust
+    /// # extern crate alloc;
     /// use elements_rs::Element;
     ///
-    /// let hydrogen = format!("{}", Element::H);
+    /// let hydrogen = alloc::format!("{}", Element::H);
     /// assert_eq!(hydrogen, "H");
     ///
-    /// let magnesium = format!("{}", Element::Mg);
+    /// let magnesium = alloc::format!("{}", Element::Mg);
     /// assert_eq!(magnesium, "Mg");
     /// ```
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
@@ -29,9 +30,9 @@ mod tests {
     #[test]
     fn test_display() {
         for element in crate::Element::iter() {
-            let display = format!("{}", element);
-            assert!(!display.is_empty(), "Display should not be empty for {:?}", element);
-            assert_eq!(display, element.as_ref(), "Display should equal as_ref for {:?}", element);
+            let display = alloc::format!("{element}");
+            assert!(!display.is_empty(), "Display should not be empty for {element:?}");
+            assert_eq!(display, element.as_ref(), "Display should equal as_ref for {element:?}");
         }
     }
 }

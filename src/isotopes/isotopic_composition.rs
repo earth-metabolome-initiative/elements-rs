@@ -177,9 +177,7 @@ mod tests {
                 if let Some(comp) = composition {
                     assert!(
                         (0.0..=1.0).contains(&comp),
-                        "Isotopic composition for isotope {:?} should be between 0 and 1, got {:?}",
-                        isotope,
-                        comp
+                        "Isotopic composition for isotope {isotope:?} should be between 0 and 1, got {comp:?}",
                     );
                 }
             }

@@ -188,7 +188,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
     let enum_variants = isotope_names
         .iter()
         .map(|isotope_name| {
-            let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
+            let isotope_ident = Ident::new(isotope_name, proc_macro2::Span::call_site());
             quote! {
                 #isotope_ident
             }
@@ -199,7 +199,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         .iter()
         .zip(isotope_names.iter())
         .map(|(isotope, isotope_name)| {
-            let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
+            let isotope_ident = Ident::new(isotope_name, proc_macro2::Span::call_site());
             let documentation = format!(
                 "Isotope {} of {}",
                 isotope_name,
@@ -224,7 +224,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         .zip(isotope_names.iter())
         .filter_map(|(isotope, isotope_name)| {
             isotope.isotopic_composition.map(|isotopic_composition| {
-                let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
+                let isotope_ident = Ident::new(isotope_name, proc_macro2::Span::call_site());
                 quote! {
                     Self::#isotope_ident => Some(#isotopic_composition)
                 }
@@ -236,7 +236,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
         .zip(isotope_names.iter())
         .filter_map(|(isotope, isotope_name)| {
             if isotope.isotopic_composition.is_none() {
-                let isotope_ident = Ident::new(&isotope_name, proc_macro2::Span::call_site());
+                let isotope_ident = Ident::new(isotope_name, proc_macro2::Span::call_site());
                 Some(quote! {
                     Self::#isotope_ident
                 })
@@ -390,8 +390,8 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             }
         }
 
-        impl std::fmt::Display for #isotope_ident {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        impl core::fmt::Display for #isotope_ident {
+            fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
                 match self {
                     #(Self::#enum_variants => write!(f, #isotope_names),)*
                 }
@@ -408,7 +408,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             fn test_relative_atomic_mass() {
                 for isotope in #isotope_ident::iter() {
                     let mass = isotope.relative_atomic_mass();
-                    assert!(mass > 0.0, "Mass should be positive for {:?}", isotope);
+                    assert!(mass > 0.0, "Mass should be positive for {isotope:?}");
                 }
             }
 
@@ -416,7 +416,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             fn test_element() {
                 for isotope in #isotope_ident::iter() {
                     let element = isotope.element();
-                    assert_eq!(element, crate::Element::#element_symbol_ident, "Element should be correct for {:?}", isotope);
+                    assert_eq!(element, crate::Element::#element_symbol_ident, "Element should be correct for {isotope:?}");
                 }
             }
 
@@ -424,7 +424,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             fn test_mass_number() {
                 for isotope in #isotope_ident::iter() {
                     let mass_number = isotope.mass_number();
-                    assert!(mass_number > 0 && mass_number < 300, "Mass number should be reasonable for {:?}", isotope);
+                    assert!(mass_number > 0 && mass_number < 300, "Mass number should be reasonable for {isotope:?}");
                 }
             }
 
@@ -435,8 +435,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
                     if let Some(c) = comp {
                         assert!(
                             (0.0..=1.0).contains(&c),
-                            "Composition should be between 0 and 1 for {:?}",
-                            isotope
+                            "Composition should be between 0 and 1 for {isotope:?}"
                         );
                     }
                 }
@@ -484,8 +483,8 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
             #[test]
             fn test_display() {
                 for isotope in #isotope_ident::iter() {
-                    let s = format!("{}", isotope);
-                    assert!(!s.is_empty(), "Display should not be empty for {:?}", isotope);
+                    let s = alloc::format!("{isotope}");
+                    assert!(!s.is_empty(), "Display should not be empty for {isotope:?}");
                 }
             }
         }

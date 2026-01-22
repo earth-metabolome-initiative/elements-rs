@@ -148,8 +148,7 @@ mod tests {
             let n = element.principal_quantum_number();
             assert!(
                 (1..=7).contains(&n),
-                "Principal quantum number should be between 1 and 7 for {:?}",
-                element
+                "Principal quantum number should be between 1 and 7 for {element:?}",
             );
         }
     }
@@ -163,8 +162,7 @@ mod tests {
                 let isotope_number = isotope.principal_quantum_number();
                 assert_eq!(
                     element_number, isotope_number,
-                    "Principal quantum number mismatch for isotope {:?} of element {:?}",
-                    isotope, element
+                    "Principal quantum number mismatch for isotope {isotope:?} of element {element:?}",
                 );
             }
         }

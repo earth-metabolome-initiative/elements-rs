@@ -177,8 +177,8 @@ mod tests {
     fn test_number_of_bonds() {
         for element in crate::Element::iter() {
             let (min, max) = element.number_of_bonds();
-            assert!(min <= max, "Min bonds should be <= max bonds for {:?}", element);
-            assert!(max <= 8, "Max bonds should be <= 8 for {:?}", element); // Some elements have higher
+            assert!(min <= max, "Min bonds should be <= max bonds for {element:?}");
+            assert!(max <= 8, "Max bonds should be <= 8 for {element:?}"); // Some elements have higher
         }
     }
 
@@ -198,13 +198,11 @@ mod tests {
                 let (min, max) = isotope.number_of_bonds();
                 assert_eq!(
                     min, elem_min,
-                    "Min bonds should match for isotope {:?} of {:?}",
-                    isotope, element
+                    "Min bonds should match for isotope {isotope:?} of {element:?}",
                 );
                 assert_eq!(
                     max, elem_max,
-                    "Max bonds should match for isotope {:?} of {:?}",
-                    isotope, element
+                    "Max bonds should match for isotope {isotope:?} of {element:?}",
                 );
             }
         }

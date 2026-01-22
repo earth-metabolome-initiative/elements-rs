@@ -44,9 +44,10 @@ impl ElementMask {
     /// assert!(mask.contains(Element::H));
     /// assert!(!mask.contains(Element::He));
     /// ```
+    #[must_use]
     pub fn contains(&self, element: Element) -> bool {
         let atomic_number: u8 = element.into();
-        let index = (atomic_number - 1) as u32;
+        let index = u32::from(atomic_number - 1);
         (self.0 & (1 << index)) != 0
     }
 
@@ -68,7 +69,7 @@ impl ElementMask {
     /// ```
     pub fn insert(&mut self, element: Element) -> bool {
         let atomic_number: u8 = element.into();
-        let index = (atomic_number - 1_u8) as u32;
+        let index = u32::from(atomic_number - 1_u8);
         let was_present = self.contains(element);
         self.0 |= 1 << index;
         !was_present
@@ -79,9 +80,10 @@ impl FromIterator<Element> for ElementMask {
     /// # Examples
     ///
     /// ```rust
+    /// # extern crate alloc;
     /// use elements_rs::{Element, ElementMask};
     ///
-    /// let elements = vec![Element::H, Element::He];
+    /// let elements = alloc::vec![Element::H, Element::He];
     /// let mask: ElementMask = elements.into_iter().collect();
     /// assert!(mask.contains(Element::H));
     /// assert!(mask.contains(Element::He));
@@ -102,13 +104,14 @@ impl core::iter::IntoIterator for ElementMask {
     /// # Examples
     ///
     /// ```rust
+    /// # extern crate alloc;
     /// use elements_rs::{Element, ElementMask};
     ///
     /// let mut mask = ElementMask::default();
     /// mask.insert(Element::H);
     /// mask.insert(Element::He);
     /// let elements: Vec<Element> = mask.into_iter().collect();
-    /// assert_eq!(elements, vec![Element::H, Element::He]);
+    /// assert_eq!(elements, alloc::vec![Element::H, Element::He]);
     /// ```
     fn into_iter(self) -> Self::IntoIter {
         ElementMaskIterator { mask: self.0, index: 0 }

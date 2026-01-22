@@ -216,25 +216,7 @@ impl TryFrom<&str> for crate::Element {
     /// assert_eq!(magnesium, Element::Mg);
     /// ```
     fn try_from(value: &str) -> Result<Self, Self::Error> {
-        <Self as std::str::FromStr>::from_str(value)
-    }
-}
-
-impl TryFrom<String> for crate::Element {
-    type Error = crate::errors::Error;
-
-    /// Parses element symbols from owned strings.
-    ///
-    /// # Examples
-    ///
-    /// ```rust
-    /// use elements_rs::Element;
-    ///
-    /// let oxygen = Element::try_from("O".to_string()).unwrap();
-    /// assert_eq!(oxygen, Element::O);
-    /// ```
-    fn try_from(value: String) -> Result<Self, Self::Error> {
-        Self::try_from(value.as_str())
+        <Self as core::str::FromStr>::from_str(value)
     }
 }
 
@@ -306,9 +288,10 @@ mod tests {
     use strum::IntoEnumIterator;
 
     #[test]
+    #[allow(clippy::too_many_lines)]
     fn test_try_from_char() {
         // Test single-character symbols that should work
-        let single_char_elements = vec![
+        let single_char_elements = alloc::vec![
             (crate::Element::H, 'H'),
             (crate::Element::B, 'B'),
             (crate::Element::C, 'C'),
@@ -327,7 +310,7 @@ mod tests {
 
         for (element, expected_char) in single_char_elements {
             let result: Result<char, _> = element.try_into();
-            assert_eq!(result.unwrap(), expected_char, "Failed for {:?}", element);
+            assert_eq!(result.unwrap(), expected_char, "Failed for {element:?}");
         }
 
         // We check an error case for a single-character symbol that does not exist
@@ -337,7 +320,7 @@ mod tests {
         ));
 
         // Test that two-character symbols fail
-        let two_char_elements = vec![
+        let two_char_elements = alloc::vec![
             crate::Element::He,
             crate::Element::Li,
             crate::Element::Be,
@@ -446,7 +429,7 @@ mod tests {
 
         for element in two_char_elements {
             let result: Result<char, _> = element.try_into();
-            assert!(result.is_err(), "Should fail for two-character element {:?}", element);
+            assert!(result.is_err(), "Should fail for two-character element {element:?}");
         }
 
         // We test a corner case for an invalid character array
@@ -466,7 +449,7 @@ mod tests {
     fn test_try_from_element_to_char_array() {
         for element in crate::Element::iter() {
             let result: Result<[char; 2], _> = element.try_into();
-            assert!(result.is_ok(), "Failed to convert {:?} to [char; 2]", element);
+            assert!(result.is_ok(), "Failed to convert {element:?} to [char; 2]");
 
             let chars = result.unwrap();
             let symbol: &str = element.as_ref();
@@ -475,8 +458,7 @@ mod tests {
             assert_eq!(
                 chars[0],
                 symbol.chars().next().unwrap(),
-                "First char mismatch for {:?}",
-                element
+                "First char mismatch for {element:?}",
             );
 
             // Second character should match symbol's second char or be space
@@ -484,14 +466,12 @@ mod tests {
                 assert_eq!(
                     chars[1],
                     symbol.chars().nth(1).unwrap(),
-                    "Second char mismatch for {:?}",
-                    element
+                    "Second char mismatch for {element:?}",
                 );
             } else {
                 assert_eq!(
                     chars[1], ' ',
-                    "Second char should be space for single-char element {:?}",
-                    element
+                    "Second char should be space for single-char element {element:?}",
                 );
             }
         }
@@ -500,7 +480,7 @@ mod tests {
     #[test]
     fn test_roundtrip_char_to_element() {
         // Test roundtrip for single-character elements
-        let single_char_elements = vec![
+        let single_char_elements = alloc::vec![
             crate::Element::H,
             crate::Element::B,
             crate::Element::C,
@@ -519,13 +499,13 @@ mod tests {
 
         for element in single_char_elements {
             let char_result: Result<char, _> = element.try_into();
-            assert!(char_result.is_ok(), "Failed to convert {:?} to char", element);
+            assert!(char_result.is_ok(), "Failed to convert {element:?} to char");
 
             let ch = char_result.unwrap();
             let back_to_element: Result<crate::Element, _> = ch.try_into();
-            assert!(back_to_element.is_ok(), "Failed to convert char '{}' back to element", ch);
+            assert!(back_to_element.is_ok(), "Failed to convert char '{ch}' back to element");
 
-            assert_eq!(back_to_element.unwrap(), element, "Roundtrip failed for {:?}", element);
+            assert_eq!(back_to_element.unwrap(), element, "Roundtrip failed for {element:?}");
         }
     }
 
@@ -533,13 +513,13 @@ mod tests {
     fn test_roundtrip_char_array_to_element() {
         for element in crate::Element::iter() {
             let chars_result: Result<[char; 2], _> = element.try_into();
-            assert!(chars_result.is_ok(), "Failed to convert {:?} to [char; 2]", element);
+            assert!(chars_result.is_ok(), "Failed to convert {element:?} to [char; 2]");
 
             let chars = chars_result.unwrap();
             let back_to_element: Result<crate::Element, _> = chars.try_into();
-            assert!(back_to_element.is_ok(), "Failed to convert {:?} back to element", chars);
+            assert!(back_to_element.is_ok(), "Failed to convert {chars:?} back to element");
 
-            assert_eq!(back_to_element.unwrap(), element, "Roundtrip failed for {:?}", element);
+            assert_eq!(back_to_element.unwrap(), element, "Roundtrip failed for {element:?}");
         }
     }
 }

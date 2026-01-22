@@ -1,8 +1,11 @@
 #![doc = include_str!("../README.md")]
+#![no_std]
+
+#[cfg(test)]
+extern crate alloc;
 
 mod as_ref;
 mod bonds_number;
-pub mod diesel_impls;
 mod display;
 mod element_mask;
 pub mod errors;
@@ -28,11 +31,6 @@ pub use valence_electrons::ValenceElectrons;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, strum_macros::EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "diesel", derive(diesel::FromSqlRow, diesel::AsExpression))]
-#[cfg_attr(
-	feature = "diesel",
-	diesel(sql_type = crate::diesel_impls::Element)
-)]
 /// All 118 elements of the periodic table.
 ///
 /// ```rust

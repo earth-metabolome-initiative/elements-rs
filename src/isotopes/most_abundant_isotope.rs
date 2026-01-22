@@ -145,8 +145,7 @@ mod tests {
             assert_eq!(
                 isotope.element(),
                 element,
-                "Most abundant isotope for {:?} should belong to the same element",
-                element
+                "Most abundant isotope for {element:?} should belong to the same element",
             );
             // Note: Some elements like Tc have no naturally occurring isotopes,
             // so we don't check for isotopic composition here
