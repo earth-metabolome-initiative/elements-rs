@@ -1,6 +1,6 @@
 [package]
 name = "elements_rs"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Earth Metabolome Initiative"]
 license = "GPL-3.0"
 repository = "https://github.com/earth-metabolome-initiative/elements-rs"
@@ -15,7 +15,9 @@ include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 strum_macros = "0.27.2"
 strum = { version = "0.27.2", features = ["derive"] }
 thiserror = "2.0"
-serde = { version = "1.0", features = ["derive"], optional = true }
+serde = { version = "1.0", features = [
+	"derive",
+], optional = true, default-features = false }
 
 [features]
 default = ["serde"]
