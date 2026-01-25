@@ -14,6 +14,7 @@ mod from_str;
 pub mod isotopes;
 mod name;
 pub use element_mask::ElementMask;
+mod from_stream;
 mod orbitals;
 pub use orbitals::{AtomicOrbital, AtomicOrbitalType};
 mod oxidation_states;
