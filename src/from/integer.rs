@@ -141,6 +141,23 @@ impl From<crate::Element> for u8 {
     }
 }
 
+/// Macro implementing the `From<Element> for {integer}` trait for integer
+/// types.
+macro_rules! impl_try_from_u8_for_element {
+    ($($t:ty),*) => {
+        $(
+            impl From<crate::Element> for $t {
+                fn from(element: crate::Element) -> Self {
+                    let atomic_number: u8 = element.into();
+                    <$t>::from(atomic_number)
+                }
+            }
+        )*
+    };
+}
+
+impl_try_from_u8_for_element!(u16, u32, u64, u128, usize, i16, i32, i64, i128, isize);
+
 impl TryFrom<u8> for Element {
     type Error = crate::errors::Error;
 
@@ -279,11 +296,31 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_from_element_to_u8() {
+    fn test_from_element_to_integer() {
         for element in Element::iter() {
-            let atomic_number: u8 = element.into();
+            let atomic_number_u8: u8 = element.into();
             // Each element should have a valid atomic number between 1 and 118
-            assert!((1..=118).contains(&atomic_number));
+            assert!((1..=118).contains(&atomic_number_u8));
+            let atomic_number_u16: u16 = element.into();
+            assert_eq!(atomic_number_u16 as u8, atomic_number_u8);
+            let atomic_number_u32: u32 = element.into();
+            assert_eq!(atomic_number_u32 as u8, atomic_number_u8);
+            let atomic_number_u64: u64 = element.into();
+            assert_eq!(atomic_number_u64 as u8, atomic_number_u8);
+            let atomic_number_u128: u128 = element.into();
+            assert_eq!(atomic_number_u128 as u8, atomic_number_u8);
+            let atomic_number_usize: usize = element.into();
+            assert_eq!(atomic_number_usize as u8, atomic_number_u8);
+            let atomic_number_i16: i16 = element.into();
+            assert_eq!(atomic_number_i16 as u8, atomic_number_u8);
+            let atomic_number_i32: i32 = element.into();
+            assert_eq!(atomic_number_i32 as u8, atomic_number_u8);
+            let atomic_number_i64: i64 = element.into();
+            assert_eq!(atomic_number_i64 as u8, atomic_number_u8);
+            let atomic_number_i128: i128 = element.into();
+            assert_eq!(atomic_number_i128 as u8, atomic_number_u8);
+            let atomic_number_isize: isize = element.into();
+            assert_eq!(atomic_number_isize as u8, atomic_number_u8);
         }
     }
 
