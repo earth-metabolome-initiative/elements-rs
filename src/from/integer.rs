@@ -301,26 +301,30 @@ mod tests {
             let atomic_number_u8: u8 = element.into();
             // Each element should have a valid atomic number between 1 and 118
             assert!((1..=118).contains(&atomic_number_u8));
-            let atomic_number_u16: u16 = element.into();
-            assert_eq!(atomic_number_u16 as u8, atomic_number_u8);
-            let atomic_number_u32: u32 = element.into();
-            assert_eq!(atomic_number_u32 as u8, atomic_number_u8);
-            let atomic_number_u64: u64 = element.into();
-            assert_eq!(atomic_number_u64 as u8, atomic_number_u8);
-            let atomic_number_u128: u128 = element.into();
-            assert_eq!(atomic_number_u128 as u8, atomic_number_u8);
-            let atomic_number_usize: usize = element.into();
-            assert_eq!(atomic_number_usize as u8, atomic_number_u8);
-            let atomic_number_i16: i16 = element.into();
-            assert_eq!(atomic_number_i16 as u8, atomic_number_u8);
-            let atomic_number_i32: i32 = element.into();
-            assert_eq!(atomic_number_i32 as u8, atomic_number_u8);
-            let atomic_number_i64: i64 = element.into();
-            assert_eq!(atomic_number_i64 as u8, atomic_number_u8);
-            let atomic_number_i128: i128 = element.into();
-            assert_eq!(atomic_number_i128 as u8, atomic_number_u8);
-            let atomic_number_isize: isize = element.into();
-            assert_eq!(atomic_number_isize as u8, atomic_number_u8);
+            {
+                let atomic_number_u16: u16 = element.into();
+                assert_eq!(atomic_number_u16, u16::from(atomic_number_u8));
+                let atomic_number_u32: u32 = element.into();
+                assert_eq!(atomic_number_u32, u32::from(atomic_number_u8));
+                let atomic_number_u64: u64 = element.into();
+                assert_eq!(atomic_number_u64, u64::from(atomic_number_u8));
+                let atomic_number_u128: u128 = element.into();
+                assert_eq!(atomic_number_u128, u128::from(atomic_number_u8));
+                let atomic_number_unsigned_size: usize = element.into();
+                assert_eq!(atomic_number_unsigned_size, usize::from(atomic_number_u8));
+            }
+            {
+                let atomic_number_i16: i16 = element.into();
+                assert_eq!(atomic_number_i16, i16::from(atomic_number_u8));
+                let atomic_number_i32: i32 = element.into();
+                assert_eq!(atomic_number_i32, i32::from(atomic_number_u8));
+                let atomic_number_i64: i64 = element.into();
+                assert_eq!(atomic_number_i64, i64::from(atomic_number_u8));
+                let atomic_number_i128: i128 = element.into();
+                assert_eq!(atomic_number_i128, i128::from(atomic_number_u8));
+                let atomic_number_signed_size: isize = element.into();
+                assert_eq!(atomic_number_signed_size, isize::from(atomic_number_u8));
+            }
         }
     }
 
