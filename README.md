@@ -69,6 +69,7 @@ let nitrogen = Element::from_str("N").unwrap();
 ## Feature Flags
 
 - `serde` (default): Enables `Serialize` and `Deserialize` implementations for `Element` and `Isotope` types
+- `arbitrary`: Enables `Arbitrary` implementations for `Element` and `Isotope` types, useful for fuzzing
 
 ## License
 
