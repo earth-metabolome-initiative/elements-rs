@@ -1,6 +1,7 @@
 //! Isotopes of the element Seaborgium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Seaborgium
 pub enum SeaborgiumIsotope {
     /// Isotope Sg258 of Seaborgium

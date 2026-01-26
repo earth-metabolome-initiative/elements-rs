@@ -1,6 +1,7 @@
 //! Isotopes of the element Strontium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Strontium
 pub enum StrontiumIsotope {
     /// Isotope Sr73 of Strontium

@@ -1,6 +1,7 @@
 //! Isotopes of the element Argon
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Argon
 pub enum ArgonIsotope {
     /// Isotope Ar30 of Argon

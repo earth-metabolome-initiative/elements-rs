@@ -1,6 +1,7 @@
 //! Isotopes of the element Arsenic
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Arsenic
 pub enum ArsenicIsotope {
     /// Isotope As60 of Arsenic

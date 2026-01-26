@@ -32,6 +32,7 @@ pub use valence_electrons::ValenceElectrons;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, strum_macros::EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// All 118 elements of the periodic table.
 ///
 /// ```rust

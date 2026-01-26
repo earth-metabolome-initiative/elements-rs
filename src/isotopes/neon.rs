@@ -1,6 +1,7 @@
 //! Isotopes of the element Neon
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Neon
 pub enum NeonIsotope {
     /// Isotope Ne16 of Neon

@@ -1,6 +1,7 @@
 //! Isotopes of the element Phosphorus
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Phosphorus
 pub enum PhosphorusIsotope {
     /// Isotope P24 of Phosphorus

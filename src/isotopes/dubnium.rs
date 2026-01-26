@@ -1,6 +1,7 @@
 //! Isotopes of the element Dubnium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Dubnium
 pub enum DubniumIsotope {
     /// Isotope Db255 of Dubnium

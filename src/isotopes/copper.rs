@@ -1,6 +1,7 @@
 //! Isotopes of the element Copper
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Copper
 pub enum CopperIsotope {
     /// Isotope Cu52 of Copper

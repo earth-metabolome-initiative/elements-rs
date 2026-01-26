@@ -1,6 +1,7 @@
 //! Isotopes of the element Lutetium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Lutetium
 pub enum LutetiumIsotope {
     /// Isotope Lu150 of Lutetium

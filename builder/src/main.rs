@@ -279,6 +279,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
 
         #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum::EnumIter)]
         #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+        #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
         #[doc = #isotope_documentation]
         pub enum #isotope_ident {
             #(#enum_variants_with_documentation),*
@@ -489,6 +490,48 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
 }
 
 /// Build script for the `elements` crate
+fn generate_arbitrary_impl(
+    isotopes_by_atomic_number: &std::collections::HashMap<u8, Vec<IsotopeMetadata>>,
+) -> TokenStream {
+    let mut sorted_elements: Vec<_> = isotopes_by_atomic_number.iter().collect();
+    sorted_elements.sort_by_key(|(atomic_number, _)| **atomic_number);
+
+    let match_arms = sorted_elements
+        .iter()
+        .enumerate()
+        .map(|(idx, (_, isotopes))| {
+            let idx = idx as u8;
+            let symbol = &isotopes[0].atomic_symbol;
+            let variant_ident = Ident::new(symbol, proc_macro2::Span::call_site());
+            let _element_name = element_name_from_symbol(symbol).to_lowercase();
+            // The type name is capitalized, module name is lowercase
+            let type_name = format!(
+                "{}Isotope",
+                element_name_from_symbol(symbol)
+            );
+            let isotope_type_ident = Ident::new(&type_name, proc_macro2::Span::call_site());
+
+            quote! {
+                #idx => Ok(crate::isotopes::Isotope::#variant_ident(crate::isotopes::#isotope_type_ident::arbitrary(u)?))
+            }
+        })
+        .collect::<Vec<_>>();
+
+    let max_idx = (sorted_elements.len() - 1) as u8;
+
+    quote! {
+        #[cfg(feature = "arbitrary")]
+        impl<'a> arbitrary::Arbitrary<'a> for crate::isotopes::Isotope {
+            fn arbitrary(u: &mut arbitrary::Unstructured<'a>) -> arbitrary::Result<Self> {
+                match u.int_in_range(0..=#max_idx)? {
+                    #(#match_arms,)*
+                    _ => unreachable!(),
+                }
+            }
+        }
+    }
+}
+
 pub fn main() {
     let isotopes = isotopes();
     // We group the isotopes by atomic number
@@ -499,6 +542,19 @@ pub fn main() {
         });
 
     let isotopes_module_dir = Path::new("../src/isotopes/");
+
+    // Generate arbitrary.rs
+    let arbitrary_impl = generate_arbitrary_impl(&isotopes_by_atomic_number);
+    let arbitrary_path = isotopes_module_dir.join("arbitrary.rs");
+    let mut func_file =
+        std::fs::File::create(&arbitrary_path).expect("Failed to create arbitrary.rs");
+    writeln!(func_file, "{arbitrary_impl}").expect("Failed to write to arbitrary.rs");
+    let status = std::process::Command::new("rustfmt")
+        .arg(arbitrary_path.to_str().unwrap())
+        .status()
+        .expect("Failed to run rustfmt");
+    assert!(status.success(), "rustfmt failed with status: {status}");
+
     for (_atomic_number, isotopes) in isotopes_by_atomic_number {
         let element_name = element_name_from_symbol(&isotopes[0].atomic_symbol).to_lowercase();
         let tokens = implement_isotope_enum(&isotopes);

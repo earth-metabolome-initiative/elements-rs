@@ -1,6 +1,7 @@
 //! Isotopes of the element Cobalt
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Cobalt
 pub enum CobaltIsotope {
     /// Isotope Co47 of Cobalt

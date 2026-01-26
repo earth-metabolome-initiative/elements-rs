@@ -1,6 +1,7 @@
 //! Isotopes of the element Actinium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Actinium
 pub enum ActiniumIsotope {
     /// Isotope Ac206 of Actinium

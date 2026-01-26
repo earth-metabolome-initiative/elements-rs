@@ -1,6 +1,7 @@
 //! Isotopes of the element Oxygen
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Oxygen
 pub enum OxygenIsotope {
     /// Isotope O12 of Oxygen

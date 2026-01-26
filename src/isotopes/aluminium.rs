@@ -1,6 +1,7 @@
 //! Isotopes of the element Aluminium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Aluminium
 pub enum AluminiumIsotope {
     /// Isotope Al21 of Aluminium

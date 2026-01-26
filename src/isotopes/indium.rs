@@ -1,6 +1,7 @@
 //! Isotopes of the element Indium
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Indium
 pub enum IndiumIsotope {
     /// Isotope In97 of Indium
