@@ -8,7 +8,7 @@
 
 A comprehensive Rust crate providing type-safe enumerations and rich metadata for all [chemical elements](https://en.wikipedia.org/wiki/Chemical_element) of the [periodic table](https://en.wikipedia.org/wiki/Periodic_table) and their [isotopes](https://en.wikipedia.org/wiki/Isotope). The crate includes all 118 elements from Hydrogen to Oganesson with detailed information for each [isotope](https://en.wikipedia.org/wiki/Isotope) including [mass numbers](https://en.wikipedia.org/wiki/Mass_number), [relative atomic masses](https://en.wikipedia.org/wiki/Relative_atomic_mass), [isotopic composition](https://en.wikipedia.org/wiki/Natural_abundance), and identification of the most abundant isotope. Chemical properties are fully supported: [standard atomic weights](https://en.wikipedia.org/wiki/Standard_atomic_weight), [oxidation states](https://en.wikipedia.org/wiki/Oxidation_state) with validation, [valence electrons](https://en.wikipedia.org/wiki/Valence_electron), bond numbers, [electron configurations](https://en.wikipedia.org/wiki/Electron_configuration) with [atomic orbitals](https://en.wikipedia.org/wiki/Atomic_orbital), and [principal quantum numbers](https://en.wikipedia.org/wiki/Principal_quantum_number).
 
-The crate is [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html), and optionally supports [`serde`](https://serde.rs/) for serialization/deserialization.
+The crate is [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html), and optionally supports [`serde`](https://serde.rs/) for serialization/deserialization and [`arbitrary`](https://crates.io/crates/arbitrary) for fuzzing.
 
 ## Usage
 
@@ -68,8 +68,8 @@ let nitrogen = Element::from_str("N").unwrap();
 
 ## Feature Flags
 
-- `serde` (default): Enables `Serialize` and `Deserialize` implementations for `Element` and `Isotope` types
-- `arbitrary`: Enables `Arbitrary` implementations for `Element` and `Isotope` types, useful for fuzzing
+- [`serde`](https://crates.io/crates/serde) (default): Enables [`Serialize`](https://docs.serde.rs/serde/trait.Serialize.html) and [`Deserialize`](https://docs.serde.rs/serde/trait.Deserialize.html) implementations for `Element` and `Isotope` types
+- [`arbitrary`](https://crates.io/crates/arbitrary): Enables [`Arbitrary`](https://docs.rs/arbitrary/latest/arbitrary/trait.Arbitrary.html) implementations for `Element` and `Isotope` types, useful for fuzzing
 
 ## License
 
