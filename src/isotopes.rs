@@ -1,6 +1,6 @@
 //! Isotopes for all chemical elements with mass numbers and atomic masses.
 
-mod arbitrary;
+mod arbitrary_impl;
 mod display;
 mod element_isotopes;
 mod element_variant;

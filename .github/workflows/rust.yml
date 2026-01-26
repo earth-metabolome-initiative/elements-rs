@@ -46,7 +46,7 @@ jobs:
       with:
         components: clippy
     - name: Run clippy
-      run: cargo clippy --all-targets -- -D warnings
+      run: cargo clippy --all-features --all-targets -- -D warnings
 
   doc:
     name: Documentation
