@@ -1,6 +1,5 @@
 //! Isotopes for all chemical elements with mass numbers and atomic masses.
 
-mod arbitrary_impl;
 mod display;
 mod element_isotopes;
 mod element_variant;
@@ -347,6 +346,7 @@ pub trait MostAbundantIsotope {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// All known isotopes for all elements.
 pub enum Isotope {
     /// Isotopes of `HydrogenIsotope`
