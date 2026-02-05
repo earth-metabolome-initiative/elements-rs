@@ -1,4 +1,6 @@
 //! Isotopes of the element Hydrogen
+
+use crate::{ElementVariant, MassNumber};
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, strum :: EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
@@ -68,6 +70,12 @@ impl super::MostAbundantIsotope for HydrogenIsotope {
         Self::H1
     }
 }
+impl super::NeutronNumber for HydrogenIsotope {
+    fn neutron_number(&self) -> u16 {
+        let atomic_number: u16 = u16::from(self.element()).into();
+        self.mass_number() - atomic_number
+    }
+}
 impl From<HydrogenIsotope> for crate::Isotope {
     fn from(isotope: HydrogenIsotope) -> Self {
         crate::Isotope::H(isotope)
@@ -126,11 +134,12 @@ impl core::fmt::Display for HydrogenIsotope {
 }
 #[cfg(test)]
 mod tests {
+    use alloc::vec::Vec;
     use strum::IntoEnumIterator;
 
     use super::*;
     use crate::isotopes::{
-        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, RelativeAtomicMass,
+        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, RelativeAtomicMass, NeutronNumber
     };
     #[test]
     fn test_relative_atomic_mass() {
@@ -172,6 +181,14 @@ mod tests {
     fn test_most_abundant() {
         let most_abundant = HydrogenIsotope::most_abundant_isotope();
         let _ = most_abundant.relative_atomic_mass();
+    }
+    #[test]
+    fn test_neutron_number() {
+        let neutrons: Vec<u16> = (0u16..=6).collect();
+        for (i, isotope) in HydrogenIsotope::iter().enumerate() {
+            let neutron_count = isotope.neutron_number();
+            assert_eq!(neutrons[i], neutron_count)
+        }
     }
     #[test]
     fn test_from_isotope() {

@@ -344,6 +344,21 @@ pub trait MostAbundantIsotope {
     fn most_abundant_isotope() -> Self;
 }
 
+/// Neutron count for isotope, derived from isotope mass - atomic number
+pub trait NeutronNumber {
+    /// Returns the number of neutrons
+    /// 
+    /// # Examples
+    /// 
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, NeutronNumber};
+    ///
+    /// let neutron_count = HydrogenIsotope::H1;
+    /// assert_eq!(neutron_count.neutron_number(), 0);
+    /// ```
+    fn neutron_number(&self) -> u16;
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
