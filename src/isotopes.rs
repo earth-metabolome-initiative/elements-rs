@@ -129,6 +129,7 @@ pub mod yttrium;
 pub mod zinc;
 pub mod zirconium;
 
+
 pub use actinium::ActiniumIsotope;
 pub use aluminium::AluminiumIsotope;
 pub use americium::AmericiumIsotope;
@@ -248,6 +249,8 @@ pub use yttrium::YttriumIsotope;
 pub use zinc::ZincIsotope;
 pub use zirconium::ZirconiumIsotope;
 
+use crate::isotopes;
+
 /// Relative atomic mass (in atomic mass units).
 pub trait RelativeAtomicMass {
     /// Returns the relative atomic mass in daltons (Da).
@@ -357,6 +360,13 @@ pub trait NeutronNumber {
     /// assert_eq!(neutron_count.neutron_number(), 0);
     /// ```
     fn neutron_number(&self) -> u16;
+}
+
+impl<Isotope: isotopes::ElementVariant + isotopes::MassNumber> NeutronNumber for Isotope {
+    fn neutron_number(&self) -> u16 {
+        let atomic_number: u16 = u16::from(self.element());
+        self.mass_number() - atomic_number
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
@@ -618,7 +628,7 @@ impl RelativeAtomicMass for crate::Element {
 
 #[cfg(test)]
 mod tests {
-    use crate::isotopes::{IsotopicComposition, RelativeAtomicMass};
+    use crate::isotopes::{IsotopicComposition, NeutronNumber, RelativeAtomicMass};
 
     #[test]
     fn test_isotopic_composition() {
@@ -632,5 +642,11 @@ mod tests {
         let carbon = crate::Element::C;
         let relative_atomic_mass = carbon.relative_atomic_mass();
         assert!((relative_atomic_mass - 12.0).abs() < 0.0001);
+    }
+
+    #[test]
+    fn test_neutron_number() {
+        let oxygen = crate::Isotope::O(super::OxygenIsotope::O16);
+        assert_eq!(oxygen.neutron_number(), 8);
     }
 }
