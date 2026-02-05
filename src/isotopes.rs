@@ -347,9 +347,9 @@ pub trait MostAbundantIsotope {
 /// Neutron count for isotope, derived from isotope mass - atomic number
 pub trait NeutronNumber {
     /// Returns the number of neutrons
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```rust
     /// use elements_rs::isotopes::{HydrogenIsotope, NeutronNumber};
     ///

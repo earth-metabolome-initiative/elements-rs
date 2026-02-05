@@ -135,11 +135,13 @@ impl core::fmt::Display for HydrogenIsotope {
 #[cfg(test)]
 mod tests {
     use alloc::vec::Vec;
+
     use strum::IntoEnumIterator;
 
     use super::*;
     use crate::isotopes::{
-        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, RelativeAtomicMass, NeutronNumber
+        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, NeutronNumber,
+        RelativeAtomicMass,
     };
     #[test]
     fn test_relative_atomic_mass() {
