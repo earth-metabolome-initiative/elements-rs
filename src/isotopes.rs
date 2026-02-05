@@ -129,7 +129,6 @@ pub mod yttrium;
 pub mod zinc;
 pub mod zirconium;
 
-
 pub use actinium::ActiniumIsotope;
 pub use aluminium::AluminiumIsotope;
 pub use americium::AmericiumIsotope;

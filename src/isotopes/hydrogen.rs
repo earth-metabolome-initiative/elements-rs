@@ -132,8 +132,7 @@ mod tests {
 
     use super::*;
     use crate::isotopes::{
-        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, 
-        RelativeAtomicMass,
+        ElementVariant, IsotopicComposition, MassNumber, MostAbundantIsotope, RelativeAtomicMass,
     };
     #[test]
     fn test_relative_atomic_mass() {
