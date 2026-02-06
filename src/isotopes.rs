@@ -644,8 +644,48 @@ mod tests {
     }
 
     #[test]
-    fn test_neutron_number() {
-        let oxygen = crate::Isotope::O(super::OxygenIsotope::O16);
-        assert_eq!(oxygen.neutron_number(), 8);
+    fn test_neutron_number_oxygen_all_branches() {
+        use super::OxygenIsotope;
+        use crate::Isotope;
+        let o12 = Isotope::O(OxygenIsotope::O12);
+        assert_eq!(o12.neutron_number(), 4);
+        let o13 = Isotope::O(OxygenIsotope::O13);
+        assert_eq!(o13.neutron_number(), 5);
+        let o14 = Isotope::O(OxygenIsotope::O14);
+        assert_eq!(o14.neutron_number(), 6);
+        let o15 = Isotope::O(OxygenIsotope::O15);
+        assert_eq!(o15.neutron_number(), 7);
+        let o16 = Isotope::O(OxygenIsotope::O16);
+        assert_eq!(o16.neutron_number(), 8);
+        let o17 = Isotope::O(OxygenIsotope::O17);
+        assert_eq!(o17.neutron_number(), 9);
+        let o18 = Isotope::O(OxygenIsotope::O18);
+        assert_eq!(o18.neutron_number(), 10);
+        let o19 = Isotope::O(OxygenIsotope::O19);
+        assert_eq!(o19.neutron_number(), 11);
+        let o20 = Isotope::O(OxygenIsotope::O20);
+        assert_eq!(o20.neutron_number(), 12);
+        let o21 = Isotope::O(OxygenIsotope::O21);
+        assert_eq!(o21.neutron_number(), 13);
+        let o22 = Isotope::O(OxygenIsotope::O22);
+        assert_eq!(o22.neutron_number(), 14);
+        let o23 = Isotope::O(OxygenIsotope::O23);
+        assert_eq!(o23.neutron_number(), 15);
+        let o24 = Isotope::O(OxygenIsotope::O24);
+        assert_eq!(o24.neutron_number(), 16);
+        let o25 = Isotope::O(OxygenIsotope::O25);
+        assert_eq!(o25.neutron_number(), 17);
+        let o26 = Isotope::O(OxygenIsotope::O26);
+        assert_eq!(o26.neutron_number(), 18);
+        let o27 = Isotope::O(OxygenIsotope::O27);
+        assert_eq!(o27.neutron_number(), 19);
+        let o28 = Isotope::O(OxygenIsotope::O28);
+        assert_eq!(o28.neutron_number(), 20);
+    }
+    use crate::Element::O;
+    #[test]
+    fn test_oxygen_try_from_u64_out_of_range_errors() {
+        let err = super::OxygenIsotope::try_from(11_u64).unwrap_err();
+        assert_eq!(err, crate::errors::Error::Isotope(O, 11));
     }
 }
