@@ -5,6 +5,7 @@ mod element_isotopes;
 mod element_variant;
 mod isotopic_composition;
 mod mass_number;
+mod monoisotopic_mass;
 mod most_abundant_isotope;
 mod relative_atomic_mass;
 mod try_from;
