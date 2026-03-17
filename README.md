@@ -73,6 +73,15 @@ let nitrogen = Element::from_str("N").unwrap();
 - [`serde`](https://crates.io/crates/serde) (default): Enables [`Serialize`](https://docs.serde.rs/serde/trait.Serialize.html) and [`Deserialize`](https://docs.serde.rs/serde/trait.Deserialize.html) implementations for `Element` and `Isotope` types
 - [`arbitrary`](https://crates.io/crates/arbitrary): Enables [`Arbitrary`](https://docs.rs/arbitrary/latest/arbitrary/trait.Arbitrary.html) implementations for `Element` and `Isotope` types, useful for fuzzing
 
+## Contributing
+
+Install [prek](https://github.com/j178/prek) and set up the pre-commit hooks:
+
+```bash
+cargo install prek
+prek install
+```
+
 ## License
 
 This project is licensed under the same terms as the parent EMI monorepo.
