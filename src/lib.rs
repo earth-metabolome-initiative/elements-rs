@@ -9,6 +9,7 @@ mod as_ref;
 mod atomic_radius;
 mod bonds_number;
 mod classification;
+mod covalent_radius;
 mod display;
 mod electronegativity;
 mod element_mask;
@@ -30,6 +31,7 @@ pub use allowed_valences::AllowedValences;
 pub use atomic_radius::AtomicRadius;
 pub use bonds_number::BondsNumber;
 pub use classification::{ElementCategory, ElementClassification};
+pub use covalent_radius::CovalentRadius;
 pub use electronegativity::Electronegativity;
 pub use isotopes::{
     ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope,
