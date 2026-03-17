@@ -27,6 +27,7 @@ mod principal_quantum_number;
 mod standard_atomic_weight;
 mod try_from;
 mod valence_electrons;
+mod van_der_waals_radius;
 pub use allowed_valences::AllowedValences;
 pub use atomic_radius::AtomicRadius;
 pub use bonds_number::BondsNumber;
@@ -39,6 +40,7 @@ pub use isotopes::{
 };
 pub use principal_quantum_number::PrincipalQuantumNumber;
 pub use valence_electrons::ValenceElectrons;
+pub use van_der_waals_radius::VanDerWaalsRadius;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, strum_macros::EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
