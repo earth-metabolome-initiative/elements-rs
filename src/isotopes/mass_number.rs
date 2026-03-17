@@ -180,7 +180,7 @@ mod tests {
             for isotope in isotopes {
                 let mass_number = isotope.mass_number();
                 // Mass number should be positive and reasonable
-                assert!(mass_number > 0, "Mass number for isotope {isotope:?} should be positive",);
+                assert!(mass_number > 0, "Mass number for isotope {isotope:?} should be positive");
                 assert!(
                     mass_number < 300,
                     "Mass number for isotope {isotope:?} should be reasonable (< 300)",

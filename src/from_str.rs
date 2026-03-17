@@ -168,7 +168,7 @@ mod tests {
 
             // Test standard case parsing
             let parsed: Result<crate::Element, _> = symbol.parse();
-            assert!(parsed.is_ok(), "Failed to parse standard symbol '{symbol}' for {element:?}",);
+            assert!(parsed.is_ok(), "Failed to parse standard symbol '{symbol}' for {element:?}");
             assert_eq!(
                 parsed.unwrap(),
                 element,
