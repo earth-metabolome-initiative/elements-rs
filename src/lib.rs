@@ -4,6 +4,7 @@
 #[cfg(test)]
 extern crate alloc;
 
+mod allowed_valences;
 mod as_ref;
 mod bonds_number;
 mod classification;
@@ -24,6 +25,7 @@ mod principal_quantum_number;
 mod standard_atomic_weight;
 mod try_from;
 mod valence_electrons;
+pub use allowed_valences::AllowedValences;
 pub use bonds_number::BondsNumber;
 pub use classification::{ElementCategory, ElementClassification};
 pub use electronegativity::Electronegativity;
