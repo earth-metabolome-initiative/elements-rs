@@ -8,6 +8,7 @@ mod as_ref;
 mod bonds_number;
 mod classification;
 mod display;
+mod electronegativity;
 mod element_mask;
 pub mod errors;
 mod from;
@@ -25,6 +26,7 @@ mod try_from;
 mod valence_electrons;
 pub use bonds_number::BondsNumber;
 pub use classification::{ElementCategory, ElementClassification};
+pub use electronegativity::Electronegativity;
 pub use isotopes::{
     ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope,
     RelativeAtomicMass,
