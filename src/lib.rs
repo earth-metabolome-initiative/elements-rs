@@ -6,6 +6,7 @@ extern crate alloc;
 
 mod allowed_valences;
 mod as_ref;
+mod atomic_radius;
 mod bonds_number;
 mod classification;
 mod display;
@@ -26,6 +27,7 @@ mod standard_atomic_weight;
 mod try_from;
 mod valence_electrons;
 pub use allowed_valences::AllowedValences;
+pub use atomic_radius::AtomicRadius;
 pub use bonds_number::BondsNumber;
 pub use classification::{ElementCategory, ElementClassification};
 pub use electronegativity::Electronegativity;
