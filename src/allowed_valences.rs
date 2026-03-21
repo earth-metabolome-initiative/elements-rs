@@ -1,16 +1,22 @@
-//! Allowed valences (neutral-charge bond counts) for chemical elements.
+//! Allowed valence counts used by the bond-order solver.
 //!
-//! Values are sourced from the InChI 1.07 C library `get_el_valence()` table
-//! in `INCHI-1-SRC/INCHI_BASE/src/util.c` (`ElData[].cValence[NEUTRAL_STATE]`).
+//! Most values follow the InChI 1.7 C library `get_el_valence()` table in
+//! `INCHI-1-SRC/INCHI_BASE/src/util.c`
+//! (`ElData[].cValence[NEUTRAL_STATE]`).
+//!
+//! Boron, silicon, and phosphorus intentionally include additional valences
+//! beyond the neutral-state InChI table so common anionic and hypervalent
+//! structures such as organoborates, pentacoordinate silicon, and `PF6-` can
+//! be represented without solver hard failures.
 
 use crate::isotopes::ElementVariant;
 
-/// Discrete allowed valence counts at neutral charge.
+/// Discrete allowed valence counts used by the bond-order solver.
 ///
-/// Returns an empty slice for superheavy elements (Z >= 104), which have no
-/// fixed valence model in the InChI specification.
+/// Returns an empty slice for elements without a fixed valence model in this
+/// crate (`Lr` and `Rf` through `Og`).
 pub trait AllowedValences {
-    /// Returns the allowed valences for the element at neutral charge.
+    /// Returns the allowed valences for the element.
     ///
     /// The returned slice is sorted in ascending order. An empty slice
     /// indicates that the element has no fixed valence model.
@@ -172,6 +178,16 @@ mod tests {
 
     use super::AllowedValences;
 
+    fn assert_allowed_valence_cases(cases: &[(crate::Element, &'static [u8])]) {
+        for (element, expected) in cases {
+            assert_eq!(
+                element.allowed_valences(),
+                *expected,
+                "Allowed valences mismatch for {element:?}",
+            );
+        }
+    }
+
     #[test]
     fn test_sorted_ascending() {
         for element in crate::Element::iter() {
@@ -186,57 +202,105 @@ mod tests {
     }
 
     #[test]
-    fn test_carbon() {
-        assert_eq!(crate::Element::C.allowed_valences(), &[4]);
+    fn test_main_group_reference_cases() {
+        assert_allowed_valence_cases(&[
+            (crate::Element::C, &[4]),
+            (crate::Element::N, &[3, 5]),
+            (crate::Element::S, &[2, 4, 6]),
+            (crate::Element::Br, &[1, 3, 5, 7]),
+            (crate::Element::B, &[3, 4]),
+            (crate::Element::Si, &[4, 6]),
+            (crate::Element::P, &[3, 5, 6]),
+            (crate::Element::Ge, &[4]),
+            (crate::Element::Kr, &[0]),
+            (crate::Element::Xe, &[0]),
+            (crate::Element::Rn, &[0]),
+        ]);
     }
 
     #[test]
-    fn test_nitrogen() {
-        assert_eq!(crate::Element::N.allowed_valences(), &[3, 5]);
+    fn test_transition_metals_match_reference_table() {
+        assert_allowed_valence_cases(&[
+            (crate::Element::Sc, &[3]),
+            (crate::Element::Ti, &[3, 4]),
+            (crate::Element::V, &[2, 3, 4, 5]),
+            (crate::Element::Cr, &[2, 3, 6]),
+            (crate::Element::Mn, &[2, 3, 4, 6]),
+            (crate::Element::Fe, &[2, 3, 4, 6]),
+            (crate::Element::Co, &[2, 3]),
+            (crate::Element::Ni, &[2, 3]),
+            (crate::Element::Cu, &[1, 2]),
+            (crate::Element::Zn, &[2]),
+            (crate::Element::Y, &[3]),
+            (crate::Element::Zr, &[4]),
+            (crate::Element::Nb, &[3, 5]),
+            (crate::Element::Mo, &[3, 4, 5, 6]),
+            (crate::Element::Tc, &[7]),
+            (crate::Element::Ru, &[2, 3, 4, 6]),
+            (crate::Element::Rh, &[2, 3, 4]),
+            (crate::Element::Pd, &[2, 4]),
+            (crate::Element::Ag, &[1]),
+            (crate::Element::Cd, &[2]),
+            (crate::Element::Hf, &[4]),
+            (crate::Element::Ta, &[5]),
+            (crate::Element::W, &[3, 4, 5, 6]),
+            (crate::Element::Re, &[2, 4, 6, 7]),
+            (crate::Element::Os, &[2, 3, 4, 6]),
+            (crate::Element::Ir, &[2, 3, 4, 6]),
+            (crate::Element::Pt, &[2, 4]),
+            (crate::Element::Au, &[1, 3]),
+            (crate::Element::Hg, &[1, 2]),
+        ]);
     }
 
     #[test]
-    fn test_sulfur() {
-        assert_eq!(crate::Element::S.allowed_valences(), &[2, 4, 6]);
+    fn test_lanthanides_match_reference_table() {
+        assert_allowed_valence_cases(&[
+            (crate::Element::La, &[3]),
+            (crate::Element::Ce, &[3, 4]),
+            (crate::Element::Pr, &[3, 4]),
+            (crate::Element::Nd, &[3]),
+            (crate::Element::Pm, &[3]),
+            (crate::Element::Sm, &[2, 3]),
+            (crate::Element::Eu, &[2, 3]),
+            (crate::Element::Gd, &[3]),
+            (crate::Element::Tb, &[3, 4]),
+            (crate::Element::Dy, &[3]),
+            (crate::Element::Ho, &[3]),
+            (crate::Element::Er, &[3]),
+            (crate::Element::Tm, &[2, 3]),
+            (crate::Element::Yb, &[2, 3]),
+            (crate::Element::Lu, &[3]),
+        ]);
     }
 
     #[test]
-    fn test_iron() {
-        assert_eq!(crate::Element::Fe.allowed_valences(), &[2, 3, 4, 6]);
+    fn test_actinides_match_reference_table() {
+        assert_allowed_valence_cases(&[
+            (crate::Element::Ac, &[3]),
+            (crate::Element::Th, &[3, 4]),
+            (crate::Element::Pa, &[3, 4, 5]),
+            (crate::Element::U, &[3, 4, 5, 6]),
+            (crate::Element::Np, &[3, 4, 5, 6]),
+            (crate::Element::Pu, &[3, 4, 5, 6]),
+            (crate::Element::Am, &[3, 4, 5, 6]),
+            (crate::Element::Cm, &[3]),
+            (crate::Element::Bk, &[3, 4]),
+            (crate::Element::Cf, &[3]),
+            (crate::Element::Es, &[3]),
+            (crate::Element::Fm, &[3]),
+            (crate::Element::Md, &[3]),
+            (crate::Element::No, &[1]),
+        ]);
     }
 
     #[test]
-    fn test_bromine() {
-        assert_eq!(crate::Element::Br.allowed_valences(), &[1, 3, 5, 7]);
-    }
-
-    #[test]
-    fn test_boron() {
-        assert_eq!(crate::Element::B.allowed_valences(), &[3, 4]);
-    }
-
-    #[test]
-    fn test_noble_gases_zero() {
-        assert_eq!(crate::Element::Kr.allowed_valences(), &[0]);
-        assert_eq!(crate::Element::Xe.allowed_valences(), &[0]);
-        assert_eq!(crate::Element::Rn.allowed_valences(), &[0]);
-    }
-
-    #[test]
-    fn test_germanium() {
-        assert_eq!(crate::Element::Ge.allowed_valences(), &[4]);
-    }
-
-    #[test]
-    fn test_lanthanide() {
-        assert_eq!(crate::Element::Ce.allowed_valences(), &[3, 4]);
-        assert_eq!(crate::Element::Gd.allowed_valences(), &[3]);
-    }
-
-    #[test]
-    fn test_actinide() {
-        assert_eq!(crate::Element::U.allowed_valences(), &[3, 4, 5, 6]);
-        assert_eq!(crate::Element::No.allowed_valences(), &[1]);
+    fn test_elements_without_fixed_valence_model() {
+        assert_allowed_valence_cases(&[
+            (crate::Element::Lr, &[]),
+            (crate::Element::Rf, &[]),
+            (crate::Element::Og, &[]),
+        ]);
     }
 
     #[test]
