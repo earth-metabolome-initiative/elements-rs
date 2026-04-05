@@ -244,14 +244,13 @@ impl TryFrom<crate::Element> for char {
     /// assert!(helium_result.is_err());
     /// ```
     fn try_from(value: crate::Element) -> Result<Self, Self::Error> {
-        let symbol: &str = value.as_ref();
-        if symbol.len() == 1 {
-            Ok(symbol.chars().next().unwrap())
+        let mut chars = value.symbol().chars();
+        let first = chars.next().unwrap();
+
+        if value.symbol_len() == 1 {
+            Ok(first)
         } else {
-            Err(crate::errors::Error::Element([
-                symbol.chars().nth(0).unwrap(),
-                symbol.chars().nth(1).unwrap(),
-            ]))
+            Err(crate::errors::Error::Element([first, chars.next().unwrap()]))
         }
     }
 }
@@ -275,8 +274,7 @@ impl TryFrom<crate::Element> for [char; 2] {
     /// assert_eq!(helium_chars, ['H', 'e']);
     /// ```
     fn try_from(value: crate::Element) -> Result<Self, Self::Error> {
-        let symbol: &str = value.as_ref();
-        let mut chars = symbol.chars();
+        let mut chars = value.symbol().chars();
         let first = chars.next().unwrap();
         let second = chars.next().unwrap_or(' ');
         Ok([first, second])

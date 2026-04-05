@@ -16,10 +16,9 @@ impl core::fmt::Display for crate::Element {
     /// let magnesium = alloc::format!("{}", Element::Mg);
     /// assert_eq!(magnesium, "Mg");
     /// ```
+    #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        let element: &str = self.as_ref();
-
-        write!(f, "{element}")
+        f.write_str(self.symbol())
     }
 }
 

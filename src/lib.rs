@@ -26,6 +26,7 @@ pub use orbitals::{AtomicOrbital, AtomicOrbitalType};
 mod oxidation_states;
 mod principal_quantum_number;
 mod standard_atomic_weight;
+mod symbol;
 mod try_from;
 mod valence_electrons;
 mod van_der_waals_radius;
