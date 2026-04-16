@@ -6,6 +6,7 @@ extern crate alloc;
 
 mod allowed_valences;
 mod as_ref;
+mod atomic_number;
 mod atomic_radius;
 mod bonds_number;
 mod charged_valences;
@@ -31,6 +32,7 @@ mod try_from;
 mod valence_electrons;
 mod van_der_waals_radius;
 pub use allowed_valences::AllowedValences;
+pub use atomic_number::AtomicNumber;
 pub use atomic_radius::AtomicRadius;
 pub use bonds_number::BondsNumber;
 pub use charged_valences::ChargedValences;
