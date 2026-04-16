@@ -25,7 +25,8 @@ elements_rs = "0.1"
 
 ```rust
 use elements_rs::{
-    AtomicRadius, BondsNumber, CovalentRadius, Element, ValenceElectrons, VanDerWaalsRadius,
+    AtomicRadius, BondsNumber, CovalentRadius, Element, OxidationStates, ValenceElectrons,
+    VanDerWaalsRadius,
 };
 
 // Get an element

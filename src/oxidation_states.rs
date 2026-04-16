@@ -1,35 +1,53 @@
 //! Valid oxidation states for elements.
 
-impl super::Element {
-    /// Returns whether the oxidation state is valid for this element.
-    ///
-    /// # Examples
-    ///
-    /// ```rust
-    /// use elements_rs::Element;
-    ///
-    /// assert!(Element::O.is_valid_oxidation_state(-2));
-    /// assert!(!Element::O.is_valid_oxidation_state(3));
-    /// ```
-    #[must_use]
-    pub fn is_valid_oxidation_state(&self, state: i16) -> bool {
-        self.oxidation_states().contains(&state)
-    }
+use crate::isotopes::ElementVariant;
 
+/// Valid oxidation states for chemical elements.
+pub trait OxidationStates {
     /// Returns all valid oxidation states.
     ///
     /// # Examples
     ///
     /// ```rust
-    /// use elements_rs::Element;
+    /// use elements_rs::{
+    ///     Element, OxidationStates,
+    ///     isotopes::{HydrogenIsotope, Isotope},
+    /// };
     ///
     /// let states = Element::H.oxidation_states();
     /// assert!(states.contains(&1));
     /// assert!(states.contains(&-1));
+    ///
+    /// let deuterium = Isotope::H(HydrogenIsotope::D);
+    /// assert_eq!(deuterium.oxidation_states(), states);
     /// ```
-    #[must_use]
+    fn oxidation_states(&self) -> &'static [i16];
+
+    /// Returns whether the oxidation state is valid for this element.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{
+    ///     Element, OxidationStates,
+    ///     isotopes::{HydrogenIsotope, Isotope},
+    /// };
+    ///
+    /// assert!(Element::O.is_valid_oxidation_state(-2));
+    /// assert!(!Element::O.is_valid_oxidation_state(3));
+    ///
+    /// let deuterium = Isotope::H(HydrogenIsotope::D);
+    /// assert!(deuterium.is_valid_oxidation_state(1));
+    /// assert!(!deuterium.is_valid_oxidation_state(2));
+    /// ```
+    fn is_valid_oxidation_state(&self, state: i16) -> bool {
+        self.oxidation_states().contains(&state)
+    }
+}
+
+impl OxidationStates for crate::Element {
     #[inline]
-    pub fn oxidation_states(&self) -> &[i16] {
+    fn oxidation_states(&self) -> &'static [i16] {
         match self {
             Self::B => &[-5, -1, 0, 1, 2, 3],
             Self::C | Self::Si | Self::Ge | Self::Sn => &[-4, -3, -2, -1, 0, 1, 2, 3, 4],
@@ -104,17 +122,88 @@ impl super::Element {
     }
 }
 
+impl OxidationStates for crate::Isotope {
+    fn oxidation_states(&self) -> &'static [i16] {
+        self.element().oxidation_states()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use strum::IntoEnumIterator;
+
+    use super::OxidationStates;
 
     #[test]
     fn test_oxidation_states() {
         for element in crate::Element::iter() {
             let states = element.oxidation_states();
             assert!(!states.is_empty(), "Oxidation states should not be empty for {element:?}");
-            // Test is_valid_oxidation_state for 0 (common oxidation state)
-            let _ = element.is_valid_oxidation_state(0); // Just ensure it doesn't panic
+            let _ = element.is_valid_oxidation_state(0);
+        }
+    }
+
+    #[test]
+    fn test_element_oxidation_states_examples() {
+        assert_eq!(crate::Element::H.oxidation_states(), &[-1, 0, 1]);
+        assert!(crate::Element::O.is_valid_oxidation_state(-2));
+        assert!(!crate::Element::O.is_valid_oxidation_state(3));
+        assert_eq!(crate::Element::U.oxidation_states(), &[-1, 0, 1, 2, 3, 4, 5, 6]);
+    }
+
+    #[test]
+    fn test_element_trait_is_self_consistent() {
+        for element in crate::Element::iter() {
+            let states = <crate::Element as OxidationStates>::oxidation_states(&element);
+            assert!(!states.is_empty());
+
+            for state in -5..=9 {
+                assert_eq!(
+                    <crate::Element as OxidationStates>::is_valid_oxidation_state(&element, state),
+                    states.contains(&state),
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_isotope_oxidation_states_examples() {
+        let d = crate::Isotope::H(crate::isotopes::HydrogenIsotope::D);
+        assert_eq!(d.oxidation_states(), &[-1, 0, 1]);
+        assert!(d.is_valid_oxidation_state(-1));
+        assert!(!d.is_valid_oxidation_state(2));
+
+        let c14 = crate::Isotope::C(crate::isotopes::CarbonIsotope::C14);
+        assert_eq!(c14.oxidation_states(), &[-4, -3, -2, -1, 0, 1, 2, 3, 4]);
+        assert!(c14.is_valid_oxidation_state(4));
+        assert!(!c14.is_valid_oxidation_state(5));
+
+        let u238 = crate::Isotope::U(crate::isotopes::UraniumIsotope::U238);
+        assert_eq!(u238.oxidation_states(), &[-1, 0, 1, 2, 3, 4, 5, 6]);
+        assert!(u238.is_valid_oxidation_state(6));
+        assert!(!u238.is_valid_oxidation_state(7));
+    }
+
+    #[test]
+    fn test_isotope_oxidation_states_delegation() {
+        for element in crate::Element::iter() {
+            let states = element.oxidation_states();
+
+            for isotope in element.isotopes() {
+                assert_eq!(
+                    isotope.oxidation_states(),
+                    states,
+                    "Oxidation states mismatch for isotope {isotope:?} of element {element:?}",
+                );
+
+                for state in -5..=9 {
+                    assert_eq!(
+                        isotope.is_valid_oxidation_state(state),
+                        element.is_valid_oxidation_state(state),
+                        "Oxidation-state validity mismatch for isotope {isotope:?} at state {state}",
+                    );
+                }
+            }
         }
     }
 }

@@ -43,6 +43,8 @@ pub use isotopes::{
     ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope,
     RelativeAtomicMass,
 };
+pub use orbitals::Orbitals;
+pub use oxidation_states::OxidationStates;
 pub use principal_quantum_number::PrincipalQuantumNumber;
 pub use valence_electrons::ValenceElectrons;
 pub use van_der_waals_radius::VanDerWaalsRadius;

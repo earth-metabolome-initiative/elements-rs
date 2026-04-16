@@ -2,6 +2,30 @@
 
 mod element;
 
+use crate::isotopes::ElementVariant;
+
+/// Electron orbital configurations for atoms.
+pub trait Orbitals {
+    /// Returns the orbitals associated to the atom.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::{
+    ///     AtomicOrbitalType, Element, Orbitals,
+    ///     isotopes::{HydrogenIsotope, Isotope},
+    /// };
+    ///
+    /// let orbitals = Element::H.orbitals();
+    /// assert_eq!(orbitals.len(), 1);
+    /// assert_eq!(orbitals[0].orbital_type(), AtomicOrbitalType::S);
+    ///
+    /// let deuterium = Isotope::H(HydrogenIsotope::D);
+    /// assert_eq!(deuterium.orbitals(), orbitals);
+    /// ```
+    fn orbitals(&self) -> &'static [AtomicOrbital];
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 /// Atomic orbital type (s, p, d, or f).
 pub enum AtomicOrbitalType {
@@ -94,9 +118,23 @@ impl AtomicOrbital {
     }
 }
 
+impl Orbitals for crate::Element {
+    fn orbitals(&self) -> &'static [AtomicOrbital] {
+        crate::Element::orbitals(self)
+    }
+}
+
+impl Orbitals for crate::Isotope {
+    fn orbitals(&self) -> &'static [AtomicOrbital] {
+        self.element().orbitals()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use strum::IntoEnumIterator;
+
+    use super::Orbitals;
 
     #[test]
     fn test_orbitals() {
@@ -110,6 +148,66 @@ mod tests {
                 total_electrons, atomic_number,
                 "Total electrons in orbitals should equal atomic number for {element:?}",
             );
+        }
+    }
+
+    #[test]
+    fn test_trait_matches_element_method() {
+        for element in crate::Element::iter() {
+            assert_eq!(
+                <crate::Element as Orbitals>::orbitals(&element),
+                crate::Element::orbitals(&element),
+            );
+        }
+    }
+
+    #[test]
+    fn test_isotope_orbitals_examples() {
+        let d = crate::Isotope::H(crate::isotopes::HydrogenIsotope::D);
+        let d_orbitals = d.orbitals();
+        assert_eq!(d_orbitals.len(), 1);
+        assert_eq!(d_orbitals[0].principal_quantum_number(), 1);
+        assert_eq!(d_orbitals[0].number_of_electrons(), 1);
+
+        let c13 = crate::Isotope::C(crate::isotopes::CarbonIsotope::C13);
+        let c_orbitals = c13.orbitals();
+        assert_eq!(c_orbitals.len(), 3);
+        assert_eq!(
+            c_orbitals.iter().map(|orbital| u32::from(orbital.number_of_electrons())).sum::<u32>(),
+            6,
+        );
+
+        let u238 = crate::Isotope::U(crate::isotopes::UraniumIsotope::U238);
+        let u_orbitals = u238.orbitals();
+        assert_eq!(
+            u_orbitals.iter().map(|orbital| u32::from(orbital.number_of_electrons())).sum::<u32>(),
+            92,
+        );
+    }
+
+    #[test]
+    fn test_isotope_orbitals_delegation() {
+        for element in crate::Element::iter() {
+            let orbitals = element.orbitals();
+            let total_electrons: u32 =
+                orbitals.iter().map(|orbital| u32::from(orbital.number_of_electrons())).sum();
+
+            for isotope in element.isotopes() {
+                let isotope_orbitals = isotope.orbitals();
+
+                assert_eq!(
+                    isotope_orbitals, orbitals,
+                    "Orbitals mismatch for isotope {isotope:?} of element {element:?}",
+                );
+                assert_eq!(
+                    isotope_orbitals
+                        .iter()
+                        .map(|orbital| u32::from(orbital.number_of_electrons()))
+                        .sum::<u32>(),
+                    total_electrons,
+                    "Total electrons mismatch for isotope {isotope:?} of element {element:?}",
+                );
+            }
         }
     }
 }
