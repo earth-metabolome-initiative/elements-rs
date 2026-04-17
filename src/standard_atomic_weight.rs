@@ -1,8 +1,22 @@
-//! Standard atomic weights for elements.
+//! Atomic-weight convenience values for elements.
+//!
+//! For elements without a CIAAW standard atomic weight, this module still
+//! exposes a representative single value for compatibility.
 
 impl crate::Element {
     #[allow(clippy::too_many_lines)]
-    /// Returns the standard atomic weight.
+    /// Returns the crate's single-value atomic-weight convenience value.
+    ///
+    /// For elements with a CIAAW standard atomic weight, this is the
+    /// single-value form used by the crate. For elements without a CIAAW
+    /// standard atomic weight, this method still returns a representative
+    /// fallback value for compatibility, typically following the bracketed
+    /// value used in the [IUPAC periodic table].
+    ///
+    /// This means the result should not always be interpreted as a literal
+    /// CIAAW standard atomic weight.
+    ///
+    /// [IUPAC periodic table]: https://iupac.org/what-we-do/periodic-table-of-elements/
     ///
     /// # Examples
     ///
@@ -119,15 +133,14 @@ impl crate::Element {
             Self::Lr => 262.0,
             Self::Rf => 267.0,
             Self::Db => 268.0,
-            Self::Sg => 271.0,
-            Self::Bh => 274.0,
-            Self::Hs => 269.0,
-            Self::Mt => 276.0,
-            Self::Ds | Self::Rg => 281.0,
+            Self::Sg | Self::Hs => 269.0,
+            Self::Bh => 270.0,
+            Self::Mt => 277.0,
+            Self::Ds => 281.0,
+            Self::Rg => 282.0,
             Self::Cn => 285.0,
             Self::Nh => 286.0,
-            Self::Fl => 289.0,
-            Self::Mc => 288.0,
+            Self::Fl | Self::Mc => 290.0,
             Self::Lv => 293.0,
             Self::Ts | Self::Og => 294.0,
         }
@@ -139,10 +152,28 @@ mod tests {
     use strum::IntoEnumIterator;
 
     #[test]
-    fn test_standard_atomic_weight() {
+    fn test_atomic_weight_values_are_positive() {
         for element in crate::Element::iter() {
             let weight = element.standard_atomic_weight();
-            assert!(weight > 0.0, "Standard atomic weight should be positive for {element:?}");
+            assert!(weight > 0.0, "Atomic-weight value should be positive for {element:?}");
+        }
+    }
+
+    #[test]
+    fn test_updated_iupac_periodic_table_fallback_values() {
+        for (element, expected) in [
+            (crate::Element::Sg, 269.0),
+            (crate::Element::Bh, 270.0),
+            (crate::Element::Mt, 277.0),
+            (crate::Element::Rg, 282.0),
+            (crate::Element::Fl, 290.0),
+            (crate::Element::Mc, 290.0),
+        ] {
+            let weight = element.standard_atomic_weight();
+            assert!(
+                (weight - expected).abs() < f64::EPSILON,
+                "expected {expected} for {element:?}, got {weight}"
+            );
         }
     }
 }
