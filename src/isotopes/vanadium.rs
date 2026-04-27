@@ -4,10 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Vanadium
 pub enum VanadiumIsotope {
-    /// Isotope V40 of Vanadium
-    V40,
-    /// Isotope V41 of Vanadium
-    V41,
     /// Isotope V42 of Vanadium
     V42,
     /// Isotope V43 of Vanadium
@@ -58,13 +54,13 @@ pub enum VanadiumIsotope {
     V65,
     /// Isotope V66 of Vanadium
     V66,
+    /// Isotope V67 of Vanadium
+    V67,
 }
 impl super::RelativeAtomicMass for VanadiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::V40 => 40.01276f64,
-            Self::V41 => 41.00021f64,
             Self::V42 => 41.99182f64,
             Self::V43 => 42.980766f64,
             Self::V44 => 43.97411f64,
@@ -90,6 +86,7 @@ impl super::RelativeAtomicMass for VanadiumIsotope {
             Self::V64 => 63.98264f64,
             Self::V65 => 64.9875f64,
             Self::V66 => 65.99398f64,
+            Self::V67 => 66.998128f64,
         }
     }
 }
@@ -103,8 +100,6 @@ impl super::MassNumber for VanadiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::V40 => 40u16,
-            Self::V41 => 41u16,
             Self::V42 => 42u16,
             Self::V43 => 43u16,
             Self::V44 => 44u16,
@@ -130,6 +125,7 @@ impl super::MassNumber for VanadiumIsotope {
             Self::V64 => 64u16,
             Self::V65 => 65u16,
             Self::V66 => 66u16,
+            Self::V67 => 67u16,
         }
     }
 }
@@ -162,8 +158,6 @@ impl TryFrom<u64> for VanadiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            40u64 => Ok(Self::V40),
-            41u64 => Ok(Self::V41),
             42u64 => Ok(Self::V42),
             43u64 => Ok(Self::V43),
             44u64 => Ok(Self::V44),
@@ -189,6 +183,7 @@ impl TryFrom<u64> for VanadiumIsotope {
             64u64 => Ok(Self::V64),
             65u64 => Ok(Self::V65),
             66u64 => Ok(Self::V66),
+            67u64 => Ok(Self::V67),
             _ => Err(crate::errors::Error::Isotope(crate::Element::V, value)),
         }
     }
@@ -214,8 +209,6 @@ impl TryFrom<u32> for VanadiumIsotope {
 impl core::fmt::Display for VanadiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::V40 => write!(f, "V40"),
-            Self::V41 => write!(f, "V41"),
             Self::V42 => write!(f, "V42"),
             Self::V43 => write!(f, "V43"),
             Self::V44 => write!(f, "V44"),
@@ -241,6 +234,7 @@ impl core::fmt::Display for VanadiumIsotope {
             Self::V64 => write!(f, "V64"),
             Self::V65 => write!(f, "V65"),
             Self::V66 => write!(f, "V66"),
+            Self::V67 => write!(f, "V67"),
         }
     }
 }

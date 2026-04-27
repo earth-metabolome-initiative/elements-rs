@@ -58,6 +58,10 @@ pub enum ChromiumIsotope {
     Cr67,
     /// Isotope Cr68 of Chromium
     Cr68,
+    /// Isotope Cr69 of Chromium
+    Cr69,
+    /// Isotope Cr70 of Chromium
+    Cr70,
 }
 impl super::RelativeAtomicMass for ChromiumIsotope {
     #[inline]
@@ -90,6 +94,8 @@ impl super::RelativeAtomicMass for ChromiumIsotope {
             Self::Cr66 => 65.97366f64,
             Self::Cr67 => 66.98016f64,
             Self::Cr68 => 67.98403f64,
+            Self::Cr69 => 68.989662f64,
+            Self::Cr70 => 69.993945f64,
         }
     }
 }
@@ -130,6 +136,8 @@ impl super::MassNumber for ChromiumIsotope {
             Self::Cr66 => 66u16,
             Self::Cr67 => 67u16,
             Self::Cr68 => 68u16,
+            Self::Cr69 => 69u16,
+            Self::Cr70 => 70u16,
         }
     }
 }
@@ -191,6 +199,8 @@ impl TryFrom<u64> for ChromiumIsotope {
             66u64 => Ok(Self::Cr66),
             67u64 => Ok(Self::Cr67),
             68u64 => Ok(Self::Cr68),
+            69u64 => Ok(Self::Cr69),
+            70u64 => Ok(Self::Cr70),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cr, value)),
         }
     }
@@ -243,6 +253,8 @@ impl core::fmt::Display for ChromiumIsotope {
             Self::Cr66 => write!(f, "Cr66"),
             Self::Cr67 => write!(f, "Cr67"),
             Self::Cr68 => write!(f, "Cr68"),
+            Self::Cr69 => write!(f, "Cr69"),
+            Self::Cr70 => write!(f, "Cr70"),
         }
     }
 }

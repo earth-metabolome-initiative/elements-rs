@@ -84,6 +84,10 @@ pub enum TinIsotope {
     Sn137,
     /// Isotope Sn138 of Tin
     Sn138,
+    /// Isotope Sn139 of Tin
+    Sn139,
+    /// Isotope Sn140 of Tin
+    Sn140,
 }
 impl super::RelativeAtomicMass for TinIsotope {
     #[inline]
@@ -129,6 +133,8 @@ impl super::RelativeAtomicMass for TinIsotope {
             Self::Sn136 => 135.93999f64,
             Self::Sn137 => 136.94655f64,
             Self::Sn138 => 137.95184f64,
+            Self::Sn139 => 138.957799f64,
+            Self::Sn140 => 139.962973f64,
         }
     }
 }
@@ -182,6 +188,8 @@ impl super::MassNumber for TinIsotope {
             Self::Sn136 => 136u16,
             Self::Sn137 => 137u16,
             Self::Sn138 => 138u16,
+            Self::Sn139 => 139u16,
+            Self::Sn140 => 140u16,
         }
     }
 }
@@ -262,6 +270,8 @@ impl TryFrom<u64> for TinIsotope {
             136u64 => Ok(Self::Sn136),
             137u64 => Ok(Self::Sn137),
             138u64 => Ok(Self::Sn138),
+            139u64 => Ok(Self::Sn139),
+            140u64 => Ok(Self::Sn140),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Sn, value)),
         }
     }
@@ -327,6 +337,8 @@ impl core::fmt::Display for TinIsotope {
             Self::Sn136 => write!(f, "Sn136"),
             Self::Sn137 => write!(f, "Sn137"),
             Self::Sn138 => write!(f, "Sn138"),
+            Self::Sn139 => write!(f, "Sn139"),
+            Self::Sn140 => write!(f, "Sn140"),
         }
     }
 }

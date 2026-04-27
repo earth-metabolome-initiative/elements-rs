@@ -28,14 +28,8 @@ pub enum SeaborgiumIsotope {
     Sg268,
     /// Isotope Sg269 of Seaborgium
     Sg269,
-    /// Isotope Sg270 of Seaborgium
-    Sg270,
     /// Isotope Sg271 of Seaborgium
     Sg271,
-    /// Isotope Sg272 of Seaborgium
-    Sg272,
-    /// Isotope Sg273 of Seaborgium
-    Sg273,
 }
 impl super::RelativeAtomicMass for SeaborgiumIsotope {
     #[inline]
@@ -53,10 +47,7 @@ impl super::RelativeAtomicMass for SeaborgiumIsotope {
             Self::Sg267 => 267.12436f64,
             Self::Sg268 => 268.12539f64,
             Self::Sg269 => 269.12863f64,
-            Self::Sg270 => 270.13043f64,
             Self::Sg271 => 271.13393f64,
-            Self::Sg272 => 272.13589f64,
-            Self::Sg273 => 273.13958f64,
         }
     }
 }
@@ -82,10 +73,7 @@ impl super::MassNumber for SeaborgiumIsotope {
             Self::Sg267 => 267u16,
             Self::Sg268 => 268u16,
             Self::Sg269 => 269u16,
-            Self::Sg270 => 270u16,
             Self::Sg271 => 271u16,
-            Self::Sg272 => 272u16,
-            Self::Sg273 => 273u16,
         }
     }
 }
@@ -97,7 +85,7 @@ impl super::IsotopicComposition for SeaborgiumIsotope {
 }
 impl super::MostAbundantIsotope for SeaborgiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Sg273
+        Self::Sg271
     }
 }
 impl From<SeaborgiumIsotope> for crate::Isotope {
@@ -126,10 +114,7 @@ impl TryFrom<u64> for SeaborgiumIsotope {
             267u64 => Ok(Self::Sg267),
             268u64 => Ok(Self::Sg268),
             269u64 => Ok(Self::Sg269),
-            270u64 => Ok(Self::Sg270),
             271u64 => Ok(Self::Sg271),
-            272u64 => Ok(Self::Sg272),
-            273u64 => Ok(Self::Sg273),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Sg, value)),
         }
     }
@@ -167,10 +152,7 @@ impl core::fmt::Display for SeaborgiumIsotope {
             Self::Sg267 => write!(f, "Sg267"),
             Self::Sg268 => write!(f, "Sg268"),
             Self::Sg269 => write!(f, "Sg269"),
-            Self::Sg270 => write!(f, "Sg270"),
             Self::Sg271 => write!(f, "Sg271"),
-            Self::Sg272 => write!(f, "Sg272"),
-            Self::Sg273 => write!(f, "Sg273"),
         }
     }
 }

@@ -188,7 +188,10 @@ impl TryFrom<(Element, u8)> for crate::Isotope {
 
 #[cfg(test)]
 mod tests {
-    use crate::{Element, isotopes::Isotope};
+    use crate::{
+        Element,
+        isotopes::{ElementVariant, Isotope, MassNumber},
+    };
 
     #[test]
     fn test_try_from_element_delegation() {
@@ -233,16 +236,149 @@ mod tests {
         assert!(Isotope::try_from((Element::H, 0_u8)).is_err());
         assert!(Isotope::try_from((Element::H, 8_u8)).is_err()); // H7 is the highest for hydrogen
         assert!(Isotope::try_from((Element::C, 7_u8)).is_err()); // C8 is the lowest for carbon
-        assert!(Isotope::try_from((Element::C, 24_u8)).is_err()); // C23 is the highest for carbon
-        assert!(Isotope::try_from((Element::O, 11_u8)).is_err()); // O12 is the lowest for oxygen
+        assert!(Isotope::try_from((Element::C, 24_u8)).is_err()); // C22 is the highest for carbon
+        assert!(Isotope::try_from((Element::O, 10_u8)).is_err()); // O11 is the lowest for oxygen
         assert!(Isotope::try_from((Element::O, 29_u8)).is_err()); // O28 is the highest for oxygen
+    }
+
+    #[test]
+    fn test_iaea_livechart_missing_isotopes_are_supported() {
+        let isotopes = [
+            (Element::Lu, 186_u16),
+            (Element::Dy, 174),
+            (Element::Mo, 118),
+            (Element::Cr, 70),
+            (Element::Ni, 80),
+            (Element::Os, 203),
+            (Element::Pt, 208),
+            (Element::Se, 63),
+            (Element::Kr, 67),
+            (Element::Kr, 68),
+            (Element::Co, 77),
+            (Element::Tc, 121),
+            (Element::Rh, 127),
+            (Element::Pd, 129),
+            (Element::Ag, 131),
+            (Element::Ag, 132),
+            (Element::Cd, 134),
+            (Element::In, 136),
+            (Element::In, 137),
+            (Element::Sn, 139),
+            (Element::Sb, 141),
+            (Element::Sb, 142),
+            (Element::Te, 144),
+            (Element::I, 146),
+            (Element::Ba, 154),
+            (Element::La, 156),
+            (Element::Ce, 158),
+            (Element::Pr, 160),
+            (Element::Nd, 162),
+            (Element::Sm, 166),
+            (Element::Eu, 168),
+            (Element::Gd, 170),
+            (Element::Tb, 172),
+            (Element::Fr, 197),
+            (Element::Fr, 198),
+            (Element::Ac, 205),
+            (Element::Pa, 211),
+            (Element::U, 215),
+            (Element::U, 216),
+            (Element::Am, 223),
+            (Element::Am, 229),
+            (Element::Bk, 233),
+            (Element::Md, 244),
+        ];
+
+        for (element, mass_number) in isotopes {
+            let isotope = Isotope::try_from((element, mass_number)).unwrap();
+            assert_eq!(isotope.element(), element);
+            assert_eq!(isotope.mass_number(), mass_number);
+            assert!(element.isotopes().contains(&isotope));
+        }
+    }
+
+    #[test]
+    fn test_frib_discovered_isotopes_are_supported() {
+        let isotopes = [
+            (Element::O, 27_u16),
+            (Element::O, 28),
+            (Element::Si, 45),
+            (Element::S, 47),
+            (Element::Cl, 28),
+            (Element::Ar, 29),
+            (Element::Ar, 54),
+            (Element::K, 57),
+            (Element::K, 59),
+            (Element::Ca, 59),
+            (Element::Ca, 60),
+            (Element::Na, 39),
+            (Element::Sc, 37),
+            (Element::Sc, 62),
+            (Element::Sc, 63),
+            (Element::Ti, 65),
+            (Element::Cu, 84),
+            (Element::Zn, 86),
+            (Element::Ga, 88),
+            (Element::La, 116),
+            (Element::La, 118),
+            (Element::La, 119),
+            (Element::Ce, 119),
+            (Element::Ce, 120),
+            (Element::Ce, 159),
+            (Element::Pr, 122),
+            (Element::Pr, 123),
+            (Element::Nd, 124),
+            (Element::Pm, 126),
+            (Element::Pm, 127),
+            (Element::Sm, 128),
+            (Element::Eu, 133),
+            (Element::Gd, 133),
+            (Element::Tb, 136),
+            (Element::Tb, 137),
+            (Element::Dy, 138),
+            (Element::Er, 142),
+            (Element::Tm, 182),
+            (Element::Yb, 148),
+            (Element::Pu, 227),
+            (Element::Am, 231),
+            (Element::Bk, 235),
+            (Element::Sg, 268),
+            (Element::Hs, 272),
+            (Element::Ds, 275),
+            (Element::Ds, 276),
+            (Element::Cn, 280),
+            (Element::Lv, 289),
+        ];
+
+        for (element, mass_number) in isotopes {
+            let isotope = Isotope::try_from((element, mass_number)).unwrap();
+            assert_eq!(isotope.element(), element);
+            assert_eq!(isotope.mass_number(), mass_number);
+            assert!(element.isotopes().contains(&isotope));
+        }
+    }
+
+    #[test]
+    fn test_unobserved_or_inferred_nuclides_are_unsupported() {
+        let unsupported = [
+            (Element::Li, 3_u16), // NuDat unobserved
+            (Element::C, 21),     // FRIB not observed
+            (Element::N, 25),     // FRIB not observed
+            (Element::Co, 49),    // FRIB unbound, NuDat not observed
+            (Element::Cm, 252),   // NuDat inferred
+            (Element::Bk, 252),   // FRIB not observed, NuDat inferred
+            (Element::Og, 293),   // no current NuDat/FRIB discovery data
+            (Element::Og, 295),   // NuDat unobserved
+        ];
+
+        for (element, mass_number) in unsupported {
+            assert!(Isotope::try_from((element, mass_number)).is_err());
+        }
     }
 
     #[test]
     fn test_try_from_element_strum() {
         use strum::IntoEnumIterator;
-
-        use crate::isotopes::{ElementVariant, MassNumber};
 
         for element in crate::Element::iter() {
             let isotopes = element.isotopes();

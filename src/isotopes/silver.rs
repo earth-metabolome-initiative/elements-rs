@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Silver
 pub enum SilverIsotope {
+    /// Isotope Ag92 of Silver
+    Ag92,
     /// Isotope Ag93 of Silver
     Ag93,
     /// Isotope Ag94 of Silver
@@ -80,11 +82,16 @@ pub enum SilverIsotope {
     Ag129,
     /// Isotope Ag130 of Silver
     Ag130,
+    /// Isotope Ag131 of Silver
+    Ag131,
+    /// Isotope Ag132 of Silver
+    Ag132,
 }
 impl super::RelativeAtomicMass for SilverIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Ag92 => 91.95971f64,
             Self::Ag93 => 92.95033f64,
             Self::Ag94 => 93.94373f64,
             Self::Ag95 => 94.93602f64,
@@ -123,6 +130,8 @@ impl super::RelativeAtomicMass for SilverIsotope {
             Self::Ag128 => 127.94106f64,
             Self::Ag129 => 128.94395f64,
             Self::Ag130 => 129.9507f64,
+            Self::Ag131 => 130.956253f64,
+            Self::Ag132 => 131.96307f64,
         }
     }
 }
@@ -136,6 +145,7 @@ impl super::MassNumber for SilverIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Ag92 => 92u16,
             Self::Ag93 => 93u16,
             Self::Ag94 => 94u16,
             Self::Ag95 => 95u16,
@@ -174,6 +184,8 @@ impl super::MassNumber for SilverIsotope {
             Self::Ag128 => 128u16,
             Self::Ag129 => 129u16,
             Self::Ag130 => 130u16,
+            Self::Ag131 => 131u16,
+            Self::Ag132 => 132u16,
         }
     }
 }
@@ -206,6 +218,7 @@ impl TryFrom<u64> for SilverIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            92u64 => Ok(Self::Ag92),
             93u64 => Ok(Self::Ag93),
             94u64 => Ok(Self::Ag94),
             95u64 => Ok(Self::Ag95),
@@ -244,6 +257,8 @@ impl TryFrom<u64> for SilverIsotope {
             128u64 => Ok(Self::Ag128),
             129u64 => Ok(Self::Ag129),
             130u64 => Ok(Self::Ag130),
+            131u64 => Ok(Self::Ag131),
+            132u64 => Ok(Self::Ag132),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ag, value)),
         }
     }
@@ -269,6 +284,7 @@ impl TryFrom<u32> for SilverIsotope {
 impl core::fmt::Display for SilverIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Ag92 => write!(f, "Ag92"),
             Self::Ag93 => write!(f, "Ag93"),
             Self::Ag94 => write!(f, "Ag94"),
             Self::Ag95 => write!(f, "Ag95"),
@@ -307,6 +323,8 @@ impl core::fmt::Display for SilverIsotope {
             Self::Ag128 => write!(f, "Ag128"),
             Self::Ag129 => write!(f, "Ag129"),
             Self::Ag130 => write!(f, "Ag130"),
+            Self::Ag131 => write!(f, "Ag131"),
+            Self::Ag132 => write!(f, "Ag132"),
         }
     }
 }

@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Argon
 pub enum ArgonIsotope {
+    /// Isotope Ar29 of Argon
+    Ar29,
     /// Isotope Ar30 of Argon
     Ar30,
     /// Isotope Ar31 of Argon
@@ -52,11 +54,14 @@ pub enum ArgonIsotope {
     Ar52,
     /// Isotope Ar53 of Argon
     Ar53,
+    /// Isotope Ar54 of Argon
+    Ar54,
 }
 impl super::RelativeAtomicMass for ArgonIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Ar29 => 29.040762f64,
             Self::Ar30 => 30.02307f64,
             Self::Ar31 => 31.01212f64,
             Self::Ar32 => 31.9976378f64,
@@ -81,6 +86,7 @@ impl super::RelativeAtomicMass for ArgonIsotope {
             Self::Ar51 => 50.9937f64,
             Self::Ar52 => 51.99896f64,
             Self::Ar53 => 53.00729f64,
+            Self::Ar54 => 54.013484f64,
         }
     }
 }
@@ -94,6 +100,7 @@ impl super::MassNumber for ArgonIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Ar29 => 29u16,
             Self::Ar30 => 30u16,
             Self::Ar31 => 31u16,
             Self::Ar32 => 32u16,
@@ -118,6 +125,7 @@ impl super::MassNumber for ArgonIsotope {
             Self::Ar51 => 51u16,
             Self::Ar52 => 52u16,
             Self::Ar53 => 53u16,
+            Self::Ar54 => 54u16,
         }
     }
 }
@@ -151,6 +159,7 @@ impl TryFrom<u64> for ArgonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            29u64 => Ok(Self::Ar29),
             30u64 => Ok(Self::Ar30),
             31u64 => Ok(Self::Ar31),
             32u64 => Ok(Self::Ar32),
@@ -175,6 +184,7 @@ impl TryFrom<u64> for ArgonIsotope {
             51u64 => Ok(Self::Ar51),
             52u64 => Ok(Self::Ar52),
             53u64 => Ok(Self::Ar53),
+            54u64 => Ok(Self::Ar54),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ar, value)),
         }
     }
@@ -200,6 +210,7 @@ impl TryFrom<u32> for ArgonIsotope {
 impl core::fmt::Display for ArgonIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Ar29 => write!(f, "Ar29"),
             Self::Ar30 => write!(f, "Ar30"),
             Self::Ar31 => write!(f, "Ar31"),
             Self::Ar32 => write!(f, "Ar32"),
@@ -224,6 +235,7 @@ impl core::fmt::Display for ArgonIsotope {
             Self::Ar51 => write!(f, "Ar51"),
             Self::Ar52 => write!(f, "Ar52"),
             Self::Ar53 => write!(f, "Ar53"),
+            Self::Ar54 => write!(f, "Ar54"),
         }
     }
 }

@@ -80,6 +80,10 @@ pub enum EuropiumIsotope {
     Eu166,
     /// Isotope Eu167 of Europium
     Eu167,
+    /// Isotope Eu168 of Europium
+    Eu168,
+    /// Isotope Eu169 of Europium
+    Eu169,
 }
 impl super::RelativeAtomicMass for EuropiumIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for EuropiumIsotope {
             Self::Eu165 => 164.94559f64,
             Self::Eu166 => 165.94962f64,
             Self::Eu167 => 166.95289f64,
+            Self::Eu168 => 167.957863f64,
+            Self::Eu169 => 168.961717f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for EuropiumIsotope {
             Self::Eu165 => 165u16,
             Self::Eu166 => 166u16,
             Self::Eu167 => 167u16,
+            Self::Eu168 => 168u16,
+            Self::Eu169 => 169u16,
         }
     }
 }
@@ -244,6 +252,8 @@ impl TryFrom<u64> for EuropiumIsotope {
             165u64 => Ok(Self::Eu165),
             166u64 => Ok(Self::Eu166),
             167u64 => Ok(Self::Eu167),
+            168u64 => Ok(Self::Eu168),
+            169u64 => Ok(Self::Eu169),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Eu, value)),
         }
     }
@@ -307,6 +317,8 @@ impl core::fmt::Display for EuropiumIsotope {
             Self::Eu165 => write!(f, "Eu165"),
             Self::Eu166 => write!(f, "Eu166"),
             Self::Eu167 => write!(f, "Eu167"),
+            Self::Eu168 => write!(f, "Eu168"),
+            Self::Eu169 => write!(f, "Eu169"),
         }
     }
 }

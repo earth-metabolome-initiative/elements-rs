@@ -86,6 +86,8 @@ pub enum IridiumIsotope {
     Ir203,
     /// Isotope Ir204 of Iridium
     Ir204,
+    /// Isotope Ir205 of Iridium
+    Ir205,
 }
 impl super::RelativeAtomicMass for IridiumIsotope {
     #[inline]
@@ -132,6 +134,7 @@ impl super::RelativeAtomicMass for IridiumIsotope {
             Self::Ir202 => 201.98199f64,
             Self::Ir203 => 202.98423f64,
             Self::Ir204 => 203.9896f64,
+            Self::Ir205 => 204.993988f64,
         }
     }
 }
@@ -186,6 +189,7 @@ impl super::MassNumber for IridiumIsotope {
             Self::Ir202 => 202u16,
             Self::Ir203 => 203u16,
             Self::Ir204 => 204u16,
+            Self::Ir205 => 205u16,
         }
     }
 }
@@ -259,6 +263,7 @@ impl TryFrom<u64> for IridiumIsotope {
             202u64 => Ok(Self::Ir202),
             203u64 => Ok(Self::Ir203),
             204u64 => Ok(Self::Ir204),
+            205u64 => Ok(Self::Ir205),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ir, value)),
         }
     }
@@ -325,6 +330,7 @@ impl core::fmt::Display for IridiumIsotope {
             Self::Ir202 => write!(f, "Ir202"),
             Self::Ir203 => write!(f, "Ir203"),
             Self::Ir204 => write!(f, "Ir204"),
+            Self::Ir205 => write!(f, "Ir205"),
         }
     }
 }

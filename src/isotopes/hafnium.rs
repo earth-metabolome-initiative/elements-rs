@@ -78,6 +78,8 @@ pub enum HafniumIsotope {
     Hf188,
     /// Isotope Hf189 of Hafnium
     Hf189,
+    /// Isotope Hf190 of Hafnium
+    Hf190,
 }
 impl super::RelativeAtomicMass for HafniumIsotope {
     #[inline]
@@ -120,6 +122,7 @@ impl super::RelativeAtomicMass for HafniumIsotope {
             Self::Hf187 => 186.96477f64,
             Self::Hf188 => 187.96685f64,
             Self::Hf189 => 188.97084f64,
+            Self::Hf190 => 189.973376f64,
         }
     }
 }
@@ -170,6 +173,7 @@ impl super::MassNumber for HafniumIsotope {
             Self::Hf187 => 187u16,
             Self::Hf188 => 188u16,
             Self::Hf189 => 189u16,
+            Self::Hf190 => 190u16,
         }
     }
 }
@@ -243,6 +247,7 @@ impl TryFrom<u64> for HafniumIsotope {
             187u64 => Ok(Self::Hf187),
             188u64 => Ok(Self::Hf188),
             189u64 => Ok(Self::Hf189),
+            190u64 => Ok(Self::Hf190),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Hf, value)),
         }
     }
@@ -305,6 +310,7 @@ impl core::fmt::Display for HafniumIsotope {
             Self::Hf187 => write!(f, "Hf187"),
             Self::Hf188 => write!(f, "Hf188"),
             Self::Hf189 => write!(f, "Hf189"),
+            Self::Hf190 => write!(f, "Hf190"),
         }
     }
 }

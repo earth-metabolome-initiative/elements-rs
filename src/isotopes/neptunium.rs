@@ -8,8 +8,6 @@ pub enum NeptuniumIsotope {
     Np219,
     /// Isotope Np220 of Neptunium
     Np220,
-    /// Isotope Np221 of Neptunium
-    Np221,
     /// Isotope Np222 of Neptunium
     Np222,
     /// Isotope Np223 of Neptunium
@@ -65,7 +63,6 @@ impl super::RelativeAtomicMass for NeptuniumIsotope {
         match self {
             Self::Np219 => 219.03143f64,
             Self::Np220 => 220.03254f64,
-            Self::Np221 => 221.03204f64,
             Self::Np222 => 222.0333f64,
             Self::Np223 => 223.03285f64,
             Self::Np224 => 224.03422f64,
@@ -89,7 +86,7 @@ impl super::RelativeAtomicMass for NeptuniumIsotope {
             Self::Np242 => 242.06164f64,
             Self::Np243 => 243.06428f64,
             Self::Np244 => 244.06785f64,
-            Self::Np245 => 245.0708f64,
+            Self::Np245 => 245.070693f64,
         }
     }
 }
@@ -105,7 +102,6 @@ impl super::MassNumber for NeptuniumIsotope {
         match self {
             Self::Np219 => 219u16,
             Self::Np220 => 220u16,
-            Self::Np221 => 221u16,
             Self::Np222 => 222u16,
             Self::Np223 => 223u16,
             Self::Np224 => 224u16,
@@ -160,7 +156,6 @@ impl TryFrom<u64> for NeptuniumIsotope {
         match value {
             219u64 => Ok(Self::Np219),
             220u64 => Ok(Self::Np220),
-            221u64 => Ok(Self::Np221),
             222u64 => Ok(Self::Np222),
             223u64 => Ok(Self::Np223),
             224u64 => Ok(Self::Np224),
@@ -212,7 +207,6 @@ impl core::fmt::Display for NeptuniumIsotope {
         match self {
             Self::Np219 => write!(f, "Np219"),
             Self::Np220 => write!(f, "Np220"),
-            Self::Np221 => write!(f, "Np221"),
             Self::Np222 => write!(f, "Np222"),
             Self::Np223 => write!(f, "Np223"),
             Self::Np224 => write!(f, "Np224"),

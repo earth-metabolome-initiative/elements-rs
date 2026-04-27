@@ -80,6 +80,12 @@ pub enum TungstenIsotope {
     W193,
     /// Isotope W194 of Tungsten
     W194,
+    /// Isotope W195 of Tungsten
+    W195,
+    /// Isotope W196 of Tungsten
+    W196,
+    /// Isotope W197 of Tungsten
+    W197,
 }
 impl super::RelativeAtomicMass for TungstenIsotope {
     #[inline]
@@ -123,6 +129,9 @@ impl super::RelativeAtomicMass for TungstenIsotope {
             Self::W192 => 191.96817f64,
             Self::W193 => 192.97178f64,
             Self::W194 => 193.97367f64,
+            Self::W195 => 194.977735f64,
+            Self::W196 => 195.979882f64,
+            Self::W197 => 196.984036f64,
         }
     }
 }
@@ -174,6 +183,9 @@ impl super::MassNumber for TungstenIsotope {
             Self::W192 => 192u16,
             Self::W193 => 193u16,
             Self::W194 => 194u16,
+            Self::W195 => 195u16,
+            Self::W196 => 196u16,
+            Self::W197 => 197u16,
         }
     }
 }
@@ -247,6 +259,9 @@ impl TryFrom<u64> for TungstenIsotope {
             192u64 => Ok(Self::W192),
             193u64 => Ok(Self::W193),
             194u64 => Ok(Self::W194),
+            195u64 => Ok(Self::W195),
+            196u64 => Ok(Self::W196),
+            197u64 => Ok(Self::W197),
             _ => Err(crate::errors::Error::Isotope(crate::Element::W, value)),
         }
     }
@@ -310,6 +325,9 @@ impl core::fmt::Display for TungstenIsotope {
             Self::W192 => write!(f, "W192"),
             Self::W193 => write!(f, "W193"),
             Self::W194 => write!(f, "W194"),
+            Self::W195 => write!(f, "W195"),
+            Self::W196 => write!(f, "W196"),
+            Self::W197 => write!(f, "W197"),
         }
     }
 }

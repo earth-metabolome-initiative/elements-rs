@@ -80,6 +80,10 @@ pub enum AntimonyIsotope {
     Sb139,
     /// Isotope Sb140 of Antimony
     Sb140,
+    /// Isotope Sb141 of Antimony
+    Sb141,
+    /// Isotope Sb142 of Antimony
+    Sb142,
 }
 impl super::RelativeAtomicMass for AntimonyIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for AntimonyIsotope {
             Self::Sb138 => 137.94145f64,
             Self::Sb139 => 138.94655f64,
             Self::Sb140 => 139.95283f64,
+            Self::Sb141 => 140.957552f64,
+            Self::Sb142 => 141.963918f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for AntimonyIsotope {
             Self::Sb138 => 138u16,
             Self::Sb139 => 139u16,
             Self::Sb140 => 140u16,
+            Self::Sb141 => 141u16,
+            Self::Sb142 => 142u16,
         }
     }
 }
@@ -244,6 +252,8 @@ impl TryFrom<u64> for AntimonyIsotope {
             138u64 => Ok(Self::Sb138),
             139u64 => Ok(Self::Sb139),
             140u64 => Ok(Self::Sb140),
+            141u64 => Ok(Self::Sb141),
+            142u64 => Ok(Self::Sb142),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Sb, value)),
         }
     }
@@ -307,6 +317,8 @@ impl core::fmt::Display for AntimonyIsotope {
             Self::Sb138 => write!(f, "Sb138"),
             Self::Sb139 => write!(f, "Sb139"),
             Self::Sb140 => write!(f, "Sb140"),
+            Self::Sb141 => write!(f, "Sb141"),
+            Self::Sb142 => write!(f, "Sb142"),
         }
     }
 }

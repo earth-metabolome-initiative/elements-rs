@@ -80,6 +80,12 @@ pub enum SamariumIsotope {
     Sm164,
     /// Isotope Sm165 of Samarium
     Sm165,
+    /// Isotope Sm166 of Samarium
+    Sm166,
+    /// Isotope Sm167 of Samarium
+    Sm167,
+    /// Isotope Sm168 of Samarium
+    Sm168,
 }
 impl super::RelativeAtomicMass for SamariumIsotope {
     #[inline]
@@ -123,6 +129,9 @@ impl super::RelativeAtomicMass for SamariumIsotope {
             Self::Sm163 => 162.94555f64,
             Self::Sm164 => 163.94836f64,
             Self::Sm165 => 164.95297f64,
+            Self::Sm166 => 165.956575f64,
+            Self::Sm167 => 166.962072f64,
+            Self::Sm168 => 167.966033f64,
         }
     }
 }
@@ -174,6 +183,9 @@ impl super::MassNumber for SamariumIsotope {
             Self::Sm163 => 163u16,
             Self::Sm164 => 164u16,
             Self::Sm165 => 165u16,
+            Self::Sm166 => 166u16,
+            Self::Sm167 => 167u16,
+            Self::Sm168 => 168u16,
         }
     }
 }
@@ -249,6 +261,9 @@ impl TryFrom<u64> for SamariumIsotope {
             163u64 => Ok(Self::Sm163),
             164u64 => Ok(Self::Sm164),
             165u64 => Ok(Self::Sm165),
+            166u64 => Ok(Self::Sm166),
+            167u64 => Ok(Self::Sm167),
+            168u64 => Ok(Self::Sm168),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Sm, value)),
         }
     }
@@ -312,6 +327,9 @@ impl core::fmt::Display for SamariumIsotope {
             Self::Sm163 => write!(f, "Sm163"),
             Self::Sm164 => write!(f, "Sm164"),
             Self::Sm165 => write!(f, "Sm165"),
+            Self::Sm166 => write!(f, "Sm166"),
+            Self::Sm167 => write!(f, "Sm167"),
+            Self::Sm168 => write!(f, "Sm168"),
         }
     }
 }

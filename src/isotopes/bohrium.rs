@@ -20,22 +20,16 @@ pub enum BohriumIsotope {
     Bh266,
     /// Isotope Bh267 of Bohrium
     Bh267,
-    /// Isotope Bh268 of Bohrium
-    Bh268,
-    /// Isotope Bh269 of Bohrium
-    Bh269,
     /// Isotope Bh270 of Bohrium
     Bh270,
     /// Isotope Bh271 of Bohrium
     Bh271,
     /// Isotope Bh272 of Bohrium
     Bh272,
-    /// Isotope Bh273 of Bohrium
-    Bh273,
     /// Isotope Bh274 of Bohrium
     Bh274,
-    /// Isotope Bh275 of Bohrium
-    Bh275,
+    /// Isotope Bh278 of Bohrium
+    Bh278,
 }
 impl super::RelativeAtomicMass for BohriumIsotope {
     #[inline]
@@ -49,14 +43,11 @@ impl super::RelativeAtomicMass for BohriumIsotope {
             Self::Bh265 => 265.12491f64,
             Self::Bh266 => 266.12679f64,
             Self::Bh267 => 267.1275f64,
-            Self::Bh268 => 268.12969f64,
-            Self::Bh269 => 269.13042f64,
             Self::Bh270 => 270.13336f64,
             Self::Bh271 => 271.13526f64,
             Self::Bh272 => 272.13826f64,
-            Self::Bh273 => 273.14024f64,
             Self::Bh274 => 274.14355f64,
-            Self::Bh275 => 275.14567f64,
+            Self::Bh278 => 278.154988f64,
         }
     }
 }
@@ -78,14 +69,11 @@ impl super::MassNumber for BohriumIsotope {
             Self::Bh265 => 265u16,
             Self::Bh266 => 266u16,
             Self::Bh267 => 267u16,
-            Self::Bh268 => 268u16,
-            Self::Bh269 => 269u16,
             Self::Bh270 => 270u16,
             Self::Bh271 => 271u16,
             Self::Bh272 => 272u16,
-            Self::Bh273 => 273u16,
             Self::Bh274 => 274u16,
-            Self::Bh275 => 275u16,
+            Self::Bh278 => 278u16,
         }
     }
 }
@@ -97,7 +85,7 @@ impl super::IsotopicComposition for BohriumIsotope {
 }
 impl super::MostAbundantIsotope for BohriumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Bh275
+        Self::Bh278
     }
 }
 impl From<BohriumIsotope> for crate::Isotope {
@@ -122,14 +110,11 @@ impl TryFrom<u64> for BohriumIsotope {
             265u64 => Ok(Self::Bh265),
             266u64 => Ok(Self::Bh266),
             267u64 => Ok(Self::Bh267),
-            268u64 => Ok(Self::Bh268),
-            269u64 => Ok(Self::Bh269),
             270u64 => Ok(Self::Bh270),
             271u64 => Ok(Self::Bh271),
             272u64 => Ok(Self::Bh272),
-            273u64 => Ok(Self::Bh273),
             274u64 => Ok(Self::Bh274),
-            275u64 => Ok(Self::Bh275),
+            278u64 => Ok(Self::Bh278),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Bh, value)),
         }
     }
@@ -163,14 +148,11 @@ impl core::fmt::Display for BohriumIsotope {
             Self::Bh265 => write!(f, "Bh265"),
             Self::Bh266 => write!(f, "Bh266"),
             Self::Bh267 => write!(f, "Bh267"),
-            Self::Bh268 => write!(f, "Bh268"),
-            Self::Bh269 => write!(f, "Bh269"),
             Self::Bh270 => write!(f, "Bh270"),
             Self::Bh271 => write!(f, "Bh271"),
             Self::Bh272 => write!(f, "Bh272"),
-            Self::Bh273 => write!(f, "Bh273"),
             Self::Bh274 => write!(f, "Bh274"),
-            Self::Bh275 => write!(f, "Bh275"),
+            Self::Bh278 => write!(f, "Bh278"),
         }
     }
 }

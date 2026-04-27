@@ -4,12 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Gallium
 pub enum GalliumIsotope {
-    /// Isotope Ga56 of Gallium
-    Ga56,
-    /// Isotope Ga57 of Gallium
-    Ga57,
-    /// Isotope Ga58 of Gallium
-    Ga58,
     /// Isotope Ga59 of Gallium
     Ga59,
     /// Isotope Ga60 of Gallium
@@ -68,14 +62,13 @@ pub enum GalliumIsotope {
     Ga86,
     /// Isotope Ga87 of Gallium
     Ga87,
+    /// Isotope Ga88 of Gallium
+    Ga88,
 }
 impl super::RelativeAtomicMass for GalliumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Ga56 => 55.99536f64,
-            Self::Ga57 => 56.9832f64,
-            Self::Ga58 => 57.97478f64,
             Self::Ga59 => 58.96353f64,
             Self::Ga60 => 59.95729f64,
             Self::Ga61 => 60.949399f64,
@@ -105,6 +98,7 @@ impl super::RelativeAtomicMass for GalliumIsotope {
             Self::Ga85 => 84.95699f64,
             Self::Ga86 => 85.96301f64,
             Self::Ga87 => 86.96824f64,
+            Self::Ga88 => 87.975963f64,
         }
     }
 }
@@ -118,9 +112,6 @@ impl super::MassNumber for GalliumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Ga56 => 56u16,
-            Self::Ga57 => 57u16,
-            Self::Ga58 => 58u16,
             Self::Ga59 => 59u16,
             Self::Ga60 => 60u16,
             Self::Ga61 => 61u16,
@@ -150,6 +141,7 @@ impl super::MassNumber for GalliumIsotope {
             Self::Ga85 => 85u16,
             Self::Ga86 => 86u16,
             Self::Ga87 => 87u16,
+            Self::Ga88 => 88u16,
         }
     }
 }
@@ -182,9 +174,6 @@ impl TryFrom<u64> for GalliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            56u64 => Ok(Self::Ga56),
-            57u64 => Ok(Self::Ga57),
-            58u64 => Ok(Self::Ga58),
             59u64 => Ok(Self::Ga59),
             60u64 => Ok(Self::Ga60),
             61u64 => Ok(Self::Ga61),
@@ -214,6 +203,7 @@ impl TryFrom<u64> for GalliumIsotope {
             85u64 => Ok(Self::Ga85),
             86u64 => Ok(Self::Ga86),
             87u64 => Ok(Self::Ga87),
+            88u64 => Ok(Self::Ga88),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ga, value)),
         }
     }
@@ -239,9 +229,6 @@ impl TryFrom<u32> for GalliumIsotope {
 impl core::fmt::Display for GalliumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Ga56 => write!(f, "Ga56"),
-            Self::Ga57 => write!(f, "Ga57"),
-            Self::Ga58 => write!(f, "Ga58"),
             Self::Ga59 => write!(f, "Ga59"),
             Self::Ga60 => write!(f, "Ga60"),
             Self::Ga61 => write!(f, "Ga61"),
@@ -271,6 +258,7 @@ impl core::fmt::Display for GalliumIsotope {
             Self::Ga85 => write!(f, "Ga85"),
             Self::Ga86 => write!(f, "Ga86"),
             Self::Ga87 => write!(f, "Ga87"),
+            Self::Ga88 => write!(f, "Ga88"),
         }
     }
 }

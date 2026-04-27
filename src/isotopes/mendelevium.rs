@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Mendelevium
 pub enum MendeleviumIsotope {
+    /// Isotope Md244 of Mendelevium
+    Md244,
     /// Isotope Md245 of Mendelevium
     Md245,
     /// Isotope Md246 of Mendelevium
@@ -36,15 +38,12 @@ pub enum MendeleviumIsotope {
     Md259,
     /// Isotope Md260 of Mendelevium
     Md260,
-    /// Isotope Md261 of Mendelevium
-    Md261,
-    /// Isotope Md262 of Mendelevium
-    Md262,
 }
 impl super::RelativeAtomicMass for MendeleviumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Md244 => 244.081157f64,
             Self::Md245 => 245.08081f64,
             Self::Md246 => 246.08171f64,
             Self::Md247 => 247.08152f64,
@@ -61,8 +60,6 @@ impl super::RelativeAtomicMass for MendeleviumIsotope {
             Self::Md258 => 258.0984315f64,
             Self::Md259 => 259.10051f64,
             Self::Md260 => 260.10365f64,
-            Self::Md261 => 261.10583f64,
-            Self::Md262 => 262.1091f64,
         }
     }
 }
@@ -76,6 +73,7 @@ impl super::MassNumber for MendeleviumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Md244 => 244u16,
             Self::Md245 => 245u16,
             Self::Md246 => 246u16,
             Self::Md247 => 247u16,
@@ -92,8 +90,6 @@ impl super::MassNumber for MendeleviumIsotope {
             Self::Md258 => 258u16,
             Self::Md259 => 259u16,
             Self::Md260 => 260u16,
-            Self::Md261 => 261u16,
-            Self::Md262 => 262u16,
         }
     }
 }
@@ -105,7 +101,7 @@ impl super::IsotopicComposition for MendeleviumIsotope {
 }
 impl super::MostAbundantIsotope for MendeleviumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Md262
+        Self::Md260
     }
 }
 impl From<MendeleviumIsotope> for crate::Isotope {
@@ -122,6 +118,7 @@ impl TryFrom<u64> for MendeleviumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            244u64 => Ok(Self::Md244),
             245u64 => Ok(Self::Md245),
             246u64 => Ok(Self::Md246),
             247u64 => Ok(Self::Md247),
@@ -138,8 +135,6 @@ impl TryFrom<u64> for MendeleviumIsotope {
             258u64 => Ok(Self::Md258),
             259u64 => Ok(Self::Md259),
             260u64 => Ok(Self::Md260),
-            261u64 => Ok(Self::Md261),
-            262u64 => Ok(Self::Md262),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Md, value)),
         }
     }
@@ -165,6 +160,7 @@ impl TryFrom<u32> for MendeleviumIsotope {
 impl core::fmt::Display for MendeleviumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Md244 => write!(f, "Md244"),
             Self::Md245 => write!(f, "Md245"),
             Self::Md246 => write!(f, "Md246"),
             Self::Md247 => write!(f, "Md247"),
@@ -181,8 +177,6 @@ impl core::fmt::Display for MendeleviumIsotope {
             Self::Md258 => write!(f, "Md258"),
             Self::Md259 => write!(f, "Md259"),
             Self::Md260 => write!(f, "Md260"),
-            Self::Md261 => write!(f, "Md261"),
-            Self::Md262 => write!(f, "Md262"),
         }
     }
 }

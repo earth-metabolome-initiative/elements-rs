@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Beryllium
 pub enum BerylliumIsotope {
-    /// Isotope Be5 of Beryllium
-    Be5,
     /// Isotope Be6 of Beryllium
     Be6,
     /// Isotope Be7 of Beryllium
@@ -33,7 +31,6 @@ impl super::RelativeAtomicMass for BerylliumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Be5 => 5.0399f64,
             Self::Be6 => 6.0197264f64,
             Self::Be7 => 7.016928717f64,
             Self::Be8 => 8.005305102f64,
@@ -58,7 +55,6 @@ impl super::MassNumber for BerylliumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Be5 => 5u16,
             Self::Be6 => 6u16,
             Self::Be7 => 7u16,
             Self::Be8 => 8u16,
@@ -101,7 +97,6 @@ impl TryFrom<u64> for BerylliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            5u64 => Ok(Self::Be5),
             6u64 => Ok(Self::Be6),
             7u64 => Ok(Self::Be7),
             8u64 => Ok(Self::Be8),
@@ -138,7 +133,6 @@ impl TryFrom<u32> for BerylliumIsotope {
 impl core::fmt::Display for BerylliumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Be5 => write!(f, "Be5"),
             Self::Be6 => write!(f, "Be6"),
             Self::Be7 => write!(f, "Be7"),
             Self::Be8 => write!(f, "Be8"),

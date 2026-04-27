@@ -78,6 +78,12 @@ pub enum TerbiumIsotope {
     Tb170,
     /// Isotope Tb171 of Terbium
     Tb171,
+    /// Isotope Tb172 of Terbium
+    Tb172,
+    /// Isotope Tb173 of Terbium
+    Tb173,
+    /// Isotope Tb174 of Terbium
+    Tb174,
 }
 impl super::RelativeAtomicMass for TerbiumIsotope {
     #[inline]
@@ -120,6 +126,9 @@ impl super::RelativeAtomicMass for TerbiumIsotope {
             Self::Tb169 => 168.94597f64,
             Self::Tb170 => 169.94984f64,
             Self::Tb171 => 170.95273f64,
+            Self::Tb172 => 171.957391f64,
+            Self::Tb173 => 172.960805f64,
+            Self::Tb174 => 173.965679f64,
         }
     }
 }
@@ -170,6 +179,9 @@ impl super::MassNumber for TerbiumIsotope {
             Self::Tb169 => 169u16,
             Self::Tb170 => 170u16,
             Self::Tb171 => 171u16,
+            Self::Tb172 => 172u16,
+            Self::Tb173 => 173u16,
+            Self::Tb174 => 174u16,
         }
     }
 }
@@ -238,6 +250,9 @@ impl TryFrom<u64> for TerbiumIsotope {
             169u64 => Ok(Self::Tb169),
             170u64 => Ok(Self::Tb170),
             171u64 => Ok(Self::Tb171),
+            172u64 => Ok(Self::Tb172),
+            173u64 => Ok(Self::Tb173),
+            174u64 => Ok(Self::Tb174),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Tb, value)),
         }
     }
@@ -300,6 +315,9 @@ impl core::fmt::Display for TerbiumIsotope {
             Self::Tb169 => write!(f, "Tb169"),
             Self::Tb170 => write!(f, "Tb170"),
             Self::Tb171 => write!(f, "Tb171"),
+            Self::Tb172 => write!(f, "Tb172"),
+            Self::Tb173 => write!(f, "Tb173"),
+            Self::Tb174 => write!(f, "Tb174"),
         }
     }
 }

@@ -82,6 +82,10 @@ pub enum PraseodymiumIsotope {
     Pr158,
     /// Isotope Pr159 of Praseodymium
     Pr159,
+    /// Isotope Pr160 of Praseodymium
+    Pr160,
+    /// Isotope Pr161 of Praseodymium
+    Pr161,
 }
 impl super::RelativeAtomicMass for PraseodymiumIsotope {
     #[inline]
@@ -126,6 +130,8 @@ impl super::RelativeAtomicMass for PraseodymiumIsotope {
             Self::Pr157 => 156.94789f64,
             Self::Pr158 => 157.95241f64,
             Self::Pr159 => 158.95589f64,
+            Self::Pr160 => 159.961138f64,
+            Self::Pr161 => 160.965121f64,
         }
     }
 }
@@ -178,6 +184,8 @@ impl super::MassNumber for PraseodymiumIsotope {
             Self::Pr157 => 157u16,
             Self::Pr158 => 158u16,
             Self::Pr159 => 159u16,
+            Self::Pr160 => 160u16,
+            Self::Pr161 => 161u16,
         }
     }
 }
@@ -248,6 +256,8 @@ impl TryFrom<u64> for PraseodymiumIsotope {
             157u64 => Ok(Self::Pr157),
             158u64 => Ok(Self::Pr158),
             159u64 => Ok(Self::Pr159),
+            160u64 => Ok(Self::Pr160),
+            161u64 => Ok(Self::Pr161),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Pr, value)),
         }
     }
@@ -312,6 +322,8 @@ impl core::fmt::Display for PraseodymiumIsotope {
             Self::Pr157 => write!(f, "Pr157"),
             Self::Pr158 => write!(f, "Pr158"),
             Self::Pr159 => write!(f, "Pr159"),
+            Self::Pr160 => write!(f, "Pr160"),
+            Self::Pr161 => write!(f, "Pr161"),
         }
     }
 }

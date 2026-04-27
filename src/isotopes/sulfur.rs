@@ -80,7 +80,7 @@ impl super::RelativeAtomicMass for SulfurIsotope {
             Self::S46 => 46.00004f64,
             Self::S47 => 47.00795f64,
             Self::S48 => 48.0137f64,
-            Self::S49 => 49.02276f64,
+            Self::S49 => 49.021891f64,
         }
     }
 }

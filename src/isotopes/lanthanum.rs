@@ -84,6 +84,10 @@ pub enum LanthanumIsotope {
     La154,
     /// Isotope La155 of Lanthanum
     La155,
+    /// Isotope La156 of Lanthanum
+    La156,
+    /// Isotope La157 of Lanthanum
+    La157,
 }
 impl super::RelativeAtomicMass for LanthanumIsotope {
     #[inline]
@@ -129,6 +133,8 @@ impl super::RelativeAtomicMass for LanthanumIsotope {
             Self::La153 => 152.95036f64,
             Self::La154 => 153.95517f64,
             Self::La155 => 154.95901f64,
+            Self::La156 => 155.964519f64,
+            Self::La157 => 156.968792f64,
         }
     }
 }
@@ -182,6 +188,8 @@ impl super::MassNumber for LanthanumIsotope {
             Self::La153 => 153u16,
             Self::La154 => 154u16,
             Self::La155 => 155u16,
+            Self::La156 => 156u16,
+            Self::La157 => 157u16,
         }
     }
 }
@@ -254,6 +262,8 @@ impl TryFrom<u64> for LanthanumIsotope {
             153u64 => Ok(Self::La153),
             154u64 => Ok(Self::La154),
             155u64 => Ok(Self::La155),
+            156u64 => Ok(Self::La156),
+            157u64 => Ok(Self::La157),
             _ => Err(crate::errors::Error::Isotope(crate::Element::La, value)),
         }
     }
@@ -319,6 +329,8 @@ impl core::fmt::Display for LanthanumIsotope {
             Self::La153 => write!(f, "La153"),
             Self::La154 => write!(f, "La154"),
             Self::La155 => write!(f, "La155"),
+            Self::La156 => write!(f, "La156"),
+            Self::La157 => write!(f, "La157"),
         }
     }
 }

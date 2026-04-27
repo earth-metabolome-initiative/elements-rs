@@ -26,14 +26,12 @@ pub enum HassiumIsotope {
     Hs272,
     /// Isotope Hs273 of Hassium
     Hs273,
-    /// Isotope Hs274 of Hassium
-    Hs274,
     /// Isotope Hs275 of Hassium
     Hs275,
-    /// Isotope Hs276 of Hassium
-    Hs276,
     /// Isotope Hs277 of Hassium
     Hs277,
+    /// Isotope Hs278 of Hassium
+    Hs278,
 }
 impl super::RelativeAtomicMass for HassiumIsotope {
     #[inline]
@@ -50,10 +48,9 @@ impl super::RelativeAtomicMass for HassiumIsotope {
             Self::Hs271 => 271.13717f64,
             Self::Hs272 => 272.1385f64,
             Self::Hs273 => 273.14168f64,
-            Self::Hs274 => 274.1433f64,
             Self::Hs275 => 275.14667f64,
-            Self::Hs276 => 276.14846f64,
             Self::Hs277 => 277.1519f64,
+            Self::Hs278 => 278.153753f64,
         }
     }
 }
@@ -78,10 +75,9 @@ impl super::MassNumber for HassiumIsotope {
             Self::Hs271 => 271u16,
             Self::Hs272 => 272u16,
             Self::Hs273 => 273u16,
-            Self::Hs274 => 274u16,
             Self::Hs275 => 275u16,
-            Self::Hs276 => 276u16,
             Self::Hs277 => 277u16,
+            Self::Hs278 => 278u16,
         }
     }
 }
@@ -93,7 +89,7 @@ impl super::IsotopicComposition for HassiumIsotope {
 }
 impl super::MostAbundantIsotope for HassiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Hs277
+        Self::Hs278
     }
 }
 impl From<HassiumIsotope> for crate::Isotope {
@@ -121,10 +117,9 @@ impl TryFrom<u64> for HassiumIsotope {
             271u64 => Ok(Self::Hs271),
             272u64 => Ok(Self::Hs272),
             273u64 => Ok(Self::Hs273),
-            274u64 => Ok(Self::Hs274),
             275u64 => Ok(Self::Hs275),
-            276u64 => Ok(Self::Hs276),
             277u64 => Ok(Self::Hs277),
+            278u64 => Ok(Self::Hs278),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Hs, value)),
         }
     }
@@ -161,10 +156,9 @@ impl core::fmt::Display for HassiumIsotope {
             Self::Hs271 => write!(f, "Hs271"),
             Self::Hs272 => write!(f, "Hs272"),
             Self::Hs273 => write!(f, "Hs273"),
-            Self::Hs274 => write!(f, "Hs274"),
             Self::Hs275 => write!(f, "Hs275"),
-            Self::Hs276 => write!(f, "Hs276"),
             Self::Hs277 => write!(f, "Hs277"),
+            Self::Hs278 => write!(f, "Hs278"),
         }
     }
 }

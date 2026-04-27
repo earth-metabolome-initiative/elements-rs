@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Scandium
 pub enum ScandiumIsotope {
-    /// Isotope Sc36 of Scandium
-    Sc36,
     /// Isotope Sc37 of Scandium
     Sc37,
     /// Isotope Sc38 of Scandium
@@ -56,12 +54,15 @@ pub enum ScandiumIsotope {
     Sc60,
     /// Isotope Sc61 of Scandium
     Sc61,
+    /// Isotope Sc62 of Scandium
+    Sc62,
+    /// Isotope Sc63 of Scandium
+    Sc63,
 }
 impl super::RelativeAtomicMass for ScandiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Sc36 => 36.01648f64,
             Self::Sc37 => 37.00374f64,
             Self::Sc38 => 37.99512f64,
             Self::Sc39 => 38.984785f64,
@@ -85,8 +86,10 @@ impl super::RelativeAtomicMass for ScandiumIsotope {
             Self::Sc57 => 56.97777f64,
             Self::Sc58 => 57.98403f64,
             Self::Sc59 => 58.98894f64,
-            Self::Sc60 => 59.99565f64,
+            Self::Sc60 => 59.995115f64,
             Self::Sc61 => 61.001f64,
+            Self::Sc62 => 62.007848f64,
+            Self::Sc63 => 63.014031f64,
         }
     }
 }
@@ -100,7 +103,6 @@ impl super::MassNumber for ScandiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Sc36 => 36u16,
             Self::Sc37 => 37u16,
             Self::Sc38 => 38u16,
             Self::Sc39 => 39u16,
@@ -126,6 +128,8 @@ impl super::MassNumber for ScandiumIsotope {
             Self::Sc59 => 59u16,
             Self::Sc60 => 60u16,
             Self::Sc61 => 61u16,
+            Self::Sc62 => 62u16,
+            Self::Sc63 => 63u16,
         }
     }
 }
@@ -157,7 +161,6 @@ impl TryFrom<u64> for ScandiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            36u64 => Ok(Self::Sc36),
             37u64 => Ok(Self::Sc37),
             38u64 => Ok(Self::Sc38),
             39u64 => Ok(Self::Sc39),
@@ -183,6 +186,8 @@ impl TryFrom<u64> for ScandiumIsotope {
             59u64 => Ok(Self::Sc59),
             60u64 => Ok(Self::Sc60),
             61u64 => Ok(Self::Sc61),
+            62u64 => Ok(Self::Sc62),
+            63u64 => Ok(Self::Sc63),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Sc, value)),
         }
     }
@@ -208,7 +213,6 @@ impl TryFrom<u32> for ScandiumIsotope {
 impl core::fmt::Display for ScandiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Sc36 => write!(f, "Sc36"),
             Self::Sc37 => write!(f, "Sc37"),
             Self::Sc38 => write!(f, "Sc38"),
             Self::Sc39 => write!(f, "Sc39"),
@@ -234,6 +238,8 @@ impl core::fmt::Display for ScandiumIsotope {
             Self::Sc59 => write!(f, "Sc59"),
             Self::Sc60 => write!(f, "Sc60"),
             Self::Sc61 => write!(f, "Sc61"),
+            Self::Sc62 => write!(f, "Sc62"),
+            Self::Sc63 => write!(f, "Sc63"),
         }
     }
 }

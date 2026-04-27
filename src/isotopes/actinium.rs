@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Actinium
 pub enum ActiniumIsotope {
+    /// Isotope Ac205 of Actinium
+    Ac205,
     /// Isotope Ac206 of Actinium
     Ac206,
     /// Isotope Ac207 of Actinium
@@ -66,13 +68,12 @@ pub enum ActiniumIsotope {
     Ac235,
     /// Isotope Ac236 of Actinium
     Ac236,
-    /// Isotope Ac237 of Actinium
-    Ac237,
 }
 impl super::RelativeAtomicMass for ActiniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Ac205 => 205.015144152f64,
             Self::Ac206 => 206.014452f64,
             Self::Ac207 => 207.011966f64,
             Self::Ac208 => 208.01155f64,
@@ -104,7 +105,6 @@ impl super::RelativeAtomicMass for ActiniumIsotope {
             Self::Ac234 => 234.048139f64,
             Self::Ac235 => 235.05084f64,
             Self::Ac236 => 236.054988f64,
-            Self::Ac237 => 237.05827f64,
         }
     }
 }
@@ -118,6 +118,7 @@ impl super::MassNumber for ActiniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Ac205 => 205u16,
             Self::Ac206 => 206u16,
             Self::Ac207 => 207u16,
             Self::Ac208 => 208u16,
@@ -149,7 +150,6 @@ impl super::MassNumber for ActiniumIsotope {
             Self::Ac234 => 234u16,
             Self::Ac235 => 235u16,
             Self::Ac236 => 236u16,
-            Self::Ac237 => 237u16,
         }
     }
 }
@@ -161,7 +161,7 @@ impl super::IsotopicComposition for ActiniumIsotope {
 }
 impl super::MostAbundantIsotope for ActiniumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Ac237
+        Self::Ac236
     }
 }
 impl From<ActiniumIsotope> for crate::Isotope {
@@ -178,6 +178,7 @@ impl TryFrom<u64> for ActiniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            205u64 => Ok(Self::Ac205),
             206u64 => Ok(Self::Ac206),
             207u64 => Ok(Self::Ac207),
             208u64 => Ok(Self::Ac208),
@@ -209,7 +210,6 @@ impl TryFrom<u64> for ActiniumIsotope {
             234u64 => Ok(Self::Ac234),
             235u64 => Ok(Self::Ac235),
             236u64 => Ok(Self::Ac236),
-            237u64 => Ok(Self::Ac237),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ac, value)),
         }
     }
@@ -235,6 +235,7 @@ impl TryFrom<u32> for ActiniumIsotope {
 impl core::fmt::Display for ActiniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Ac205 => write!(f, "Ac205"),
             Self::Ac206 => write!(f, "Ac206"),
             Self::Ac207 => write!(f, "Ac207"),
             Self::Ac208 => write!(f, "Ac208"),
@@ -266,7 +267,6 @@ impl core::fmt::Display for ActiniumIsotope {
             Self::Ac234 => write!(f, "Ac234"),
             Self::Ac235 => write!(f, "Ac235"),
             Self::Ac236 => write!(f, "Ac236"),
-            Self::Ac237 => write!(f, "Ac237"),
         }
     }
 }

@@ -4,24 +4,12 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Meitnerium
 pub enum MeitneriumIsotope {
-    /// Isotope Mt265 of Meitnerium
-    Mt265,
     /// Isotope Mt266 of Meitnerium
     Mt266,
-    /// Isotope Mt267 of Meitnerium
-    Mt267,
     /// Isotope Mt268 of Meitnerium
     Mt268,
-    /// Isotope Mt269 of Meitnerium
-    Mt269,
     /// Isotope Mt270 of Meitnerium
     Mt270,
-    /// Isotope Mt271 of Meitnerium
-    Mt271,
-    /// Isotope Mt272 of Meitnerium
-    Mt272,
-    /// Isotope Mt273 of Meitnerium
-    Mt273,
     /// Isotope Mt274 of Meitnerium
     Mt274,
     /// Isotope Mt275 of Meitnerium
@@ -32,28 +20,22 @@ pub enum MeitneriumIsotope {
     Mt277,
     /// Isotope Mt278 of Meitnerium
     Mt278,
-    /// Isotope Mt279 of Meitnerium
-    Mt279,
+    /// Isotope Mt282 of Meitnerium
+    Mt282,
 }
 impl super::RelativeAtomicMass for MeitneriumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Mt265 => 265.136f64,
             Self::Mt266 => 266.13737f64,
-            Self::Mt267 => 267.13719f64,
             Self::Mt268 => 268.13865f64,
-            Self::Mt269 => 269.13882f64,
             Self::Mt270 => 270.14033f64,
-            Self::Mt271 => 271.14074f64,
-            Self::Mt272 => 272.14341f64,
-            Self::Mt273 => 273.1444f64,
             Self::Mt274 => 274.14724f64,
             Self::Mt275 => 275.14882f64,
             Self::Mt276 => 276.15159f64,
             Self::Mt277 => 277.15327f64,
             Self::Mt278 => 278.15631f64,
-            Self::Mt279 => 279.15808f64,
+            Self::Mt282 => 282.166888f64,
         }
     }
 }
@@ -67,21 +49,15 @@ impl super::MassNumber for MeitneriumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Mt265 => 265u16,
             Self::Mt266 => 266u16,
-            Self::Mt267 => 267u16,
             Self::Mt268 => 268u16,
-            Self::Mt269 => 269u16,
             Self::Mt270 => 270u16,
-            Self::Mt271 => 271u16,
-            Self::Mt272 => 272u16,
-            Self::Mt273 => 273u16,
             Self::Mt274 => 274u16,
             Self::Mt275 => 275u16,
             Self::Mt276 => 276u16,
             Self::Mt277 => 277u16,
             Self::Mt278 => 278u16,
-            Self::Mt279 => 279u16,
+            Self::Mt282 => 282u16,
         }
     }
 }
@@ -93,7 +69,7 @@ impl super::IsotopicComposition for MeitneriumIsotope {
 }
 impl super::MostAbundantIsotope for MeitneriumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Mt279
+        Self::Mt282
     }
 }
 impl From<MeitneriumIsotope> for crate::Isotope {
@@ -110,21 +86,15 @@ impl TryFrom<u64> for MeitneriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            265u64 => Ok(Self::Mt265),
             266u64 => Ok(Self::Mt266),
-            267u64 => Ok(Self::Mt267),
             268u64 => Ok(Self::Mt268),
-            269u64 => Ok(Self::Mt269),
             270u64 => Ok(Self::Mt270),
-            271u64 => Ok(Self::Mt271),
-            272u64 => Ok(Self::Mt272),
-            273u64 => Ok(Self::Mt273),
             274u64 => Ok(Self::Mt274),
             275u64 => Ok(Self::Mt275),
             276u64 => Ok(Self::Mt276),
             277u64 => Ok(Self::Mt277),
             278u64 => Ok(Self::Mt278),
-            279u64 => Ok(Self::Mt279),
+            282u64 => Ok(Self::Mt282),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Mt, value)),
         }
     }
@@ -150,21 +120,15 @@ impl TryFrom<u32> for MeitneriumIsotope {
 impl core::fmt::Display for MeitneriumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Mt265 => write!(f, "Mt265"),
             Self::Mt266 => write!(f, "Mt266"),
-            Self::Mt267 => write!(f, "Mt267"),
             Self::Mt268 => write!(f, "Mt268"),
-            Self::Mt269 => write!(f, "Mt269"),
             Self::Mt270 => write!(f, "Mt270"),
-            Self::Mt271 => write!(f, "Mt271"),
-            Self::Mt272 => write!(f, "Mt272"),
-            Self::Mt273 => write!(f, "Mt273"),
             Self::Mt274 => write!(f, "Mt274"),
             Self::Mt275 => write!(f, "Mt275"),
             Self::Mt276 => write!(f, "Mt276"),
             Self::Mt277 => write!(f, "Mt277"),
             Self::Mt278 => write!(f, "Mt278"),
-            Self::Mt279 => write!(f, "Mt279"),
+            Self::Mt282 => write!(f, "Mt282"),
         }
     }
 }

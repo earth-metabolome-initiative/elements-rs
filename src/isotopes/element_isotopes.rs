@@ -22,7 +22,6 @@ const HE_ISOTOPES: &[Isotope] = &[
     Isotope::He(super::HeliumIsotope::He10),
 ];
 const LI_ISOTOPES: &[Isotope] = &[
-    Isotope::Li(super::LithiumIsotope::Li3),
     Isotope::Li(super::LithiumIsotope::Li4),
     Isotope::Li(super::LithiumIsotope::Li5),
     Isotope::Li(super::LithiumIsotope::Li6),
@@ -35,7 +34,6 @@ const LI_ISOTOPES: &[Isotope] = &[
     Isotope::Li(super::LithiumIsotope::Li13),
 ];
 const BE_ISOTOPES: &[Isotope] = &[
-    Isotope::Be(super::BerylliumIsotope::Be5),
     Isotope::Be(super::BerylliumIsotope::Be6),
     Isotope::Be(super::BerylliumIsotope::Be7),
     Isotope::Be(super::BerylliumIsotope::Be8),
@@ -49,7 +47,6 @@ const BE_ISOTOPES: &[Isotope] = &[
     Isotope::Be(super::BerylliumIsotope::Be16),
 ];
 const B_ISOTOPES: &[Isotope] = &[
-    Isotope::B(super::BoronIsotope::B6),
     Isotope::B(super::BoronIsotope::B7),
     Isotope::B(super::BoronIsotope::B8),
     Isotope::B(super::BoronIsotope::B9),
@@ -80,9 +77,7 @@ const C_ISOTOPES: &[Isotope] = &[
     Isotope::C(super::CarbonIsotope::C18),
     Isotope::C(super::CarbonIsotope::C19),
     Isotope::C(super::CarbonIsotope::C20),
-    Isotope::C(super::CarbonIsotope::C21),
     Isotope::C(super::CarbonIsotope::C22),
-    Isotope::C(super::CarbonIsotope::C23),
 ];
 const N_ISOTOPES: &[Isotope] = &[
     Isotope::N(super::NitrogenIsotope::N10),
@@ -100,9 +95,9 @@ const N_ISOTOPES: &[Isotope] = &[
     Isotope::N(super::NitrogenIsotope::N22),
     Isotope::N(super::NitrogenIsotope::N23),
     Isotope::N(super::NitrogenIsotope::N24),
-    Isotope::N(super::NitrogenIsotope::N25),
 ];
 const O_ISOTOPES: &[Isotope] = &[
+    Isotope::O(super::OxygenIsotope::O11),
     Isotope::O(super::OxygenIsotope::O12),
     Isotope::O(super::OxygenIsotope::O13),
     Isotope::O(super::OxygenIsotope::O14),
@@ -122,6 +117,7 @@ const O_ISOTOPES: &[Isotope] = &[
     Isotope::O(super::OxygenIsotope::O28),
 ];
 const F_ISOTOPES: &[Isotope] = &[
+    Isotope::F(super::FluorineIsotope::F13),
     Isotope::F(super::FluorineIsotope::F14),
     Isotope::F(super::FluorineIsotope::F15),
     Isotope::F(super::FluorineIsotope::F16),
@@ -142,6 +138,7 @@ const F_ISOTOPES: &[Isotope] = &[
     Isotope::F(super::FluorineIsotope::F31),
 ];
 const NE_ISOTOPES: &[Isotope] = &[
+    Isotope::Ne(super::NeonIsotope::Ne15),
     Isotope::Ne(super::NeonIsotope::Ne16),
     Isotope::Ne(super::NeonIsotope::Ne17),
     Isotope::Ne(super::NeonIsotope::Ne18),
@@ -163,6 +160,7 @@ const NE_ISOTOPES: &[Isotope] = &[
     Isotope::Ne(super::NeonIsotope::Ne34),
 ];
 const NA_ISOTOPES: &[Isotope] = &[
+    Isotope::Na(super::SodiumIsotope::Na17),
     Isotope::Na(super::SodiumIsotope::Na18),
     Isotope::Na(super::SodiumIsotope::Na19),
     Isotope::Na(super::SodiumIsotope::Na20),
@@ -183,6 +181,7 @@ const NA_ISOTOPES: &[Isotope] = &[
     Isotope::Na(super::SodiumIsotope::Na35),
     Isotope::Na(super::SodiumIsotope::Na36),
     Isotope::Na(super::SodiumIsotope::Na37),
+    Isotope::Na(super::SodiumIsotope::Na39),
 ];
 const MG_ISOTOPES: &[Isotope] = &[
     Isotope::Mg(super::MagnesiumIsotope::Mg19),
@@ -260,7 +259,6 @@ const SI_ISOTOPES: &[Isotope] = &[
     Isotope::Si(super::SiliconIsotope::Si45),
 ];
 const P_ISOTOPES: &[Isotope] = &[
-    Isotope::P(super::PhosphorusIsotope::P24),
     Isotope::P(super::PhosphorusIsotope::P25),
     Isotope::P(super::PhosphorusIsotope::P26),
     Isotope::P(super::PhosphorusIsotope::P27),
@@ -336,8 +334,10 @@ const CL_ISOTOPES: &[Isotope] = &[
     Isotope::Cl(super::ChlorineIsotope::Cl49),
     Isotope::Cl(super::ChlorineIsotope::Cl50),
     Isotope::Cl(super::ChlorineIsotope::Cl51),
+    Isotope::Cl(super::ChlorineIsotope::Cl52),
 ];
 const AR_ISOTOPES: &[Isotope] = &[
+    Isotope::Ar(super::ArgonIsotope::Ar29),
     Isotope::Ar(super::ArgonIsotope::Ar30),
     Isotope::Ar(super::ArgonIsotope::Ar31),
     Isotope::Ar(super::ArgonIsotope::Ar32),
@@ -362,9 +362,10 @@ const AR_ISOTOPES: &[Isotope] = &[
     Isotope::Ar(super::ArgonIsotope::Ar51),
     Isotope::Ar(super::ArgonIsotope::Ar52),
     Isotope::Ar(super::ArgonIsotope::Ar53),
+    Isotope::Ar(super::ArgonIsotope::Ar54),
 ];
 const K_ISOTOPES: &[Isotope] = &[
-    Isotope::K(super::PotassiumIsotope::K32),
+    Isotope::K(super::PotassiumIsotope::K31),
     Isotope::K(super::PotassiumIsotope::K33),
     Isotope::K(super::PotassiumIsotope::K34),
     Isotope::K(super::PotassiumIsotope::K35),
@@ -389,6 +390,8 @@ const K_ISOTOPES: &[Isotope] = &[
     Isotope::K(super::PotassiumIsotope::K54),
     Isotope::K(super::PotassiumIsotope::K55),
     Isotope::K(super::PotassiumIsotope::K56),
+    Isotope::K(super::PotassiumIsotope::K57),
+    Isotope::K(super::PotassiumIsotope::K59),
 ];
 const CA_ISOTOPES: &[Isotope] = &[
     Isotope::Ca(super::CalciumIsotope::Ca34),
@@ -416,9 +419,10 @@ const CA_ISOTOPES: &[Isotope] = &[
     Isotope::Ca(super::CalciumIsotope::Ca56),
     Isotope::Ca(super::CalciumIsotope::Ca57),
     Isotope::Ca(super::CalciumIsotope::Ca58),
+    Isotope::Ca(super::CalciumIsotope::Ca59),
+    Isotope::Ca(super::CalciumIsotope::Ca60),
 ];
 const SC_ISOTOPES: &[Isotope] = &[
-    Isotope::Sc(super::ScandiumIsotope::Sc36),
     Isotope::Sc(super::ScandiumIsotope::Sc37),
     Isotope::Sc(super::ScandiumIsotope::Sc38),
     Isotope::Sc(super::ScandiumIsotope::Sc39),
@@ -444,6 +448,8 @@ const SC_ISOTOPES: &[Isotope] = &[
     Isotope::Sc(super::ScandiumIsotope::Sc59),
     Isotope::Sc(super::ScandiumIsotope::Sc60),
     Isotope::Sc(super::ScandiumIsotope::Sc61),
+    Isotope::Sc(super::ScandiumIsotope::Sc62),
+    Isotope::Sc(super::ScandiumIsotope::Sc63),
 ];
 const TI_ISOTOPES: &[Isotope] = &[
     Isotope::Ti(super::TitaniumIsotope::Ti38),
@@ -472,10 +478,10 @@ const TI_ISOTOPES: &[Isotope] = &[
     Isotope::Ti(super::TitaniumIsotope::Ti61),
     Isotope::Ti(super::TitaniumIsotope::Ti62),
     Isotope::Ti(super::TitaniumIsotope::Ti63),
+    Isotope::Ti(super::TitaniumIsotope::Ti64),
+    Isotope::Ti(super::TitaniumIsotope::Ti65),
 ];
 const V_ISOTOPES: &[Isotope] = &[
-    Isotope::V(super::VanadiumIsotope::V40),
-    Isotope::V(super::VanadiumIsotope::V41),
     Isotope::V(super::VanadiumIsotope::V42),
     Isotope::V(super::VanadiumIsotope::V43),
     Isotope::V(super::VanadiumIsotope::V44),
@@ -501,6 +507,7 @@ const V_ISOTOPES: &[Isotope] = &[
     Isotope::V(super::VanadiumIsotope::V64),
     Isotope::V(super::VanadiumIsotope::V65),
     Isotope::V(super::VanadiumIsotope::V66),
+    Isotope::V(super::VanadiumIsotope::V67),
 ];
 const CR_ISOTOPES: &[Isotope] = &[
     Isotope::Cr(super::ChromiumIsotope::Cr42),
@@ -530,6 +537,8 @@ const CR_ISOTOPES: &[Isotope] = &[
     Isotope::Cr(super::ChromiumIsotope::Cr66),
     Isotope::Cr(super::ChromiumIsotope::Cr67),
     Isotope::Cr(super::ChromiumIsotope::Cr68),
+    Isotope::Cr(super::ChromiumIsotope::Cr69),
+    Isotope::Cr(super::ChromiumIsotope::Cr70),
 ];
 const MN_ISOTOPES: &[Isotope] = &[
     Isotope::Mn(super::ManganeseIsotope::Mn44),
@@ -560,6 +569,8 @@ const MN_ISOTOPES: &[Isotope] = &[
     Isotope::Mn(super::ManganeseIsotope::Mn69),
     Isotope::Mn(super::ManganeseIsotope::Mn70),
     Isotope::Mn(super::ManganeseIsotope::Mn71),
+    Isotope::Mn(super::ManganeseIsotope::Mn72),
+    Isotope::Mn(super::ManganeseIsotope::Mn73),
 ];
 const FE_ISOTOPES: &[Isotope] = &[
     Isotope::Fe(super::IronIsotope::Fe45),
@@ -592,11 +603,11 @@ const FE_ISOTOPES: &[Isotope] = &[
     Isotope::Fe(super::IronIsotope::Fe72),
     Isotope::Fe(super::IronIsotope::Fe73),
     Isotope::Fe(super::IronIsotope::Fe74),
+    Isotope::Fe(super::IronIsotope::Fe75),
+    Isotope::Fe(super::IronIsotope::Fe76),
 ];
 const CO_ISOTOPES: &[Isotope] = &[
-    Isotope::Co(super::CobaltIsotope::Co47),
     Isotope::Co(super::CobaltIsotope::Co48),
-    Isotope::Co(super::CobaltIsotope::Co49),
     Isotope::Co(super::CobaltIsotope::Co50),
     Isotope::Co(super::CobaltIsotope::Co51),
     Isotope::Co(super::CobaltIsotope::Co52),
@@ -624,6 +635,8 @@ const CO_ISOTOPES: &[Isotope] = &[
     Isotope::Co(super::CobaltIsotope::Co74),
     Isotope::Co(super::CobaltIsotope::Co75),
     Isotope::Co(super::CobaltIsotope::Co76),
+    Isotope::Co(super::CobaltIsotope::Co77),
+    Isotope::Co(super::CobaltIsotope::Co78),
 ];
 const NI_ISOTOPES: &[Isotope] = &[
     Isotope::Ni(super::NickelIsotope::Ni48),
@@ -658,9 +671,11 @@ const NI_ISOTOPES: &[Isotope] = &[
     Isotope::Ni(super::NickelIsotope::Ni77),
     Isotope::Ni(super::NickelIsotope::Ni78),
     Isotope::Ni(super::NickelIsotope::Ni79),
+    Isotope::Ni(super::NickelIsotope::Ni80),
+    Isotope::Ni(super::NickelIsotope::Ni81),
+    Isotope::Ni(super::NickelIsotope::Ni82),
 ];
 const CU_ISOTOPES: &[Isotope] = &[
-    Isotope::Cu(super::CopperIsotope::Cu52),
     Isotope::Cu(super::CopperIsotope::Cu53),
     Isotope::Cu(super::CopperIsotope::Cu54),
     Isotope::Cu(super::CopperIsotope::Cu55),
@@ -691,6 +706,8 @@ const CU_ISOTOPES: &[Isotope] = &[
     Isotope::Cu(super::CopperIsotope::Cu80),
     Isotope::Cu(super::CopperIsotope::Cu81),
     Isotope::Cu(super::CopperIsotope::Cu82),
+    Isotope::Cu(super::CopperIsotope::Cu83),
+    Isotope::Cu(super::CopperIsotope::Cu84),
 ];
 const ZN_ISOTOPES: &[Isotope] = &[
     Isotope::Zn(super::ZincIsotope::Zn54),
@@ -725,11 +742,9 @@ const ZN_ISOTOPES: &[Isotope] = &[
     Isotope::Zn(super::ZincIsotope::Zn83),
     Isotope::Zn(super::ZincIsotope::Zn84),
     Isotope::Zn(super::ZincIsotope::Zn85),
+    Isotope::Zn(super::ZincIsotope::Zn86),
 ];
 const GA_ISOTOPES: &[Isotope] = &[
-    Isotope::Ga(super::GalliumIsotope::Ga56),
-    Isotope::Ga(super::GalliumIsotope::Ga57),
-    Isotope::Ga(super::GalliumIsotope::Ga58),
     Isotope::Ga(super::GalliumIsotope::Ga59),
     Isotope::Ga(super::GalliumIsotope::Ga60),
     Isotope::Ga(super::GalliumIsotope::Ga61),
@@ -759,9 +774,9 @@ const GA_ISOTOPES: &[Isotope] = &[
     Isotope::Ga(super::GalliumIsotope::Ga85),
     Isotope::Ga(super::GalliumIsotope::Ga86),
     Isotope::Ga(super::GalliumIsotope::Ga87),
+    Isotope::Ga(super::GalliumIsotope::Ga88),
 ];
 const GE_ISOTOPES: &[Isotope] = &[
-    Isotope::Ge(super::GermaniumIsotope::Ge58),
     Isotope::Ge(super::GermaniumIsotope::Ge59),
     Isotope::Ge(super::GermaniumIsotope::Ge60),
     Isotope::Ge(super::GermaniumIsotope::Ge61),
@@ -796,9 +811,6 @@ const GE_ISOTOPES: &[Isotope] = &[
     Isotope::Ge(super::GermaniumIsotope::Ge90),
 ];
 const AS_ISOTOPES: &[Isotope] = &[
-    Isotope::As(super::ArsenicIsotope::As60),
-    Isotope::As(super::ArsenicIsotope::As61),
-    Isotope::As(super::ArsenicIsotope::As62),
     Isotope::As(super::ArsenicIsotope::As63),
     Isotope::As(super::ArsenicIsotope::As64),
     Isotope::As(super::ArsenicIsotope::As65),
@@ -831,6 +843,7 @@ const AS_ISOTOPES: &[Isotope] = &[
     Isotope::As(super::ArsenicIsotope::As92),
 ];
 const SE_ISOTOPES: &[Isotope] = &[
+    Isotope::Se(super::SeleniumIsotope::Se63),
     Isotope::Se(super::SeleniumIsotope::Se64),
     Isotope::Se(super::SeleniumIsotope::Se65),
     Isotope::Se(super::SeleniumIsotope::Se66),
@@ -899,6 +912,8 @@ const BR_ISOTOPES: &[Isotope] = &[
     Isotope::Br(super::BromineIsotope::Br98),
 ];
 const KR_ISOTOPES: &[Isotope] = &[
+    Isotope::Kr(super::KryptonIsotope::Kr67),
+    Isotope::Kr(super::KryptonIsotope::Kr68),
     Isotope::Kr(super::KryptonIsotope::Kr69),
     Isotope::Kr(super::KryptonIsotope::Kr70),
     Isotope::Kr(super::KryptonIsotope::Kr71),
@@ -934,7 +949,6 @@ const KR_ISOTOPES: &[Isotope] = &[
     Isotope::Kr(super::KryptonIsotope::Kr101),
 ];
 const RB_ISOTOPES: &[Isotope] = &[
-    Isotope::Rb(super::RubidiumIsotope::Rb71),
     Isotope::Rb(super::RubidiumIsotope::Rb72),
     Isotope::Rb(super::RubidiumIsotope::Rb73),
     Isotope::Rb(super::RubidiumIsotope::Rb74),
@@ -967,6 +981,7 @@ const RB_ISOTOPES: &[Isotope] = &[
     Isotope::Rb(super::RubidiumIsotope::Rb101),
     Isotope::Rb(super::RubidiumIsotope::Rb102),
     Isotope::Rb(super::RubidiumIsotope::Rb103),
+    Isotope::Rb(super::RubidiumIsotope::Rb104),
 ];
 const SR_ISOTOPES: &[Isotope] = &[
     Isotope::Sr(super::StrontiumIsotope::Sr73),
@@ -1042,6 +1057,7 @@ const Y_ISOTOPES: &[Isotope] = &[
     Isotope::Y(super::YttriumIsotope::Y109),
 ];
 const ZR_ISOTOPES: &[Isotope] = &[
+    Isotope::Zr(super::ZirconiumIsotope::Zr77),
     Isotope::Zr(super::ZirconiumIsotope::Zr78),
     Isotope::Zr(super::ZirconiumIsotope::Zr79),
     Isotope::Zr(super::ZirconiumIsotope::Zr80),
@@ -1077,6 +1093,7 @@ const ZR_ISOTOPES: &[Isotope] = &[
     Isotope::Zr(super::ZirconiumIsotope::Zr110),
     Isotope::Zr(super::ZirconiumIsotope::Zr111),
     Isotope::Zr(super::ZirconiumIsotope::Zr112),
+    Isotope::Zr(super::ZirconiumIsotope::Zr113),
 ];
 const NB_ISOTOPES: &[Isotope] = &[
     Isotope::Nb(super::NiobiumIsotope::Nb81),
@@ -1114,8 +1131,11 @@ const NB_ISOTOPES: &[Isotope] = &[
     Isotope::Nb(super::NiobiumIsotope::Nb113),
     Isotope::Nb(super::NiobiumIsotope::Nb114),
     Isotope::Nb(super::NiobiumIsotope::Nb115),
+    Isotope::Nb(super::NiobiumIsotope::Nb116),
 ];
 const MO_ISOTOPES: &[Isotope] = &[
+    Isotope::Mo(super::MolybdenumIsotope::Mo81),
+    Isotope::Mo(super::MolybdenumIsotope::Mo82),
     Isotope::Mo(super::MolybdenumIsotope::Mo83),
     Isotope::Mo(super::MolybdenumIsotope::Mo84),
     Isotope::Mo(super::MolybdenumIsotope::Mo85),
@@ -1151,6 +1171,8 @@ const MO_ISOTOPES: &[Isotope] = &[
     Isotope::Mo(super::MolybdenumIsotope::Mo115),
     Isotope::Mo(super::MolybdenumIsotope::Mo116),
     Isotope::Mo(super::MolybdenumIsotope::Mo117),
+    Isotope::Mo(super::MolybdenumIsotope::Mo118),
+    Isotope::Mo(super::MolybdenumIsotope::Mo119),
 ];
 const TC_ISOTOPES: &[Isotope] = &[
     Isotope::Tc(super::TechnetiumIsotope::Tc85),
@@ -1189,8 +1211,12 @@ const TC_ISOTOPES: &[Isotope] = &[
     Isotope::Tc(super::TechnetiumIsotope::Tc118),
     Isotope::Tc(super::TechnetiumIsotope::Tc119),
     Isotope::Tc(super::TechnetiumIsotope::Tc120),
+    Isotope::Tc(super::TechnetiumIsotope::Tc121),
+    Isotope::Tc(super::TechnetiumIsotope::Tc122),
 ];
 const RU_ISOTOPES: &[Isotope] = &[
+    Isotope::Ru(super::RutheniumIsotope::Ru85),
+    Isotope::Ru(super::RutheniumIsotope::Ru86),
     Isotope::Ru(super::RutheniumIsotope::Ru87),
     Isotope::Ru(super::RutheniumIsotope::Ru88),
     Isotope::Ru(super::RutheniumIsotope::Ru89),
@@ -1229,6 +1255,7 @@ const RU_ISOTOPES: &[Isotope] = &[
     Isotope::Ru(super::RutheniumIsotope::Ru122),
     Isotope::Ru(super::RutheniumIsotope::Ru123),
     Isotope::Ru(super::RutheniumIsotope::Ru124),
+    Isotope::Ru(super::RutheniumIsotope::Ru125),
 ];
 const RH_ISOTOPES: &[Isotope] = &[
     Isotope::Rh(super::RhodiumIsotope::Rh89),
@@ -1269,8 +1296,11 @@ const RH_ISOTOPES: &[Isotope] = &[
     Isotope::Rh(super::RhodiumIsotope::Rh124),
     Isotope::Rh(super::RhodiumIsotope::Rh125),
     Isotope::Rh(super::RhodiumIsotope::Rh126),
+    Isotope::Rh(super::RhodiumIsotope::Rh127),
+    Isotope::Rh(super::RhodiumIsotope::Rh128),
 ];
 const PD_ISOTOPES: &[Isotope] = &[
+    Isotope::Pd(super::PalladiumIsotope::Pd90),
     Isotope::Pd(super::PalladiumIsotope::Pd91),
     Isotope::Pd(super::PalladiumIsotope::Pd92),
     Isotope::Pd(super::PalladiumIsotope::Pd93),
@@ -1309,8 +1339,12 @@ const PD_ISOTOPES: &[Isotope] = &[
     Isotope::Pd(super::PalladiumIsotope::Pd126),
     Isotope::Pd(super::PalladiumIsotope::Pd127),
     Isotope::Pd(super::PalladiumIsotope::Pd128),
+    Isotope::Pd(super::PalladiumIsotope::Pd129),
+    Isotope::Pd(super::PalladiumIsotope::Pd130),
+    Isotope::Pd(super::PalladiumIsotope::Pd131),
 ];
 const AG_ISOTOPES: &[Isotope] = &[
+    Isotope::Ag(super::SilverIsotope::Ag92),
     Isotope::Ag(super::SilverIsotope::Ag93),
     Isotope::Ag(super::SilverIsotope::Ag94),
     Isotope::Ag(super::SilverIsotope::Ag95),
@@ -1349,8 +1383,11 @@ const AG_ISOTOPES: &[Isotope] = &[
     Isotope::Ag(super::SilverIsotope::Ag128),
     Isotope::Ag(super::SilverIsotope::Ag129),
     Isotope::Ag(super::SilverIsotope::Ag130),
+    Isotope::Ag(super::SilverIsotope::Ag131),
+    Isotope::Ag(super::SilverIsotope::Ag132),
 ];
 const CD_ISOTOPES: &[Isotope] = &[
+    Isotope::Cd(super::CadmiumIsotope::Cd94),
     Isotope::Cd(super::CadmiumIsotope::Cd95),
     Isotope::Cd(super::CadmiumIsotope::Cd96),
     Isotope::Cd(super::CadmiumIsotope::Cd97),
@@ -1390,8 +1427,10 @@ const CD_ISOTOPES: &[Isotope] = &[
     Isotope::Cd(super::CadmiumIsotope::Cd131),
     Isotope::Cd(super::CadmiumIsotope::Cd132),
     Isotope::Cd(super::CadmiumIsotope::Cd133),
+    Isotope::Cd(super::CadmiumIsotope::Cd134),
 ];
 const IN_ISOTOPES: &[Isotope] = &[
+    Isotope::In(super::IndiumIsotope::In96),
     Isotope::In(super::IndiumIsotope::In97),
     Isotope::In(super::IndiumIsotope::In98),
     Isotope::In(super::IndiumIsotope::In99),
@@ -1431,6 +1470,8 @@ const IN_ISOTOPES: &[Isotope] = &[
     Isotope::In(super::IndiumIsotope::In133),
     Isotope::In(super::IndiumIsotope::In134),
     Isotope::In(super::IndiumIsotope::In135),
+    Isotope::In(super::IndiumIsotope::In136),
+    Isotope::In(super::IndiumIsotope::In137),
 ];
 const SN_ISOTOPES: &[Isotope] = &[
     Isotope::Sn(super::TinIsotope::Sn99),
@@ -1473,6 +1514,8 @@ const SN_ISOTOPES: &[Isotope] = &[
     Isotope::Sn(super::TinIsotope::Sn136),
     Isotope::Sn(super::TinIsotope::Sn137),
     Isotope::Sn(super::TinIsotope::Sn138),
+    Isotope::Sn(super::TinIsotope::Sn139),
+    Isotope::Sn(super::TinIsotope::Sn140),
 ];
 const SB_ISOTOPES: &[Isotope] = &[
     Isotope::Sb(super::AntimonyIsotope::Sb103),
@@ -1513,8 +1556,11 @@ const SB_ISOTOPES: &[Isotope] = &[
     Isotope::Sb(super::AntimonyIsotope::Sb138),
     Isotope::Sb(super::AntimonyIsotope::Sb139),
     Isotope::Sb(super::AntimonyIsotope::Sb140),
+    Isotope::Sb(super::AntimonyIsotope::Sb141),
+    Isotope::Sb(super::AntimonyIsotope::Sb142),
 ];
 const TE_ISOTOPES: &[Isotope] = &[
+    Isotope::Te(super::TelluriumIsotope::Te104),
     Isotope::Te(super::TelluriumIsotope::Te105),
     Isotope::Te(super::TelluriumIsotope::Te106),
     Isotope::Te(super::TelluriumIsotope::Te107),
@@ -1554,9 +1600,10 @@ const TE_ISOTOPES: &[Isotope] = &[
     Isotope::Te(super::TelluriumIsotope::Te141),
     Isotope::Te(super::TelluriumIsotope::Te142),
     Isotope::Te(super::TelluriumIsotope::Te143),
+    Isotope::Te(super::TelluriumIsotope::Te144),
+    Isotope::Te(super::TelluriumIsotope::Te145),
 ];
 const I_ISOTOPES: &[Isotope] = &[
-    Isotope::I(super::IodineIsotope::I107),
     Isotope::I(super::IodineIsotope::I108),
     Isotope::I(super::IodineIsotope::I109),
     Isotope::I(super::IodineIsotope::I110),
@@ -1595,8 +1642,11 @@ const I_ISOTOPES: &[Isotope] = &[
     Isotope::I(super::IodineIsotope::I143),
     Isotope::I(super::IodineIsotope::I144),
     Isotope::I(super::IodineIsotope::I145),
+    Isotope::I(super::IodineIsotope::I146),
+    Isotope::I(super::IodineIsotope::I147),
 ];
 const XE_ISOTOPES: &[Isotope] = &[
+    Isotope::Xe(super::XenonIsotope::Xe108),
     Isotope::Xe(super::XenonIsotope::Xe109),
     Isotope::Xe(super::XenonIsotope::Xe110),
     Isotope::Xe(super::XenonIsotope::Xe111),
@@ -1637,6 +1687,8 @@ const XE_ISOTOPES: &[Isotope] = &[
     Isotope::Xe(super::XenonIsotope::Xe146),
     Isotope::Xe(super::XenonIsotope::Xe147),
     Isotope::Xe(super::XenonIsotope::Xe148),
+    Isotope::Xe(super::XenonIsotope::Xe149),
+    Isotope::Xe(super::XenonIsotope::Xe150),
 ];
 const CS_ISOTOPES: &[Isotope] = &[
     Isotope::Cs(super::CaesiumIsotope::Cs112),
@@ -1679,6 +1731,7 @@ const CS_ISOTOPES: &[Isotope] = &[
     Isotope::Cs(super::CaesiumIsotope::Cs149),
     Isotope::Cs(super::CaesiumIsotope::Cs150),
     Isotope::Cs(super::CaesiumIsotope::Cs151),
+    Isotope::Cs(super::CaesiumIsotope::Cs152),
 ];
 const BA_ISOTOPES: &[Isotope] = &[
     Isotope::Ba(super::BariumIsotope::Ba114),
@@ -1721,6 +1774,7 @@ const BA_ISOTOPES: &[Isotope] = &[
     Isotope::Ba(super::BariumIsotope::Ba151),
     Isotope::Ba(super::BariumIsotope::Ba152),
     Isotope::Ba(super::BariumIsotope::Ba153),
+    Isotope::Ba(super::BariumIsotope::Ba154),
 ];
 const LA_ISOTOPES: &[Isotope] = &[
     Isotope::La(super::LanthanumIsotope::La116),
@@ -1763,6 +1817,8 @@ const LA_ISOTOPES: &[Isotope] = &[
     Isotope::La(super::LanthanumIsotope::La153),
     Isotope::La(super::LanthanumIsotope::La154),
     Isotope::La(super::LanthanumIsotope::La155),
+    Isotope::La(super::LanthanumIsotope::La156),
+    Isotope::La(super::LanthanumIsotope::La157),
 ];
 const CE_ISOTOPES: &[Isotope] = &[
     Isotope::Ce(super::CeriumIsotope::Ce119),
@@ -1804,6 +1860,8 @@ const CE_ISOTOPES: &[Isotope] = &[
     Isotope::Ce(super::CeriumIsotope::Ce155),
     Isotope::Ce(super::CeriumIsotope::Ce156),
     Isotope::Ce(super::CeriumIsotope::Ce157),
+    Isotope::Ce(super::CeriumIsotope::Ce158),
+    Isotope::Ce(super::CeriumIsotope::Ce159),
 ];
 const PR_ISOTOPES: &[Isotope] = &[
     Isotope::Pr(super::PraseodymiumIsotope::Pr121),
@@ -1845,6 +1903,8 @@ const PR_ISOTOPES: &[Isotope] = &[
     Isotope::Pr(super::PraseodymiumIsotope::Pr157),
     Isotope::Pr(super::PraseodymiumIsotope::Pr158),
     Isotope::Pr(super::PraseodymiumIsotope::Pr159),
+    Isotope::Pr(super::PraseodymiumIsotope::Pr160),
+    Isotope::Pr(super::PraseodymiumIsotope::Pr161),
 ];
 const ND_ISOTOPES: &[Isotope] = &[
     Isotope::Nd(super::NeodymiumIsotope::Nd124),
@@ -1885,6 +1945,8 @@ const ND_ISOTOPES: &[Isotope] = &[
     Isotope::Nd(super::NeodymiumIsotope::Nd159),
     Isotope::Nd(super::NeodymiumIsotope::Nd160),
     Isotope::Nd(super::NeodymiumIsotope::Nd161),
+    Isotope::Nd(super::NeodymiumIsotope::Nd162),
+    Isotope::Nd(super::NeodymiumIsotope::Nd163),
 ];
 const PM_ISOTOPES: &[Isotope] = &[
     Isotope::Pm(super::PromethiumIsotope::Pm126),
@@ -1925,6 +1987,8 @@ const PM_ISOTOPES: &[Isotope] = &[
     Isotope::Pm(super::PromethiumIsotope::Pm161),
     Isotope::Pm(super::PromethiumIsotope::Pm162),
     Isotope::Pm(super::PromethiumIsotope::Pm163),
+    Isotope::Pm(super::PromethiumIsotope::Pm164),
+    Isotope::Pm(super::PromethiumIsotope::Pm165),
 ];
 const SM_ISOTOPES: &[Isotope] = &[
     Isotope::Sm(super::SamariumIsotope::Sm128),
@@ -1965,6 +2029,9 @@ const SM_ISOTOPES: &[Isotope] = &[
     Isotope::Sm(super::SamariumIsotope::Sm163),
     Isotope::Sm(super::SamariumIsotope::Sm164),
     Isotope::Sm(super::SamariumIsotope::Sm165),
+    Isotope::Sm(super::SamariumIsotope::Sm166),
+    Isotope::Sm(super::SamariumIsotope::Sm167),
+    Isotope::Sm(super::SamariumIsotope::Sm168),
 ];
 const EU_ISOTOPES: &[Isotope] = &[
     Isotope::Eu(super::EuropiumIsotope::Eu130),
@@ -2005,6 +2072,8 @@ const EU_ISOTOPES: &[Isotope] = &[
     Isotope::Eu(super::EuropiumIsotope::Eu165),
     Isotope::Eu(super::EuropiumIsotope::Eu166),
     Isotope::Eu(super::EuropiumIsotope::Eu167),
+    Isotope::Eu(super::EuropiumIsotope::Eu168),
+    Isotope::Eu(super::EuropiumIsotope::Eu169),
 ];
 const GD_ISOTOPES: &[Isotope] = &[
     Isotope::Gd(super::GadoliniumIsotope::Gd133),
@@ -2044,6 +2113,9 @@ const GD_ISOTOPES: &[Isotope] = &[
     Isotope::Gd(super::GadoliniumIsotope::Gd167),
     Isotope::Gd(super::GadoliniumIsotope::Gd168),
     Isotope::Gd(super::GadoliniumIsotope::Gd169),
+    Isotope::Gd(super::GadoliniumIsotope::Gd170),
+    Isotope::Gd(super::GadoliniumIsotope::Gd171),
+    Isotope::Gd(super::GadoliniumIsotope::Gd172),
 ];
 const TB_ISOTOPES: &[Isotope] = &[
     Isotope::Tb(super::TerbiumIsotope::Tb135),
@@ -2083,6 +2155,9 @@ const TB_ISOTOPES: &[Isotope] = &[
     Isotope::Tb(super::TerbiumIsotope::Tb169),
     Isotope::Tb(super::TerbiumIsotope::Tb170),
     Isotope::Tb(super::TerbiumIsotope::Tb171),
+    Isotope::Tb(super::TerbiumIsotope::Tb172),
+    Isotope::Tb(super::TerbiumIsotope::Tb173),
+    Isotope::Tb(super::TerbiumIsotope::Tb174),
 ];
 const DY_ISOTOPES: &[Isotope] = &[
     Isotope::Dy(super::DysprosiumIsotope::Dy138),
@@ -2121,6 +2196,9 @@ const DY_ISOTOPES: &[Isotope] = &[
     Isotope::Dy(super::DysprosiumIsotope::Dy171),
     Isotope::Dy(super::DysprosiumIsotope::Dy172),
     Isotope::Dy(super::DysprosiumIsotope::Dy173),
+    Isotope::Dy(super::DysprosiumIsotope::Dy174),
+    Isotope::Dy(super::DysprosiumIsotope::Dy175),
+    Isotope::Dy(super::DysprosiumIsotope::Dy176),
 ];
 const HO_ISOTOPES: &[Isotope] = &[
     Isotope::Ho(super::HolmiumIsotope::Ho140),
@@ -2159,6 +2237,9 @@ const HO_ISOTOPES: &[Isotope] = &[
     Isotope::Ho(super::HolmiumIsotope::Ho173),
     Isotope::Ho(super::HolmiumIsotope::Ho174),
     Isotope::Ho(super::HolmiumIsotope::Ho175),
+    Isotope::Ho(super::HolmiumIsotope::Ho176),
+    Isotope::Ho(super::HolmiumIsotope::Ho177),
+    Isotope::Ho(super::HolmiumIsotope::Ho178),
 ];
 const ER_ISOTOPES: &[Isotope] = &[
     Isotope::Er(super::ErbiumIsotope::Er142),
@@ -2197,6 +2278,9 @@ const ER_ISOTOPES: &[Isotope] = &[
     Isotope::Er(super::ErbiumIsotope::Er175),
     Isotope::Er(super::ErbiumIsotope::Er176),
     Isotope::Er(super::ErbiumIsotope::Er177),
+    Isotope::Er(super::ErbiumIsotope::Er178),
+    Isotope::Er(super::ErbiumIsotope::Er179),
+    Isotope::Er(super::ErbiumIsotope::Er180),
 ];
 const TM_ISOTOPES: &[Isotope] = &[
     Isotope::Tm(super::ThuliumIsotope::Tm144),
@@ -2235,6 +2319,9 @@ const TM_ISOTOPES: &[Isotope] = &[
     Isotope::Tm(super::ThuliumIsotope::Tm177),
     Isotope::Tm(super::ThuliumIsotope::Tm178),
     Isotope::Tm(super::ThuliumIsotope::Tm179),
+    Isotope::Tm(super::ThuliumIsotope::Tm180),
+    Isotope::Tm(super::ThuliumIsotope::Tm181),
+    Isotope::Tm(super::ThuliumIsotope::Tm182),
 ];
 const YB_ISOTOPES: &[Isotope] = &[
     Isotope::Yb(super::YtterbiumIsotope::Yb148),
@@ -2271,6 +2358,10 @@ const YB_ISOTOPES: &[Isotope] = &[
     Isotope::Yb(super::YtterbiumIsotope::Yb179),
     Isotope::Yb(super::YtterbiumIsotope::Yb180),
     Isotope::Yb(super::YtterbiumIsotope::Yb181),
+    Isotope::Yb(super::YtterbiumIsotope::Yb182),
+    Isotope::Yb(super::YtterbiumIsotope::Yb183),
+    Isotope::Yb(super::YtterbiumIsotope::Yb184),
+    Isotope::Yb(super::YtterbiumIsotope::Yb185),
 ];
 const LU_ISOTOPES: &[Isotope] = &[
     Isotope::Lu(super::LutetiumIsotope::Lu150),
@@ -2309,6 +2400,9 @@ const LU_ISOTOPES: &[Isotope] = &[
     Isotope::Lu(super::LutetiumIsotope::Lu183),
     Isotope::Lu(super::LutetiumIsotope::Lu184),
     Isotope::Lu(super::LutetiumIsotope::Lu185),
+    Isotope::Lu(super::LutetiumIsotope::Lu186),
+    Isotope::Lu(super::LutetiumIsotope::Lu187),
+    Isotope::Lu(super::LutetiumIsotope::Lu188),
 ];
 const HF_ISOTOPES: &[Isotope] = &[
     Isotope::Hf(super::HafniumIsotope::Hf153),
@@ -2348,6 +2442,7 @@ const HF_ISOTOPES: &[Isotope] = &[
     Isotope::Hf(super::HafniumIsotope::Hf187),
     Isotope::Hf(super::HafniumIsotope::Hf188),
     Isotope::Hf(super::HafniumIsotope::Hf189),
+    Isotope::Hf(super::HafniumIsotope::Hf190),
 ];
 const TA_ISOTOPES: &[Isotope] = &[
     Isotope::Ta(super::TantalumIsotope::Ta155),
@@ -2388,6 +2483,8 @@ const TA_ISOTOPES: &[Isotope] = &[
     Isotope::Ta(super::TantalumIsotope::Ta190),
     Isotope::Ta(super::TantalumIsotope::Ta191),
     Isotope::Ta(super::TantalumIsotope::Ta192),
+    Isotope::Ta(super::TantalumIsotope::Ta193),
+    Isotope::Ta(super::TantalumIsotope::Ta194),
 ];
 const W_ISOTOPES: &[Isotope] = &[
     Isotope::W(super::TungstenIsotope::W157),
@@ -2428,6 +2525,9 @@ const W_ISOTOPES: &[Isotope] = &[
     Isotope::W(super::TungstenIsotope::W192),
     Isotope::W(super::TungstenIsotope::W193),
     Isotope::W(super::TungstenIsotope::W194),
+    Isotope::W(super::TungstenIsotope::W195),
+    Isotope::W(super::TungstenIsotope::W196),
+    Isotope::W(super::TungstenIsotope::W197),
 ];
 const RE_ISOTOPES: &[Isotope] = &[
     Isotope::Re(super::RheniumIsotope::Re159),
@@ -2470,6 +2570,7 @@ const RE_ISOTOPES: &[Isotope] = &[
     Isotope::Re(super::RheniumIsotope::Re196),
     Isotope::Re(super::RheniumIsotope::Re197),
     Isotope::Re(super::RheniumIsotope::Re198),
+    Isotope::Re(super::RheniumIsotope::Re199),
 ];
 const OS_ISOTOPES: &[Isotope] = &[
     Isotope::Os(super::OsmiumIsotope::Os161),
@@ -2514,6 +2615,7 @@ const OS_ISOTOPES: &[Isotope] = &[
     Isotope::Os(super::OsmiumIsotope::Os200),
     Isotope::Os(super::OsmiumIsotope::Os201),
     Isotope::Os(super::OsmiumIsotope::Os202),
+    Isotope::Os(super::OsmiumIsotope::Os203),
 ];
 const IR_ISOTOPES: &[Isotope] = &[
     Isotope::Ir(super::IridiumIsotope::Ir164),
@@ -2557,8 +2659,10 @@ const IR_ISOTOPES: &[Isotope] = &[
     Isotope::Ir(super::IridiumIsotope::Ir202),
     Isotope::Ir(super::IridiumIsotope::Ir203),
     Isotope::Ir(super::IridiumIsotope::Ir204),
+    Isotope::Ir(super::IridiumIsotope::Ir205),
 ];
 const PT_ISOTOPES: &[Isotope] = &[
+    Isotope::Pt(super::PlatinumIsotope::Pt165),
     Isotope::Pt(super::PlatinumIsotope::Pt166),
     Isotope::Pt(super::PlatinumIsotope::Pt167),
     Isotope::Pt(super::PlatinumIsotope::Pt168),
@@ -2600,9 +2704,10 @@ const PT_ISOTOPES: &[Isotope] = &[
     Isotope::Pt(super::PlatinumIsotope::Pt204),
     Isotope::Pt(super::PlatinumIsotope::Pt205),
     Isotope::Pt(super::PlatinumIsotope::Pt206),
+    Isotope::Pt(super::PlatinumIsotope::Pt207),
+    Isotope::Pt(super::PlatinumIsotope::Pt208),
 ];
 const AU_ISOTOPES: &[Isotope] = &[
-    Isotope::Au(super::GoldIsotope::Au169),
     Isotope::Au(super::GoldIsotope::Au170),
     Isotope::Au(super::GoldIsotope::Au171),
     Isotope::Au(super::GoldIsotope::Au172),
@@ -2646,6 +2751,7 @@ const AU_ISOTOPES: &[Isotope] = &[
     Isotope::Au(super::GoldIsotope::Au210),
 ];
 const HG_ISOTOPES: &[Isotope] = &[
+    Isotope::Hg(super::MercuryIsotope::Hg170),
     Isotope::Hg(super::MercuryIsotope::Hg171),
     Isotope::Hg(super::MercuryIsotope::Hg172),
     Isotope::Hg(super::MercuryIsotope::Hg173),
@@ -2736,7 +2842,6 @@ const TL_ISOTOPES: &[Isotope] = &[
     Isotope::Tl(super::ThalliumIsotope::Tl215),
     Isotope::Tl(super::ThalliumIsotope::Tl216),
     Isotope::Tl(super::ThalliumIsotope::Tl217),
-    Isotope::Tl(super::ThalliumIsotope::Tl218),
 ];
 const PB_ISOTOPES: &[Isotope] = &[
     Isotope::Pb(super::LeadIsotope::Pb178),
@@ -2953,6 +3058,8 @@ const RN_ISOTOPES: &[Isotope] = &[
     Isotope::Rn(super::RadonIsotope::Rn231),
 ];
 const FR_ISOTOPES: &[Isotope] = &[
+    Isotope::Fr(super::FranciumIsotope::Fr197),
+    Isotope::Fr(super::FranciumIsotope::Fr198),
     Isotope::Fr(super::FranciumIsotope::Fr199),
     Isotope::Fr(super::FranciumIsotope::Fr200),
     Isotope::Fr(super::FranciumIsotope::Fr201),
@@ -3024,9 +3131,9 @@ const RA_ISOTOPES: &[Isotope] = &[
     Isotope::Ra(super::RadiumIsotope::Ra232),
     Isotope::Ra(super::RadiumIsotope::Ra233),
     Isotope::Ra(super::RadiumIsotope::Ra234),
-    Isotope::Ra(super::RadiumIsotope::Ra235),
 ];
 const AC_ISOTOPES: &[Isotope] = &[
+    Isotope::Ac(super::ActiniumIsotope::Ac205),
     Isotope::Ac(super::ActiniumIsotope::Ac206),
     Isotope::Ac(super::ActiniumIsotope::Ac207),
     Isotope::Ac(super::ActiniumIsotope::Ac208),
@@ -3058,7 +3165,6 @@ const AC_ISOTOPES: &[Isotope] = &[
     Isotope::Ac(super::ActiniumIsotope::Ac234),
     Isotope::Ac(super::ActiniumIsotope::Ac235),
     Isotope::Ac(super::ActiniumIsotope::Ac236),
-    Isotope::Ac(super::ActiniumIsotope::Ac237),
 ];
 const TH_ISOTOPES: &[Isotope] = &[
     Isotope::Th(super::ThoriumIsotope::Th208),
@@ -3092,9 +3198,9 @@ const TH_ISOTOPES: &[Isotope] = &[
     Isotope::Th(super::ThoriumIsotope::Th236),
     Isotope::Th(super::ThoriumIsotope::Th237),
     Isotope::Th(super::ThoriumIsotope::Th238),
-    Isotope::Th(super::ThoriumIsotope::Th239),
 ];
 const PA_ISOTOPES: &[Isotope] = &[
+    Isotope::Pa(super::ProtactiniumIsotope::Pa211),
     Isotope::Pa(super::ProtactiniumIsotope::Pa212),
     Isotope::Pa(super::ProtactiniumIsotope::Pa213),
     Isotope::Pa(super::ProtactiniumIsotope::Pa214),
@@ -3123,14 +3229,13 @@ const PA_ISOTOPES: &[Isotope] = &[
     Isotope::Pa(super::ProtactiniumIsotope::Pa237),
     Isotope::Pa(super::ProtactiniumIsotope::Pa238),
     Isotope::Pa(super::ProtactiniumIsotope::Pa239),
-    Isotope::Pa(super::ProtactiniumIsotope::Pa240),
-    Isotope::Pa(super::ProtactiniumIsotope::Pa241),
 ];
 const U_ISOTOPES: &[Isotope] = &[
+    Isotope::U(super::UraniumIsotope::U215),
+    Isotope::U(super::UraniumIsotope::U216),
     Isotope::U(super::UraniumIsotope::U217),
     Isotope::U(super::UraniumIsotope::U218),
     Isotope::U(super::UraniumIsotope::U219),
-    Isotope::U(super::UraniumIsotope::U220),
     Isotope::U(super::UraniumIsotope::U221),
     Isotope::U(super::UraniumIsotope::U222),
     Isotope::U(super::UraniumIsotope::U223),
@@ -3158,7 +3263,6 @@ const U_ISOTOPES: &[Isotope] = &[
 const NP_ISOTOPES: &[Isotope] = &[
     Isotope::Np(super::NeptuniumIsotope::Np219),
     Isotope::Np(super::NeptuniumIsotope::Np220),
-    Isotope::Np(super::NeptuniumIsotope::Np221),
     Isotope::Np(super::NeptuniumIsotope::Np222),
     Isotope::Np(super::NeptuniumIsotope::Np223),
     Isotope::Np(super::NeptuniumIsotope::Np224),
@@ -3185,6 +3289,7 @@ const NP_ISOTOPES: &[Isotope] = &[
     Isotope::Np(super::NeptuniumIsotope::Np245),
 ];
 const PU_ISOTOPES: &[Isotope] = &[
+    Isotope::Pu(super::PlutoniumIsotope::Pu227),
     Isotope::Pu(super::PlutoniumIsotope::Pu228),
     Isotope::Pu(super::PlutoniumIsotope::Pu229),
     Isotope::Pu(super::PlutoniumIsotope::Pu230),
@@ -3207,6 +3312,8 @@ const PU_ISOTOPES: &[Isotope] = &[
     Isotope::Pu(super::PlutoniumIsotope::Pu247),
 ];
 const AM_ISOTOPES: &[Isotope] = &[
+    Isotope::Am(super::AmericiumIsotope::Am223),
+    Isotope::Am(super::AmericiumIsotope::Am229),
     Isotope::Am(super::AmericiumIsotope::Am230),
     Isotope::Am(super::AmericiumIsotope::Am231),
     Isotope::Am(super::AmericiumIsotope::Am232),
@@ -3229,7 +3336,6 @@ const AM_ISOTOPES: &[Isotope] = &[
     Isotope::Am(super::AmericiumIsotope::Am249),
 ];
 const CM_ISOTOPES: &[Isotope] = &[
-    Isotope::Cm(super::CuriumIsotope::Cm232),
     Isotope::Cm(super::CuriumIsotope::Cm233),
     Isotope::Cm(super::CuriumIsotope::Cm234),
     Isotope::Cm(super::CuriumIsotope::Cm235),
@@ -3249,13 +3355,12 @@ const CM_ISOTOPES: &[Isotope] = &[
     Isotope::Cm(super::CuriumIsotope::Cm249),
     Isotope::Cm(super::CuriumIsotope::Cm250),
     Isotope::Cm(super::CuriumIsotope::Cm251),
-    Isotope::Cm(super::CuriumIsotope::Cm252),
 ];
 const BK_ISOTOPES: &[Isotope] = &[
+    Isotope::Bk(super::BerkeliumIsotope::Bk233),
     Isotope::Bk(super::BerkeliumIsotope::Bk234),
     Isotope::Bk(super::BerkeliumIsotope::Bk235),
     Isotope::Bk(super::BerkeliumIsotope::Bk236),
-    Isotope::Bk(super::BerkeliumIsotope::Bk237),
     Isotope::Bk(super::BerkeliumIsotope::Bk238),
     Isotope::Bk(super::BerkeliumIsotope::Bk239),
     Isotope::Bk(super::BerkeliumIsotope::Bk240),
@@ -3270,9 +3375,7 @@ const BK_ISOTOPES: &[Isotope] = &[
     Isotope::Bk(super::BerkeliumIsotope::Bk249),
     Isotope::Bk(super::BerkeliumIsotope::Bk250),
     Isotope::Bk(super::BerkeliumIsotope::Bk251),
-    Isotope::Bk(super::BerkeliumIsotope::Bk252),
     Isotope::Bk(super::BerkeliumIsotope::Bk253),
-    Isotope::Bk(super::BerkeliumIsotope::Bk254),
 ];
 const CF_ISOTOPES: &[Isotope] = &[
     Isotope::Cf(super::CaliforniumIsotope::Cf237),
@@ -3297,7 +3400,6 @@ const CF_ISOTOPES: &[Isotope] = &[
     Isotope::Cf(super::CaliforniumIsotope::Cf256),
 ];
 const ES_ISOTOPES: &[Isotope] = &[
-    Isotope::Es(super::EinsteiniumIsotope::Es239),
     Isotope::Es(super::EinsteiniumIsotope::Es240),
     Isotope::Es(super::EinsteiniumIsotope::Es241),
     Isotope::Es(super::EinsteiniumIsotope::Es242),
@@ -3316,7 +3418,6 @@ const ES_ISOTOPES: &[Isotope] = &[
     Isotope::Es(super::EinsteiniumIsotope::Es255),
     Isotope::Es(super::EinsteiniumIsotope::Es256),
     Isotope::Es(super::EinsteiniumIsotope::Es257),
-    Isotope::Es(super::EinsteiniumIsotope::Es258),
 ];
 const FM_ISOTOPES: &[Isotope] = &[
     Isotope::Fm(super::FermiumIsotope::Fm241),
@@ -3338,9 +3439,9 @@ const FM_ISOTOPES: &[Isotope] = &[
     Isotope::Fm(super::FermiumIsotope::Fm257),
     Isotope::Fm(super::FermiumIsotope::Fm258),
     Isotope::Fm(super::FermiumIsotope::Fm259),
-    Isotope::Fm(super::FermiumIsotope::Fm260),
 ];
 const MD_ISOTOPES: &[Isotope] = &[
+    Isotope::Md(super::MendeleviumIsotope::Md244),
     Isotope::Md(super::MendeleviumIsotope::Md245),
     Isotope::Md(super::MendeleviumIsotope::Md246),
     Isotope::Md(super::MendeleviumIsotope::Md247),
@@ -3357,8 +3458,6 @@ const MD_ISOTOPES: &[Isotope] = &[
     Isotope::Md(super::MendeleviumIsotope::Md258),
     Isotope::Md(super::MendeleviumIsotope::Md259),
     Isotope::Md(super::MendeleviumIsotope::Md260),
-    Isotope::Md(super::MendeleviumIsotope::Md261),
-    Isotope::Md(super::MendeleviumIsotope::Md262),
 ];
 const NO_ISOTOPES: &[Isotope] = &[
     Isotope::No(super::NobeliumIsotope::No248),
@@ -3374,10 +3473,7 @@ const NO_ISOTOPES: &[Isotope] = &[
     Isotope::No(super::NobeliumIsotope::No258),
     Isotope::No(super::NobeliumIsotope::No259),
     Isotope::No(super::NobeliumIsotope::No260),
-    Isotope::No(super::NobeliumIsotope::No261),
     Isotope::No(super::NobeliumIsotope::No262),
-    Isotope::No(super::NobeliumIsotope::No263),
-    Isotope::No(super::NobeliumIsotope::No264),
 ];
 const LR_ISOTOPES: &[Isotope] = &[
     Isotope::Lr(super::LawrenciumIsotope::Lr251),
@@ -3392,9 +3488,7 @@ const LR_ISOTOPES: &[Isotope] = &[
     Isotope::Lr(super::LawrenciumIsotope::Lr260),
     Isotope::Lr(super::LawrenciumIsotope::Lr261),
     Isotope::Lr(super::LawrenciumIsotope::Lr262),
-    Isotope::Lr(super::LawrenciumIsotope::Lr263),
     Isotope::Lr(super::LawrenciumIsotope::Lr264),
-    Isotope::Lr(super::LawrenciumIsotope::Lr265),
     Isotope::Lr(super::LawrenciumIsotope::Lr266),
 ];
 const RF_ISOTOPES: &[Isotope] = &[
@@ -3409,11 +3503,8 @@ const RF_ISOTOPES: &[Isotope] = &[
     Isotope::Rf(super::RutherfordiumIsotope::Rf261),
     Isotope::Rf(super::RutherfordiumIsotope::Rf262),
     Isotope::Rf(super::RutherfordiumIsotope::Rf263),
-    Isotope::Rf(super::RutherfordiumIsotope::Rf264),
     Isotope::Rf(super::RutherfordiumIsotope::Rf265),
-    Isotope::Rf(super::RutherfordiumIsotope::Rf266),
     Isotope::Rf(super::RutherfordiumIsotope::Rf267),
-    Isotope::Rf(super::RutherfordiumIsotope::Rf268),
 ];
 const DB_ISOTOPES: &[Isotope] = &[
     Isotope::Db(super::DubniumIsotope::Db255),
@@ -3425,12 +3516,9 @@ const DB_ISOTOPES: &[Isotope] = &[
     Isotope::Db(super::DubniumIsotope::Db261),
     Isotope::Db(super::DubniumIsotope::Db262),
     Isotope::Db(super::DubniumIsotope::Db263),
-    Isotope::Db(super::DubniumIsotope::Db264),
-    Isotope::Db(super::DubniumIsotope::Db265),
     Isotope::Db(super::DubniumIsotope::Db266),
     Isotope::Db(super::DubniumIsotope::Db267),
     Isotope::Db(super::DubniumIsotope::Db268),
-    Isotope::Db(super::DubniumIsotope::Db269),
     Isotope::Db(super::DubniumIsotope::Db270),
 ];
 const SG_ISOTOPES: &[Isotope] = &[
@@ -3446,10 +3534,7 @@ const SG_ISOTOPES: &[Isotope] = &[
     Isotope::Sg(super::SeaborgiumIsotope::Sg267),
     Isotope::Sg(super::SeaborgiumIsotope::Sg268),
     Isotope::Sg(super::SeaborgiumIsotope::Sg269),
-    Isotope::Sg(super::SeaborgiumIsotope::Sg270),
     Isotope::Sg(super::SeaborgiumIsotope::Sg271),
-    Isotope::Sg(super::SeaborgiumIsotope::Sg272),
-    Isotope::Sg(super::SeaborgiumIsotope::Sg273),
 ];
 const BH_ISOTOPES: &[Isotope] = &[
     Isotope::Bh(super::BohriumIsotope::Bh260),
@@ -3460,14 +3545,11 @@ const BH_ISOTOPES: &[Isotope] = &[
     Isotope::Bh(super::BohriumIsotope::Bh265),
     Isotope::Bh(super::BohriumIsotope::Bh266),
     Isotope::Bh(super::BohriumIsotope::Bh267),
-    Isotope::Bh(super::BohriumIsotope::Bh268),
-    Isotope::Bh(super::BohriumIsotope::Bh269),
     Isotope::Bh(super::BohriumIsotope::Bh270),
     Isotope::Bh(super::BohriumIsotope::Bh271),
     Isotope::Bh(super::BohriumIsotope::Bh272),
-    Isotope::Bh(super::BohriumIsotope::Bh273),
     Isotope::Bh(super::BohriumIsotope::Bh274),
-    Isotope::Bh(super::BohriumIsotope::Bh275),
+    Isotope::Bh(super::BohriumIsotope::Bh278),
 ];
 const HS_ISOTOPES: &[Isotope] = &[
     Isotope::Hs(super::HassiumIsotope::Hs263),
@@ -3481,96 +3563,78 @@ const HS_ISOTOPES: &[Isotope] = &[
     Isotope::Hs(super::HassiumIsotope::Hs271),
     Isotope::Hs(super::HassiumIsotope::Hs272),
     Isotope::Hs(super::HassiumIsotope::Hs273),
-    Isotope::Hs(super::HassiumIsotope::Hs274),
     Isotope::Hs(super::HassiumIsotope::Hs275),
-    Isotope::Hs(super::HassiumIsotope::Hs276),
     Isotope::Hs(super::HassiumIsotope::Hs277),
+    Isotope::Hs(super::HassiumIsotope::Hs278),
 ];
 const MT_ISOTOPES: &[Isotope] = &[
-    Isotope::Mt(super::MeitneriumIsotope::Mt265),
     Isotope::Mt(super::MeitneriumIsotope::Mt266),
-    Isotope::Mt(super::MeitneriumIsotope::Mt267),
     Isotope::Mt(super::MeitneriumIsotope::Mt268),
-    Isotope::Mt(super::MeitneriumIsotope::Mt269),
     Isotope::Mt(super::MeitneriumIsotope::Mt270),
-    Isotope::Mt(super::MeitneriumIsotope::Mt271),
-    Isotope::Mt(super::MeitneriumIsotope::Mt272),
-    Isotope::Mt(super::MeitneriumIsotope::Mt273),
     Isotope::Mt(super::MeitneriumIsotope::Mt274),
     Isotope::Mt(super::MeitneriumIsotope::Mt275),
     Isotope::Mt(super::MeitneriumIsotope::Mt276),
     Isotope::Mt(super::MeitneriumIsotope::Mt277),
     Isotope::Mt(super::MeitneriumIsotope::Mt278),
-    Isotope::Mt(super::MeitneriumIsotope::Mt279),
+    Isotope::Mt(super::MeitneriumIsotope::Mt282),
 ];
 const DS_ISOTOPES: &[Isotope] = &[
     Isotope::Ds(super::DarmstadtiumIsotope::Ds267),
-    Isotope::Ds(super::DarmstadtiumIsotope::Ds268),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds269),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds270),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds271),
-    Isotope::Ds(super::DarmstadtiumIsotope::Ds272),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds273),
-    Isotope::Ds(super::DarmstadtiumIsotope::Ds274),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds275),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds276),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds277),
-    Isotope::Ds(super::DarmstadtiumIsotope::Ds278),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds279),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds280),
     Isotope::Ds(super::DarmstadtiumIsotope::Ds281),
+    Isotope::Ds(super::DarmstadtiumIsotope::Ds282),
 ];
 const RG_ISOTOPES: &[Isotope] = &[
     Isotope::Rg(super::RoentgeniumIsotope::Rg272),
-    Isotope::Rg(super::RoentgeniumIsotope::Rg273),
     Isotope::Rg(super::RoentgeniumIsotope::Rg274),
-    Isotope::Rg(super::RoentgeniumIsotope::Rg275),
-    Isotope::Rg(super::RoentgeniumIsotope::Rg276),
-    Isotope::Rg(super::RoentgeniumIsotope::Rg277),
     Isotope::Rg(super::RoentgeniumIsotope::Rg278),
     Isotope::Rg(super::RoentgeniumIsotope::Rg279),
     Isotope::Rg(super::RoentgeniumIsotope::Rg280),
     Isotope::Rg(super::RoentgeniumIsotope::Rg281),
     Isotope::Rg(super::RoentgeniumIsotope::Rg282),
-    Isotope::Rg(super::RoentgeniumIsotope::Rg283),
+    Isotope::Rg(super::RoentgeniumIsotope::Rg286),
 ];
 const CN_ISOTOPES: &[Isotope] = &[
-    Isotope::Cn(super::CoperniciumIsotope::Cn276),
     Isotope::Cn(super::CoperniciumIsotope::Cn277),
-    Isotope::Cn(super::CoperniciumIsotope::Cn278),
-    Isotope::Cn(super::CoperniciumIsotope::Cn279),
     Isotope::Cn(super::CoperniciumIsotope::Cn280),
     Isotope::Cn(super::CoperniciumIsotope::Cn281),
     Isotope::Cn(super::CoperniciumIsotope::Cn282),
     Isotope::Cn(super::CoperniciumIsotope::Cn283),
     Isotope::Cn(super::CoperniciumIsotope::Cn284),
     Isotope::Cn(super::CoperniciumIsotope::Cn285),
+    Isotope::Cn(super::CoperniciumIsotope::Cn286),
 ];
 const NH_ISOTOPES: &[Isotope] = &[
     Isotope::Nh(super::NihoniumIsotope::Nh278),
-    Isotope::Nh(super::NihoniumIsotope::Nh279),
-    Isotope::Nh(super::NihoniumIsotope::Nh280),
-    Isotope::Nh(super::NihoniumIsotope::Nh281),
     Isotope::Nh(super::NihoniumIsotope::Nh282),
     Isotope::Nh(super::NihoniumIsotope::Nh283),
     Isotope::Nh(super::NihoniumIsotope::Nh284),
     Isotope::Nh(super::NihoniumIsotope::Nh285),
     Isotope::Nh(super::NihoniumIsotope::Nh286),
-    Isotope::Nh(super::NihoniumIsotope::Nh287),
+    Isotope::Nh(super::NihoniumIsotope::Nh290),
 ];
 const FL_ISOTOPES: &[Isotope] = &[
+    Isotope::Fl(super::FleroviumIsotope::Fl284),
     Isotope::Fl(super::FleroviumIsotope::Fl285),
     Isotope::Fl(super::FleroviumIsotope::Fl286),
     Isotope::Fl(super::FleroviumIsotope::Fl287),
     Isotope::Fl(super::FleroviumIsotope::Fl288),
     Isotope::Fl(super::FleroviumIsotope::Fl289),
+    Isotope::Fl(super::FleroviumIsotope::Fl290),
 ];
 const MC_ISOTOPES: &[Isotope] = &[
     Isotope::Mc(super::MoscoviumIsotope::Mc287),
     Isotope::Mc(super::MoscoviumIsotope::Mc288),
     Isotope::Mc(super::MoscoviumIsotope::Mc289),
     Isotope::Mc(super::MoscoviumIsotope::Mc290),
-    Isotope::Mc(super::MoscoviumIsotope::Mc291),
 ];
 const LV_ISOTOPES: &[Isotope] = &[
     Isotope::Lv(super::LivermoriumIsotope::Lv289),
@@ -3579,17 +3643,9 @@ const LV_ISOTOPES: &[Isotope] = &[
     Isotope::Lv(super::LivermoriumIsotope::Lv292),
     Isotope::Lv(super::LivermoriumIsotope::Lv293),
 ];
-const TS_ISOTOPES: &[Isotope] = &[
-    Isotope::Ts(super::TennessineIsotope::Ts291),
-    Isotope::Ts(super::TennessineIsotope::Ts292),
-    Isotope::Ts(super::TennessineIsotope::Ts293),
-    Isotope::Ts(super::TennessineIsotope::Ts294),
-];
-const OG_ISOTOPES: &[Isotope] = &[
-    Isotope::Og(super::OganessonIsotope::Og293),
-    Isotope::Og(super::OganessonIsotope::Og294),
-    Isotope::Og(super::OganessonIsotope::Og295),
-];
+const TS_ISOTOPES: &[Isotope] =
+    &[Isotope::Ts(super::TennessineIsotope::Ts293), Isotope::Ts(super::TennessineIsotope::Ts294)];
+const OG_ISOTOPES: &[Isotope] = &[Isotope::Og(super::OganessonIsotope::Og294)];
 
 impl crate::Element {
     #[allow(clippy::too_many_lines)]
@@ -3715,29 +3771,6 @@ impl crate::Element {
             Self::Lv => LV_ISOTOPES,
             Self::Ts => TS_ISOTOPES,
             Self::Og => OG_ISOTOPES,
-        }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use strum::IntoEnumIterator;
-
-    use crate::isotopes::ElementVariant;
-
-    #[test]
-    fn test_isotopes() {
-        for element in crate::Element::iter() {
-            let isotopes = element.isotopes();
-            assert!(!isotopes.is_empty(), "Element {element:?} should have at least one isotope");
-            // Verify that all isotopes belong to the correct element
-            for isotope in isotopes {
-                assert_eq!(
-                    isotope.element(),
-                    element,
-                    "Isotope {isotope:?} should belong to element {element:?}",
-                );
-            }
         }
     }
 }

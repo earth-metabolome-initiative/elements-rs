@@ -76,6 +76,12 @@ pub enum HolmiumIsotope {
     Ho174,
     /// Isotope Ho175 of Holmium
     Ho175,
+    /// Isotope Ho176 of Holmium
+    Ho176,
+    /// Isotope Ho177 of Holmium
+    Ho177,
+    /// Isotope Ho178 of Holmium
+    Ho178,
 }
 impl super::RelativeAtomicMass for HolmiumIsotope {
     #[inline]
@@ -117,6 +123,9 @@ impl super::RelativeAtomicMass for HolmiumIsotope {
             Self::Ho173 => 172.94702f64,
             Self::Ho174 => 173.95095f64,
             Self::Ho175 => 174.95362f64,
+            Self::Ho176 => 175.957713f64,
+            Self::Ho177 => 176.961052f64,
+            Self::Ho178 => 177.965507f64,
         }
     }
 }
@@ -166,6 +175,9 @@ impl super::MassNumber for HolmiumIsotope {
             Self::Ho173 => 173u16,
             Self::Ho174 => 174u16,
             Self::Ho175 => 175u16,
+            Self::Ho176 => 176u16,
+            Self::Ho177 => 177u16,
+            Self::Ho178 => 178u16,
         }
     }
 }
@@ -233,6 +245,9 @@ impl TryFrom<u64> for HolmiumIsotope {
             173u64 => Ok(Self::Ho173),
             174u64 => Ok(Self::Ho174),
             175u64 => Ok(Self::Ho175),
+            176u64 => Ok(Self::Ho176),
+            177u64 => Ok(Self::Ho177),
+            178u64 => Ok(Self::Ho178),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ho, value)),
         }
     }
@@ -294,6 +309,9 @@ impl core::fmt::Display for HolmiumIsotope {
             Self::Ho173 => write!(f, "Ho173"),
             Self::Ho174 => write!(f, "Ho174"),
             Self::Ho175 => write!(f, "Ho175"),
+            Self::Ho176 => write!(f, "Ho176"),
+            Self::Ho177 => write!(f, "Ho177"),
+            Self::Ho178 => write!(f, "Ho178"),
         }
     }
 }

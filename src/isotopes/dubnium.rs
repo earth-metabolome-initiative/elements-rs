@@ -22,18 +22,12 @@ pub enum DubniumIsotope {
     Db262,
     /// Isotope Db263 of Dubnium
     Db263,
-    /// Isotope Db264 of Dubnium
-    Db264,
-    /// Isotope Db265 of Dubnium
-    Db265,
     /// Isotope Db266 of Dubnium
     Db266,
     /// Isotope Db267 of Dubnium
     Db267,
     /// Isotope Db268 of Dubnium
     Db268,
-    /// Isotope Db269 of Dubnium
-    Db269,
     /// Isotope Db270 of Dubnium
     Db270,
 }
@@ -50,12 +44,9 @@ impl super::RelativeAtomicMass for DubniumIsotope {
             Self::Db261 => 261.11192f64,
             Self::Db262 => 262.11407f64,
             Self::Db263 => 263.11499f64,
-            Self::Db264 => 264.11741f64,
-            Self::Db265 => 265.11861f64,
             Self::Db266 => 266.12103f64,
             Self::Db267 => 267.12247f64,
             Self::Db268 => 268.12567f64,
-            Self::Db269 => 269.12791f64,
             Self::Db270 => 270.13136f64,
         }
     }
@@ -79,12 +70,9 @@ impl super::MassNumber for DubniumIsotope {
             Self::Db261 => 261u16,
             Self::Db262 => 262u16,
             Self::Db263 => 263u16,
-            Self::Db264 => 264u16,
-            Self::Db265 => 265u16,
             Self::Db266 => 266u16,
             Self::Db267 => 267u16,
             Self::Db268 => 268u16,
-            Self::Db269 => 269u16,
             Self::Db270 => 270u16,
         }
     }
@@ -123,12 +111,9 @@ impl TryFrom<u64> for DubniumIsotope {
             261u64 => Ok(Self::Db261),
             262u64 => Ok(Self::Db262),
             263u64 => Ok(Self::Db263),
-            264u64 => Ok(Self::Db264),
-            265u64 => Ok(Self::Db265),
             266u64 => Ok(Self::Db266),
             267u64 => Ok(Self::Db267),
             268u64 => Ok(Self::Db268),
-            269u64 => Ok(Self::Db269),
             270u64 => Ok(Self::Db270),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Db, value)),
         }
@@ -164,12 +149,9 @@ impl core::fmt::Display for DubniumIsotope {
             Self::Db261 => write!(f, "Db261"),
             Self::Db262 => write!(f, "Db262"),
             Self::Db263 => write!(f, "Db263"),
-            Self::Db264 => write!(f, "Db264"),
-            Self::Db265 => write!(f, "Db265"),
             Self::Db266 => write!(f, "Db266"),
             Self::Db267 => write!(f, "Db267"),
             Self::Db268 => write!(f, "Db268"),
-            Self::Db269 => write!(f, "Db269"),
             Self::Db270 => write!(f, "Db270"),
         }
     }

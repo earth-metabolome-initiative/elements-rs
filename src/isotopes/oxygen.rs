@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Oxygen
 pub enum OxygenIsotope {
+    /// Isotope O11 of Oxygen
+    O11,
     /// Isotope O12 of Oxygen
     O12,
     /// Isotope O13 of Oxygen
@@ -43,6 +45,7 @@ impl super::RelativeAtomicMass for OxygenIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::O11 => 11.051249828f64,
             Self::O12 => 12.034262f64,
             Self::O13 => 13.024815f64,
             Self::O14 => 14.00859636f64,
@@ -73,6 +76,7 @@ impl super::MassNumber for OxygenIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::O11 => 11u16,
             Self::O12 => 12u16,
             Self::O13 => 13u16,
             Self::O14 => 14u16,
@@ -123,6 +127,7 @@ impl TryFrom<u64> for OxygenIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            11u64 => Ok(Self::O11),
             12u64 => Ok(Self::O12),
             13u64 => Ok(Self::O13),
             14u64 => Ok(Self::O14),
@@ -165,6 +170,7 @@ impl TryFrom<u32> for OxygenIsotope {
 impl core::fmt::Display for OxygenIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::O11 => write!(f, "O11"),
             Self::O12 => write!(f, "O12"),
             Self::O13 => write!(f, "O13"),
             Self::O14 => write!(f, "O14"),

@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Lithium
 pub enum LithiumIsotope {
-    /// Isotope Li3 of Lithium
-    Li3,
     /// Isotope Li4 of Lithium
     Li4,
     /// Isotope Li5 of Lithium
@@ -31,7 +29,6 @@ impl super::RelativeAtomicMass for LithiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Li3 => 3.0308f64,
             Self::Li4 => 4.02719f64,
             Self::Li5 => 5.012538f64,
             Self::Li6 => 6.0151228874f64,
@@ -41,7 +38,7 @@ impl super::RelativeAtomicMass for LithiumIsotope {
             Self::Li10 => 10.035483f64,
             Self::Li11 => 11.04372358f64,
             Self::Li12 => 12.052517f64,
-            Self::Li13 => 13.06263f64,
+            Self::Li13 => 13.061171503f64,
         }
     }
 }
@@ -55,7 +52,6 @@ impl super::MassNumber for LithiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Li3 => 3u16,
             Self::Li4 => 4u16,
             Self::Li5 => 5u16,
             Self::Li6 => 6u16,
@@ -98,7 +94,6 @@ impl TryFrom<u64> for LithiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            3u64 => Ok(Self::Li3),
             4u64 => Ok(Self::Li4),
             5u64 => Ok(Self::Li5),
             6u64 => Ok(Self::Li6),
@@ -134,7 +129,6 @@ impl TryFrom<u32> for LithiumIsotope {
 impl core::fmt::Display for LithiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Li3 => write!(f, "Li3"),
             Self::Li4 => write!(f, "Li4"),
             Self::Li5 => write!(f, "Li5"),
             Self::Li6 => write!(f, "Li6"),

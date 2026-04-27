@@ -76,6 +76,10 @@ pub enum TechnetiumIsotope {
     Tc119,
     /// Isotope Tc120 of Technetium
     Tc120,
+    /// Isotope Tc121 of Technetium
+    Tc121,
+    /// Isotope Tc122 of Technetium
+    Tc122,
 }
 impl super::RelativeAtomicMass for TechnetiumIsotope {
     #[inline]
@@ -117,6 +121,8 @@ impl super::RelativeAtomicMass for TechnetiumIsotope {
             Self::Tc118 => 117.95299f64,
             Self::Tc119 => 118.95666f64,
             Self::Tc120 => 119.96187f64,
+            Self::Tc121 => 120.96614f64,
+            Self::Tc122 => 121.97176f64,
         }
     }
 }
@@ -166,6 +172,8 @@ impl super::MassNumber for TechnetiumIsotope {
             Self::Tc118 => 118u16,
             Self::Tc119 => 119u16,
             Self::Tc120 => 120u16,
+            Self::Tc121 => 121u16,
+            Self::Tc122 => 122u16,
         }
     }
 }
@@ -177,7 +185,7 @@ impl super::IsotopicComposition for TechnetiumIsotope {
 }
 impl super::MostAbundantIsotope for TechnetiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Tc120
+        Self::Tc122
     }
 }
 impl From<TechnetiumIsotope> for crate::Isotope {
@@ -230,6 +238,8 @@ impl TryFrom<u64> for TechnetiumIsotope {
             118u64 => Ok(Self::Tc118),
             119u64 => Ok(Self::Tc119),
             120u64 => Ok(Self::Tc120),
+            121u64 => Ok(Self::Tc121),
+            122u64 => Ok(Self::Tc122),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Tc, value)),
         }
     }
@@ -291,6 +301,8 @@ impl core::fmt::Display for TechnetiumIsotope {
             Self::Tc118 => write!(f, "Tc118"),
             Self::Tc119 => write!(f, "Tc119"),
             Self::Tc120 => write!(f, "Tc120"),
+            Self::Tc121 => write!(f, "Tc121"),
+            Self::Tc122 => write!(f, "Tc122"),
         }
     }
 }

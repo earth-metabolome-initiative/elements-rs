@@ -4,14 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Copernicium
 pub enum CoperniciumIsotope {
-    /// Isotope Cn276 of Copernicium
-    Cn276,
     /// Isotope Cn277 of Copernicium
     Cn277,
-    /// Isotope Cn278 of Copernicium
-    Cn278,
-    /// Isotope Cn279 of Copernicium
-    Cn279,
     /// Isotope Cn280 of Copernicium
     Cn280,
     /// Isotope Cn281 of Copernicium
@@ -24,21 +18,21 @@ pub enum CoperniciumIsotope {
     Cn284,
     /// Isotope Cn285 of Copernicium
     Cn285,
+    /// Isotope Cn286 of Copernicium
+    Cn286,
 }
 impl super::RelativeAtomicMass for CoperniciumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cn276 => 276.16141f64,
             Self::Cn277 => 277.16364f64,
-            Self::Cn278 => 278.16416f64,
-            Self::Cn279 => 279.16654f64,
             Self::Cn280 => 280.16715f64,
             Self::Cn281 => 281.16975f64,
             Self::Cn282 => 282.1705f64,
             Self::Cn283 => 283.17327f64,
             Self::Cn284 => 284.17416f64,
             Self::Cn285 => 285.17712f64,
+            Self::Cn286 => 286.178691f64,
         }
     }
 }
@@ -52,16 +46,14 @@ impl super::MassNumber for CoperniciumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Cn276 => 276u16,
             Self::Cn277 => 277u16,
-            Self::Cn278 => 278u16,
-            Self::Cn279 => 279u16,
             Self::Cn280 => 280u16,
             Self::Cn281 => 281u16,
             Self::Cn282 => 282u16,
             Self::Cn283 => 283u16,
             Self::Cn284 => 284u16,
             Self::Cn285 => 285u16,
+            Self::Cn286 => 286u16,
         }
     }
 }
@@ -73,7 +65,7 @@ impl super::IsotopicComposition for CoperniciumIsotope {
 }
 impl super::MostAbundantIsotope for CoperniciumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Cn285
+        Self::Cn286
     }
 }
 impl From<CoperniciumIsotope> for crate::Isotope {
@@ -90,16 +82,14 @@ impl TryFrom<u64> for CoperniciumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            276u64 => Ok(Self::Cn276),
             277u64 => Ok(Self::Cn277),
-            278u64 => Ok(Self::Cn278),
-            279u64 => Ok(Self::Cn279),
             280u64 => Ok(Self::Cn280),
             281u64 => Ok(Self::Cn281),
             282u64 => Ok(Self::Cn282),
             283u64 => Ok(Self::Cn283),
             284u64 => Ok(Self::Cn284),
             285u64 => Ok(Self::Cn285),
+            286u64 => Ok(Self::Cn286),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cn, value)),
         }
     }
@@ -125,16 +115,14 @@ impl TryFrom<u32> for CoperniciumIsotope {
 impl core::fmt::Display for CoperniciumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Cn276 => write!(f, "Cn276"),
             Self::Cn277 => write!(f, "Cn277"),
-            Self::Cn278 => write!(f, "Cn278"),
-            Self::Cn279 => write!(f, "Cn279"),
             Self::Cn280 => write!(f, "Cn280"),
             Self::Cn281 => write!(f, "Cn281"),
             Self::Cn282 => write!(f, "Cn282"),
             Self::Cn283 => write!(f, "Cn283"),
             Self::Cn284 => write!(f, "Cn284"),
             Self::Cn285 => write!(f, "Cn285"),
+            Self::Cn286 => write!(f, "Cn286"),
         }
     }
 }

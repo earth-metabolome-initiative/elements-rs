@@ -60,6 +60,10 @@ pub enum ManganeseIsotope {
     Mn70,
     /// Isotope Mn71 of Manganese
     Mn71,
+    /// Isotope Mn72 of Manganese
+    Mn72,
+    /// Isotope Mn73 of Manganese
+    Mn73,
 }
 impl super::RelativeAtomicMass for ManganeseIsotope {
     #[inline]
@@ -92,7 +96,9 @@ impl super::RelativeAtomicMass for ManganeseIsotope {
             Self::Mn68 => 67.96962f64,
             Self::Mn69 => 68.97366f64,
             Self::Mn70 => 69.97937f64,
-            Self::Mn71 => 70.98368f64,
+            Self::Mn71 => 70.982158f64,
+            Self::Mn72 => 71.988009f64,
+            Self::Mn73 => 72.992807f64,
         }
     }
 }
@@ -134,6 +140,8 @@ impl super::MassNumber for ManganeseIsotope {
             Self::Mn69 => 69u16,
             Self::Mn70 => 70u16,
             Self::Mn71 => 71u16,
+            Self::Mn72 => 72u16,
+            Self::Mn73 => 73u16,
         }
     }
 }
@@ -193,6 +201,8 @@ impl TryFrom<u64> for ManganeseIsotope {
             69u64 => Ok(Self::Mn69),
             70u64 => Ok(Self::Mn70),
             71u64 => Ok(Self::Mn71),
+            72u64 => Ok(Self::Mn72),
+            73u64 => Ok(Self::Mn73),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Mn, value)),
         }
     }
@@ -246,6 +256,8 @@ impl core::fmt::Display for ManganeseIsotope {
             Self::Mn69 => write!(f, "Mn69"),
             Self::Mn70 => write!(f, "Mn70"),
             Self::Mn71 => write!(f, "Mn71"),
+            Self::Mn72 => write!(f, "Mn72"),
+            Self::Mn73 => write!(f, "Mn73"),
         }
     }
 }

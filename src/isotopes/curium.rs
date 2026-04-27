@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Curium
 pub enum CuriumIsotope {
-    /// Isotope Cm232 of Curium
-    Cm232,
     /// Isotope Cm233 of Curium
     Cm233,
     /// Isotope Cm234 of Curium
@@ -44,14 +42,11 @@ pub enum CuriumIsotope {
     Cm250,
     /// Isotope Cm251 of Curium
     Cm251,
-    /// Isotope Cm252 of Curium
-    Cm252,
 }
 impl super::RelativeAtomicMass for CuriumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cm232 => 232.04982f64,
             Self::Cm233 => 233.05077f64,
             Self::Cm234 => 234.05016f64,
             Self::Cm235 => 235.05154f64,
@@ -71,7 +66,6 @@ impl super::RelativeAtomicMass for CuriumIsotope {
             Self::Cm249 => 249.0759548f64,
             Self::Cm250 => 250.078358f64,
             Self::Cm251 => 251.082286f64,
-            Self::Cm252 => 252.08487f64,
         }
     }
 }
@@ -85,7 +79,6 @@ impl super::MassNumber for CuriumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Cm232 => 232u16,
             Self::Cm233 => 233u16,
             Self::Cm234 => 234u16,
             Self::Cm235 => 235u16,
@@ -105,7 +98,6 @@ impl super::MassNumber for CuriumIsotope {
             Self::Cm249 => 249u16,
             Self::Cm250 => 250u16,
             Self::Cm251 => 251u16,
-            Self::Cm252 => 252u16,
         }
     }
 }
@@ -117,7 +109,7 @@ impl super::IsotopicComposition for CuriumIsotope {
 }
 impl super::MostAbundantIsotope for CuriumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Cm252
+        Self::Cm251
     }
 }
 impl From<CuriumIsotope> for crate::Isotope {
@@ -134,7 +126,6 @@ impl TryFrom<u64> for CuriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            232u64 => Ok(Self::Cm232),
             233u64 => Ok(Self::Cm233),
             234u64 => Ok(Self::Cm234),
             235u64 => Ok(Self::Cm235),
@@ -154,7 +145,6 @@ impl TryFrom<u64> for CuriumIsotope {
             249u64 => Ok(Self::Cm249),
             250u64 => Ok(Self::Cm250),
             251u64 => Ok(Self::Cm251),
-            252u64 => Ok(Self::Cm252),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cm, value)),
         }
     }
@@ -180,7 +170,6 @@ impl TryFrom<u32> for CuriumIsotope {
 impl core::fmt::Display for CuriumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Cm232 => write!(f, "Cm232"),
             Self::Cm233 => write!(f, "Cm233"),
             Self::Cm234 => write!(f, "Cm234"),
             Self::Cm235 => write!(f, "Cm235"),
@@ -200,7 +189,6 @@ impl core::fmt::Display for CuriumIsotope {
             Self::Cm249 => write!(f, "Cm249"),
             Self::Cm250 => write!(f, "Cm250"),
             Self::Cm251 => write!(f, "Cm251"),
-            Self::Cm252 => write!(f, "Cm252"),
         }
     }
 }

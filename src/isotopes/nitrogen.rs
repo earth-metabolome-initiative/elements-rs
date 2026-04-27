@@ -34,8 +34,6 @@ pub enum NitrogenIsotope {
     N23,
     /// Isotope N24 of Nitrogen
     N24,
-    /// Isotope N25 of Nitrogen
-    N25,
 }
 impl super::RelativeAtomicMass for NitrogenIsotope {
     #[inline]
@@ -56,7 +54,6 @@ impl super::RelativeAtomicMass for NitrogenIsotope {
             Self::N22 => 22.03439f64,
             Self::N23 => 23.04114f64,
             Self::N24 => 24.05039f64,
-            Self::N25 => 25.0601f64,
         }
     }
 }
@@ -85,7 +82,6 @@ impl super::MassNumber for NitrogenIsotope {
             Self::N22 => 22u16,
             Self::N23 => 23u16,
             Self::N24 => 24u16,
-            Self::N25 => 25u16,
         }
     }
 }
@@ -133,7 +129,6 @@ impl TryFrom<u64> for NitrogenIsotope {
             22u64 => Ok(Self::N22),
             23u64 => Ok(Self::N23),
             24u64 => Ok(Self::N24),
-            25u64 => Ok(Self::N25),
             _ => Err(crate::errors::Error::Isotope(crate::Element::N, value)),
         }
     }
@@ -174,7 +169,6 @@ impl core::fmt::Display for NitrogenIsotope {
             Self::N22 => write!(f, "N22"),
             Self::N23 => write!(f, "N23"),
             Self::N24 => write!(f, "N24"),
-            Self::N25 => write!(f, "N25"),
         }
     }
 }

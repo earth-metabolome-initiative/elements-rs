@@ -54,6 +54,10 @@ pub enum CalciumIsotope {
     Ca57,
     /// Isotope Ca58 of Calcium
     Ca58,
+    /// Isotope Ca59 of Calcium
+    Ca59,
+    /// Isotope Ca60 of Calcium
+    Ca60,
 }
 impl super::RelativeAtomicMass for CalciumIsotope {
     #[inline]
@@ -84,6 +88,8 @@ impl super::RelativeAtomicMass for CalciumIsotope {
             Self::Ca56 => 55.98508f64,
             Self::Ca57 => 56.99262f64,
             Self::Ca58 => 57.99794f64,
+            Self::Ca59 => 59.006237f64,
+            Self::Ca60 => 60.011809f64,
         }
     }
 }
@@ -122,6 +128,8 @@ impl super::MassNumber for CalciumIsotope {
             Self::Ca56 => 56u16,
             Self::Ca57 => 57u16,
             Self::Ca58 => 58u16,
+            Self::Ca59 => 59u16,
+            Self::Ca60 => 60u16,
         }
     }
 }
@@ -183,6 +191,8 @@ impl TryFrom<u64> for CalciumIsotope {
             56u64 => Ok(Self::Ca56),
             57u64 => Ok(Self::Ca57),
             58u64 => Ok(Self::Ca58),
+            59u64 => Ok(Self::Ca59),
+            60u64 => Ok(Self::Ca60),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ca, value)),
         }
     }
@@ -233,6 +243,8 @@ impl core::fmt::Display for CalciumIsotope {
             Self::Ca56 => write!(f, "Ca56"),
             Self::Ca57 => write!(f, "Ca57"),
             Self::Ca58 => write!(f, "Ca58"),
+            Self::Ca59 => write!(f, "Ca59"),
+            Self::Ca60 => write!(f, "Ca60"),
         }
     }
 }

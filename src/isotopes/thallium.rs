@@ -88,8 +88,6 @@ pub enum ThalliumIsotope {
     Tl216,
     /// Isotope Tl217 of Thallium
     Tl217,
-    /// Isotope Tl218 of Thallium
-    Tl218,
 }
 impl super::RelativeAtomicMass for ThalliumIsotope {
     #[inline]
@@ -137,7 +135,6 @@ impl super::RelativeAtomicMass for ThalliumIsotope {
             Self::Tl215 => 215.01064f64,
             Self::Tl216 => 216.0158f64,
             Self::Tl217 => 217.01966f64,
-            Self::Tl218 => 218.02479f64,
         }
     }
 }
@@ -193,7 +190,6 @@ impl super::MassNumber for ThalliumIsotope {
             Self::Tl215 => 215u16,
             Self::Tl216 => 216u16,
             Self::Tl217 => 217u16,
-            Self::Tl218 => 218u16,
         }
     }
 }
@@ -268,7 +264,6 @@ impl TryFrom<u64> for ThalliumIsotope {
             215u64 => Ok(Self::Tl215),
             216u64 => Ok(Self::Tl216),
             217u64 => Ok(Self::Tl217),
-            218u64 => Ok(Self::Tl218),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Tl, value)),
         }
     }
@@ -336,7 +331,6 @@ impl core::fmt::Display for ThalliumIsotope {
             Self::Tl215 => write!(f, "Tl215"),
             Self::Tl216 => write!(f, "Tl216"),
             Self::Tl217 => write!(f, "Tl217"),
-            Self::Tl218 => write!(f, "Tl218"),
         }
     }
 }

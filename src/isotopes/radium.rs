@@ -72,8 +72,6 @@ pub enum RadiumIsotope {
     Ra233,
     /// Isotope Ra234 of Radium
     Ra234,
-    /// Isotope Ra235 of Radium
-    Ra235,
 }
 impl super::RelativeAtomicMass for RadiumIsotope {
     #[inline]
@@ -113,7 +111,6 @@ impl super::RelativeAtomicMass for RadiumIsotope {
             Self::Ra232 => 232.0434753f64,
             Self::Ra233 => 233.047582f64,
             Self::Ra234 => 234.050342f64,
-            Self::Ra235 => 235.05497f64,
         }
     }
 }
@@ -161,7 +158,6 @@ impl super::MassNumber for RadiumIsotope {
             Self::Ra232 => 232u16,
             Self::Ra233 => 233u16,
             Self::Ra234 => 234u16,
-            Self::Ra235 => 235u16,
         }
     }
 }
@@ -173,7 +169,7 @@ impl super::IsotopicComposition for RadiumIsotope {
 }
 impl super::MostAbundantIsotope for RadiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Ra235
+        Self::Ra234
     }
 }
 impl From<RadiumIsotope> for crate::Isotope {
@@ -224,7 +220,6 @@ impl TryFrom<u64> for RadiumIsotope {
             232u64 => Ok(Self::Ra232),
             233u64 => Ok(Self::Ra233),
             234u64 => Ok(Self::Ra234),
-            235u64 => Ok(Self::Ra235),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ra, value)),
         }
     }
@@ -284,7 +279,6 @@ impl core::fmt::Display for RadiumIsotope {
             Self::Ra232 => write!(f, "Ra232"),
             Self::Ra233 => write!(f, "Ra233"),
             Self::Ra234 => write!(f, "Ra234"),
-            Self::Ra235 => write!(f, "Ra235"),
         }
     }
 }

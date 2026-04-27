@@ -4,6 +4,10 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Francium
 pub enum FranciumIsotope {
+    /// Isotope Fr197 of Francium
+    Fr197,
+    /// Isotope Fr198 of Francium
+    Fr198,
     /// Isotope Fr199 of Francium
     Fr199,
     /// Isotope Fr200 of Francium
@@ -79,6 +83,8 @@ impl super::RelativeAtomicMass for FranciumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Fr197 => 197.011008086f64,
+            Self::Fr198 => 198.010282081f64,
             Self::Fr199 => 199.007259f64,
             Self::Fr200 => 200.006586f64,
             Self::Fr201 => 201.003867f64,
@@ -127,6 +133,8 @@ impl super::MassNumber for FranciumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Fr197 => 197u16,
+            Self::Fr198 => 198u16,
             Self::Fr199 => 199u16,
             Self::Fr200 => 200u16,
             Self::Fr201 => 201u16,
@@ -190,6 +198,8 @@ impl TryFrom<u64> for FranciumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            197u64 => Ok(Self::Fr197),
+            198u64 => Ok(Self::Fr198),
             199u64 => Ok(Self::Fr199),
             200u64 => Ok(Self::Fr200),
             201u64 => Ok(Self::Fr201),
@@ -250,6 +260,8 @@ impl TryFrom<u32> for FranciumIsotope {
 impl core::fmt::Display for FranciumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Fr197 => write!(f, "Fr197"),
+            Self::Fr198 => write!(f, "Fr198"),
             Self::Fr199 => write!(f, "Fr199"),
             Self::Fr200 => write!(f, "Fr200"),
             Self::Fr201 => write!(f, "Fr201"),

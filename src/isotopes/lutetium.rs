@@ -76,6 +76,12 @@ pub enum LutetiumIsotope {
     Lu184,
     /// Isotope Lu185 of Lutetium
     Lu185,
+    /// Isotope Lu186 of Lutetium
+    Lu186,
+    /// Isotope Lu187 of Lutetium
+    Lu187,
+    /// Isotope Lu188 of Lutetium
+    Lu188,
 }
 impl super::RelativeAtomicMass for LutetiumIsotope {
     #[inline]
@@ -117,6 +123,9 @@ impl super::RelativeAtomicMass for LutetiumIsotope {
             Self::Lu183 => 182.957363f64,
             Self::Lu184 => 183.96091f64,
             Self::Lu185 => 184.96362f64,
+            Self::Lu186 => 185.96745f64,
+            Self::Lu187 => 186.970188f64,
+            Self::Lu188 => 187.974428f64,
         }
     }
 }
@@ -166,6 +175,9 @@ impl super::MassNumber for LutetiumIsotope {
             Self::Lu183 => 183u16,
             Self::Lu184 => 184u16,
             Self::Lu185 => 185u16,
+            Self::Lu186 => 186u16,
+            Self::Lu187 => 187u16,
+            Self::Lu188 => 188u16,
         }
     }
 }
@@ -234,6 +246,9 @@ impl TryFrom<u64> for LutetiumIsotope {
             183u64 => Ok(Self::Lu183),
             184u64 => Ok(Self::Lu184),
             185u64 => Ok(Self::Lu185),
+            186u64 => Ok(Self::Lu186),
+            187u64 => Ok(Self::Lu187),
+            188u64 => Ok(Self::Lu188),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Lu, value)),
         }
     }
@@ -295,6 +310,9 @@ impl core::fmt::Display for LutetiumIsotope {
             Self::Lu183 => write!(f, "Lu183"),
             Self::Lu184 => write!(f, "Lu184"),
             Self::Lu185 => write!(f, "Lu185"),
+            Self::Lu186 => write!(f, "Lu186"),
+            Self::Lu187 => write!(f, "Lu187"),
+            Self::Lu188 => write!(f, "Lu188"),
         }
     }
 }

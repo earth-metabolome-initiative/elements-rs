@@ -72,6 +72,14 @@ pub enum YtterbiumIsotope {
     Yb180,
     /// Isotope Yb181 of Ytterbium
     Yb181,
+    /// Isotope Yb182 of Ytterbium
+    Yb182,
+    /// Isotope Yb183 of Ytterbium
+    Yb183,
+    /// Isotope Yb184 of Ytterbium
+    Yb184,
+    /// Isotope Yb185 of Ytterbium
+    Yb185,
 }
 impl super::RelativeAtomicMass for YtterbiumIsotope {
     #[inline]
@@ -111,6 +119,10 @@ impl super::RelativeAtomicMass for YtterbiumIsotope {
             Self::Yb179 => 178.95004f64,
             Self::Yb180 => 179.95212f64,
             Self::Yb181 => 180.95589f64,
+            Self::Yb182 => 181.958239f64,
+            Self::Yb183 => 182.962426f64,
+            Self::Yb184 => 183.965002f64,
+            Self::Yb185 => 184.969425f64,
         }
     }
 }
@@ -158,6 +170,10 @@ impl super::MassNumber for YtterbiumIsotope {
             Self::Yb179 => 179u16,
             Self::Yb180 => 180u16,
             Self::Yb181 => 181u16,
+            Self::Yb182 => 182u16,
+            Self::Yb183 => 183u16,
+            Self::Yb184 => 184u16,
+            Self::Yb185 => 185u16,
         }
     }
 }
@@ -229,6 +245,10 @@ impl TryFrom<u64> for YtterbiumIsotope {
             179u64 => Ok(Self::Yb179),
             180u64 => Ok(Self::Yb180),
             181u64 => Ok(Self::Yb181),
+            182u64 => Ok(Self::Yb182),
+            183u64 => Ok(Self::Yb183),
+            184u64 => Ok(Self::Yb184),
+            185u64 => Ok(Self::Yb185),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Yb, value)),
         }
     }
@@ -288,6 +308,10 @@ impl core::fmt::Display for YtterbiumIsotope {
             Self::Yb179 => write!(f, "Yb179"),
             Self::Yb180 => write!(f, "Yb180"),
             Self::Yb181 => write!(f, "Yb181"),
+            Self::Yb182 => write!(f, "Yb182"),
+            Self::Yb183 => write!(f, "Yb183"),
+            Self::Yb184 => write!(f, "Yb184"),
+            Self::Yb185 => write!(f, "Yb185"),
         }
     }
 }

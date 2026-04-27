@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Einsteinium
 pub enum EinsteiniumIsotope {
-    /// Isotope Es239 of Einsteinium
-    Es239,
     /// Isotope Es240 of Einsteinium
     Es240,
     /// Isotope Es241 of Einsteinium
@@ -42,14 +40,11 @@ pub enum EinsteiniumIsotope {
     Es256,
     /// Isotope Es257 of Einsteinium
     Es257,
-    /// Isotope Es258 of Einsteinium
-    Es258,
 }
 impl super::RelativeAtomicMass for EinsteiniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Es239 => 239.06823f64,
             Self::Es240 => 240.06892f64,
             Self::Es241 => 241.06856f64,
             Self::Es242 => 242.06957f64,
@@ -68,7 +63,6 @@ impl super::RelativeAtomicMass for EinsteiniumIsotope {
             Self::Es255 => 255.090275f64,
             Self::Es256 => 256.0936f64,
             Self::Es257 => 257.09598f64,
-            Self::Es258 => 258.09952f64,
         }
     }
 }
@@ -82,7 +76,6 @@ impl super::MassNumber for EinsteiniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Es239 => 239u16,
             Self::Es240 => 240u16,
             Self::Es241 => 241u16,
             Self::Es242 => 242u16,
@@ -101,7 +94,6 @@ impl super::MassNumber for EinsteiniumIsotope {
             Self::Es255 => 255u16,
             Self::Es256 => 256u16,
             Self::Es257 => 257u16,
-            Self::Es258 => 258u16,
         }
     }
 }
@@ -113,7 +105,7 @@ impl super::IsotopicComposition for EinsteiniumIsotope {
 }
 impl super::MostAbundantIsotope for EinsteiniumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Es258
+        Self::Es257
     }
 }
 impl From<EinsteiniumIsotope> for crate::Isotope {
@@ -130,7 +122,6 @@ impl TryFrom<u64> for EinsteiniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            239u64 => Ok(Self::Es239),
             240u64 => Ok(Self::Es240),
             241u64 => Ok(Self::Es241),
             242u64 => Ok(Self::Es242),
@@ -149,7 +140,6 @@ impl TryFrom<u64> for EinsteiniumIsotope {
             255u64 => Ok(Self::Es255),
             256u64 => Ok(Self::Es256),
             257u64 => Ok(Self::Es257),
-            258u64 => Ok(Self::Es258),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Es, value)),
         }
     }
@@ -175,7 +165,6 @@ impl TryFrom<u32> for EinsteiniumIsotope {
 impl core::fmt::Display for EinsteiniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Es239 => write!(f, "Es239"),
             Self::Es240 => write!(f, "Es240"),
             Self::Es241 => write!(f, "Es241"),
             Self::Es242 => write!(f, "Es242"),
@@ -194,7 +183,6 @@ impl core::fmt::Display for EinsteiniumIsotope {
             Self::Es255 => write!(f, "Es255"),
             Self::Es256 => write!(f, "Es256"),
             Self::Es257 => write!(f, "Es257"),
-            Self::Es258 => write!(f, "Es258"),
         }
     }
 }

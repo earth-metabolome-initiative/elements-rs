@@ -80,6 +80,10 @@ pub enum TantalumIsotope {
     Ta191,
     /// Isotope Ta192 of Tantalum
     Ta192,
+    /// Isotope Ta193 of Tantalum
+    Ta193,
+    /// Isotope Ta194 of Tantalum
+    Ta194,
 }
 impl super::RelativeAtomicMass for TantalumIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for TantalumIsotope {
             Self::Ta190 => 189.96939f64,
             Self::Ta191 => 190.97156f64,
             Self::Ta192 => 191.97514f64,
+            Self::Ta193 => 192.97766f64,
+            Self::Ta194 => 193.98161f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for TantalumIsotope {
             Self::Ta190 => 190u16,
             Self::Ta191 => 191u16,
             Self::Ta192 => 192u16,
+            Self::Ta193 => 193u16,
+            Self::Ta194 => 194u16,
         }
     }
 }
@@ -244,6 +252,8 @@ impl TryFrom<u64> for TantalumIsotope {
             190u64 => Ok(Self::Ta190),
             191u64 => Ok(Self::Ta191),
             192u64 => Ok(Self::Ta192),
+            193u64 => Ok(Self::Ta193),
+            194u64 => Ok(Self::Ta194),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ta, value)),
         }
     }
@@ -307,6 +317,8 @@ impl core::fmt::Display for TantalumIsotope {
             Self::Ta190 => write!(f, "Ta190"),
             Self::Ta191 => write!(f, "Ta191"),
             Self::Ta192 => write!(f, "Ta192"),
+            Self::Ta193 => write!(f, "Ta193"),
+            Self::Ta194 => write!(f, "Ta194"),
         }
     }
 }

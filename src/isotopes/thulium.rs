@@ -76,6 +76,12 @@ pub enum ThuliumIsotope {
     Tm178,
     /// Isotope Tm179 of Thulium
     Tm179,
+    /// Isotope Tm180 of Thulium
+    Tm180,
+    /// Isotope Tm181 of Thulium
+    Tm181,
+    /// Isotope Tm182 of Thulium
+    Tm182,
 }
 impl super::RelativeAtomicMass for ThuliumIsotope {
     #[inline]
@@ -117,6 +123,9 @@ impl super::RelativeAtomicMass for ThuliumIsotope {
             Self::Tm177 => 176.94904f64,
             Self::Tm178 => 177.95264f64,
             Self::Tm179 => 178.95534f64,
+            Self::Tm180 => 179.959023f64,
+            Self::Tm181 => 180.961954f64,
+            Self::Tm182 => 181.966194f64,
         }
     }
 }
@@ -166,6 +175,9 @@ impl super::MassNumber for ThuliumIsotope {
             Self::Tm177 => 177u16,
             Self::Tm178 => 178u16,
             Self::Tm179 => 179u16,
+            Self::Tm180 => 180u16,
+            Self::Tm181 => 181u16,
+            Self::Tm182 => 182u16,
         }
     }
 }
@@ -233,6 +245,9 @@ impl TryFrom<u64> for ThuliumIsotope {
             177u64 => Ok(Self::Tm177),
             178u64 => Ok(Self::Tm178),
             179u64 => Ok(Self::Tm179),
+            180u64 => Ok(Self::Tm180),
+            181u64 => Ok(Self::Tm181),
+            182u64 => Ok(Self::Tm182),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Tm, value)),
         }
     }
@@ -294,6 +309,9 @@ impl core::fmt::Display for ThuliumIsotope {
             Self::Tm177 => write!(f, "Tm177"),
             Self::Tm178 => write!(f, "Tm178"),
             Self::Tm179 => write!(f, "Tm179"),
+            Self::Tm180 => write!(f, "Tm180"),
+            Self::Tm181 => write!(f, "Tm181"),
+            Self::Tm182 => write!(f, "Tm182"),
         }
     }
 }

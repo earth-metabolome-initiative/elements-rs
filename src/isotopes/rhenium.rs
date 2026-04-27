@@ -84,6 +84,8 @@ pub enum RheniumIsotope {
     Re197,
     /// Isotope Re198 of Rhenium
     Re198,
+    /// Isotope Re199 of Rhenium
+    Re199,
 }
 impl super::RelativeAtomicMass for RheniumIsotope {
     #[inline]
@@ -129,6 +131,7 @@ impl super::RelativeAtomicMass for RheniumIsotope {
             Self::Re196 => 195.9758f64,
             Self::Re197 => 196.97799f64,
             Self::Re198 => 197.9816f64,
+            Self::Re199 => 198.984187f64,
         }
     }
 }
@@ -182,6 +185,7 @@ impl super::MassNumber for RheniumIsotope {
             Self::Re196 => 196u16,
             Self::Re197 => 197u16,
             Self::Re198 => 198u16,
+            Self::Re199 => 199u16,
         }
     }
 }
@@ -254,6 +258,7 @@ impl TryFrom<u64> for RheniumIsotope {
             196u64 => Ok(Self::Re196),
             197u64 => Ok(Self::Re197),
             198u64 => Ok(Self::Re198),
+            199u64 => Ok(Self::Re199),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Re, value)),
         }
     }
@@ -319,6 +324,7 @@ impl core::fmt::Display for RheniumIsotope {
             Self::Re196 => write!(f, "Re196"),
             Self::Re197 => write!(f, "Re197"),
             Self::Re198 => write!(f, "Re198"),
+            Self::Re199 => write!(f, "Re199"),
         }
     }
 }

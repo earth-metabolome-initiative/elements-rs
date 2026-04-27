@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Germanium
 pub enum GermaniumIsotope {
-    /// Isotope Ge58 of Germanium
-    Ge58,
     /// Isotope Ge59 of Germanium
     Ge59,
     /// Isotope Ge60 of Germanium
@@ -75,7 +73,6 @@ impl super::RelativeAtomicMass for GermaniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Ge58 => 57.99172f64,
             Self::Ge59 => 58.98249f64,
             Self::Ge60 => 59.97036f64,
             Self::Ge61 => 60.96379f64,
@@ -121,7 +118,6 @@ impl super::MassNumber for GermaniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Ge58 => 58u16,
             Self::Ge59 => 59u16,
             Self::Ge60 => 60u16,
             Self::Ge61 => 61u16,
@@ -189,7 +185,6 @@ impl TryFrom<u64> for GermaniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            58u64 => Ok(Self::Ge58),
             59u64 => Ok(Self::Ge59),
             60u64 => Ok(Self::Ge60),
             61u64 => Ok(Self::Ge61),
@@ -247,7 +242,6 @@ impl TryFrom<u32> for GermaniumIsotope {
 impl core::fmt::Display for GermaniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Ge58 => write!(f, "Ge58"),
             Self::Ge59 => write!(f, "Ge59"),
             Self::Ge60 => write!(f, "Ge60"),
             Self::Ge61 => write!(f, "Ge61"),

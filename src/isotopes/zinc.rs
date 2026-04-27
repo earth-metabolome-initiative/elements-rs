@@ -68,6 +68,8 @@ pub enum ZincIsotope {
     Zn84,
     /// Isotope Zn85 of Zinc
     Zn85,
+    /// Isotope Zn86 of Zinc
+    Zn86,
 }
 impl super::RelativeAtomicMass for ZincIsotope {
     #[inline]
@@ -105,6 +107,7 @@ impl super::RelativeAtomicMass for ZincIsotope {
             Self::Zn83 => 82.96056f64,
             Self::Zn84 => 83.96521f64,
             Self::Zn85 => 84.97226f64,
+            Self::Zn86 => 85.978465f64,
         }
     }
 }
@@ -150,6 +153,7 @@ impl super::MassNumber for ZincIsotope {
             Self::Zn83 => 83u16,
             Self::Zn84 => 84u16,
             Self::Zn85 => 85u16,
+            Self::Zn86 => 86u16,
         }
     }
 }
@@ -217,6 +221,7 @@ impl TryFrom<u64> for ZincIsotope {
             83u64 => Ok(Self::Zn83),
             84u64 => Ok(Self::Zn84),
             85u64 => Ok(Self::Zn85),
+            86u64 => Ok(Self::Zn86),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Zn, value)),
         }
     }
@@ -274,6 +279,7 @@ impl core::fmt::Display for ZincIsotope {
             Self::Zn83 => write!(f, "Zn83"),
             Self::Zn84 => write!(f, "Zn84"),
             Self::Zn85 => write!(f, "Zn85"),
+            Self::Zn86 => write!(f, "Zn86"),
         }
     }
 }

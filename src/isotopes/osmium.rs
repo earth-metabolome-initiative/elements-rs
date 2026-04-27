@@ -88,6 +88,8 @@ pub enum OsmiumIsotope {
     Os201,
     /// Isotope Os202 of Osmium
     Os202,
+    /// Isotope Os203 of Osmium
+    Os203,
 }
 impl super::RelativeAtomicMass for OsmiumIsotope {
     #[inline]
@@ -135,6 +137,7 @@ impl super::RelativeAtomicMass for OsmiumIsotope {
             Self::Os200 => 199.97984f64,
             Self::Os201 => 200.98364f64,
             Self::Os202 => 201.98595f64,
+            Self::Os203 => 202.992195f64,
         }
     }
 }
@@ -190,6 +193,7 @@ impl super::MassNumber for OsmiumIsotope {
             Self::Os200 => 200u16,
             Self::Os201 => 201u16,
             Self::Os202 => 202u16,
+            Self::Os203 => 203u16,
         }
     }
 }
@@ -269,6 +273,7 @@ impl TryFrom<u64> for OsmiumIsotope {
             200u64 => Ok(Self::Os200),
             201u64 => Ok(Self::Os201),
             202u64 => Ok(Self::Os202),
+            203u64 => Ok(Self::Os203),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Os, value)),
         }
     }
@@ -336,6 +341,7 @@ impl core::fmt::Display for OsmiumIsotope {
             Self::Os200 => write!(f, "Os200"),
             Self::Os201 => write!(f, "Os201"),
             Self::Os202 => write!(f, "Os202"),
+            Self::Os203 => write!(f, "Os203"),
         }
     }
 }

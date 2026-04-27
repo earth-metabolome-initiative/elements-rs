@@ -42,8 +42,6 @@ pub enum FermiumIsotope {
     Fm258,
     /// Isotope Fm259 of Fermium
     Fm259,
-    /// Isotope Fm260 of Fermium
-    Fm260,
 }
 impl super::RelativeAtomicMass for FermiumIsotope {
     #[inline]
@@ -68,7 +66,6 @@ impl super::RelativeAtomicMass for FermiumIsotope {
             Self::Fm257 => 257.0951061f64,
             Self::Fm258 => 258.09708f64,
             Self::Fm259 => 259.1006f64,
-            Self::Fm260 => 260.10281f64,
         }
     }
 }
@@ -101,7 +98,6 @@ impl super::MassNumber for FermiumIsotope {
             Self::Fm257 => 257u16,
             Self::Fm258 => 258u16,
             Self::Fm259 => 259u16,
-            Self::Fm260 => 260u16,
         }
     }
 }
@@ -113,7 +109,7 @@ impl super::IsotopicComposition for FermiumIsotope {
 }
 impl super::MostAbundantIsotope for FermiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Fm260
+        Self::Fm259
     }
 }
 impl From<FermiumIsotope> for crate::Isotope {
@@ -149,7 +145,6 @@ impl TryFrom<u64> for FermiumIsotope {
             257u64 => Ok(Self::Fm257),
             258u64 => Ok(Self::Fm258),
             259u64 => Ok(Self::Fm259),
-            260u64 => Ok(Self::Fm260),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Fm, value)),
         }
     }
@@ -194,7 +189,6 @@ impl core::fmt::Display for FermiumIsotope {
             Self::Fm257 => write!(f, "Fm257"),
             Self::Fm258 => write!(f, "Fm258"),
             Self::Fm259 => write!(f, "Fm259"),
-            Self::Fm260 => write!(f, "Fm260"),
         }
     }
 }

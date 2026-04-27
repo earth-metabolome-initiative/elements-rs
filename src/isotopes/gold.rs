@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Gold
 pub enum GoldIsotope {
-    /// Isotope Au169 of Gold
-    Au169,
     /// Isotope Au170 of Gold
     Au170,
     /// Isotope Au171 of Gold
@@ -93,7 +91,6 @@ impl super::RelativeAtomicMass for GoldIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Au169 => 168.99808f64,
             Self::Au170 => 169.99597f64,
             Self::Au171 => 170.991876f64,
             Self::Au172 => 171.989942f64,
@@ -148,7 +145,6 @@ impl super::MassNumber for GoldIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Au169 => 169u16,
             Self::Au170 => 170u16,
             Self::Au171 => 171u16,
             Self::Au172 => 172u16,
@@ -221,7 +217,6 @@ impl TryFrom<u64> for GoldIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            169u64 => Ok(Self::Au169),
             170u64 => Ok(Self::Au170),
             171u64 => Ok(Self::Au171),
             172u64 => Ok(Self::Au172),
@@ -288,7 +283,6 @@ impl TryFrom<u32> for GoldIsotope {
 impl core::fmt::Display for GoldIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Au169 => write!(f, "Au169"),
             Self::Au170 => write!(f, "Au170"),
             Self::Au171 => write!(f, "Au171"),
             Self::Au172 => write!(f, "Au172"),

@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Xenon
 pub enum XenonIsotope {
+    /// Isotope Xe108 of Xenon
+    Xe108,
     /// Isotope Xe109 of Xenon
     Xe109,
     /// Isotope Xe110 of Xenon
@@ -84,11 +86,16 @@ pub enum XenonIsotope {
     Xe147,
     /// Isotope Xe148 of Xenon
     Xe148,
+    /// Isotope Xe149 of Xenon
+    Xe149,
+    /// Isotope Xe150 of Xenon
+    Xe150,
 }
 impl super::RelativeAtomicMass for XenonIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Xe108 => 107.954232285f64,
             Self::Xe109 => 108.95043f64,
             Self::Xe110 => 109.94426f64,
             Self::Xe111 => 110.941607f64,
@@ -129,6 +136,8 @@ impl super::RelativeAtomicMass for XenonIsotope {
             Self::Xe146 => 145.948518f64,
             Self::Xe147 => 146.95426f64,
             Self::Xe148 => 147.95813f64,
+            Self::Xe149 => 148.964573f64,
+            Self::Xe150 => 149.968878f64,
         }
     }
 }
@@ -142,6 +151,7 @@ impl super::MassNumber for XenonIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Xe108 => 108u16,
             Self::Xe109 => 109u16,
             Self::Xe110 => 110u16,
             Self::Xe111 => 111u16,
@@ -182,6 +192,8 @@ impl super::MassNumber for XenonIsotope {
             Self::Xe146 => 146u16,
             Self::Xe147 => 147u16,
             Self::Xe148 => 148u16,
+            Self::Xe149 => 149u16,
+            Self::Xe150 => 150u16,
         }
     }
 }
@@ -221,6 +233,7 @@ impl TryFrom<u64> for XenonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            108u64 => Ok(Self::Xe108),
             109u64 => Ok(Self::Xe109),
             110u64 => Ok(Self::Xe110),
             111u64 => Ok(Self::Xe111),
@@ -261,6 +274,8 @@ impl TryFrom<u64> for XenonIsotope {
             146u64 => Ok(Self::Xe146),
             147u64 => Ok(Self::Xe147),
             148u64 => Ok(Self::Xe148),
+            149u64 => Ok(Self::Xe149),
+            150u64 => Ok(Self::Xe150),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Xe, value)),
         }
     }
@@ -286,6 +301,7 @@ impl TryFrom<u32> for XenonIsotope {
 impl core::fmt::Display for XenonIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Xe108 => write!(f, "Xe108"),
             Self::Xe109 => write!(f, "Xe109"),
             Self::Xe110 => write!(f, "Xe110"),
             Self::Xe111 => write!(f, "Xe111"),
@@ -326,6 +342,8 @@ impl core::fmt::Display for XenonIsotope {
             Self::Xe146 => write!(f, "Xe146"),
             Self::Xe147 => write!(f, "Xe147"),
             Self::Xe148 => write!(f, "Xe148"),
+            Self::Xe149 => write!(f, "Xe149"),
+            Self::Xe150 => write!(f, "Xe150"),
         }
     }
 }

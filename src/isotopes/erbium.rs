@@ -76,6 +76,12 @@ pub enum ErbiumIsotope {
     Er176,
     /// Isotope Er177 of Erbium
     Er177,
+    /// Isotope Er178 of Erbium
+    Er178,
+    /// Isotope Er179 of Erbium
+    Er179,
+    /// Isotope Er180 of Erbium
+    Er180,
 }
 impl super::RelativeAtomicMass for ErbiumIsotope {
     #[inline]
@@ -117,6 +123,9 @@ impl super::RelativeAtomicMass for ErbiumIsotope {
             Self::Er175 => 174.94777f64,
             Self::Er176 => 175.94994f64,
             Self::Er177 => 176.95399f64,
+            Self::Er178 => 177.956779f64,
+            Self::Er179 => 178.961267f64,
+            Self::Er180 => 179.96438f64,
         }
     }
 }
@@ -166,6 +175,9 @@ impl super::MassNumber for ErbiumIsotope {
             Self::Er175 => 175u16,
             Self::Er176 => 176u16,
             Self::Er177 => 177u16,
+            Self::Er178 => 178u16,
+            Self::Er179 => 179u16,
+            Self::Er180 => 180u16,
         }
     }
 }
@@ -238,6 +250,9 @@ impl TryFrom<u64> for ErbiumIsotope {
             175u64 => Ok(Self::Er175),
             176u64 => Ok(Self::Er176),
             177u64 => Ok(Self::Er177),
+            178u64 => Ok(Self::Er178),
+            179u64 => Ok(Self::Er179),
+            180u64 => Ok(Self::Er180),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Er, value)),
         }
     }
@@ -299,6 +314,9 @@ impl core::fmt::Display for ErbiumIsotope {
             Self::Er175 => write!(f, "Er175"),
             Self::Er176 => write!(f, "Er176"),
             Self::Er177 => write!(f, "Er177"),
+            Self::Er178 => write!(f, "Er178"),
+            Self::Er179 => write!(f, "Er179"),
+            Self::Er180 => write!(f, "Er180"),
         }
     }
 }

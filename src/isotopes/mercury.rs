@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Mercury
 pub enum MercuryIsotope {
+    /// Isotope Hg170 of Mercury
+    Hg170,
     /// Isotope Hg171 of Mercury
     Hg171,
     /// Isotope Hg172 of Mercury
@@ -101,6 +103,7 @@ impl super::RelativeAtomicMass for MercuryIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Hg170 => 170.005814f64,
             Self::Hg171 => 171.00353f64,
             Self::Hg172 => 171.99881f64,
             Self::Hg173 => 172.99709f64,
@@ -160,6 +163,7 @@ impl super::MassNumber for MercuryIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Hg170 => 170u16,
             Self::Hg171 => 171u16,
             Self::Hg172 => 172u16,
             Self::Hg173 => 173u16,
@@ -243,6 +247,7 @@ impl TryFrom<u64> for MercuryIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            170u64 => Ok(Self::Hg170),
             171u64 => Ok(Self::Hg171),
             172u64 => Ok(Self::Hg172),
             173u64 => Ok(Self::Hg173),
@@ -314,6 +319,7 @@ impl TryFrom<u32> for MercuryIsotope {
 impl core::fmt::Display for MercuryIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Hg170 => write!(f, "Hg170"),
             Self::Hg171 => write!(f, "Hg171"),
             Self::Hg172 => write!(f, "Hg172"),
             Self::Hg173 => write!(f, "Hg173"),

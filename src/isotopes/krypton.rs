@@ -4,6 +4,10 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Krypton
 pub enum KryptonIsotope {
+    /// Isotope Kr67 of Krypton
+    Kr67,
+    /// Isotope Kr68 of Krypton
+    Kr68,
     /// Isotope Kr69 of Krypton
     Kr69,
     /// Isotope Kr70 of Krypton
@@ -75,6 +79,8 @@ impl super::RelativeAtomicMass for KryptonIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Kr67 => 66.983305f64,
+            Self::Kr68 => 67.972489f64,
             Self::Kr69 => 68.96518f64,
             Self::Kr70 => 69.95604f64,
             Self::Kr71 => 70.95027f64,
@@ -121,6 +127,8 @@ impl super::MassNumber for KryptonIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Kr67 => 67u16,
+            Self::Kr68 => 68u16,
             Self::Kr69 => 69u16,
             Self::Kr70 => 70u16,
             Self::Kr71 => 71u16,
@@ -190,6 +198,8 @@ impl TryFrom<u64> for KryptonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            67u64 => Ok(Self::Kr67),
+            68u64 => Ok(Self::Kr68),
             69u64 => Ok(Self::Kr69),
             70u64 => Ok(Self::Kr70),
             71u64 => Ok(Self::Kr71),
@@ -248,6 +258,8 @@ impl TryFrom<u32> for KryptonIsotope {
 impl core::fmt::Display for KryptonIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Kr67 => write!(f, "Kr67"),
+            Self::Kr68 => write!(f, "Kr68"),
             Self::Kr69 => write!(f, "Kr69"),
             Self::Kr70 => write!(f, "Kr70"),
             Self::Kr71 => write!(f, "Kr71"),

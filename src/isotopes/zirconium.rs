@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Zirconium
 pub enum ZirconiumIsotope {
+    /// Isotope Zr77 of Zirconium
+    Zr77,
     /// Isotope Zr78 of Zirconium
     Zr78,
     /// Isotope Zr79 of Zirconium
@@ -74,11 +76,14 @@ pub enum ZirconiumIsotope {
     Zr111,
     /// Isotope Zr112 of Zirconium
     Zr112,
+    /// Isotope Zr113 of Zirconium
+    Zr113,
 }
 impl super::RelativeAtomicMass for ZirconiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Zr77 => 76.966076f64,
             Self::Zr78 => 77.95566f64,
             Self::Zr79 => 78.94948f64,
             Self::Zr80 => 79.9404f64,
@@ -114,6 +119,7 @@ impl super::RelativeAtomicMass for ZirconiumIsotope {
             Self::Zr110 => 109.95396f64,
             Self::Zr111 => 110.95968f64,
             Self::Zr112 => 111.9637f64,
+            Self::Zr113 => 112.971723f64,
         }
     }
 }
@@ -127,6 +133,7 @@ impl super::MassNumber for ZirconiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Zr77 => 77u16,
             Self::Zr78 => 78u16,
             Self::Zr79 => 79u16,
             Self::Zr80 => 80u16,
@@ -162,6 +169,7 @@ impl super::MassNumber for ZirconiumIsotope {
             Self::Zr110 => 110u16,
             Self::Zr111 => 111u16,
             Self::Zr112 => 112u16,
+            Self::Zr113 => 113u16,
         }
     }
 }
@@ -197,6 +205,7 @@ impl TryFrom<u64> for ZirconiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            77u64 => Ok(Self::Zr77),
             78u64 => Ok(Self::Zr78),
             79u64 => Ok(Self::Zr79),
             80u64 => Ok(Self::Zr80),
@@ -232,6 +241,7 @@ impl TryFrom<u64> for ZirconiumIsotope {
             110u64 => Ok(Self::Zr110),
             111u64 => Ok(Self::Zr111),
             112u64 => Ok(Self::Zr112),
+            113u64 => Ok(Self::Zr113),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Zr, value)),
         }
     }
@@ -257,6 +267,7 @@ impl TryFrom<u32> for ZirconiumIsotope {
 impl core::fmt::Display for ZirconiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Zr77 => write!(f, "Zr77"),
             Self::Zr78 => write!(f, "Zr78"),
             Self::Zr79 => write!(f, "Zr79"),
             Self::Zr80 => write!(f, "Zr80"),
@@ -292,6 +303,7 @@ impl core::fmt::Display for ZirconiumIsotope {
             Self::Zr110 => write!(f, "Zr110"),
             Self::Zr111 => write!(f, "Zr111"),
             Self::Zr112 => write!(f, "Zr112"),
+            Self::Zr113 => write!(f, "Zr113"),
         }
     }
 }

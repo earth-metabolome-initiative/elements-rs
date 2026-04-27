@@ -84,6 +84,8 @@ pub enum CaesiumIsotope {
     Cs150,
     /// Isotope Cs151 of Caesium
     Cs151,
+    /// Isotope Cs152 of Caesium
+    Cs152,
 }
 impl super::RelativeAtomicMass for CaesiumIsotope {
     #[inline]
@@ -129,6 +131,7 @@ impl super::RelativeAtomicMass for CaesiumIsotope {
             Self::Cs149 => 148.95302f64,
             Self::Cs150 => 149.95833f64,
             Self::Cs151 => 150.96258f64,
+            Self::Cs152 => 151.968728f64,
         }
     }
 }
@@ -182,6 +185,7 @@ impl super::MassNumber for CaesiumIsotope {
             Self::Cs149 => 149u16,
             Self::Cs150 => 150u16,
             Self::Cs151 => 151u16,
+            Self::Cs152 => 152u16,
         }
     }
 }
@@ -253,6 +257,7 @@ impl TryFrom<u64> for CaesiumIsotope {
             149u64 => Ok(Self::Cs149),
             150u64 => Ok(Self::Cs150),
             151u64 => Ok(Self::Cs151),
+            152u64 => Ok(Self::Cs152),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cs, value)),
         }
     }
@@ -318,6 +323,7 @@ impl core::fmt::Display for CaesiumIsotope {
             Self::Cs149 => write!(f, "Cs149"),
             Self::Cs150 => write!(f, "Cs150"),
             Self::Cs151 => write!(f, "Cs151"),
+            Self::Cs152 => write!(f, "Cs152"),
         }
     }
 }

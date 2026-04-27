@@ -82,6 +82,10 @@ pub enum CeriumIsotope {
     Ce156,
     /// Isotope Ce157 of Cerium
     Ce157,
+    /// Isotope Ce158 of Cerium
+    Ce158,
+    /// Isotope Ce159 of Cerium
+    Ce159,
 }
 impl super::RelativeAtomicMass for CeriumIsotope {
     #[inline]
@@ -126,6 +130,8 @@ impl super::RelativeAtomicMass for CeriumIsotope {
             Self::Ce155 => 154.94855f64,
             Self::Ce156 => 155.95183f64,
             Self::Ce157 => 156.95705f64,
+            Self::Ce158 => 157.960773f64,
+            Self::Ce159 => 158.966355f64,
         }
     }
 }
@@ -178,6 +184,8 @@ impl super::MassNumber for CeriumIsotope {
             Self::Ce155 => 155u16,
             Self::Ce156 => 156u16,
             Self::Ce157 => 157u16,
+            Self::Ce158 => 158u16,
+            Self::Ce159 => 159u16,
         }
     }
 }
@@ -251,6 +259,8 @@ impl TryFrom<u64> for CeriumIsotope {
             155u64 => Ok(Self::Ce155),
             156u64 => Ok(Self::Ce156),
             157u64 => Ok(Self::Ce157),
+            158u64 => Ok(Self::Ce158),
+            159u64 => Ok(Self::Ce159),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ce, value)),
         }
     }
@@ -315,6 +325,8 @@ impl core::fmt::Display for CeriumIsotope {
             Self::Ce155 => write!(f, "Ce155"),
             Self::Ce156 => write!(f, "Ce156"),
             Self::Ce157 => write!(f, "Ce157"),
+            Self::Ce158 => write!(f, "Ce158"),
+            Self::Ce159 => write!(f, "Ce159"),
         }
     }
 }

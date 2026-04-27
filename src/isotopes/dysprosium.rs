@@ -76,6 +76,12 @@ pub enum DysprosiumIsotope {
     Dy172,
     /// Isotope Dy173 of Dysprosium
     Dy173,
+    /// Isotope Dy174 of Dysprosium
+    Dy174,
+    /// Isotope Dy175 of Dysprosium
+    Dy175,
+    /// Isotope Dy176 of Dysprosium
+    Dy176,
 }
 impl super::RelativeAtomicMass for DysprosiumIsotope {
     #[inline]
@@ -117,6 +123,9 @@ impl super::RelativeAtomicMass for DysprosiumIsotope {
             Self::Dy171 => 170.94612f64,
             Self::Dy172 => 171.94846f64,
             Self::Dy173 => 172.95283f64,
+            Self::Dy174 => 173.955845f64,
+            Self::Dy175 => 174.960569f64,
+            Self::Dy176 => 175.963918f64,
         }
     }
 }
@@ -166,6 +175,9 @@ impl super::MassNumber for DysprosiumIsotope {
             Self::Dy171 => 171u16,
             Self::Dy172 => 172u16,
             Self::Dy173 => 173u16,
+            Self::Dy174 => 174u16,
+            Self::Dy175 => 175u16,
+            Self::Dy176 => 176u16,
         }
     }
 }
@@ -239,6 +251,9 @@ impl TryFrom<u64> for DysprosiumIsotope {
             171u64 => Ok(Self::Dy171),
             172u64 => Ok(Self::Dy172),
             173u64 => Ok(Self::Dy173),
+            174u64 => Ok(Self::Dy174),
+            175u64 => Ok(Self::Dy175),
+            176u64 => Ok(Self::Dy176),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Dy, value)),
         }
     }
@@ -300,6 +315,9 @@ impl core::fmt::Display for DysprosiumIsotope {
             Self::Dy171 => write!(f, "Dy171"),
             Self::Dy172 => write!(f, "Dy172"),
             Self::Dy173 => write!(f, "Dy173"),
+            Self::Dy174 => write!(f, "Dy174"),
+            Self::Dy175 => write!(f, "Dy175"),
+            Self::Dy176 => write!(f, "Dy176"),
         }
     }
 }

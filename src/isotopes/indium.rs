@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Indium
 pub enum IndiumIsotope {
+    /// Isotope In96 of Indium
+    In96,
     /// Isotope In97 of Indium
     In97,
     /// Isotope In98 of Indium
@@ -82,11 +84,16 @@ pub enum IndiumIsotope {
     In134,
     /// Isotope In135 of Indium
     In135,
+    /// Isotope In136 of Indium
+    In136,
+    /// Isotope In137 of Indium
+    In137,
 }
 impl super::RelativeAtomicMass for IndiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::In96 => 95.959109f64,
             Self::In97 => 96.94934f64,
             Self::In98 => 97.94214f64,
             Self::In99 => 98.93411f64,
@@ -126,6 +133,8 @@ impl super::RelativeAtomicMass for IndiumIsotope {
             Self::In133 => 132.93831f64,
             Self::In134 => 133.94454f64,
             Self::In135 => 134.95005f64,
+            Self::In136 => 135.956017f64,
+            Self::In137 => 136.961535f64,
         }
     }
 }
@@ -139,6 +148,7 @@ impl super::MassNumber for IndiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::In96 => 96u16,
             Self::In97 => 97u16,
             Self::In98 => 98u16,
             Self::In99 => 99u16,
@@ -178,6 +188,8 @@ impl super::MassNumber for IndiumIsotope {
             Self::In133 => 133u16,
             Self::In134 => 134u16,
             Self::In135 => 135u16,
+            Self::In136 => 136u16,
+            Self::In137 => 137u16,
         }
     }
 }
@@ -210,6 +222,7 @@ impl TryFrom<u64> for IndiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            96u64 => Ok(Self::In96),
             97u64 => Ok(Self::In97),
             98u64 => Ok(Self::In98),
             99u64 => Ok(Self::In99),
@@ -249,6 +262,8 @@ impl TryFrom<u64> for IndiumIsotope {
             133u64 => Ok(Self::In133),
             134u64 => Ok(Self::In134),
             135u64 => Ok(Self::In135),
+            136u64 => Ok(Self::In136),
+            137u64 => Ok(Self::In137),
             _ => Err(crate::errors::Error::Isotope(crate::Element::In, value)),
         }
     }
@@ -274,6 +289,7 @@ impl TryFrom<u32> for IndiumIsotope {
 impl core::fmt::Display for IndiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::In96 => write!(f, "In96"),
             Self::In97 => write!(f, "In97"),
             Self::In98 => write!(f, "In98"),
             Self::In99 => write!(f, "In99"),
@@ -313,6 +329,8 @@ impl core::fmt::Display for IndiumIsotope {
             Self::In133 => write!(f, "In133"),
             Self::In134 => write!(f, "In134"),
             Self::In135 => write!(f, "In135"),
+            Self::In136 => write!(f, "In136"),
+            Self::In137 => write!(f, "In137"),
         }
     }
 }

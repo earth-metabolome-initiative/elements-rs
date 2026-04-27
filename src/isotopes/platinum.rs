@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Platinum
 pub enum PlatinumIsotope {
+    /// Isotope Pt165 of Platinum
+    Pt165,
     /// Isotope Pt166 of Platinum
     Pt166,
     /// Isotope Pt167 of Platinum
@@ -86,11 +88,16 @@ pub enum PlatinumIsotope {
     Pt205,
     /// Isotope Pt206 of Platinum
     Pt206,
+    /// Isotope Pt207 of Platinum
+    Pt207,
+    /// Isotope Pt208 of Platinum
+    Pt208,
 }
 impl super::RelativeAtomicMass for PlatinumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Pt165 => 164.999658f64,
             Self::Pt166 => 165.99486f64,
             Self::Pt167 => 166.99269f64,
             Self::Pt168 => 167.98813f64,
@@ -132,6 +139,8 @@ impl super::RelativeAtomicMass for PlatinumIsotope {
             Self::Pt204 => 203.98076f64,
             Self::Pt205 => 204.98608f64,
             Self::Pt206 => 205.98966f64,
+            Self::Pt207 => 206.995556f64,
+            Self::Pt208 => 207.999463f64,
         }
     }
 }
@@ -145,6 +154,7 @@ impl super::MassNumber for PlatinumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Pt165 => 165u16,
             Self::Pt166 => 166u16,
             Self::Pt167 => 167u16,
             Self::Pt168 => 168u16,
@@ -186,6 +196,8 @@ impl super::MassNumber for PlatinumIsotope {
             Self::Pt204 => 204u16,
             Self::Pt205 => 205u16,
             Self::Pt206 => 206u16,
+            Self::Pt207 => 207u16,
+            Self::Pt208 => 208u16,
         }
     }
 }
@@ -222,6 +234,7 @@ impl TryFrom<u64> for PlatinumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            165u64 => Ok(Self::Pt165),
             166u64 => Ok(Self::Pt166),
             167u64 => Ok(Self::Pt167),
             168u64 => Ok(Self::Pt168),
@@ -263,6 +276,8 @@ impl TryFrom<u64> for PlatinumIsotope {
             204u64 => Ok(Self::Pt204),
             205u64 => Ok(Self::Pt205),
             206u64 => Ok(Self::Pt206),
+            207u64 => Ok(Self::Pt207),
+            208u64 => Ok(Self::Pt208),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Pt, value)),
         }
     }
@@ -288,6 +303,7 @@ impl TryFrom<u32> for PlatinumIsotope {
 impl core::fmt::Display for PlatinumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Pt165 => write!(f, "Pt165"),
             Self::Pt166 => write!(f, "Pt166"),
             Self::Pt167 => write!(f, "Pt167"),
             Self::Pt168 => write!(f, "Pt168"),
@@ -329,6 +345,8 @@ impl core::fmt::Display for PlatinumIsotope {
             Self::Pt204 => write!(f, "Pt204"),
             Self::Pt205 => write!(f, "Pt205"),
             Self::Pt206 => write!(f, "Pt206"),
+            Self::Pt207 => write!(f, "Pt207"),
+            Self::Pt208 => write!(f, "Pt208"),
         }
     }
 }

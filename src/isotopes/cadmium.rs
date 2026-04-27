@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Cadmium
 pub enum CadmiumIsotope {
+    /// Isotope Cd94 of Cadmium
+    Cd94,
     /// Isotope Cd95 of Cadmium
     Cd95,
     /// Isotope Cd96 of Cadmium
@@ -82,11 +84,14 @@ pub enum CadmiumIsotope {
     Cd132,
     /// Isotope Cd133 of Cadmium
     Cd133,
+    /// Isotope Cd134 of Cadmium
+    Cd134,
 }
 impl super::RelativeAtomicMass for CadmiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Cd94 => 93.956586f64,
             Self::Cd95 => 94.94994f64,
             Self::Cd96 => 95.94034f64,
             Self::Cd97 => 96.9351f64,
@@ -126,6 +131,7 @@ impl super::RelativeAtomicMass for CadmiumIsotope {
             Self::Cd131 => 130.9406f64,
             Self::Cd132 => 131.94604f64,
             Self::Cd133 => 132.95285f64,
+            Self::Cd134 => 133.957638f64,
         }
     }
 }
@@ -139,6 +145,7 @@ impl super::MassNumber for CadmiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Cd94 => 94u16,
             Self::Cd95 => 95u16,
             Self::Cd96 => 96u16,
             Self::Cd97 => 97u16,
@@ -178,6 +185,7 @@ impl super::MassNumber for CadmiumIsotope {
             Self::Cd131 => 131u16,
             Self::Cd132 => 132u16,
             Self::Cd133 => 133u16,
+            Self::Cd134 => 134u16,
         }
     }
 }
@@ -216,6 +224,7 @@ impl TryFrom<u64> for CadmiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            94u64 => Ok(Self::Cd94),
             95u64 => Ok(Self::Cd95),
             96u64 => Ok(Self::Cd96),
             97u64 => Ok(Self::Cd97),
@@ -255,6 +264,7 @@ impl TryFrom<u64> for CadmiumIsotope {
             131u64 => Ok(Self::Cd131),
             132u64 => Ok(Self::Cd132),
             133u64 => Ok(Self::Cd133),
+            134u64 => Ok(Self::Cd134),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cd, value)),
         }
     }
@@ -280,6 +290,7 @@ impl TryFrom<u32> for CadmiumIsotope {
 impl core::fmt::Display for CadmiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Cd94 => write!(f, "Cd94"),
             Self::Cd95 => write!(f, "Cd95"),
             Self::Cd96 => write!(f, "Cd96"),
             Self::Cd97 => write!(f, "Cd97"),
@@ -319,6 +330,7 @@ impl core::fmt::Display for CadmiumIsotope {
             Self::Cd131 => write!(f, "Cd131"),
             Self::Cd132 => write!(f, "Cd132"),
             Self::Cd133 => write!(f, "Cd133"),
+            Self::Cd134 => write!(f, "Cd134"),
         }
     }
 }

@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Fluorine
 pub enum FluorineIsotope {
+    /// Isotope F13 of Fluorine
+    F13,
     /// Isotope F14 of Fluorine
     F14,
     /// Isotope F15 of Fluorine
@@ -45,6 +47,7 @@ impl super::RelativeAtomicMass for FluorineIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::F13 => 13.045121f64,
             Self::F14 => 14.034315f64,
             Self::F15 => 15.018043f64,
             Self::F16 => 16.0114657f64,
@@ -76,6 +79,7 @@ impl super::MassNumber for FluorineIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::F13 => 13u16,
             Self::F14 => 14u16,
             Self::F15 => 15u16,
             Self::F16 => 16u16,
@@ -125,6 +129,7 @@ impl TryFrom<u64> for FluorineIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            13u64 => Ok(Self::F13),
             14u64 => Ok(Self::F14),
             15u64 => Ok(Self::F15),
             16u64 => Ok(Self::F16),
@@ -168,6 +173,7 @@ impl TryFrom<u32> for FluorineIsotope {
 impl core::fmt::Display for FluorineIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::F13 => write!(f, "F13"),
             Self::F14 => write!(f, "F14"),
             Self::F15 => write!(f, "F15"),
             Self::F16 => write!(f, "F16"),

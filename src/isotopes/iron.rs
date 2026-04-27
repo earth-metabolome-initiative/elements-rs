@@ -64,6 +64,10 @@ pub enum IronIsotope {
     Fe73,
     /// Isotope Fe74 of Iron
     Fe74,
+    /// Isotope Fe75 of Iron
+    Fe75,
+    /// Isotope Fe76 of Iron
+    Fe76,
 }
 impl super::RelativeAtomicMass for IronIsotope {
     #[inline]
@@ -99,6 +103,8 @@ impl super::RelativeAtomicMass for IronIsotope {
             Self::Fe72 => 71.96983f64,
             Self::Fe73 => 72.97572f64,
             Self::Fe74 => 73.97935f64,
+            Self::Fe75 => 74.984219f64,
+            Self::Fe76 => 75.988631f64,
         }
     }
 }
@@ -142,6 +148,8 @@ impl super::MassNumber for IronIsotope {
             Self::Fe72 => 72u16,
             Self::Fe73 => 73u16,
             Self::Fe74 => 74u16,
+            Self::Fe75 => 75u16,
+            Self::Fe76 => 76u16,
         }
     }
 }
@@ -206,6 +214,8 @@ impl TryFrom<u64> for IronIsotope {
             72u64 => Ok(Self::Fe72),
             73u64 => Ok(Self::Fe73),
             74u64 => Ok(Self::Fe74),
+            75u64 => Ok(Self::Fe75),
+            76u64 => Ok(Self::Fe76),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Fe, value)),
         }
     }
@@ -261,6 +271,8 @@ impl core::fmt::Display for IronIsotope {
             Self::Fe72 => write!(f, "Fe72"),
             Self::Fe73 => write!(f, "Fe73"),
             Self::Fe74 => write!(f, "Fe74"),
+            Self::Fe75 => write!(f, "Fe75"),
+            Self::Fe76 => write!(f, "Fe76"),
         }
     }
 }

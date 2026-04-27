@@ -28,12 +28,8 @@ pub enum LawrenciumIsotope {
     Lr261,
     /// Isotope Lr262 of Lawrencium
     Lr262,
-    /// Isotope Lr263 of Lawrencium
-    Lr263,
     /// Isotope Lr264 of Lawrencium
     Lr264,
-    /// Isotope Lr265 of Lawrencium
-    Lr265,
     /// Isotope Lr266 of Lawrencium
     Lr266,
 }
@@ -41,7 +37,7 @@ impl super::RelativeAtomicMass for LawrenciumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Lr251 => 251.09418f64,
+            Self::Lr251 => 251.094289f64,
             Self::Lr252 => 252.09526f64,
             Self::Lr253 => 253.09509f64,
             Self::Lr254 => 254.09648f64,
@@ -53,9 +49,7 @@ impl super::RelativeAtomicMass for LawrenciumIsotope {
             Self::Lr260 => 260.1055f64,
             Self::Lr261 => 261.10688f64,
             Self::Lr262 => 262.10961f64,
-            Self::Lr263 => 263.11136f64,
             Self::Lr264 => 264.1142f64,
-            Self::Lr265 => 265.11619f64,
             Self::Lr266 => 266.11983f64,
         }
     }
@@ -82,9 +76,7 @@ impl super::MassNumber for LawrenciumIsotope {
             Self::Lr260 => 260u16,
             Self::Lr261 => 261u16,
             Self::Lr262 => 262u16,
-            Self::Lr263 => 263u16,
             Self::Lr264 => 264u16,
-            Self::Lr265 => 265u16,
             Self::Lr266 => 266u16,
         }
     }
@@ -126,9 +118,7 @@ impl TryFrom<u64> for LawrenciumIsotope {
             260u64 => Ok(Self::Lr260),
             261u64 => Ok(Self::Lr261),
             262u64 => Ok(Self::Lr262),
-            263u64 => Ok(Self::Lr263),
             264u64 => Ok(Self::Lr264),
-            265u64 => Ok(Self::Lr265),
             266u64 => Ok(Self::Lr266),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Lr, value)),
         }
@@ -167,9 +157,7 @@ impl core::fmt::Display for LawrenciumIsotope {
             Self::Lr260 => write!(f, "Lr260"),
             Self::Lr261 => write!(f, "Lr261"),
             Self::Lr262 => write!(f, "Lr262"),
-            Self::Lr263 => write!(f, "Lr263"),
             Self::Lr264 => write!(f, "Lr264"),
-            Self::Lr265 => write!(f, "Lr265"),
             Self::Lr266 => write!(f, "Lr266"),
         }
     }

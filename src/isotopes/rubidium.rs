@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Rubidium
 pub enum RubidiumIsotope {
-    /// Isotope Rb71 of Rubidium
-    Rb71,
     /// Isotope Rb72 of Rubidium
     Rb72,
     /// Isotope Rb73 of Rubidium
@@ -70,12 +68,13 @@ pub enum RubidiumIsotope {
     Rb102,
     /// Isotope Rb103 of Rubidium
     Rb103,
+    /// Isotope Rb104 of Rubidium
+    Rb104,
 }
 impl super::RelativeAtomicMass for RubidiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Rb71 => 70.96532f64,
             Self::Rb72 => 71.95908f64,
             Self::Rb73 => 72.95053f64,
             Self::Rb74 => 73.9442659f64,
@@ -108,6 +107,7 @@ impl super::RelativeAtomicMass for RubidiumIsotope {
             Self::Rb101 => 100.95404f64,
             Self::Rb102 => 101.95952f64,
             Self::Rb103 => 102.96392f64,
+            Self::Rb104 => 103.970531f64,
         }
     }
 }
@@ -121,7 +121,6 @@ impl super::MassNumber for RubidiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Rb71 => 71u16,
             Self::Rb72 => 72u16,
             Self::Rb73 => 73u16,
             Self::Rb74 => 74u16,
@@ -154,6 +153,7 @@ impl super::MassNumber for RubidiumIsotope {
             Self::Rb101 => 101u16,
             Self::Rb102 => 102u16,
             Self::Rb103 => 103u16,
+            Self::Rb104 => 104u16,
         }
     }
 }
@@ -186,7 +186,6 @@ impl TryFrom<u64> for RubidiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            71u64 => Ok(Self::Rb71),
             72u64 => Ok(Self::Rb72),
             73u64 => Ok(Self::Rb73),
             74u64 => Ok(Self::Rb74),
@@ -219,6 +218,7 @@ impl TryFrom<u64> for RubidiumIsotope {
             101u64 => Ok(Self::Rb101),
             102u64 => Ok(Self::Rb102),
             103u64 => Ok(Self::Rb103),
+            104u64 => Ok(Self::Rb104),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Rb, value)),
         }
     }
@@ -244,7 +244,6 @@ impl TryFrom<u32> for RubidiumIsotope {
 impl core::fmt::Display for RubidiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Rb71 => write!(f, "Rb71"),
             Self::Rb72 => write!(f, "Rb72"),
             Self::Rb73 => write!(f, "Rb73"),
             Self::Rb74 => write!(f, "Rb74"),
@@ -277,6 +276,7 @@ impl core::fmt::Display for RubidiumIsotope {
             Self::Rb101 => write!(f, "Rb101"),
             Self::Rb102 => write!(f, "Rb102"),
             Self::Rb103 => write!(f, "Rb103"),
+            Self::Rb104 => write!(f, "Rb104"),
         }
     }
 }

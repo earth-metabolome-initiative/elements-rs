@@ -26,16 +26,10 @@ pub enum RutherfordiumIsotope {
     Rf262,
     /// Isotope Rf263 of Rutherfordium
     Rf263,
-    /// Isotope Rf264 of Rutherfordium
-    Rf264,
     /// Isotope Rf265 of Rutherfordium
     Rf265,
-    /// Isotope Rf266 of Rutherfordium
-    Rf266,
     /// Isotope Rf267 of Rutherfordium
     Rf267,
-    /// Isotope Rf268 of Rutherfordium
-    Rf268,
 }
 impl super::RelativeAtomicMass for RutherfordiumIsotope {
     #[inline]
@@ -52,11 +46,8 @@ impl super::RelativeAtomicMass for RutherfordiumIsotope {
             Self::Rf261 => 261.108773f64,
             Self::Rf262 => 262.10992f64,
             Self::Rf263 => 263.11249f64,
-            Self::Rf264 => 264.11388f64,
             Self::Rf265 => 265.11668f64,
-            Self::Rf266 => 266.11817f64,
             Self::Rf267 => 267.12179f64,
-            Self::Rf268 => 268.12397f64,
         }
     }
 }
@@ -81,11 +72,8 @@ impl super::MassNumber for RutherfordiumIsotope {
             Self::Rf261 => 261u16,
             Self::Rf262 => 262u16,
             Self::Rf263 => 263u16,
-            Self::Rf264 => 264u16,
             Self::Rf265 => 265u16,
-            Self::Rf266 => 266u16,
             Self::Rf267 => 267u16,
-            Self::Rf268 => 268u16,
         }
     }
 }
@@ -97,7 +85,7 @@ impl super::IsotopicComposition for RutherfordiumIsotope {
 }
 impl super::MostAbundantIsotope for RutherfordiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Rf268
+        Self::Rf267
     }
 }
 impl From<RutherfordiumIsotope> for crate::Isotope {
@@ -125,11 +113,8 @@ impl TryFrom<u64> for RutherfordiumIsotope {
             261u64 => Ok(Self::Rf261),
             262u64 => Ok(Self::Rf262),
             263u64 => Ok(Self::Rf263),
-            264u64 => Ok(Self::Rf264),
             265u64 => Ok(Self::Rf265),
-            266u64 => Ok(Self::Rf266),
             267u64 => Ok(Self::Rf267),
-            268u64 => Ok(Self::Rf268),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Rf, value)),
         }
     }
@@ -166,11 +151,8 @@ impl core::fmt::Display for RutherfordiumIsotope {
             Self::Rf261 => write!(f, "Rf261"),
             Self::Rf262 => write!(f, "Rf262"),
             Self::Rf263 => write!(f, "Rf263"),
-            Self::Rf264 => write!(f, "Rf264"),
             Self::Rf265 => write!(f, "Rf265"),
-            Self::Rf266 => write!(f, "Rf266"),
             Self::Rf267 => write!(f, "Rf267"),
-            Self::Rf268 => write!(f, "Rf268"),
         }
     }
 }

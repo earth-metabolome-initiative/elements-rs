@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Iodine
 pub enum IodineIsotope {
-    /// Isotope I107 of Iodine
-    I107,
     /// Isotope I108 of Iodine
     I108,
     /// Isotope I109 of Iodine
@@ -82,12 +80,15 @@ pub enum IodineIsotope {
     I144,
     /// Isotope I145 of Iodine
     I145,
+    /// Isotope I146 of Iodine
+    I146,
+    /// Isotope I147 of Iodine
+    I147,
 }
 impl super::RelativeAtomicMass for IodineIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::I107 => 106.94678f64,
             Self::I108 => 107.94348f64,
             Self::I109 => 108.9380853f64,
             Self::I110 => 109.935089f64,
@@ -126,6 +127,8 @@ impl super::RelativeAtomicMass for IodineIsotope {
             Self::I143 => 142.94565f64,
             Self::I144 => 143.95139f64,
             Self::I145 => 144.95605f64,
+            Self::I146 => 145.961846f64,
+            Self::I147 => 146.966505f64,
         }
     }
 }
@@ -139,7 +142,6 @@ impl super::MassNumber for IodineIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::I107 => 107u16,
             Self::I108 => 108u16,
             Self::I109 => 109u16,
             Self::I110 => 110u16,
@@ -178,6 +180,8 @@ impl super::MassNumber for IodineIsotope {
             Self::I143 => 143u16,
             Self::I144 => 144u16,
             Self::I145 => 145u16,
+            Self::I146 => 146u16,
+            Self::I147 => 147u16,
         }
     }
 }
@@ -209,7 +213,6 @@ impl TryFrom<u64> for IodineIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            107u64 => Ok(Self::I107),
             108u64 => Ok(Self::I108),
             109u64 => Ok(Self::I109),
             110u64 => Ok(Self::I110),
@@ -248,6 +251,8 @@ impl TryFrom<u64> for IodineIsotope {
             143u64 => Ok(Self::I143),
             144u64 => Ok(Self::I144),
             145u64 => Ok(Self::I145),
+            146u64 => Ok(Self::I146),
+            147u64 => Ok(Self::I147),
             _ => Err(crate::errors::Error::Isotope(crate::Element::I, value)),
         }
     }
@@ -273,7 +278,6 @@ impl TryFrom<u32> for IodineIsotope {
 impl core::fmt::Display for IodineIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::I107 => write!(f, "I107"),
             Self::I108 => write!(f, "I108"),
             Self::I109 => write!(f, "I109"),
             Self::I110 => write!(f, "I110"),
@@ -312,6 +316,8 @@ impl core::fmt::Display for IodineIsotope {
             Self::I143 => write!(f, "I143"),
             Self::I144 => write!(f, "I144"),
             Self::I145 => write!(f, "I145"),
+            Self::I146 => write!(f, "I146"),
+            Self::I147 => write!(f, "I147"),
         }
     }
 }

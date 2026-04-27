@@ -4,12 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Cobalt
 pub enum CobaltIsotope {
-    /// Isotope Co47 of Cobalt
-    Co47,
     /// Isotope Co48 of Cobalt
     Co48,
-    /// Isotope Co49 of Cobalt
-    Co49,
     /// Isotope Co50 of Cobalt
     Co50,
     /// Isotope Co51 of Cobalt
@@ -64,14 +60,16 @@ pub enum CobaltIsotope {
     Co75,
     /// Isotope Co76 of Cobalt
     Co76,
+    /// Isotope Co77 of Cobalt
+    Co77,
+    /// Isotope Co78 of Cobalt
+    Co78,
 }
 impl super::RelativeAtomicMass for CobaltIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Co47 => 47.01057f64,
             Self::Co48 => 48.00093f64,
-            Self::Co49 => 48.98891f64,
             Self::Co50 => 49.98091f64,
             Self::Co51 => 50.970647f64,
             Self::Co52 => 51.96351f64,
@@ -99,6 +97,8 @@ impl super::RelativeAtomicMass for CobaltIsotope {
             Self::Co74 => 73.96515f64,
             Self::Co75 => 74.96876f64,
             Self::Co76 => 75.97413f64,
+            Self::Co77 => 76.976479f64,
+            Self::Co78 => 77.983553f64,
         }
     }
 }
@@ -112,9 +112,7 @@ impl super::MassNumber for CobaltIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Co47 => 47u16,
             Self::Co48 => 48u16,
-            Self::Co49 => 49u16,
             Self::Co50 => 50u16,
             Self::Co51 => 51u16,
             Self::Co52 => 52u16,
@@ -142,6 +140,8 @@ impl super::MassNumber for CobaltIsotope {
             Self::Co74 => 74u16,
             Self::Co75 => 75u16,
             Self::Co76 => 76u16,
+            Self::Co77 => 77u16,
+            Self::Co78 => 78u16,
         }
     }
 }
@@ -173,9 +173,7 @@ impl TryFrom<u64> for CobaltIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            47u64 => Ok(Self::Co47),
             48u64 => Ok(Self::Co48),
-            49u64 => Ok(Self::Co49),
             50u64 => Ok(Self::Co50),
             51u64 => Ok(Self::Co51),
             52u64 => Ok(Self::Co52),
@@ -203,6 +201,8 @@ impl TryFrom<u64> for CobaltIsotope {
             74u64 => Ok(Self::Co74),
             75u64 => Ok(Self::Co75),
             76u64 => Ok(Self::Co76),
+            77u64 => Ok(Self::Co77),
+            78u64 => Ok(Self::Co78),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Co, value)),
         }
     }
@@ -228,9 +228,7 @@ impl TryFrom<u32> for CobaltIsotope {
 impl core::fmt::Display for CobaltIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Co47 => write!(f, "Co47"),
             Self::Co48 => write!(f, "Co48"),
-            Self::Co49 => write!(f, "Co49"),
             Self::Co50 => write!(f, "Co50"),
             Self::Co51 => write!(f, "Co51"),
             Self::Co52 => write!(f, "Co52"),
@@ -258,6 +256,8 @@ impl core::fmt::Display for CobaltIsotope {
             Self::Co74 => write!(f, "Co74"),
             Self::Co75 => write!(f, "Co75"),
             Self::Co76 => write!(f, "Co76"),
+            Self::Co77 => write!(f, "Co77"),
+            Self::Co78 => write!(f, "Co78"),
         }
     }
 }

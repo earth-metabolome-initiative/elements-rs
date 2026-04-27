@@ -4,14 +4,14 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Berkelium
 pub enum BerkeliumIsotope {
+    /// Isotope Bk233 of Berkelium
+    Bk233,
     /// Isotope Bk234 of Berkelium
     Bk234,
     /// Isotope Bk235 of Berkelium
     Bk235,
     /// Isotope Bk236 of Berkelium
     Bk236,
-    /// Isotope Bk237 of Berkelium
-    Bk237,
     /// Isotope Bk238 of Berkelium
     Bk238,
     /// Isotope Bk239 of Berkelium
@@ -40,21 +40,17 @@ pub enum BerkeliumIsotope {
     Bk250,
     /// Isotope Bk251 of Berkelium
     Bk251,
-    /// Isotope Bk252 of Berkelium
-    Bk252,
     /// Isotope Bk253 of Berkelium
     Bk253,
-    /// Isotope Bk254 of Berkelium
-    Bk254,
 }
 impl super::RelativeAtomicMass for BerkeliumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Bk233 => 233.056652f64,
             Self::Bk234 => 234.05727f64,
             Self::Bk235 => 235.05658f64,
             Self::Bk236 => 236.05748f64,
-            Self::Bk237 => 237.0571f64,
             Self::Bk238 => 238.0582f64,
             Self::Bk239 => 239.05824f64,
             Self::Bk240 => 240.05976f64,
@@ -69,9 +65,7 @@ impl super::RelativeAtomicMass for BerkeliumIsotope {
             Self::Bk249 => 249.0749877f64,
             Self::Bk250 => 250.0783167f64,
             Self::Bk251 => 251.080762f64,
-            Self::Bk252 => 252.08431f64,
             Self::Bk253 => 253.08688f64,
-            Self::Bk254 => 254.0906f64,
         }
     }
 }
@@ -85,10 +79,10 @@ impl super::MassNumber for BerkeliumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Bk233 => 233u16,
             Self::Bk234 => 234u16,
             Self::Bk235 => 235u16,
             Self::Bk236 => 236u16,
-            Self::Bk237 => 237u16,
             Self::Bk238 => 238u16,
             Self::Bk239 => 239u16,
             Self::Bk240 => 240u16,
@@ -103,9 +97,7 @@ impl super::MassNumber for BerkeliumIsotope {
             Self::Bk249 => 249u16,
             Self::Bk250 => 250u16,
             Self::Bk251 => 251u16,
-            Self::Bk252 => 252u16,
             Self::Bk253 => 253u16,
-            Self::Bk254 => 254u16,
         }
     }
 }
@@ -117,7 +109,7 @@ impl super::IsotopicComposition for BerkeliumIsotope {
 }
 impl super::MostAbundantIsotope for BerkeliumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Bk254
+        Self::Bk253
     }
 }
 impl From<BerkeliumIsotope> for crate::Isotope {
@@ -134,10 +126,10 @@ impl TryFrom<u64> for BerkeliumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            233u64 => Ok(Self::Bk233),
             234u64 => Ok(Self::Bk234),
             235u64 => Ok(Self::Bk235),
             236u64 => Ok(Self::Bk236),
-            237u64 => Ok(Self::Bk237),
             238u64 => Ok(Self::Bk238),
             239u64 => Ok(Self::Bk239),
             240u64 => Ok(Self::Bk240),
@@ -152,9 +144,7 @@ impl TryFrom<u64> for BerkeliumIsotope {
             249u64 => Ok(Self::Bk249),
             250u64 => Ok(Self::Bk250),
             251u64 => Ok(Self::Bk251),
-            252u64 => Ok(Self::Bk252),
             253u64 => Ok(Self::Bk253),
-            254u64 => Ok(Self::Bk254),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Bk, value)),
         }
     }
@@ -180,10 +170,10 @@ impl TryFrom<u32> for BerkeliumIsotope {
 impl core::fmt::Display for BerkeliumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Bk233 => write!(f, "Bk233"),
             Self::Bk234 => write!(f, "Bk234"),
             Self::Bk235 => write!(f, "Bk235"),
             Self::Bk236 => write!(f, "Bk236"),
-            Self::Bk237 => write!(f, "Bk237"),
             Self::Bk238 => write!(f, "Bk238"),
             Self::Bk239 => write!(f, "Bk239"),
             Self::Bk240 => write!(f, "Bk240"),
@@ -198,9 +188,7 @@ impl core::fmt::Display for BerkeliumIsotope {
             Self::Bk249 => write!(f, "Bk249"),
             Self::Bk250 => write!(f, "Bk250"),
             Self::Bk251 => write!(f, "Bk251"),
-            Self::Bk252 => write!(f, "Bk252"),
             Self::Bk253 => write!(f, "Bk253"),
-            Self::Bk254 => write!(f, "Bk254"),
         }
     }
 }

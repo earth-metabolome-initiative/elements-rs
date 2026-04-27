@@ -68,6 +68,12 @@ pub enum NickelIsotope {
     Ni78,
     /// Isotope Ni79 of Nickel
     Ni79,
+    /// Isotope Ni80 of Nickel
+    Ni80,
+    /// Isotope Ni81 of Nickel
+    Ni81,
+    /// Isotope Ni82 of Nickel
+    Ni82,
 }
 impl super::RelativeAtomicMass for NickelIsotope {
     #[inline]
@@ -105,6 +111,9 @@ impl super::RelativeAtomicMass for NickelIsotope {
             Self::Ni77 => 76.96055f64,
             Self::Ni78 => 77.96336f64,
             Self::Ni79 => 78.97025f64,
+            Self::Ni80 => 79.975051f64,
+            Self::Ni81 => 80.982727f64,
+            Self::Ni82 => 81.988492f64,
         }
     }
 }
@@ -150,6 +159,9 @@ impl super::MassNumber for NickelIsotope {
             Self::Ni77 => 77u16,
             Self::Ni78 => 78u16,
             Self::Ni79 => 79u16,
+            Self::Ni80 => 80u16,
+            Self::Ni81 => 81u16,
+            Self::Ni82 => 82u16,
         }
     }
 }
@@ -217,6 +229,9 @@ impl TryFrom<u64> for NickelIsotope {
             77u64 => Ok(Self::Ni77),
             78u64 => Ok(Self::Ni78),
             79u64 => Ok(Self::Ni79),
+            80u64 => Ok(Self::Ni80),
+            81u64 => Ok(Self::Ni81),
+            82u64 => Ok(Self::Ni82),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ni, value)),
         }
     }
@@ -274,6 +289,9 @@ impl core::fmt::Display for NickelIsotope {
             Self::Ni77 => write!(f, "Ni77"),
             Self::Ni78 => write!(f, "Ni78"),
             Self::Ni79 => write!(f, "Ni79"),
+            Self::Ni80 => write!(f, "Ni80"),
+            Self::Ni81 => write!(f, "Ni81"),
+            Self::Ni82 => write!(f, "Ni82"),
         }
     }
 }

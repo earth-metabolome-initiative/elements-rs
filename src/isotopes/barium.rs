@@ -84,6 +84,8 @@ pub enum BariumIsotope {
     Ba152,
     /// Isotope Ba153 of Barium
     Ba153,
+    /// Isotope Ba154 of Barium
+    Ba154,
 }
 impl super::RelativeAtomicMass for BariumIsotope {
     #[inline]
@@ -129,6 +131,7 @@ impl super::RelativeAtomicMass for BariumIsotope {
             Self::Ba151 => 150.95127f64,
             Self::Ba152 => 151.95481f64,
             Self::Ba153 => 152.96036f64,
+            Self::Ba154 => 153.964659f64,
         }
     }
 }
@@ -182,6 +185,7 @@ impl super::MassNumber for BariumIsotope {
             Self::Ba151 => 151u16,
             Self::Ba152 => 152u16,
             Self::Ba153 => 153u16,
+            Self::Ba154 => 154u16,
         }
     }
 }
@@ -259,6 +263,7 @@ impl TryFrom<u64> for BariumIsotope {
             151u64 => Ok(Self::Ba151),
             152u64 => Ok(Self::Ba152),
             153u64 => Ok(Self::Ba153),
+            154u64 => Ok(Self::Ba154),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ba, value)),
         }
     }
@@ -324,6 +329,7 @@ impl core::fmt::Display for BariumIsotope {
             Self::Ba151 => write!(f, "Ba151"),
             Self::Ba152 => write!(f, "Ba152"),
             Self::Ba153 => write!(f, "Ba153"),
+            Self::Ba154 => write!(f, "Ba154"),
         }
     }
 }

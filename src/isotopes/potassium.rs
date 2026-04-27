@@ -4,8 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Potassium
 pub enum PotassiumIsotope {
-    /// Isotope K32 of Potassium
-    K32,
+    /// Isotope K31 of Potassium
+    K31,
     /// Isotope K33 of Potassium
     K33,
     /// Isotope K34 of Potassium
@@ -54,12 +54,16 @@ pub enum PotassiumIsotope {
     K55,
     /// Isotope K56 of Potassium
     K56,
+    /// Isotope K57 of Potassium
+    K57,
+    /// Isotope K59 of Potassium
+    K59,
 }
 impl super::RelativeAtomicMass for PotassiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::K32 => 32.02265f64,
+            Self::K31 => 31.03678f64,
             Self::K33 => 33.00756f64,
             Self::K34 => 33.99869f64,
             Self::K35 => 34.98800541f64,
@@ -84,6 +88,8 @@ impl super::RelativeAtomicMass for PotassiumIsotope {
             Self::K54 => 53.99463f64,
             Self::K55 => 55.00076f64,
             Self::K56 => 56.00851f64,
+            Self::K57 => 57.015169f64,
+            Self::K59 => 59.030864f64,
         }
     }
 }
@@ -97,7 +103,7 @@ impl super::MassNumber for PotassiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::K32 => 32u16,
+            Self::K31 => 31u16,
             Self::K33 => 33u16,
             Self::K34 => 34u16,
             Self::K35 => 35u16,
@@ -122,6 +128,8 @@ impl super::MassNumber for PotassiumIsotope {
             Self::K54 => 54u16,
             Self::K55 => 55u16,
             Self::K56 => 56u16,
+            Self::K57 => 57u16,
+            Self::K59 => 59u16,
         }
     }
 }
@@ -155,7 +163,7 @@ impl TryFrom<u64> for PotassiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            32u64 => Ok(Self::K32),
+            31u64 => Ok(Self::K31),
             33u64 => Ok(Self::K33),
             34u64 => Ok(Self::K34),
             35u64 => Ok(Self::K35),
@@ -180,6 +188,8 @@ impl TryFrom<u64> for PotassiumIsotope {
             54u64 => Ok(Self::K54),
             55u64 => Ok(Self::K55),
             56u64 => Ok(Self::K56),
+            57u64 => Ok(Self::K57),
+            59u64 => Ok(Self::K59),
             _ => Err(crate::errors::Error::Isotope(crate::Element::K, value)),
         }
     }
@@ -205,7 +215,7 @@ impl TryFrom<u32> for PotassiumIsotope {
 impl core::fmt::Display for PotassiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::K32 => write!(f, "K32"),
+            Self::K31 => write!(f, "K31"),
             Self::K33 => write!(f, "K33"),
             Self::K34 => write!(f, "K34"),
             Self::K35 => write!(f, "K35"),
@@ -230,6 +240,8 @@ impl core::fmt::Display for PotassiumIsotope {
             Self::K54 => write!(f, "K54"),
             Self::K55 => write!(f, "K55"),
             Self::K56 => write!(f, "K56"),
+            Self::K57 => write!(f, "K57"),
+            Self::K59 => write!(f, "K59"),
         }
     }
 }

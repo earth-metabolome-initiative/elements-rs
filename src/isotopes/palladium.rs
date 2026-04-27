@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Palladium
 pub enum PalladiumIsotope {
+    /// Isotope Pd90 of Palladium
+    Pd90,
     /// Isotope Pd91 of Palladium
     Pd91,
     /// Isotope Pd92 of Palladium
@@ -80,11 +82,18 @@ pub enum PalladiumIsotope {
     Pd127,
     /// Isotope Pd128 of Palladium
     Pd128,
+    /// Isotope Pd129 of Palladium
+    Pd129,
+    /// Isotope Pd130 of Palladium
+    Pd130,
+    /// Isotope Pd131 of Palladium
+    Pd131,
 }
 impl super::RelativeAtomicMass for PalladiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Pd90 => 89.95737f64,
             Self::Pd91 => 90.95032f64,
             Self::Pd92 => 91.94088f64,
             Self::Pd93 => 92.93651f64,
@@ -123,6 +132,9 @@ impl super::RelativeAtomicMass for PalladiumIsotope {
             Self::Pd126 => 125.94416f64,
             Self::Pd127 => 126.94907f64,
             Self::Pd128 => 127.95183f64,
+            Self::Pd129 => 128.959334f64,
+            Self::Pd130 => 129.964863f64,
+            Self::Pd131 => 130.972367f64,
         }
     }
 }
@@ -136,6 +148,7 @@ impl super::MassNumber for PalladiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Pd90 => 90u16,
             Self::Pd91 => 91u16,
             Self::Pd92 => 92u16,
             Self::Pd93 => 93u16,
@@ -174,6 +187,9 @@ impl super::MassNumber for PalladiumIsotope {
             Self::Pd126 => 126u16,
             Self::Pd127 => 127u16,
             Self::Pd128 => 128u16,
+            Self::Pd129 => 129u16,
+            Self::Pd130 => 130u16,
+            Self::Pd131 => 131u16,
         }
     }
 }
@@ -210,6 +226,7 @@ impl TryFrom<u64> for PalladiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            90u64 => Ok(Self::Pd90),
             91u64 => Ok(Self::Pd91),
             92u64 => Ok(Self::Pd92),
             93u64 => Ok(Self::Pd93),
@@ -248,6 +265,9 @@ impl TryFrom<u64> for PalladiumIsotope {
             126u64 => Ok(Self::Pd126),
             127u64 => Ok(Self::Pd127),
             128u64 => Ok(Self::Pd128),
+            129u64 => Ok(Self::Pd129),
+            130u64 => Ok(Self::Pd130),
+            131u64 => Ok(Self::Pd131),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Pd, value)),
         }
     }
@@ -273,6 +293,7 @@ impl TryFrom<u32> for PalladiumIsotope {
 impl core::fmt::Display for PalladiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Pd90 => write!(f, "Pd90"),
             Self::Pd91 => write!(f, "Pd91"),
             Self::Pd92 => write!(f, "Pd92"),
             Self::Pd93 => write!(f, "Pd93"),
@@ -311,6 +332,9 @@ impl core::fmt::Display for PalladiumIsotope {
             Self::Pd126 => write!(f, "Pd126"),
             Self::Pd127 => write!(f, "Pd127"),
             Self::Pd128 => write!(f, "Pd128"),
+            Self::Pd129 => write!(f, "Pd129"),
+            Self::Pd130 => write!(f, "Pd130"),
+            Self::Pd131 => write!(f, "Pd131"),
         }
     }
 }

@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Plutonium
 pub enum PlutoniumIsotope {
+    /// Isotope Pu227 of Plutonium
+    Pu227,
     /// Isotope Pu228 of Plutonium
     Pu228,
     /// Isotope Pu229 of Plutonium
@@ -49,6 +51,7 @@ impl super::RelativeAtomicMass for PlutoniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Pu227 => 227.039474f64,
             Self::Pu228 => 228.038732f64,
             Self::Pu229 => 229.040144f64,
             Self::Pu230 => 230.03965f64,
@@ -82,6 +85,7 @@ impl super::MassNumber for PlutoniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Pu227 => 227u16,
             Self::Pu228 => 228u16,
             Self::Pu229 => 229u16,
             Self::Pu230 => 230u16,
@@ -130,6 +134,7 @@ impl TryFrom<u64> for PlutoniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            227u64 => Ok(Self::Pu227),
             228u64 => Ok(Self::Pu228),
             229u64 => Ok(Self::Pu229),
             230u64 => Ok(Self::Pu230),
@@ -175,6 +180,7 @@ impl TryFrom<u32> for PlutoniumIsotope {
 impl core::fmt::Display for PlutoniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Pu227 => write!(f, "Pu227"),
             Self::Pu228 => write!(f, "Pu228"),
             Self::Pu229 => write!(f, "Pu229"),
             Self::Pu230 => write!(f, "Pu230"),

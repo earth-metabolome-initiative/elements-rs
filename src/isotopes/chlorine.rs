@@ -52,6 +52,8 @@ pub enum ChlorineIsotope {
     Cl50,
     /// Isotope Cl51 of Chlorine
     Cl51,
+    /// Isotope Cl52 of Chlorine
+    Cl52,
 }
 impl super::RelativeAtomicMass for ChlorineIsotope {
     #[inline]
@@ -81,6 +83,7 @@ impl super::RelativeAtomicMass for ChlorineIsotope {
             Self::Cl49 => 49.00123f64,
             Self::Cl50 => 50.00905f64,
             Self::Cl51 => 51.01554f64,
+            Self::Cl52 => 52.024004f64,
         }
     }
 }
@@ -118,6 +121,7 @@ impl super::MassNumber for ChlorineIsotope {
             Self::Cl49 => 49u16,
             Self::Cl50 => 50u16,
             Self::Cl51 => 51u16,
+            Self::Cl52 => 52u16,
         }
     }
 }
@@ -174,6 +178,7 @@ impl TryFrom<u64> for ChlorineIsotope {
             49u64 => Ok(Self::Cl49),
             50u64 => Ok(Self::Cl50),
             51u64 => Ok(Self::Cl51),
+            52u64 => Ok(Self::Cl52),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cl, value)),
         }
     }
@@ -223,6 +228,7 @@ impl core::fmt::Display for ChlorineIsotope {
             Self::Cl49 => write!(f, "Cl49"),
             Self::Cl50 => write!(f, "Cl50"),
             Self::Cl51 => write!(f, "Cl51"),
+            Self::Cl52 => write!(f, "Cl52"),
         }
     }
 }

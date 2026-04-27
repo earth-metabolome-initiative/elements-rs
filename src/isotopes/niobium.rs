@@ -74,6 +74,8 @@ pub enum NiobiumIsotope {
     Nb114,
     /// Isotope Nb115 of Niobium
     Nb115,
+    /// Isotope Nb116 of Niobium
+    Nb116,
 }
 impl super::RelativeAtomicMass for NiobiumIsotope {
     #[inline]
@@ -114,6 +116,7 @@ impl super::RelativeAtomicMass for NiobiumIsotope {
             Self::Nb113 => 112.95651f64,
             Self::Nb114 => 113.96201f64,
             Self::Nb115 => 114.96634f64,
+            Self::Nb116 => 115.972914f64,
         }
     }
 }
@@ -162,6 +165,7 @@ impl super::MassNumber for NiobiumIsotope {
             Self::Nb113 => 113u16,
             Self::Nb114 => 114u16,
             Self::Nb115 => 115u16,
+            Self::Nb116 => 116u16,
         }
     }
 }
@@ -228,6 +232,7 @@ impl TryFrom<u64> for NiobiumIsotope {
             113u64 => Ok(Self::Nb113),
             114u64 => Ok(Self::Nb114),
             115u64 => Ok(Self::Nb115),
+            116u64 => Ok(Self::Nb116),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Nb, value)),
         }
     }
@@ -288,6 +293,7 @@ impl core::fmt::Display for NiobiumIsotope {
             Self::Nb113 => write!(f, "Nb113"),
             Self::Nb114 => write!(f, "Nb114"),
             Self::Nb115 => write!(f, "Nb115"),
+            Self::Nb116 => write!(f, "Nb116"),
         }
     }
 }

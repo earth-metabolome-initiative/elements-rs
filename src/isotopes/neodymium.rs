@@ -80,6 +80,10 @@ pub enum NeodymiumIsotope {
     Nd160,
     /// Isotope Nd161 of Neodymium
     Nd161,
+    /// Isotope Nd162 of Neodymium
+    Nd162,
+    /// Isotope Nd163 of Neodymium
+    Nd163,
 }
 impl super::RelativeAtomicMass for NeodymiumIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for NeodymiumIsotope {
             Self::Nd159 => 158.94653f64,
             Self::Nd160 => 159.9494f64,
             Self::Nd161 => 160.95428f64,
+            Self::Nd162 => 161.958121f64,
+            Self::Nd163 => 162.963414f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for NeodymiumIsotope {
             Self::Nd159 => 159u16,
             Self::Nd160 => 160u16,
             Self::Nd161 => 161u16,
+            Self::Nd162 => 162u16,
+            Self::Nd163 => 163u16,
         }
     }
 }
@@ -249,6 +257,8 @@ impl TryFrom<u64> for NeodymiumIsotope {
             159u64 => Ok(Self::Nd159),
             160u64 => Ok(Self::Nd160),
             161u64 => Ok(Self::Nd161),
+            162u64 => Ok(Self::Nd162),
+            163u64 => Ok(Self::Nd163),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Nd, value)),
         }
     }
@@ -312,6 +322,8 @@ impl core::fmt::Display for NeodymiumIsotope {
             Self::Nd159 => write!(f, "Nd159"),
             Self::Nd160 => write!(f, "Nd160"),
             Self::Nd161 => write!(f, "Nd161"),
+            Self::Nd162 => write!(f, "Nd162"),
+            Self::Nd163 => write!(f, "Nd163"),
         }
     }
 }

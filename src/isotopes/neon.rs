@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Neon
 pub enum NeonIsotope {
+    /// Isotope Ne15 of Neon
+    Ne15,
     /// Isotope Ne16 of Neon
     Ne16,
     /// Isotope Ne17 of Neon
@@ -47,6 +49,7 @@ impl super::RelativeAtomicMass for NeonIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Ne15 => 15.043172977f64,
             Self::Ne16 => 16.02575f64,
             Self::Ne17 => 17.01771396f64,
             Self::Ne18 => 18.0057087f64,
@@ -79,6 +82,7 @@ impl super::MassNumber for NeonIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Ne15 => 15u16,
             Self::Ne16 => 16u16,
             Self::Ne17 => 17u16,
             Self::Ne18 => 18u16,
@@ -131,6 +135,7 @@ impl TryFrom<u64> for NeonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            15u64 => Ok(Self::Ne15),
             16u64 => Ok(Self::Ne16),
             17u64 => Ok(Self::Ne17),
             18u64 => Ok(Self::Ne18),
@@ -175,6 +180,7 @@ impl TryFrom<u32> for NeonIsotope {
 impl core::fmt::Display for NeonIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Ne15 => write!(f, "Ne15"),
             Self::Ne16 => write!(f, "Ne16"),
             Self::Ne17 => write!(f, "Ne17"),
             Self::Ne18 => write!(f, "Ne18"),

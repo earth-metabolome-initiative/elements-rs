@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Selenium
 pub enum SeleniumIsotope {
+    /// Isotope Se63 of Selenium
+    Se63,
     /// Isotope Se64 of Selenium
     Se64,
     /// Isotope Se65 of Selenium
@@ -73,6 +75,7 @@ impl super::RelativeAtomicMass for SeleniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Se63 => 62.981911f64,
             Self::Se64 => 63.97109f64,
             Self::Se65 => 64.9644f64,
             Self::Se66 => 65.95559f64,
@@ -118,6 +121,7 @@ impl super::MassNumber for SeleniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Se63 => 63u16,
             Self::Se64 => 64u16,
             Self::Se65 => 65u16,
             Self::Se66 => 66u16,
@@ -186,6 +190,7 @@ impl TryFrom<u64> for SeleniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            63u64 => Ok(Self::Se63),
             64u64 => Ok(Self::Se64),
             65u64 => Ok(Self::Se65),
             66u64 => Ok(Self::Se66),
@@ -243,6 +248,7 @@ impl TryFrom<u32> for SeleniumIsotope {
 impl core::fmt::Display for SeleniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Se63 => write!(f, "Se63"),
             Self::Se64 => write!(f, "Se64"),
             Self::Se65 => write!(f, "Se65"),
             Self::Se66 => write!(f, "Se66"),

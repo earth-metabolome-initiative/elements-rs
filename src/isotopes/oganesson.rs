@@ -4,20 +4,14 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Oganesson
 pub enum OganessonIsotope {
-    /// Isotope Og293 of Oganesson
-    Og293,
     /// Isotope Og294 of Oganesson
     Og294,
-    /// Isotope Og295 of Oganesson
-    Og295,
 }
 impl super::RelativeAtomicMass for OganessonIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Og293 => 293.21356f64,
             Self::Og294 => 294.21392f64,
-            Self::Og295 => 295.21624f64,
         }
     }
 }
@@ -31,9 +25,7 @@ impl super::MassNumber for OganessonIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Og293 => 293u16,
             Self::Og294 => 294u16,
-            Self::Og295 => 295u16,
         }
     }
 }
@@ -45,7 +37,7 @@ impl super::IsotopicComposition for OganessonIsotope {
 }
 impl super::MostAbundantIsotope for OganessonIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Og295
+        Self::Og294
     }
 }
 impl From<OganessonIsotope> for crate::Isotope {
@@ -62,9 +54,7 @@ impl TryFrom<u64> for OganessonIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            293u64 => Ok(Self::Og293),
             294u64 => Ok(Self::Og294),
-            295u64 => Ok(Self::Og295),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Og, value)),
         }
     }
@@ -90,9 +80,7 @@ impl TryFrom<u32> for OganessonIsotope {
 impl core::fmt::Display for OganessonIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Og293 => write!(f, "Og293"),
             Self::Og294 => write!(f, "Og294"),
-            Self::Og295 => write!(f, "Og295"),
         }
     }
 }

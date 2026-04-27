@@ -66,8 +66,6 @@ pub enum ThoriumIsotope {
     Th237,
     /// Isotope Th238 of Thorium
     Th238,
-    /// Isotope Th239 of Thorium
-    Th239,
 }
 impl super::RelativeAtomicMass for ThoriumIsotope {
     #[inline]
@@ -104,7 +102,6 @@ impl super::RelativeAtomicMass for ThoriumIsotope {
             Self::Th236 => 236.049657f64,
             Self::Th237 => 237.053629f64,
             Self::Th238 => 238.0565f64,
-            Self::Th239 => 239.06077f64,
         }
     }
 }
@@ -149,7 +146,6 @@ impl super::MassNumber for ThoriumIsotope {
             Self::Th236 => 236u16,
             Self::Th237 => 237u16,
             Self::Th238 => 238u16,
-            Self::Th239 => 239u16,
         }
     }
 }
@@ -212,7 +208,6 @@ impl TryFrom<u64> for ThoriumIsotope {
             236u64 => Ok(Self::Th236),
             237u64 => Ok(Self::Th237),
             238u64 => Ok(Self::Th238),
-            239u64 => Ok(Self::Th239),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Th, value)),
         }
     }
@@ -269,7 +264,6 @@ impl core::fmt::Display for ThoriumIsotope {
             Self::Th236 => write!(f, "Th236"),
             Self::Th237 => write!(f, "Th237"),
             Self::Th238 => write!(f, "Th238"),
-            Self::Th239 => write!(f, "Th239"),
         }
     }
 }

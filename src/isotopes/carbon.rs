@@ -30,12 +30,8 @@ pub enum CarbonIsotope {
     C19,
     /// Isotope C20 of Carbon
     C20,
-    /// Isotope C21 of Carbon
-    C21,
     /// Isotope C22 of Carbon
     C22,
-    /// Isotope C23 of Carbon
-    C23,
 }
 impl super::RelativeAtomicMass for CarbonIsotope {
     #[inline]
@@ -54,9 +50,7 @@ impl super::RelativeAtomicMass for CarbonIsotope {
             Self::C18 => 18.026751f64,
             Self::C19 => 19.0348f64,
             Self::C20 => 20.04032f64,
-            Self::C21 => 21.049f64,
             Self::C22 => 22.05753f64,
-            Self::C23 => 23.0689f64,
         }
     }
 }
@@ -83,9 +77,7 @@ impl super::MassNumber for CarbonIsotope {
             Self::C18 => 18u16,
             Self::C19 => 19u16,
             Self::C20 => 20u16,
-            Self::C21 => 21u16,
             Self::C22 => 22u16,
-            Self::C23 => 23u16,
         }
     }
 }
@@ -131,9 +123,7 @@ impl TryFrom<u64> for CarbonIsotope {
             18u64 => Ok(Self::C18),
             19u64 => Ok(Self::C19),
             20u64 => Ok(Self::C20),
-            21u64 => Ok(Self::C21),
             22u64 => Ok(Self::C22),
-            23u64 => Ok(Self::C23),
             _ => Err(crate::errors::Error::Isotope(crate::Element::C, value)),
         }
     }
@@ -172,9 +162,7 @@ impl core::fmt::Display for CarbonIsotope {
             Self::C18 => write!(f, "C18"),
             Self::C19 => write!(f, "C19"),
             Self::C20 => write!(f, "C20"),
-            Self::C21 => write!(f, "C21"),
             Self::C22 => write!(f, "C22"),
-            Self::C23 => write!(f, "C23"),
         }
     }
 }

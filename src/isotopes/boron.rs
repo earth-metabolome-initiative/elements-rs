@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Boron
 pub enum BoronIsotope {
-    /// Isotope B6 of Boron
-    B6,
     /// Isotope B7 of Boron
     B7,
     /// Isotope B8 of Boron
@@ -41,7 +39,6 @@ impl super::RelativeAtomicMass for BoronIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::B6 => 6.0508f64,
             Self::B7 => 7.029712f64,
             Self::B8 => 8.0246073f64,
             Self::B9 => 9.01332965f64,
@@ -70,7 +67,6 @@ impl super::MassNumber for BoronIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::B6 => 6u16,
             Self::B7 => 7u16,
             Self::B8 => 8u16,
             Self::B9 => 9u16,
@@ -118,7 +114,6 @@ impl TryFrom<u64> for BoronIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            6u64 => Ok(Self::B6),
             7u64 => Ok(Self::B7),
             8u64 => Ok(Self::B8),
             9u64 => Ok(Self::B9),
@@ -159,7 +154,6 @@ impl TryFrom<u32> for BoronIsotope {
 impl core::fmt::Display for BoronIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::B6 => write!(f, "B6"),
             Self::B7 => write!(f, "B7"),
             Self::B8 => write!(f, "B8"),
             Self::B9 => write!(f, "B9"),

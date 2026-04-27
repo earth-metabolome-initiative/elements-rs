@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Copper
 pub enum CopperIsotope {
-    /// Isotope Cu52 of Copper
-    Cu52,
     /// Isotope Cu53 of Copper
     Cu53,
     /// Isotope Cu54 of Copper
@@ -66,12 +64,15 @@ pub enum CopperIsotope {
     Cu81,
     /// Isotope Cu82 of Copper
     Cu82,
+    /// Isotope Cu83 of Copper
+    Cu83,
+    /// Isotope Cu84 of Copper
+    Cu84,
 }
 impl super::RelativeAtomicMass for CopperIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cu52 => 51.99671f64,
             Self::Cu53 => 52.98459f64,
             Self::Cu54 => 53.97666f64,
             Self::Cu55 => 54.96604f64,
@@ -102,6 +103,8 @@ impl super::RelativeAtomicMass for CopperIsotope {
             Self::Cu80 => 79.96089f64,
             Self::Cu81 => 80.96587f64,
             Self::Cu82 => 81.97244f64,
+            Self::Cu83 => 82.97811f64,
+            Self::Cu84 => 83.985271f64,
         }
     }
 }
@@ -115,7 +118,6 @@ impl super::MassNumber for CopperIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::Cu52 => 52u16,
             Self::Cu53 => 53u16,
             Self::Cu54 => 54u16,
             Self::Cu55 => 55u16,
@@ -146,6 +148,8 @@ impl super::MassNumber for CopperIsotope {
             Self::Cu80 => 80u16,
             Self::Cu81 => 81u16,
             Self::Cu82 => 82u16,
+            Self::Cu83 => 83u16,
+            Self::Cu84 => 84u16,
         }
     }
 }
@@ -178,7 +182,6 @@ impl TryFrom<u64> for CopperIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            52u64 => Ok(Self::Cu52),
             53u64 => Ok(Self::Cu53),
             54u64 => Ok(Self::Cu54),
             55u64 => Ok(Self::Cu55),
@@ -209,6 +212,8 @@ impl TryFrom<u64> for CopperIsotope {
             80u64 => Ok(Self::Cu80),
             81u64 => Ok(Self::Cu81),
             82u64 => Ok(Self::Cu82),
+            83u64 => Ok(Self::Cu83),
+            84u64 => Ok(Self::Cu84),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Cu, value)),
         }
     }
@@ -234,7 +239,6 @@ impl TryFrom<u32> for CopperIsotope {
 impl core::fmt::Display for CopperIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Cu52 => write!(f, "Cu52"),
             Self::Cu53 => write!(f, "Cu53"),
             Self::Cu54 => write!(f, "Cu54"),
             Self::Cu55 => write!(f, "Cu55"),
@@ -265,6 +269,8 @@ impl core::fmt::Display for CopperIsotope {
             Self::Cu80 => write!(f, "Cu80"),
             Self::Cu81 => write!(f, "Cu81"),
             Self::Cu82 => write!(f, "Cu82"),
+            Self::Cu83 => write!(f, "Cu83"),
+            Self::Cu84 => write!(f, "Cu84"),
         }
     }
 }

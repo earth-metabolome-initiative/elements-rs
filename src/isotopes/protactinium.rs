@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Protactinium
 pub enum ProtactiniumIsotope {
+    /// Isotope Pa211 of Protactinium
+    Pa211,
     /// Isotope Pa212 of Protactinium
     Pa212,
     /// Isotope Pa213 of Protactinium
@@ -60,15 +62,12 @@ pub enum ProtactiniumIsotope {
     Pa238,
     /// Isotope Pa239 of Protactinium
     Pa239,
-    /// Isotope Pa240 of Protactinium
-    Pa240,
-    /// Isotope Pa241 of Protactinium
-    Pa241,
 }
 impl super::RelativeAtomicMass for ProtactiniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Pa211 => 211.023674036f64,
             Self::Pa212 => 212.023203f64,
             Self::Pa213 => 213.021109f64,
             Self::Pa214 => 214.020918f64,
@@ -97,8 +96,6 @@ impl super::RelativeAtomicMass for ProtactiniumIsotope {
             Self::Pa237 => 237.051023f64,
             Self::Pa238 => 238.054637f64,
             Self::Pa239 => 239.05726f64,
-            Self::Pa240 => 240.06098f64,
-            Self::Pa241 => 241.06408f64,
         }
     }
 }
@@ -112,6 +109,7 @@ impl super::MassNumber for ProtactiniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Pa211 => 211u16,
             Self::Pa212 => 212u16,
             Self::Pa213 => 213u16,
             Self::Pa214 => 214u16,
@@ -140,8 +138,6 @@ impl super::MassNumber for ProtactiniumIsotope {
             Self::Pa237 => 237u16,
             Self::Pa238 => 238u16,
             Self::Pa239 => 239u16,
-            Self::Pa240 => 240u16,
-            Self::Pa241 => 241u16,
         }
     }
 }
@@ -173,6 +169,7 @@ impl TryFrom<u64> for ProtactiniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            211u64 => Ok(Self::Pa211),
             212u64 => Ok(Self::Pa212),
             213u64 => Ok(Self::Pa213),
             214u64 => Ok(Self::Pa214),
@@ -201,8 +198,6 @@ impl TryFrom<u64> for ProtactiniumIsotope {
             237u64 => Ok(Self::Pa237),
             238u64 => Ok(Self::Pa238),
             239u64 => Ok(Self::Pa239),
-            240u64 => Ok(Self::Pa240),
-            241u64 => Ok(Self::Pa241),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Pa, value)),
         }
     }
@@ -228,6 +223,7 @@ impl TryFrom<u32> for ProtactiniumIsotope {
 impl core::fmt::Display for ProtactiniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Pa211 => write!(f, "Pa211"),
             Self::Pa212 => write!(f, "Pa212"),
             Self::Pa213 => write!(f, "Pa213"),
             Self::Pa214 => write!(f, "Pa214"),
@@ -256,8 +252,6 @@ impl core::fmt::Display for ProtactiniumIsotope {
             Self::Pa237 => write!(f, "Pa237"),
             Self::Pa238 => write!(f, "Pa238"),
             Self::Pa239 => write!(f, "Pa239"),
-            Self::Pa240 => write!(f, "Pa240"),
-            Self::Pa241 => write!(f, "Pa241"),
         }
     }
 }

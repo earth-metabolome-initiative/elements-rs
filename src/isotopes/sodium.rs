@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Sodium
 pub enum SodiumIsotope {
+    /// Isotope Na17 of Sodium
+    Na17,
     /// Isotope Na18 of Sodium
     Na18,
     /// Isotope Na19 of Sodium
@@ -44,11 +46,14 @@ pub enum SodiumIsotope {
     Na36,
     /// Isotope Na37 of Sodium
     Na37,
+    /// Isotope Na39 of Sodium
+    Na39,
 }
 impl super::RelativeAtomicMass for SodiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Na17 => 17.037273f64,
             Self::Na18 => 18.02688f64,
             Self::Na19 => 19.01388f64,
             Self::Na20 => 20.0073544f64,
@@ -69,6 +74,7 @@ impl super::RelativeAtomicMass for SodiumIsotope {
             Self::Na35 => 35.04062f64,
             Self::Na36 => 36.04929f64,
             Self::Na37 => 37.05705f64,
+            Self::Na39 => 39.075127f64,
         }
     }
 }
@@ -82,6 +88,7 @@ impl super::MassNumber for SodiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Na17 => 17u16,
             Self::Na18 => 18u16,
             Self::Na19 => 19u16,
             Self::Na20 => 20u16,
@@ -102,6 +109,7 @@ impl super::MassNumber for SodiumIsotope {
             Self::Na35 => 35u16,
             Self::Na36 => 36u16,
             Self::Na37 => 37u16,
+            Self::Na39 => 39u16,
         }
     }
 }
@@ -133,6 +141,7 @@ impl TryFrom<u64> for SodiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            17u64 => Ok(Self::Na17),
             18u64 => Ok(Self::Na18),
             19u64 => Ok(Self::Na19),
             20u64 => Ok(Self::Na20),
@@ -153,6 +162,7 @@ impl TryFrom<u64> for SodiumIsotope {
             35u64 => Ok(Self::Na35),
             36u64 => Ok(Self::Na36),
             37u64 => Ok(Self::Na37),
+            39u64 => Ok(Self::Na39),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Na, value)),
         }
     }
@@ -178,6 +188,7 @@ impl TryFrom<u32> for SodiumIsotope {
 impl core::fmt::Display for SodiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Na17 => write!(f, "Na17"),
             Self::Na18 => write!(f, "Na18"),
             Self::Na19 => write!(f, "Na19"),
             Self::Na20 => write!(f, "Na20"),
@@ -198,6 +209,7 @@ impl core::fmt::Display for SodiumIsotope {
             Self::Na35 => write!(f, "Na35"),
             Self::Na36 => write!(f, "Na36"),
             Self::Na37 => write!(f, "Na37"),
+            Self::Na39 => write!(f, "Na39"),
         }
     }
 }

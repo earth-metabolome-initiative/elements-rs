@@ -80,6 +80,10 @@ pub enum PromethiumIsotope {
     Pm162,
     /// Isotope Pm163 of Promethium
     Pm163,
+    /// Isotope Pm164 of Promethium
+    Pm164,
+    /// Isotope Pm165 of Promethium
+    Pm165,
 }
 impl super::RelativeAtomicMass for PromethiumIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for PromethiumIsotope {
             Self::Pm161 => 160.94607f64,
             Self::Pm162 => 161.95022f64,
             Self::Pm163 => 162.95357f64,
+            Self::Pm164 => 163.958819f64,
+            Self::Pm165 => 164.96278f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for PromethiumIsotope {
             Self::Pm161 => 161u16,
             Self::Pm162 => 162u16,
             Self::Pm163 => 163u16,
+            Self::Pm164 => 164u16,
+            Self::Pm165 => 165u16,
         }
     }
 }
@@ -185,7 +193,7 @@ impl super::IsotopicComposition for PromethiumIsotope {
 }
 impl super::MostAbundantIsotope for PromethiumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Pm163
+        Self::Pm165
     }
 }
 impl From<PromethiumIsotope> for crate::Isotope {
@@ -240,6 +248,8 @@ impl TryFrom<u64> for PromethiumIsotope {
             161u64 => Ok(Self::Pm161),
             162u64 => Ok(Self::Pm162),
             163u64 => Ok(Self::Pm163),
+            164u64 => Ok(Self::Pm164),
+            165u64 => Ok(Self::Pm165),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Pm, value)),
         }
     }
@@ -303,6 +313,8 @@ impl core::fmt::Display for PromethiumIsotope {
             Self::Pm161 => write!(f, "Pm161"),
             Self::Pm162 => write!(f, "Pm162"),
             Self::Pm163 => write!(f, "Pm163"),
+            Self::Pm164 => write!(f, "Pm164"),
+            Self::Pm165 => write!(f, "Pm165"),
         }
     }
 }

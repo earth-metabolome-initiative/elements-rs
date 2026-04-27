@@ -4,6 +4,10 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Molybdenum
 pub enum MolybdenumIsotope {
+    /// Isotope Mo81 of Molybdenum
+    Mo81,
+    /// Isotope Mo82 of Molybdenum
+    Mo82,
     /// Isotope Mo83 of Molybdenum
     Mo83,
     /// Isotope Mo84 of Molybdenum
@@ -74,11 +78,17 @@ pub enum MolybdenumIsotope {
     Mo116,
     /// Isotope Mo117 of Molybdenum
     Mo117,
+    /// Isotope Mo118 of Molybdenum
+    Mo118,
+    /// Isotope Mo119 of Molybdenum
+    Mo119,
 }
 impl super::RelativeAtomicMass for MolybdenumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Mo81 => 80.966226f64,
+            Self::Mo82 => 81.956661f64,
             Self::Mo83 => 82.94988f64,
             Self::Mo84 => 83.94149f64,
             Self::Mo85 => 84.938261f64,
@@ -114,6 +124,8 @@ impl super::RelativeAtomicMass for MolybdenumIsotope {
             Self::Mo115 => 114.95196f64,
             Self::Mo116 => 115.95545f64,
             Self::Mo117 => 116.96117f64,
+            Self::Mo118 => 117.965249f64,
+            Self::Mo119 => 118.971465f64,
         }
     }
 }
@@ -127,6 +139,8 @@ impl super::MassNumber for MolybdenumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Mo81 => 81u16,
+            Self::Mo82 => 82u16,
             Self::Mo83 => 83u16,
             Self::Mo84 => 84u16,
             Self::Mo85 => 85u16,
@@ -162,6 +176,8 @@ impl super::MassNumber for MolybdenumIsotope {
             Self::Mo115 => 115u16,
             Self::Mo116 => 116u16,
             Self::Mo117 => 117u16,
+            Self::Mo118 => 118u16,
+            Self::Mo119 => 119u16,
         }
     }
 }
@@ -199,6 +215,8 @@ impl TryFrom<u64> for MolybdenumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            81u64 => Ok(Self::Mo81),
+            82u64 => Ok(Self::Mo82),
             83u64 => Ok(Self::Mo83),
             84u64 => Ok(Self::Mo84),
             85u64 => Ok(Self::Mo85),
@@ -234,6 +252,8 @@ impl TryFrom<u64> for MolybdenumIsotope {
             115u64 => Ok(Self::Mo115),
             116u64 => Ok(Self::Mo116),
             117u64 => Ok(Self::Mo117),
+            118u64 => Ok(Self::Mo118),
+            119u64 => Ok(Self::Mo119),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Mo, value)),
         }
     }
@@ -259,6 +279,8 @@ impl TryFrom<u32> for MolybdenumIsotope {
 impl core::fmt::Display for MolybdenumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Mo81 => write!(f, "Mo81"),
+            Self::Mo82 => write!(f, "Mo82"),
             Self::Mo83 => write!(f, "Mo83"),
             Self::Mo84 => write!(f, "Mo84"),
             Self::Mo85 => write!(f, "Mo85"),
@@ -294,6 +316,8 @@ impl core::fmt::Display for MolybdenumIsotope {
             Self::Mo115 => write!(f, "Mo115"),
             Self::Mo116 => write!(f, "Mo116"),
             Self::Mo117 => write!(f, "Mo117"),
+            Self::Mo118 => write!(f, "Mo118"),
+            Self::Mo119 => write!(f, "Mo119"),
         }
     }
 }

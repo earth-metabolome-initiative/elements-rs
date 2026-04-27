@@ -4,6 +4,10 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Americium
 pub enum AmericiumIsotope {
+    /// Isotope Am223 of Americium
+    Am223,
+    /// Isotope Am229 of Americium
+    Am229,
     /// Isotope Am230 of Americium
     Am230,
     /// Isotope Am231 of Americium
@@ -49,6 +53,8 @@ impl super::RelativeAtomicMass for AmericiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Am223 => 223.04584f64,
+            Self::Am229 => 229.045282534f64,
             Self::Am230 => 230.04609f64,
             Self::Am231 => 231.04556f64,
             Self::Am232 => 232.04645f64,
@@ -82,6 +88,8 @@ impl super::MassNumber for AmericiumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Am223 => 223u16,
+            Self::Am229 => 229u16,
             Self::Am230 => 230u16,
             Self::Am231 => 231u16,
             Self::Am232 => 232u16,
@@ -130,6 +138,8 @@ impl TryFrom<u64> for AmericiumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            223u64 => Ok(Self::Am223),
+            229u64 => Ok(Self::Am229),
             230u64 => Ok(Self::Am230),
             231u64 => Ok(Self::Am231),
             232u64 => Ok(Self::Am232),
@@ -175,6 +185,8 @@ impl TryFrom<u32> for AmericiumIsotope {
 impl core::fmt::Display for AmericiumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Am223 => write!(f, "Am223"),
+            Self::Am229 => write!(f, "Am229"),
             Self::Am230 => write!(f, "Am230"),
             Self::Am231 => write!(f, "Am231"),
             Self::Am232 => write!(f, "Am232"),

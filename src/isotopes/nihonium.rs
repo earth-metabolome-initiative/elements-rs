@@ -6,12 +6,6 @@
 pub enum NihoniumIsotope {
     /// Isotope Nh278 of Nihonium
     Nh278,
-    /// Isotope Nh279 of Nihonium
-    Nh279,
-    /// Isotope Nh280 of Nihonium
-    Nh280,
-    /// Isotope Nh281 of Nihonium
-    Nh281,
     /// Isotope Nh282 of Nihonium
     Nh282,
     /// Isotope Nh283 of Nihonium
@@ -22,23 +16,20 @@ pub enum NihoniumIsotope {
     Nh285,
     /// Isotope Nh286 of Nihonium
     Nh286,
-    /// Isotope Nh287 of Nihonium
-    Nh287,
+    /// Isotope Nh290 of Nihonium
+    Nh290,
 }
 impl super::RelativeAtomicMass for NihoniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Nh278 => 278.17058f64,
-            Self::Nh279 => 279.17095f64,
-            Self::Nh280 => 280.17293f64,
-            Self::Nh281 => 281.17348f64,
             Self::Nh282 => 282.17567f64,
             Self::Nh283 => 283.17657f64,
             Self::Nh284 => 284.17873f64,
             Self::Nh285 => 285.17973f64,
             Self::Nh286 => 286.18221f64,
-            Self::Nh287 => 287.18339f64,
+            Self::Nh290 => 290.191429f64,
         }
     }
 }
@@ -53,15 +44,12 @@ impl super::MassNumber for NihoniumIsotope {
     fn mass_number(&self) -> u16 {
         match self {
             Self::Nh278 => 278u16,
-            Self::Nh279 => 279u16,
-            Self::Nh280 => 280u16,
-            Self::Nh281 => 281u16,
             Self::Nh282 => 282u16,
             Self::Nh283 => 283u16,
             Self::Nh284 => 284u16,
             Self::Nh285 => 285u16,
             Self::Nh286 => 286u16,
-            Self::Nh287 => 287u16,
+            Self::Nh290 => 290u16,
         }
     }
 }
@@ -73,7 +61,7 @@ impl super::IsotopicComposition for NihoniumIsotope {
 }
 impl super::MostAbundantIsotope for NihoniumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Nh287
+        Self::Nh290
     }
 }
 impl From<NihoniumIsotope> for crate::Isotope {
@@ -91,15 +79,12 @@ impl TryFrom<u64> for NihoniumIsotope {
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
             278u64 => Ok(Self::Nh278),
-            279u64 => Ok(Self::Nh279),
-            280u64 => Ok(Self::Nh280),
-            281u64 => Ok(Self::Nh281),
             282u64 => Ok(Self::Nh282),
             283u64 => Ok(Self::Nh283),
             284u64 => Ok(Self::Nh284),
             285u64 => Ok(Self::Nh285),
             286u64 => Ok(Self::Nh286),
-            287u64 => Ok(Self::Nh287),
+            290u64 => Ok(Self::Nh290),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Nh, value)),
         }
     }
@@ -126,15 +111,12 @@ impl core::fmt::Display for NihoniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Nh278 => write!(f, "Nh278"),
-            Self::Nh279 => write!(f, "Nh279"),
-            Self::Nh280 => write!(f, "Nh280"),
-            Self::Nh281 => write!(f, "Nh281"),
             Self::Nh282 => write!(f, "Nh282"),
             Self::Nh283 => write!(f, "Nh283"),
             Self::Nh284 => write!(f, "Nh284"),
             Self::Nh285 => write!(f, "Nh285"),
             Self::Nh286 => write!(f, "Nh286"),
-            Self::Nh287 => write!(f, "Nh287"),
+            Self::Nh290 => write!(f, "Nh290"),
         }
     }
 }

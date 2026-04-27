@@ -80,6 +80,10 @@ pub enum RhodiumIsotope {
     Rh125,
     /// Isotope Rh126 of Rhodium
     Rh126,
+    /// Isotope Rh127 of Rhodium
+    Rh127,
+    /// Isotope Rh128 of Rhodium
+    Rh128,
 }
 impl super::RelativeAtomicMass for RhodiumIsotope {
     #[inline]
@@ -123,6 +127,8 @@ impl super::RelativeAtomicMass for RhodiumIsotope {
             Self::Rh124 => 123.95151f64,
             Self::Rh125 => 124.95469f64,
             Self::Rh126 => 125.95946f64,
+            Self::Rh127 => 126.963789f64,
+            Self::Rh128 => 127.970649f64,
         }
     }
 }
@@ -174,6 +180,8 @@ impl super::MassNumber for RhodiumIsotope {
             Self::Rh124 => 124u16,
             Self::Rh125 => 125u16,
             Self::Rh126 => 126u16,
+            Self::Rh127 => 127u16,
+            Self::Rh128 => 128u16,
         }
     }
 }
@@ -243,6 +251,8 @@ impl TryFrom<u64> for RhodiumIsotope {
             124u64 => Ok(Self::Rh124),
             125u64 => Ok(Self::Rh125),
             126u64 => Ok(Self::Rh126),
+            127u64 => Ok(Self::Rh127),
+            128u64 => Ok(Self::Rh128),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Rh, value)),
         }
     }
@@ -306,6 +316,8 @@ impl core::fmt::Display for RhodiumIsotope {
             Self::Rh124 => write!(f, "Rh124"),
             Self::Rh125 => write!(f, "Rh125"),
             Self::Rh126 => write!(f, "Rh126"),
+            Self::Rh127 => write!(f, "Rh127"),
+            Self::Rh128 => write!(f, "Rh128"),
         }
     }
 }

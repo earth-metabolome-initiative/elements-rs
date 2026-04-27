@@ -56,6 +56,10 @@ pub enum TitaniumIsotope {
     Ti62,
     /// Isotope Ti63 of Titanium
     Ti63,
+    /// Isotope Ti64 of Titanium
+    Ti64,
+    /// Isotope Ti65 of Titanium
+    Ti65,
 }
 impl super::RelativeAtomicMass for TitaniumIsotope {
     #[inline]
@@ -87,6 +91,8 @@ impl super::RelativeAtomicMass for TitaniumIsotope {
             Self::Ti61 => 60.98245f64,
             Self::Ti62 => 61.98651f64,
             Self::Ti63 => 62.99375f64,
+            Self::Ti64 => 63.998411f64,
+            Self::Ti65 => 65.005593f64,
         }
     }
 }
@@ -126,6 +132,8 @@ impl super::MassNumber for TitaniumIsotope {
             Self::Ti61 => 61u16,
             Self::Ti62 => 62u16,
             Self::Ti63 => 63u16,
+            Self::Ti64 => 64u16,
+            Self::Ti65 => 65u16,
         }
     }
 }
@@ -187,6 +195,8 @@ impl TryFrom<u64> for TitaniumIsotope {
             61u64 => Ok(Self::Ti61),
             62u64 => Ok(Self::Ti62),
             63u64 => Ok(Self::Ti63),
+            64u64 => Ok(Self::Ti64),
+            65u64 => Ok(Self::Ti65),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ti, value)),
         }
     }
@@ -238,6 +248,8 @@ impl core::fmt::Display for TitaniumIsotope {
             Self::Ti61 => write!(f, "Ti61"),
             Self::Ti62 => write!(f, "Ti62"),
             Self::Ti63 => write!(f, "Ti63"),
+            Self::Ti64 => write!(f, "Ti64"),
+            Self::Ti65 => write!(f, "Ti65"),
         }
     }
 }

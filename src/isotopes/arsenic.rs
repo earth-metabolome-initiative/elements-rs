@@ -4,12 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Arsenic
 pub enum ArsenicIsotope {
-    /// Isotope As60 of Arsenic
-    As60,
-    /// Isotope As61 of Arsenic
-    As61,
-    /// Isotope As62 of Arsenic
-    As62,
     /// Isotope As63 of Arsenic
     As63,
     /// Isotope As64 of Arsenic
@@ -75,9 +69,6 @@ impl super::RelativeAtomicMass for ArsenicIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::As60 => 59.99388f64,
-            Self::As61 => 60.98112f64,
-            Self::As62 => 61.97361f64,
             Self::As63 => 62.9639f64,
             Self::As64 => 63.95743f64,
             Self::As65 => 64.949611f64,
@@ -121,9 +112,6 @@ impl super::MassNumber for ArsenicIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::As60 => 60u16,
-            Self::As61 => 61u16,
-            Self::As62 => 62u16,
             Self::As63 => 63u16,
             Self::As64 => 64u16,
             Self::As65 => 65u16,
@@ -185,9 +173,6 @@ impl TryFrom<u64> for ArsenicIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            60u64 => Ok(Self::As60),
-            61u64 => Ok(Self::As61),
-            62u64 => Ok(Self::As62),
             63u64 => Ok(Self::As63),
             64u64 => Ok(Self::As64),
             65u64 => Ok(Self::As65),
@@ -243,9 +228,6 @@ impl TryFrom<u32> for ArsenicIsotope {
 impl core::fmt::Display for ArsenicIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::As60 => write!(f, "As60"),
-            Self::As61 => write!(f, "As61"),
-            Self::As62 => write!(f, "As62"),
             Self::As63 => write!(f, "As63"),
             Self::As64 => write!(f, "As64"),
             Self::As65 => write!(f, "As65"),

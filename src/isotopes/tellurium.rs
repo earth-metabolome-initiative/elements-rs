@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Tellurium
 pub enum TelluriumIsotope {
+    /// Isotope Te104 of Tellurium
+    Te104,
     /// Isotope Te105 of Tellurium
     Te105,
     /// Isotope Te106 of Tellurium
@@ -82,11 +84,16 @@ pub enum TelluriumIsotope {
     Te142,
     /// Isotope Te143 of Tellurium
     Te143,
+    /// Isotope Te144 of Tellurium
+    Te144,
+    /// Isotope Te145 of Tellurium
+    Te145,
 }
 impl super::RelativeAtomicMass for TelluriumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Te104 => 103.946723408f64,
             Self::Te105 => 104.9433f64,
             Self::Te106 => 105.9375f64,
             Self::Te107 => 106.935012f64,
@@ -126,6 +133,8 @@ impl super::RelativeAtomicMass for TelluriumIsotope {
             Self::Te141 => 140.9458f64,
             Self::Te142 => 141.95022f64,
             Self::Te143 => 142.95676f64,
+            Self::Te144 => 143.961116f64,
+            Self::Te145 => 144.967783f64,
         }
     }
 }
@@ -139,6 +148,7 @@ impl super::MassNumber for TelluriumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Te104 => 104u16,
             Self::Te105 => 105u16,
             Self::Te106 => 106u16,
             Self::Te107 => 107u16,
@@ -178,6 +188,8 @@ impl super::MassNumber for TelluriumIsotope {
             Self::Te141 => 141u16,
             Self::Te142 => 142u16,
             Self::Te143 => 143u16,
+            Self::Te144 => 144u16,
+            Self::Te145 => 145u16,
         }
     }
 }
@@ -216,6 +228,7 @@ impl TryFrom<u64> for TelluriumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            104u64 => Ok(Self::Te104),
             105u64 => Ok(Self::Te105),
             106u64 => Ok(Self::Te106),
             107u64 => Ok(Self::Te107),
@@ -255,6 +268,8 @@ impl TryFrom<u64> for TelluriumIsotope {
             141u64 => Ok(Self::Te141),
             142u64 => Ok(Self::Te142),
             143u64 => Ok(Self::Te143),
+            144u64 => Ok(Self::Te144),
+            145u64 => Ok(Self::Te145),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Te, value)),
         }
     }
@@ -280,6 +295,7 @@ impl TryFrom<u32> for TelluriumIsotope {
 impl core::fmt::Display for TelluriumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Te104 => write!(f, "Te104"),
             Self::Te105 => write!(f, "Te105"),
             Self::Te106 => write!(f, "Te106"),
             Self::Te107 => write!(f, "Te107"),
@@ -319,6 +335,8 @@ impl core::fmt::Display for TelluriumIsotope {
             Self::Te141 => write!(f, "Te141"),
             Self::Te142 => write!(f, "Te142"),
             Self::Te143 => write!(f, "Te143"),
+            Self::Te144 => write!(f, "Te144"),
+            Self::Te145 => write!(f, "Te145"),
         }
     }
 }

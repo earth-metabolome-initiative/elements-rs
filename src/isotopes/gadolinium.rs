@@ -78,6 +78,12 @@ pub enum GadoliniumIsotope {
     Gd168,
     /// Isotope Gd169 of Gadolinium
     Gd169,
+    /// Isotope Gd170 of Gadolinium
+    Gd170,
+    /// Isotope Gd171 of Gadolinium
+    Gd171,
+    /// Isotope Gd172 of Gadolinium
+    Gd172,
 }
 impl super::RelativeAtomicMass for GadoliniumIsotope {
     #[inline]
@@ -120,6 +126,9 @@ impl super::RelativeAtomicMass for GadoliniumIsotope {
             Self::Gd167 => 166.94545f64,
             Self::Gd168 => 167.94808f64,
             Self::Gd169 => 168.9526f64,
+            Self::Gd170 => 169.956146f64,
+            Self::Gd171 => 170.961127f64,
+            Self::Gd172 => 171.964605f64,
         }
     }
 }
@@ -170,6 +179,9 @@ impl super::MassNumber for GadoliniumIsotope {
             Self::Gd167 => 167u16,
             Self::Gd168 => 168u16,
             Self::Gd169 => 169u16,
+            Self::Gd170 => 170u16,
+            Self::Gd171 => 171u16,
+            Self::Gd172 => 172u16,
         }
     }
 }
@@ -244,6 +256,9 @@ impl TryFrom<u64> for GadoliniumIsotope {
             167u64 => Ok(Self::Gd167),
             168u64 => Ok(Self::Gd168),
             169u64 => Ok(Self::Gd169),
+            170u64 => Ok(Self::Gd170),
+            171u64 => Ok(Self::Gd171),
+            172u64 => Ok(Self::Gd172),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Gd, value)),
         }
     }
@@ -306,6 +321,9 @@ impl core::fmt::Display for GadoliniumIsotope {
             Self::Gd167 => write!(f, "Gd167"),
             Self::Gd168 => write!(f, "Gd168"),
             Self::Gd169 => write!(f, "Gd169"),
+            Self::Gd170 => write!(f, "Gd170"),
+            Self::Gd171 => write!(f, "Gd171"),
+            Self::Gd172 => write!(f, "Gd172"),
         }
     }
 }

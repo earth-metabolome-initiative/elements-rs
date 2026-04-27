@@ -4,6 +4,8 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Flerovium
 pub enum FleroviumIsotope {
+    /// Isotope Fl284 of Flerovium
+    Fl284,
     /// Isotope Fl285 of Flerovium
     Fl285,
     /// Isotope Fl286 of Flerovium
@@ -14,16 +16,20 @@ pub enum FleroviumIsotope {
     Fl288,
     /// Isotope Fl289 of Flerovium
     Fl289,
+    /// Isotope Fl290 of Flerovium
+    Fl290,
 }
 impl super::RelativeAtomicMass for FleroviumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Fl284 => 284.181192f64,
             Self::Fl285 => 285.18364f64,
             Self::Fl286 => 286.18423f64,
             Self::Fl287 => 287.18678f64,
             Self::Fl288 => 288.18757f64,
             Self::Fl289 => 289.19042f64,
+            Self::Fl290 => 290.191875f64,
         }
     }
 }
@@ -37,11 +43,13 @@ impl super::MassNumber for FleroviumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Fl284 => 284u16,
             Self::Fl285 => 285u16,
             Self::Fl286 => 286u16,
             Self::Fl287 => 287u16,
             Self::Fl288 => 288u16,
             Self::Fl289 => 289u16,
+            Self::Fl290 => 290u16,
         }
     }
 }
@@ -53,7 +61,7 @@ impl super::IsotopicComposition for FleroviumIsotope {
 }
 impl super::MostAbundantIsotope for FleroviumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::Fl289
+        Self::Fl290
     }
 }
 impl From<FleroviumIsotope> for crate::Isotope {
@@ -70,11 +78,13 @@ impl TryFrom<u64> for FleroviumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            284u64 => Ok(Self::Fl284),
             285u64 => Ok(Self::Fl285),
             286u64 => Ok(Self::Fl286),
             287u64 => Ok(Self::Fl287),
             288u64 => Ok(Self::Fl288),
             289u64 => Ok(Self::Fl289),
+            290u64 => Ok(Self::Fl290),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Fl, value)),
         }
     }
@@ -100,11 +110,13 @@ impl TryFrom<u32> for FleroviumIsotope {
 impl core::fmt::Display for FleroviumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Fl284 => write!(f, "Fl284"),
             Self::Fl285 => write!(f, "Fl285"),
             Self::Fl286 => write!(f, "Fl286"),
             Self::Fl287 => write!(f, "Fl287"),
             Self::Fl288 => write!(f, "Fl288"),
             Self::Fl289 => write!(f, "Fl289"),
+            Self::Fl290 => write!(f, "Fl290"),
         }
     }
 }

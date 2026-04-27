@@ -4,8 +4,6 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Phosphorus
 pub enum PhosphorusIsotope {
-    /// Isotope P24 of Phosphorus
-    P24,
     /// Isotope P25 of Phosphorus
     P25,
     /// Isotope P26 of Phosphorus
@@ -57,7 +55,6 @@ impl super::RelativeAtomicMass for PhosphorusIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::P24 => 24.03577f64,
             Self::P25 => 25.02119f64,
             Self::P26 => 26.01178f64,
             Self::P27 => 26.999224f64,
@@ -80,7 +77,7 @@ impl super::RelativeAtomicMass for PhosphorusIsotope {
             Self::P44 => 44.01121f64,
             Self::P45 => 45.01645f64,
             Self::P46 => 46.02446f64,
-            Self::P47 => 47.03139f64,
+            Self::P47 => 47.030929f64,
         }
     }
 }
@@ -94,7 +91,6 @@ impl super::MassNumber for PhosphorusIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
-            Self::P24 => 24u16,
             Self::P25 => 25u16,
             Self::P26 => 26u16,
             Self::P27 => 27u16,
@@ -149,7 +145,6 @@ impl TryFrom<u64> for PhosphorusIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
-            24u64 => Ok(Self::P24),
             25u64 => Ok(Self::P25),
             26u64 => Ok(Self::P26),
             27u64 => Ok(Self::P27),
@@ -198,7 +193,6 @@ impl TryFrom<u32> for PhosphorusIsotope {
 impl core::fmt::Display for PhosphorusIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::P24 => write!(f, "P24"),
             Self::P25 => write!(f, "P25"),
             Self::P26 => write!(f, "P26"),
             Self::P27 => write!(f, "P27"),

@@ -4,6 +4,10 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Ruthenium
 pub enum RutheniumIsotope {
+    /// Isotope Ru85 of Ruthenium
+    Ru85,
+    /// Isotope Ru86 of Ruthenium
+    Ru86,
     /// Isotope Ru87 of Ruthenium
     Ru87,
     /// Isotope Ru88 of Ruthenium
@@ -80,11 +84,15 @@ pub enum RutheniumIsotope {
     Ru123,
     /// Isotope Ru124 of Ruthenium
     Ru124,
+    /// Isotope Ru125 of Ruthenium
+    Ru125,
 }
 impl super::RelativeAtomicMass for RutheniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::Ru85 => 84.967117f64,
+            Self::Ru86 => 85.957305f64,
             Self::Ru87 => 86.95069f64,
             Self::Ru88 => 87.9416f64,
             Self::Ru89 => 88.93762f64,
@@ -123,6 +131,7 @@ impl super::RelativeAtomicMass for RutheniumIsotope {
             Self::Ru122 => 121.95447f64,
             Self::Ru123 => 122.95989f64,
             Self::Ru124 => 123.96305f64,
+            Self::Ru125 => 124.969544f64,
         }
     }
 }
@@ -136,6 +145,8 @@ impl super::MassNumber for RutheniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::Ru85 => 85u16,
+            Self::Ru86 => 86u16,
             Self::Ru87 => 87u16,
             Self::Ru88 => 88u16,
             Self::Ru89 => 89u16,
@@ -174,6 +185,7 @@ impl super::MassNumber for RutheniumIsotope {
             Self::Ru122 => 122u16,
             Self::Ru123 => 123u16,
             Self::Ru124 => 124u16,
+            Self::Ru125 => 125u16,
         }
     }
 }
@@ -211,6 +223,8 @@ impl TryFrom<u64> for RutheniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            85u64 => Ok(Self::Ru85),
+            86u64 => Ok(Self::Ru86),
             87u64 => Ok(Self::Ru87),
             88u64 => Ok(Self::Ru88),
             89u64 => Ok(Self::Ru89),
@@ -249,6 +263,7 @@ impl TryFrom<u64> for RutheniumIsotope {
             122u64 => Ok(Self::Ru122),
             123u64 => Ok(Self::Ru123),
             124u64 => Ok(Self::Ru124),
+            125u64 => Ok(Self::Ru125),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Ru, value)),
         }
     }
@@ -274,6 +289,8 @@ impl TryFrom<u32> for RutheniumIsotope {
 impl core::fmt::Display for RutheniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Ru85 => write!(f, "Ru85"),
+            Self::Ru86 => write!(f, "Ru86"),
             Self::Ru87 => write!(f, "Ru87"),
             Self::Ru88 => write!(f, "Ru88"),
             Self::Ru89 => write!(f, "Ru89"),
@@ -312,6 +329,7 @@ impl core::fmt::Display for RutheniumIsotope {
             Self::Ru122 => write!(f, "Ru122"),
             Self::Ru123 => write!(f, "Ru123"),
             Self::Ru124 => write!(f, "Ru124"),
+            Self::Ru125 => write!(f, "Ru125"),
         }
     }
 }

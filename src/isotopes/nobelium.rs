@@ -30,14 +30,8 @@ pub enum NobeliumIsotope {
     No259,
     /// Isotope No260 of Nobelium
     No260,
-    /// Isotope No261 of Nobelium
-    No261,
     /// Isotope No262 of Nobelium
     No262,
-    /// Isotope No263 of Nobelium
-    No263,
-    /// Isotope No264 of Nobelium
-    No264,
 }
 impl super::RelativeAtomicMass for NobeliumIsotope {
     #[inline]
@@ -56,10 +50,7 @@ impl super::RelativeAtomicMass for NobeliumIsotope {
             Self::No258 => 258.09821f64,
             Self::No259 => 259.10103f64,
             Self::No260 => 260.10264f64,
-            Self::No261 => 261.1057f64,
             Self::No262 => 262.10746f64,
-            Self::No263 => 263.11071f64,
-            Self::No264 => 264.11273f64,
         }
     }
 }
@@ -86,10 +77,7 @@ impl super::MassNumber for NobeliumIsotope {
             Self::No258 => 258u16,
             Self::No259 => 259u16,
             Self::No260 => 260u16,
-            Self::No261 => 261u16,
             Self::No262 => 262u16,
-            Self::No263 => 263u16,
-            Self::No264 => 264u16,
         }
     }
 }
@@ -101,7 +89,7 @@ impl super::IsotopicComposition for NobeliumIsotope {
 }
 impl super::MostAbundantIsotope for NobeliumIsotope {
     fn most_abundant_isotope() -> Self {
-        Self::No264
+        Self::No262
     }
 }
 impl From<NobeliumIsotope> for crate::Isotope {
@@ -131,10 +119,7 @@ impl TryFrom<u64> for NobeliumIsotope {
             258u64 => Ok(Self::No258),
             259u64 => Ok(Self::No259),
             260u64 => Ok(Self::No260),
-            261u64 => Ok(Self::No261),
             262u64 => Ok(Self::No262),
-            263u64 => Ok(Self::No263),
-            264u64 => Ok(Self::No264),
             _ => Err(crate::errors::Error::Isotope(crate::Element::No, value)),
         }
     }
@@ -173,10 +158,7 @@ impl core::fmt::Display for NobeliumIsotope {
             Self::No258 => write!(f, "No258"),
             Self::No259 => write!(f, "No259"),
             Self::No260 => write!(f, "No260"),
-            Self::No261 => write!(f, "No261"),
             Self::No262 => write!(f, "No262"),
-            Self::No263 => write!(f, "No263"),
-            Self::No264 => write!(f, "No264"),
         }
     }
 }

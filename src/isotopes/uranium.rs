@@ -4,14 +4,16 @@
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 /// Isotopes of the element Uranium
 pub enum UraniumIsotope {
+    /// Isotope U215 of Uranium
+    U215,
+    /// Isotope U216 of Uranium
+    U216,
     /// Isotope U217 of Uranium
     U217,
     /// Isotope U218 of Uranium
     U218,
     /// Isotope U219 of Uranium
     U219,
-    /// Isotope U220 of Uranium
-    U220,
     /// Isotope U221 of Uranium
     U221,
     /// Isotope U222 of Uranium
@@ -63,10 +65,11 @@ impl super::RelativeAtomicMass for UraniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
+            Self::U215 => 215.026719774f64,
+            Self::U216 => 216.024762829f64,
             Self::U217 => 217.02466f64,
             Self::U218 => 218.023523f64,
             Self::U219 => 219.024999f64,
-            Self::U220 => 220.02462f64,
             Self::U221 => 221.02628f64,
             Self::U222 => 222.026f64,
             Self::U223 => 223.027739f64,
@@ -103,10 +106,11 @@ impl super::MassNumber for UraniumIsotope {
     #[inline]
     fn mass_number(&self) -> u16 {
         match self {
+            Self::U215 => 215u16,
+            Self::U216 => 216u16,
             Self::U217 => 217u16,
             Self::U218 => 218u16,
             Self::U219 => 219u16,
-            Self::U220 => 220u16,
             Self::U221 => 221u16,
             Self::U222 => 222u16,
             Self::U223 => 223u16,
@@ -163,10 +167,11 @@ impl TryFrom<u64> for UraniumIsotope {
     type Error = crate::errors::Error;
     fn try_from(value: u64) -> Result<Self, Self::Error> {
         match value {
+            215u64 => Ok(Self::U215),
+            216u64 => Ok(Self::U216),
             217u64 => Ok(Self::U217),
             218u64 => Ok(Self::U218),
             219u64 => Ok(Self::U219),
-            220u64 => Ok(Self::U220),
             221u64 => Ok(Self::U221),
             222u64 => Ok(Self::U222),
             223u64 => Ok(Self::U223),
@@ -215,10 +220,11 @@ impl TryFrom<u32> for UraniumIsotope {
 impl core::fmt::Display for UraniumIsotope {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::U215 => write!(f, "U215"),
+            Self::U216 => write!(f, "U216"),
             Self::U217 => write!(f, "U217"),
             Self::U218 => write!(f, "U218"),
             Self::U219 => write!(f, "U219"),
-            Self::U220 => write!(f, "U220"),
             Self::U221 => write!(f, "U221"),
             Self::U222 => write!(f, "U222"),
             Self::U223 => write!(f, "U223"),
