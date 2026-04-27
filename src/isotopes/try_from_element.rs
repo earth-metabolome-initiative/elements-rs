@@ -298,7 +298,7 @@ mod tests {
     }
 
     #[test]
-    fn test_frib_discovered_isotopes_are_supported() {
+    fn test_nuclear_data_listed_isotopes_are_supported() {
         let isotopes = [
             (Element::O, 27_u16),
             (Element::O, 28),
@@ -339,9 +339,11 @@ mod tests {
             (Element::Er, 142),
             (Element::Tm, 182),
             (Element::Yb, 148),
+            (Element::Th, 239),
             (Element::Pu, 227),
             (Element::Am, 231),
             (Element::Bk, 235),
+            (Element::Bk, 252),
             (Element::Sg, 268),
             (Element::Hs, 272),
             (Element::Ds, 275),
@@ -366,7 +368,6 @@ mod tests {
             (Element::N, 25),     // FRIB not observed
             (Element::Co, 49),    // FRIB unbound, NuDat not observed
             (Element::Cm, 252),   // NuDat inferred
-            (Element::Bk, 252),   // FRIB not observed, NuDat inferred
             (Element::Og, 293),   // no current NuDat/FRIB discovery data
             (Element::Og, 295),   // NuDat unobserved
         ];

@@ -40,6 +40,8 @@ pub enum BerkeliumIsotope {
     Bk250,
     /// Isotope Bk251 of Berkelium
     Bk251,
+    /// Isotope Bk252 of Berkelium
+    Bk252,
     /// Isotope Bk253 of Berkelium
     Bk253,
 }
@@ -65,6 +67,7 @@ impl super::RelativeAtomicMass for BerkeliumIsotope {
             Self::Bk249 => 249.0749877f64,
             Self::Bk250 => 250.0783167f64,
             Self::Bk251 => 251.080762f64,
+            Self::Bk252 => 252.08431f64,
             Self::Bk253 => 253.08688f64,
         }
     }
@@ -97,6 +100,7 @@ impl super::MassNumber for BerkeliumIsotope {
             Self::Bk249 => 249u16,
             Self::Bk250 => 250u16,
             Self::Bk251 => 251u16,
+            Self::Bk252 => 252u16,
             Self::Bk253 => 253u16,
         }
     }
@@ -144,6 +148,7 @@ impl TryFrom<u64> for BerkeliumIsotope {
             249u64 => Ok(Self::Bk249),
             250u64 => Ok(Self::Bk250),
             251u64 => Ok(Self::Bk251),
+            252u64 => Ok(Self::Bk252),
             253u64 => Ok(Self::Bk253),
             _ => Err(crate::errors::Error::Isotope(crate::Element::Bk, value)),
         }
@@ -188,6 +193,7 @@ impl core::fmt::Display for BerkeliumIsotope {
             Self::Bk249 => write!(f, "Bk249"),
             Self::Bk250 => write!(f, "Bk250"),
             Self::Bk251 => write!(f, "Bk251"),
+            Self::Bk252 => write!(f, "Bk252"),
             Self::Bk253 => write!(f, "Bk253"),
         }
     }

@@ -36241,6 +36241,19 @@
 		]
 	},
 	{
+		"atomic_number": 90,
+		"atomic_symbol": "th",
+		"mass_number": 239,
+		"relative_atomic_mass": 239.060655,
+		"isotopic_composition": null,
+		"standard_atomic_weight": [
+			232.0377
+		],
+		"notes": [
+			"g"
+		]
+	},
+	{
 		"atomic_number": 91,
 		"atomic_symbol": "pa",
 		"mass_number": 211,
@@ -37995,6 +38008,15 @@
 		"atomic_symbol": "bk",
 		"mass_number": 251,
 		"relative_atomic_mass": 251.080762,
+		"isotopic_composition": null,
+		"standard_atomic_weight": null,
+		"notes": null
+	},
+	{
+		"atomic_number": 97,
+		"atomic_symbol": "bk",
+		"mass_number": 252,
+		"relative_atomic_mass": 252.08431,
 		"isotopic_composition": null,
 		"standard_atomic_weight": null,
 		"notes": null

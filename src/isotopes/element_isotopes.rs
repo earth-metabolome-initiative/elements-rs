@@ -3198,6 +3198,7 @@ const TH_ISOTOPES: &[Isotope] = &[
     Isotope::Th(super::ThoriumIsotope::Th236),
     Isotope::Th(super::ThoriumIsotope::Th237),
     Isotope::Th(super::ThoriumIsotope::Th238),
+    Isotope::Th(super::ThoriumIsotope::Th239),
 ];
 const PA_ISOTOPES: &[Isotope] = &[
     Isotope::Pa(super::ProtactiniumIsotope::Pa211),
@@ -3375,6 +3376,7 @@ const BK_ISOTOPES: &[Isotope] = &[
     Isotope::Bk(super::BerkeliumIsotope::Bk249),
     Isotope::Bk(super::BerkeliumIsotope::Bk250),
     Isotope::Bk(super::BerkeliumIsotope::Bk251),
+    Isotope::Bk(super::BerkeliumIsotope::Bk252),
     Isotope::Bk(super::BerkeliumIsotope::Bk253),
 ];
 const CF_ISOTOPES: &[Isotope] = &[
