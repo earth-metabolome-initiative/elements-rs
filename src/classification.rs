@@ -5,6 +5,9 @@ use crate::isotopes::ElementVariant;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 /// Category of a chemical element in the periodic table.
 pub enum ElementCategory {
     /// Alkali metals (group 1, excluding hydrogen).

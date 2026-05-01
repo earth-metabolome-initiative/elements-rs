@@ -1,5 +1,5 @@
 #![doc = include_str!("../README.md")]
-#![cfg_attr(not(feature = "arbitrary"), no_std)]
+#![cfg_attr(not(any(feature = "arbitrary", feature = "std")), no_std)]
 
 #[cfg(test)]
 extern crate alloc;
@@ -52,6 +52,9 @@ pub use van_der_waals_radius::VanDerWaalsRadius;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, strum_macros::EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 /// All 118 elements of the periodic table.
 ///
 /// ```rust
@@ -315,5 +318,27 @@ mod tests {
         let element = Element::C;
         let element_ref: &Element = element.as_ref();
         assert_eq!(element_ref, &Element::C);
+    }
+
+    #[cfg(feature = "mem_size")]
+    #[test]
+    fn test_mem_size_derives() {
+        use mem_dbg::{MemSize, SizeFlags};
+
+        let element = Element::C;
+        assert_eq!(element.mem_size(SizeFlags::empty()), core::mem::size_of_val(&element));
+
+        let isotope = crate::Isotope::C(crate::isotopes::CarbonIsotope::C12);
+        assert_eq!(isotope.mem_size(SizeFlags::empty()), core::mem::size_of_val(&isotope));
+    }
+
+    #[cfg(feature = "mem_dbg")]
+    #[test]
+    fn test_mem_dbg_derives() {
+        use mem_dbg::{DbgFlags, MemDbg};
+
+        let mut output = alloc::string::String::new();
+        Element::C.mem_dbg_on(&mut output, DbgFlags::default()).unwrap();
+        assert!(!output.is_empty());
     }
 }

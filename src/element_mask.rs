@@ -9,6 +9,9 @@ use crate::Element;
 /// with the least significant bit representing Hydrogen (H, atomic number 1)
 /// and the most significant bit representing Oganesson (Og, atomic number 118).
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 pub struct ElementMask(u128);
 
 impl From<Element> for ElementMask {
@@ -119,6 +122,9 @@ impl core::iter::IntoIterator for ElementMask {
 }
 
 /// Iterator over the elements in an `ElementMask`.
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 pub struct ElementMaskIterator {
     mask: u128,
     index: u8,

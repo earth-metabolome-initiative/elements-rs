@@ -19,14 +19,20 @@ serde = { version = "1.0", features = [
 	"derive",
 ], optional = true, default-features = false }
 arbitrary = { version = "1.0", features = ["derive"], optional = true, default-features = false }
+mem_dbg = { version = "0.4.1", features = [
+	"derive",
+], optional = true, default-features = false }
 
 [dev-dependencies]
 rand = "0.9.2"
 
 [features]
 default = ["serde"]
+std = []
 serde = ["dep:serde"]
 arbitrary = ["dep:arbitrary"]
+mem_size = ["dep:mem_dbg"]
+mem_dbg = ["std", "mem_size", "mem_dbg/std"]
 
 [lints]
 workspace = true

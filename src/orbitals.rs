@@ -27,6 +27,9 @@ pub trait Orbitals {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 /// Atomic orbital type (s, p, d, or f).
 pub enum AtomicOrbitalType {
     /// s orbital
@@ -40,6 +43,9 @@ pub enum AtomicOrbitalType {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
+#[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
+#[cfg_attr(feature = "mem_size", mem_size(flat))]
 /// An atomic orbital with its quantum number and electron count.
 pub struct AtomicOrbital {
     /// The principal quantum number of the orbital

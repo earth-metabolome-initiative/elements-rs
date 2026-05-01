@@ -48,6 +48,26 @@ jobs:
     - name: Run clippy
       run: cargo clippy --all-features --all-targets -- -D warnings
 
+  features:
+    name: Feature Compatibility
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+    - name: Check no default features
+      run: cargo check --no-default-features
+    - name: Check MemSize without std
+      run: cargo check --no-default-features --features mem_size
+    - name: Check MemDbg with std
+      run: cargo check --no-default-features --features mem_dbg
+    - name: Test all feature derives
+      run: cargo test --all-features
+    - name: Test MemSize no-default smoke test
+      run: cargo test --no-default-features --features mem_size test_mem_size_derives
+    - name: Test MemDbg smoke test
+      run: cargo test --no-default-features --features mem_dbg test_mem_dbg_derives
+
   doc:
     name: Documentation
     runs-on: ubuntu-latest
