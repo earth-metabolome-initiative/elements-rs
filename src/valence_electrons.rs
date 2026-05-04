@@ -1,10 +1,19 @@
-//! Valence electrons (outermost shell electrons) for chemical elements.
+//! Group-style valence-electron counts for chemical elements.
+//!
+//! For main-group elements this matches the number of electrons in the
+//! outermost principal shell. For transition metals, lanthanides, and
+//! actinides, this table can include chemically available d/f electrons and is
+//! not the same thing as the allowed-valence table used by the bond-order
+//! solver.
 
 use crate::isotopes::ElementVariant;
 
-/// Number of electrons in the outermost shell that participate in bonding.
+/// Group-style valence-electron count for an element.
 pub trait ValenceElectrons: Sized {
     /// Returns the number of valence electrons.
+    ///
+    /// This is a valence-electron descriptor, not a list of allowed bond
+    /// valences. For example, transition-metal values can include d electrons.
     ///
     /// # Examples
     ///
@@ -20,10 +29,8 @@ pub trait ValenceElectrons: Sized {
 impl ValenceElectrons for crate::Element {
     fn valence_electrons(&self) -> u8 {
         match self {
-            Self::H | Self::Li | Self::Na | Self::K | Self::Rb | Self::Cs | Self::Fr | Self::Ra => {
-                1
-            }
-            Self::He | Self::Be | Self::Mg | Self::Ca | Self::Sr | Self::Ba => 2,
+            Self::H | Self::Li | Self::Na | Self::K | Self::Rb | Self::Cs | Self::Fr => 1,
+            Self::He | Self::Be | Self::Mg | Self::Ca | Self::Sr | Self::Ba | Self::Ra => 2,
             Self::B
             | Self::Al
             | Self::Sc
@@ -119,6 +126,22 @@ mod tests {
     use strum::IntoEnumIterator;
 
     use super::ValenceElectrons;
+    use crate::AllowedValences;
+
+    fn outermost_shell_electrons(element: crate::Element) -> u8 {
+        let orbitals = element.orbitals();
+        let outermost_shell = orbitals
+            .iter()
+            .map(crate::AtomicOrbital::principal_quantum_number)
+            .max()
+            .expect("elements should have orbital data");
+
+        orbitals
+            .iter()
+            .filter(|orbital| orbital.principal_quantum_number() == outermost_shell)
+            .map(crate::AtomicOrbital::number_of_electrons)
+            .sum()
+    }
 
     #[test]
     fn test_valence_electrons() {
@@ -127,6 +150,56 @@ mod tests {
             assert!(
                 (1..=16).contains(&valence),
                 "Valence electrons should be between 1 and 16 for {element:?}",
+            );
+        }
+    }
+
+    #[test]
+    fn test_s_block_valence_electrons_match_outermost_shell() {
+        for element in [
+            crate::Element::H,
+            crate::Element::Li,
+            crate::Element::Be,
+            crate::Element::Na,
+            crate::Element::Mg,
+            crate::Element::K,
+            crate::Element::Ca,
+            crate::Element::Rb,
+            crate::Element::Sr,
+            crate::Element::Cs,
+            crate::Element::Ba,
+            crate::Element::Fr,
+            crate::Element::Ra,
+        ] {
+            assert_eq!(
+                element.valence_electrons(),
+                outermost_shell_electrons(element),
+                "s-block valence-electron count should match the outermost shell for {element:?}",
+            );
+        }
+    }
+
+    #[test]
+    fn test_s_block_valence_electrons_match_single_allowed_valence() {
+        for element in [
+            crate::Element::H,
+            crate::Element::Li,
+            crate::Element::Be,
+            crate::Element::Na,
+            crate::Element::Mg,
+            crate::Element::K,
+            crate::Element::Ca,
+            crate::Element::Rb,
+            crate::Element::Sr,
+            crate::Element::Cs,
+            crate::Element::Ba,
+            crate::Element::Fr,
+            crate::Element::Ra,
+        ] {
+            assert_eq!(
+                element.allowed_valences(),
+                &[element.valence_electrons()],
+                "s-block elements should have a single allowed valence matching valence electrons for {element:?}",
             );
         }
     }
