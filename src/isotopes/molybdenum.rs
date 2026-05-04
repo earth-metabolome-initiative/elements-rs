@@ -126,7 +126,7 @@ impl super::RelativeAtomicMass for MolybdenumIsotope {
             Self::Mo114 => 113.94653f64,
             Self::Mo115 => 114.95196f64,
             Self::Mo116 => 115.95545f64,
-            Self::Mo117 => 116.96117f64,
+            Self::Mo117 => 116.961686f64,
             Self::Mo118 => 117.965249f64,
             Self::Mo119 => 118.971465f64,
         }

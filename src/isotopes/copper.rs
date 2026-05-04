@@ -76,8 +76,8 @@ impl super::RelativeAtomicMass for CopperIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cu53 => 52.98459f64,
-            Self::Cu54 => 53.97666f64,
+            Self::Cu53 => 52.985894f64,
+            Self::Cu54 => 53.977198f64,
             Self::Cu55 => 54.96604f64,
             Self::Cu56 => 55.95895f64,
             Self::Cu57 => 56.9492125f64,
@@ -102,7 +102,7 @@ impl super::RelativeAtomicMass for CopperIsotope {
             Self::Cu76 => 75.945275f64,
             Self::Cu77 => 76.94792f64,
             Self::Cu78 => 77.95223f64,
-            Self::Cu79 => 78.95502f64,
+            Self::Cu79 => 78.9544731f64,
             Self::Cu80 => 79.96089f64,
             Self::Cu81 => 80.96587f64,
             Self::Cu82 => 81.97244f64,

@@ -64,11 +64,11 @@ impl super::RelativeAtomicMass for FluorineIsotope {
             Self::F24 => 24.008115f64,
             Self::F25 => 25.012199f64,
             Self::F26 => 26.020038f64,
-            Self::F27 => 27.02644f64,
-            Self::F28 => 28.03534f64,
-            Self::F29 => 29.04254f64,
-            Self::F30 => 30.05165f64,
-            Self::F31 => 31.05971f64,
+            Self::F27 => 27.026981897f64,
+            Self::F28 => 28.035860448f64,
+            Self::F29 => 29.043103f64,
+            Self::F30 => 30.052561f64,
+            Self::F31 => 31.061023f64,
         }
     }
 }

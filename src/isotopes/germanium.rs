@@ -104,10 +104,10 @@ impl super::RelativeAtomicMass for GermaniumIsotope {
             Self::Ge84 => 83.9375751f64,
             Self::Ge85 => 84.9429697f64,
             Self::Ge86 => 85.94658f64,
-            Self::Ge87 => 86.95268f64,
-            Self::Ge88 => 87.95691f64,
-            Self::Ge89 => 88.96379f64,
-            Self::Ge90 => 89.96863f64,
+            Self::Ge87 => 86.953204f64,
+            Self::Ge88 => 87.957574f64,
+            Self::Ge89 => 88.96453f64,
+            Self::Ge90 => 89.969436f64,
         }
     }
 }

@@ -62,7 +62,7 @@ impl super::RelativeAtomicMass for ChlorineIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cl28 => 28.02954f64,
+            Self::Cl28 => 28.030349f64,
             Self::Cl29 => 29.01478f64,
             Self::Cl30 => 30.00477f64,
             Self::Cl31 => 30.992414f64,
@@ -81,10 +81,10 @@ impl super::RelativeAtomicMass for ChlorineIsotope {
             Self::Cl44 => 43.97787f64,
             Self::Cl45 => 44.98029f64,
             Self::Cl46 => 45.98517f64,
-            Self::Cl47 => 46.98916f64,
+            Self::Cl47 => 46.989715f64,
             Self::Cl48 => 47.99564f64,
             Self::Cl49 => 49.00123f64,
-            Self::Cl50 => 50.00905f64,
+            Self::Cl50 => 50.008266f64,
             Self::Cl51 => 51.01554f64,
             Self::Cl52 => 52.024004f64,
         }

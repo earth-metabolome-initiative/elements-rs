@@ -128,12 +128,12 @@ impl super::RelativeAtomicMass for RutheniumIsotope {
             Self::Ru116 => 115.9312192f64,
             Self::Ru117 => 116.9361f64,
             Self::Ru118 => 117.93853f64,
-            Self::Ru119 => 118.94357f64,
+            Self::Ru119 => 118.94409f64,
             Self::Ru120 => 119.94631f64,
             Self::Ru121 => 120.95164f64,
-            Self::Ru122 => 121.95447f64,
-            Self::Ru123 => 122.95989f64,
-            Self::Ru124 => 123.96305f64,
+            Self::Ru122 => 121.955147f64,
+            Self::Ru123 => 122.960762f64,
+            Self::Ru124 => 123.96394f64,
             Self::Ru125 => 124.969544f64,
         }
     }

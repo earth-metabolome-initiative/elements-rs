@@ -115,8 +115,8 @@ impl super::RelativeAtomicMass for KryptonIsotope {
             Self::Kr97 => 96.94909f64,
             Self::Kr98 => 97.95243f64,
             Self::Kr99 => 98.95839f64,
-            Self::Kr100 => 99.96237f64,
-            Self::Kr101 => 100.96873f64,
+            Self::Kr100 => 99.962995f64,
+            Self::Kr101 => 100.969318f64,
         }
     }
 }

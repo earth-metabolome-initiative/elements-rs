@@ -96,7 +96,7 @@ impl super::RelativeAtomicMass for LanthanumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::La116 => 115.9563f64,
+            Self::La116 => 115.957005f64,
             Self::La117 => 116.94999f64,
             Self::La118 => 117.94673f64,
             Self::La119 => 118.94099f64,

@@ -132,7 +132,7 @@ impl super::RelativeAtomicMass for BariumIsotope {
             Self::Ba149 => 148.94308f64,
             Self::Ba150 => 149.94605f64,
             Self::Ba151 => 150.95127f64,
-            Self::Ba152 => 151.95481f64,
+            Self::Ba152 => 151.95533f64,
             Self::Ba153 => 152.96036f64,
             Self::Ba154 => 153.964659f64,
         }

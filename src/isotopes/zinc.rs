@@ -78,8 +78,8 @@ impl super::RelativeAtomicMass for ZincIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Zn54 => 53.99204f64,
-            Self::Zn55 => 54.98398f64,
+            Self::Zn54 => 53.993879f64,
+            Self::Zn55 => 54.984681f64,
             Self::Zn56 => 55.97254f64,
             Self::Zn57 => 56.96506f64,
             Self::Zn58 => 57.954591f64,
@@ -108,8 +108,8 @@ impl super::RelativeAtomicMass for ZincIsotope {
             Self::Zn81 => 80.9504026f64,
             Self::Zn82 => 81.95426f64,
             Self::Zn83 => 82.96056f64,
-            Self::Zn84 => 83.96521f64,
-            Self::Zn85 => 84.97226f64,
+            Self::Zn84 => 83.965829f64,
+            Self::Zn85 => 84.973054f64,
             Self::Zn86 => 85.978465f64,
         }
     }

@@ -92,7 +92,7 @@ impl super::RelativeAtomicMass for AntimonyIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Sb103 => 102.93969f64,
+            Self::Sb103 => 102.939162f64,
             Self::Sb104 => 103.93648f64,
             Self::Sb105 => 104.931276f64,
             Self::Sb106 => 105.928638f64,

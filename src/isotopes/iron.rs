@@ -76,8 +76,8 @@ impl super::RelativeAtomicMass for IronIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Fe45 => 45.01442f64,
-            Self::Fe46 => 46.00063f64,
+            Self::Fe45 => 45.015467f64,
+            Self::Fe46 => 46.001299f64,
             Self::Fe47 => 46.99185f64,
             Self::Fe48 => 47.98023f64,
             Self::Fe49 => 48.973429f64,
@@ -101,11 +101,11 @@ impl super::RelativeAtomicMass for IronIsotope {
             Self::Fe67 => 66.95054f64,
             Self::Fe68 => 67.95295f64,
             Self::Fe69 => 68.95807f64,
-            Self::Fe70 => 69.96102f64,
-            Self::Fe71 => 70.96672f64,
-            Self::Fe72 => 71.96983f64,
-            Self::Fe73 => 72.97572f64,
-            Self::Fe74 => 73.97935f64,
+            Self::Fe70 => 69.960397f64,
+            Self::Fe71 => 70.965722f64,
+            Self::Fe72 => 71.968599f64,
+            Self::Fe73 => 72.974246f64,
+            Self::Fe74 => 73.977821f64,
             Self::Fe75 => 74.984219f64,
             Self::Fe76 => 75.988631f64,
         }

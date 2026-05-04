@@ -83,7 +83,7 @@ impl super::RelativeAtomicMass for YttriumIsotope {
             Self::Y76 => 75.95856f64,
             Self::Y77 => 76.949781f64,
             Self::Y78 => 77.94361f64,
-            Self::Y79 => 78.93735f64,
+            Self::Y79 => 78.937946f64,
             Self::Y80 => 79.9343561f64,
             Self::Y81 => 80.9294556f64,
             Self::Y82 => 81.9269314f64,
@@ -112,8 +112,8 @@ impl super::RelativeAtomicMass for YttriumIsotope {
             Self::Y105 => 104.94544f64,
             Self::Y106 => 105.95056f64,
             Self::Y107 => 106.95452f64,
-            Self::Y108 => 107.95996f64,
-            Self::Y109 => 108.96436f64,
+            Self::Y108 => 107.960515f64,
+            Self::Y109 => 108.965131f64,
         }
     }
 }

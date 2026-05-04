@@ -76,8 +76,8 @@ impl super::RelativeAtomicMass for MagnesiumIsotope {
             Self::Mg36 => 36.02188f64,
             Self::Mg37 => 37.03037f64,
             Self::Mg38 => 38.03658f64,
-            Self::Mg39 => 39.04538f64,
-            Self::Mg40 => 40.05218f64,
+            Self::Mg39 => 39.045921f64,
+            Self::Mg40 => 40.053194f64,
         }
     }
 }

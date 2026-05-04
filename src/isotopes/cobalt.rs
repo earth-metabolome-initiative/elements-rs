@@ -72,7 +72,7 @@ impl super::RelativeAtomicMass for CobaltIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Co48 => 48.00093f64,
+            Self::Co48 => 48.001857f64,
             Self::Co50 => 49.98091f64,
             Self::Co51 => 50.970647f64,
             Self::Co52 => 51.96351f64,
@@ -95,11 +95,11 @@ impl super::RelativeAtomicMass for CobaltIsotope {
             Self::Co69 => 68.94614f64,
             Self::Co70 => 69.94963f64,
             Self::Co71 => 70.95237f64,
-            Self::Co72 => 71.95729f64,
-            Self::Co73 => 72.96039f64,
-            Self::Co74 => 73.96515f64,
-            Self::Co75 => 74.96876f64,
-            Self::Co76 => 75.97413f64,
+            Self::Co72 => 71.956736f64,
+            Self::Co73 => 72.959238f64,
+            Self::Co74 => 73.963993f64,
+            Self::Co75 => 74.967192f64,
+            Self::Co76 => 75.972453f64,
             Self::Co77 => 76.976479f64,
             Self::Co78 => 77.983553f64,
         }

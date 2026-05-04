@@ -70,7 +70,7 @@ impl super::RelativeAtomicMass for ChromiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Cr42 => 42.0067f64,
+            Self::Cr42 => 42.007579f64,
             Self::Cr43 => 42.99753f64,
             Self::Cr44 => 43.98536f64,
             Self::Cr45 => 44.97905f64,
@@ -94,9 +94,9 @@ impl super::RelativeAtomicMass for ChromiumIsotope {
             Self::Cr63 => 62.96165f64,
             Self::Cr64 => 63.96408f64,
             Self::Cr65 => 64.96996f64,
-            Self::Cr66 => 65.97366f64,
-            Self::Cr67 => 66.98016f64,
-            Self::Cr68 => 67.98403f64,
+            Self::Cr66 => 65.973011f64,
+            Self::Cr67 => 66.979313f64,
+            Self::Cr68 => 67.983156f64,
             Self::Cr69 => 68.989662f64,
             Self::Cr70 => 69.993945f64,
         }

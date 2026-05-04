@@ -77,8 +77,8 @@ impl super::RelativeAtomicMass for PhosphorusIsotope {
             Self::P41 => 40.994654f64,
             Self::P42 => 42.00108f64,
             Self::P43 => 43.00502f64,
-            Self::P44 => 44.01121f64,
-            Self::P45 => 45.01645f64,
+            Self::P44 => 44.011927f64,
+            Self::P45 => 45.017134f64,
             Self::P46 => 46.02446f64,
             Self::P47 => 47.030929f64,
         }

@@ -55,7 +55,7 @@ impl super::RelativeAtomicMass for NitrogenIsotope {
             Self::N20 => 20.023366f64,
             Self::N21 => 21.02711f64,
             Self::N22 => 22.03439f64,
-            Self::N23 => 23.04114f64,
+            Self::N23 => 23.039421f64,
             Self::N24 => 24.05039f64,
         }
     }

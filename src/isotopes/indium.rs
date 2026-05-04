@@ -135,7 +135,7 @@ impl super::RelativeAtomicMass for IndiumIsotope {
             Self::In132 => 131.933001f64,
             Self::In133 => 132.93831f64,
             Self::In134 => 133.94454f64,
-            Self::In135 => 134.95005f64,
+            Self::In135 => 134.949425f64,
             Self::In136 => 135.956017f64,
             Self::In137 => 136.961535f64,
         }

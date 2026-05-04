@@ -60,7 +60,7 @@ impl super::RelativeAtomicMass for SulfurIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::S26 => 26.02907f64,
+            Self::S26 => 26.029716f64,
             Self::S27 => 27.01828f64,
             Self::S28 => 28.00437f64,
             Self::S29 => 28.996611f64,
@@ -79,8 +79,8 @@ impl super::RelativeAtomicMass for SulfurIsotope {
             Self::S42 => 41.9810651f64,
             Self::S43 => 42.9869076f64,
             Self::S44 => 43.9901188f64,
-            Self::S45 => 44.99572f64,
-            Self::S46 => 46.00004f64,
+            Self::S45 => 44.996414f64,
+            Self::S46 => 46.000687f64,
             Self::S47 => 47.00795f64,
             Self::S48 => 48.0137f64,
             Self::S49 => 49.021891f64,

@@ -101,7 +101,7 @@ impl super::RelativeAtomicMass for ArsenicIsotope {
             Self::As89 => 88.94976f64,
             Self::As90 => 89.95563f64,
             Self::As91 => 90.96039f64,
-            Self::As92 => 91.96674f64,
+            Self::As92 => 91.967386f64,
         }
     }
 }

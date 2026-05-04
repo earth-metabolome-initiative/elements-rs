@@ -135,7 +135,7 @@ impl super::RelativeAtomicMass for TinIsotope {
             Self::Sn135 => 134.9349086f64,
             Self::Sn136 => 135.93999f64,
             Self::Sn137 => 136.94655f64,
-            Self::Sn138 => 137.95184f64,
+            Self::Sn138 => 137.951143f64,
             Self::Sn139 => 138.957799f64,
             Self::Sn140 => 139.962973f64,
         }

@@ -132,8 +132,8 @@ impl super::RelativeAtomicMass for CaesiumIsotope {
             Self::Cs147 => 146.944156f64,
             Self::Cs148 => 147.94923f64,
             Self::Cs149 => 148.95302f64,
-            Self::Cs150 => 149.95833f64,
-            Self::Cs151 => 150.96258f64,
+            Self::Cs150 => 149.959023f64,
+            Self::Cs151 => 150.963199f64,
             Self::Cs152 => 151.968728f64,
         }
     }

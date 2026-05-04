@@ -149,10 +149,10 @@ impl super::RelativeAtomicMass for MercuryIsotope {
             Self::Hg210 => 209.99424f64,
             Self::Hg211 => 210.99933f64,
             Self::Hg212 => 212.00296f64,
-            Self::Hg213 => 213.00823f64,
-            Self::Hg214 => 214.012f64,
-            Self::Hg215 => 215.0174f64,
-            Self::Hg216 => 216.02132f64,
+            Self::Hg213 => 213.008803f64,
+            Self::Hg214 => 214.012636f64,
+            Self::Hg215 => 215.018368f64,
+            Self::Hg216 => 216.022459f64,
         }
     }
 }

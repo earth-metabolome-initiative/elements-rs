@@ -92,8 +92,8 @@ impl super::RelativeAtomicMass for PromethiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Pm126 => 125.95792f64,
-            Self::Pm127 => 126.95192f64,
+            Self::Pm126 => 125.957327f64,
+            Self::Pm127 => 126.951358f64,
             Self::Pm128 => 127.9487f64,
             Self::Pm129 => 128.94323f64,
             Self::Pm130 => 129.94053f64,

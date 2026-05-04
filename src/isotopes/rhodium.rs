@@ -129,7 +129,7 @@ impl super::RelativeAtomicMass for RhodiumIsotope {
             Self::Rh123 => 122.94685f64,
             Self::Rh124 => 123.95151f64,
             Self::Rh125 => 124.95469f64,
-            Self::Rh126 => 125.95946f64,
+            Self::Rh126 => 125.960064f64,
             Self::Rh127 => 126.963789f64,
             Self::Rh128 => 127.970649f64,
         }

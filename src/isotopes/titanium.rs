@@ -68,7 +68,7 @@ impl super::RelativeAtomicMass for TitaniumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Ti38 => 38.01145f64,
+            Self::Ti38 => 38.012206f64,
             Self::Ti39 => 39.00236f64,
             Self::Ti40 => 39.9905f64,
             Self::Ti41 => 40.983148f64,
@@ -87,7 +87,7 @@ impl super::RelativeAtomicMass for TitaniumIsotope {
             Self::Ti54 => 53.95105f64,
             Self::Ti55 => 54.95527f64,
             Self::Ti56 => 55.95791f64,
-            Self::Ti57 => 56.96364f64,
+            Self::Ti57 => 56.963068098f64,
             Self::Ti58 => 57.9666f64,
             Self::Ti59 => 58.97247f64,
             Self::Ti60 => 59.97603f64,

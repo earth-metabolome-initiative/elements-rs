@@ -115,8 +115,8 @@ impl super::RelativeAtomicMass for StrontiumIsotope {
             Self::Sr103 => 102.94909f64,
             Self::Sr104 => 103.95265f64,
             Self::Sr105 => 104.95855f64,
-            Self::Sr106 => 105.96265f64,
-            Self::Sr107 => 106.96897f64,
+            Self::Sr106 => 105.963177f64,
+            Self::Sr107 => 106.969672f64,
         }
     }
 }

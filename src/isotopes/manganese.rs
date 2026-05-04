@@ -72,9 +72,9 @@ impl super::RelativeAtomicMass for ManganeseIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Mn44 => 44.00715f64,
+            Self::Mn44 => 44.008009f64,
             Self::Mn45 => 44.99449f64,
-            Self::Mn46 => 45.98609f64,
+            Self::Mn46 => 45.986669f64,
             Self::Mn47 => 46.975775f64,
             Self::Mn48 => 47.96852f64,
             Self::Mn49 => 48.959595f64,
@@ -96,9 +96,9 @@ impl super::RelativeAtomicMass for ManganeseIsotope {
             Self::Mn65 => 64.9560198f64,
             Self::Mn66 => 65.960547f64,
             Self::Mn67 => 66.96424f64,
-            Self::Mn68 => 67.96962f64,
-            Self::Mn69 => 68.97366f64,
-            Self::Mn70 => 69.97937f64,
+            Self::Mn68 => 67.968953f64,
+            Self::Mn69 => 68.972775f64,
+            Self::Mn70 => 69.978046f64,
             Self::Mn71 => 70.982158f64,
             Self::Mn72 => 71.988009f64,
             Self::Mn73 => 72.992807f64,

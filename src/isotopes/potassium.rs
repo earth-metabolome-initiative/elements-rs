@@ -67,7 +67,7 @@ impl super::RelativeAtomicMass for PotassiumIsotope {
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::K31 => 31.03678f64,
-            Self::K33 => 33.00756f64,
+            Self::K33 => 33.008095f64,
             Self::K34 => 33.99869f64,
             Self::K35 => 34.98800541f64,
             Self::K36 => 35.98130201f64,
@@ -86,8 +86,8 @@ impl super::RelativeAtomicMass for PotassiumIsotope {
             Self::K49 => 48.96821075f64,
             Self::K50 => 49.97238f64,
             Self::K51 => 50.975828f64,
-            Self::K52 => 51.98224f64,
-            Self::K53 => 52.98746f64,
+            Self::K52 => 51.981602f64,
+            Self::K53 => 52.9868f64,
             Self::K54 => 53.99463f64,
             Self::K55 => 55.00076f64,
             Self::K56 => 56.00851f64,

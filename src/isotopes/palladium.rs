@@ -134,7 +134,7 @@ impl super::RelativeAtomicMass for PalladiumIsotope {
             Self::Pd125 => 124.94179f64,
             Self::Pd126 => 125.94416f64,
             Self::Pd127 => 126.94907f64,
-            Self::Pd128 => 127.95183f64,
+            Self::Pd128 => 127.952345f64,
             Self::Pd129 => 128.959334f64,
             Self::Pd130 => 129.964863f64,
             Self::Pd131 => 130.972367f64,

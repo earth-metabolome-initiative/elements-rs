@@ -87,8 +87,8 @@ impl super::RelativeAtomicMass for VanadiumIsotope {
             Self::V62 => 61.97265f64,
             Self::V63 => 62.97639f64,
             Self::V64 => 63.98264f64,
-            Self::V65 => 64.9875f64,
-            Self::V66 => 65.99398f64,
+            Self::V65 => 64.986999f64,
+            Self::V66 => 65.993237f64,
             Self::V67 => 66.998128f64,
         }
     }

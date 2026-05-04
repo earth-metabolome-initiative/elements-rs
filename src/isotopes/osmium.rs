@@ -139,7 +139,7 @@ impl super::RelativeAtomicMass for OsmiumIsotope {
             Self::Os199 => 198.97801f64,
             Self::Os200 => 199.97984f64,
             Self::Os201 => 200.98364f64,
-            Self::Os202 => 201.98595f64,
+            Self::Os202 => 201.986548f64,
             Self::Os203 => 202.992195f64,
         }
     }

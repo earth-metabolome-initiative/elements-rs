@@ -76,10 +76,10 @@ impl super::RelativeAtomicMass for AluminiumIsotope {
             Self::Al36 => 36.00639f64,
             Self::Al37 => 37.01053f64,
             Self::Al38 => 38.0174f64,
-            Self::Al39 => 39.02254f64,
-            Self::Al40 => 40.03003f64,
-            Self::Al41 => 41.03638f64,
-            Self::Al42 => 42.04384f64,
+            Self::Al39 => 39.02307f64,
+            Self::Al40 => 40.03094f64,
+            Self::Al41 => 41.037134f64,
+            Self::Al42 => 42.045078f64,
             Self::Al43 => 43.05147f64,
         }
     }

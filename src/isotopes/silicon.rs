@@ -79,10 +79,10 @@ impl super::RelativeAtomicMass for SiliconIsotope {
             Self::Si38 => 37.995523f64,
             Self::Si39 => 39.002491f64,
             Self::Si40 => 40.00583f64,
-            Self::Si41 => 41.01301f64,
+            Self::Si41 => 41.014171f64,
             Self::Si42 => 42.01778f64,
-            Self::Si43 => 43.0248f64,
-            Self::Si44 => 44.03061f64,
+            Self::Si43 => 43.026119f64,
+            Self::Si44 => 44.031466f64,
             Self::Si45 => 45.03995f64,
         }
     }

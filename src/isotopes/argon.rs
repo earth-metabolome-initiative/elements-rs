@@ -65,7 +65,7 @@ impl super::RelativeAtomicMass for ArgonIsotope {
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Ar29 => 29.040762f64,
-            Self::Ar30 => 30.02307f64,
+            Self::Ar30 => 30.023694f64,
             Self::Ar31 => 31.01212f64,
             Self::Ar32 => 31.9976378f64,
             Self::Ar33 => 32.98992555f64,
@@ -86,7 +86,7 @@ impl super::RelativeAtomicMass for ArgonIsotope {
             Self::Ar48 => 47.97591f64,
             Self::Ar49 => 48.9819f64,
             Self::Ar50 => 49.98613f64,
-            Self::Ar51 => 50.9937f64,
+            Self::Ar51 => 50.993033f64,
             Self::Ar52 => 51.99896f64,
             Self::Ar53 => 53.00729f64,
             Self::Ar54 => 54.013484f64,

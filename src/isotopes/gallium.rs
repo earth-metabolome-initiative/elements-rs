@@ -99,8 +99,8 @@ impl super::RelativeAtomicMass for GalliumIsotope {
             Self::Ga83 => 82.9471203f64,
             Self::Ga84 => 83.95246f64,
             Self::Ga85 => 84.95699f64,
-            Self::Ga86 => 85.96301f64,
-            Self::Ga87 => 86.96824f64,
+            Self::Ga86 => 85.963757f64,
+            Self::Ga87 => 86.969007f64,
             Self::Ga88 => 87.975963f64,
         }
     }

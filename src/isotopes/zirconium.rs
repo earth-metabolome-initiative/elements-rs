@@ -89,8 +89,8 @@ impl super::RelativeAtomicMass for ZirconiumIsotope {
             Self::Zr77 => 76.966076f64,
             Self::Zr78 => 77.95566f64,
             Self::Zr79 => 78.94948f64,
-            Self::Zr80 => 79.9404f64,
-            Self::Zr81 => 80.93731f64,
+            Self::Zr80 => 79.941213f64,
+            Self::Zr81 => 80.938245f64,
             Self::Zr82 => 81.93135f64,
             Self::Zr83 => 82.9292421f64,
             Self::Zr84 => 83.9233269f64,
@@ -119,9 +119,9 @@ impl super::RelativeAtomicMass for ZirconiumIsotope {
             Self::Zr107 => 106.94174f64,
             Self::Zr108 => 107.94487f64,
             Self::Zr109 => 108.95041f64,
-            Self::Zr110 => 109.95396f64,
-            Self::Zr111 => 110.95968f64,
-            Self::Zr112 => 111.9637f64,
+            Self::Zr110 => 109.954675f64,
+            Self::Zr111 => 110.960837f64,
+            Self::Zr112 => 111.965196f64,
             Self::Zr113 => 112.971723f64,
         }
     }

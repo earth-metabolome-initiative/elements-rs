@@ -66,7 +66,7 @@ impl super::RelativeAtomicMass for CalciumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Ca34 => 34.01487f64,
+            Self::Ca34 => 34.015985f64,
             Self::Ca35 => 35.00514f64,
             Self::Ca36 => 35.993074f64,
             Self::Ca37 => 36.98589785f64,
@@ -85,7 +85,7 @@ impl super::RelativeAtomicMass for CalciumIsotope {
             Self::Ca50 => 49.9574992f64,
             Self::Ca51 => 50.960989f64,
             Self::Ca52 => 51.963217f64,
-            Self::Ca53 => 52.96945f64,
+            Self::Ca53 => 52.968451f64,
             Self::Ca54 => 53.9734f64,
             Self::Ca55 => 54.9803f64,
             Self::Ca56 => 55.98508f64,

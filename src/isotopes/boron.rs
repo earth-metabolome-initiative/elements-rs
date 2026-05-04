@@ -54,9 +54,9 @@ impl super::RelativeAtomicMass for BoronIsotope {
             Self::B16 => 16.039842f64,
             Self::B17 => 17.04699f64,
             Self::B18 => 18.05566f64,
-            Self::B19 => 19.0631f64,
-            Self::B20 => 20.07207f64,
-            Self::B21 => 21.08129f64,
+            Self::B19 => 19.064166f64,
+            Self::B20 => 20.074505644f64,
+            Self::B21 => 21.084147485f64,
         }
     }
 }

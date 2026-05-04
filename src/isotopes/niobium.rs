@@ -84,9 +84,9 @@ impl super::RelativeAtomicMass for NiobiumIsotope {
     #[inline]
     fn relative_atomic_mass(&self) -> f64 {
         match self {
-            Self::Nb81 => 80.9496f64,
+            Self::Nb81 => 80.95023f64,
             Self::Nb82 => 81.94396f64,
-            Self::Nb83 => 82.93729f64,
+            Self::Nb83 => 82.93815f64,
             Self::Nb84 => 83.93449f64,
             Self::Nb85 => 84.9288458f64,
             Self::Nb86 => 85.9257828f64,
@@ -118,7 +118,7 @@ impl super::RelativeAtomicMass for NiobiumIsotope {
             Self::Nb112 => 111.95247f64,
             Self::Nb113 => 112.95651f64,
             Self::Nb114 => 113.96201f64,
-            Self::Nb115 => 114.96634f64,
+            Self::Nb115 => 114.966849f64,
             Self::Nb116 => 115.972914f64,
         }
     }

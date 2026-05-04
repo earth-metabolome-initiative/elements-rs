@@ -93,7 +93,7 @@ impl super::RelativeAtomicMass for NeodymiumIsotope {
     fn relative_atomic_mass(&self) -> f64 {
         match self {
             Self::Nd124 => 123.9522f64,
-            Self::Nd125 => 124.9489f64,
+            Self::Nd125 => 124.948395f64,
             Self::Nd126 => 125.94311f64,
             Self::Nd127 => 126.94038f64,
             Self::Nd128 => 127.93525f64,

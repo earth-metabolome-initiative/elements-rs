@@ -121,9 +121,9 @@ impl super::RelativeAtomicMass for TechnetiumIsotope {
             Self::Tc115 => 114.93998f64,
             Self::Tc116 => 115.94476f64,
             Self::Tc117 => 116.94806f64,
-            Self::Tc118 => 117.95299f64,
+            Self::Tc118 => 117.953526f64,
             Self::Tc119 => 118.95666f64,
-            Self::Tc120 => 119.96187f64,
+            Self::Tc120 => 119.962426f64,
             Self::Tc121 => 120.96614f64,
             Self::Tc122 => 121.97176f64,
         }
