@@ -50,7 +50,18 @@ pub use principal_quantum_number::PrincipalQuantumNumber;
 pub use valence_electrons::ValenceElectrons;
 pub use van_der_waals_radius::VanDerWaalsRadius;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, strum_macros::EnumIter, strum_macros::VariantArray)]
+#[derive(
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    Hash,
+    strum_macros::EnumIter,
+    strum_macros::VariantArray,
+)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 #[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]

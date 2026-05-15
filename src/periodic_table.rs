@@ -32,5 +32,5 @@ mod tests {
         assert_eq!(periodic_table[0], Element::H);
         assert_eq!(periodic_table[1], Element::He);
         assert_eq!(periodic_table[117], Element::Og);
-}
+    }
 }
