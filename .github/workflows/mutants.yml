@@ -1,0 +1,29 @@
+name: Mutation Testing
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  incremental-mutants:
+    name: Incremental Mutants
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Compute diff against base branch
+      run: |
+        git diff origin/${{ github.base_ref }}.. | tee git.diff
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+    - name: Install cargo-mutants
+      uses: taiki-e/install-action@cargo-mutants
+    - name: Run mutants on the diff
+      run: cargo mutants --no-shuffle -vV --in-diff git.diff
+    - name: Archive mutants results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: mutants-incremental.out
+        path: mutants.out

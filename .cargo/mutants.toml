@@ -1,0 +1,12 @@
+# Configuration for cargo-mutants (https://mutants.rs).
+#
+# The per-element isotope modules under src/isotopes/ are generated from
+# builder/isotopes_data.json (see builder/src/main.rs). They are large data
+# tables (~5800 mutants in total) that are not meaningful mutation-testing
+# targets and would make data-refresh pull requests time out. The codegen
+# builder itself is excluded for the same reason. Everything else in the tree
+# is mutated by default.
+exclude_globs = [
+    "src/isotopes/*.rs",
+    "builder/**",
+]
