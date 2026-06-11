@@ -20,7 +20,25 @@ jobs:
     - name: Install cargo-mutants
       uses: taiki-e/install-action@cargo-mutants
     - name: Run mutants on the diff
-      run: cargo mutants --no-shuffle -vV --in-diff git.diff
+      run: |
+        set +e
+        cargo mutants --no-shuffle -vV --in-diff git.diff
+        code=$?
+        set -e
+        # Exit codes other than success (0), missed (2), and timeout (3) are
+        # hard failures such as a bad invocation or a failing baseline build.
+        if [ "$code" -ne 0 ] && [ "$code" -ne 2 ] && [ "$code" -ne 3 ]; then
+          echo "cargo-mutants failed with exit code $code"
+          exit "$code"
+        fi
+        # Fail only on surviving mutants. Timeouts are intrinsic to stateful
+        # iterators (a mutated state update makes a consumer loop forever) and
+        # are not real test gaps, so a timeout-only run is allowed to pass.
+        if [ -s mutants.out/missed.txt ]; then
+          echo "Surviving mutants found:"
+          cat mutants.out/missed.txt
+          exit 1
+        fi
     - name: Archive mutants results
       uses: actions/upload-artifact@v4
       if: always()
