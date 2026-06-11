@@ -117,7 +117,7 @@ impl core::iter::IntoIterator for ElementMask {
     /// assert_eq!(elements, alloc::vec![Element::H, Element::He]);
     /// ```
     fn into_iter(self) -> Self::IntoIter {
-        ElementMaskIterator { mask: self.0, index: 0 }
+        ElementMaskIterator { mask: self.0 }
     }
 }
 
@@ -127,21 +127,21 @@ impl core::iter::IntoIterator for ElementMask {
 #[cfg_attr(feature = "mem_size", mem_size(flat))]
 pub struct ElementMaskIterator {
     mask: u128,
-    index: u8,
 }
 
 impl Iterator for ElementMaskIterator {
     type Item = Element;
 
     fn next(&mut self) -> Option<Self::Item> {
-        while self.index < 128 {
-            if (self.mask & (1 << self.index)) != 0 {
-                let element = Element::try_from(self.index + 1).unwrap();
-                self.index += 1;
-                return Some(element);
-            }
-            self.index += 1;
+        if self.mask == 0 {
+            return None;
         }
-        None
+        // The atomic number is the bit position plus one. A non-zero mask has a
+        // trailing-zero count in `0..128`, so `+ 1` always fits in a `u8`.
+        let atomic_number =
+            u8::try_from(self.mask.trailing_zeros() + 1).expect("bit position fits in a u8");
+        // Clear the lowest set bit so the next call yields the following element.
+        self.mask &= self.mask - 1;
+        Some(Element::try_from(atomic_number).unwrap())
     }
 }
