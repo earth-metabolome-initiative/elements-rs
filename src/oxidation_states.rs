@@ -6,6 +6,8 @@ use crate::isotopes::ElementVariant;
 pub trait OxidationStates {
     /// Returns all valid oxidation states.
     ///
+    /// The returned slice is sorted in ascending order.
+    ///
     /// # Examples
     ///
     /// ```rust
@@ -140,6 +142,19 @@ mod tests {
             let states = element.oxidation_states();
             assert!(!states.is_empty(), "Oxidation states should not be empty for {element:?}");
             let _ = element.is_valid_oxidation_state(0);
+        }
+    }
+
+    #[test]
+    fn test_sorted_ascending() {
+        for element in crate::Element::iter() {
+            let states = element.oxidation_states();
+            for window in states.windows(2) {
+                assert!(
+                    window[0] < window[1],
+                    "Oxidation states should be sorted ascending for {element:?}: {states:?}",
+                );
+            }
         }
     }
 
