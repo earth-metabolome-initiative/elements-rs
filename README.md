@@ -99,4 +99,4 @@ prek install
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://github.com/earth-metabolome-initiative/elements-rs/blob/main/LICENSE).
