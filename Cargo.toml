@@ -5,6 +5,7 @@ authors = ["Earth Metabolome Initiative"]
 license = "MIT"
 repository = "https://github.com/earth-metabolome-initiative/elements-rs"
 edition = "2024"
+rust-version = "1.88"
 description = "A comprehensive library for chemical elements and their isotopes with rich metadata"
 readme = "README.md"
 keywords = ["chemistry", "periodic-table", "elements", "isotopes", "science"]
@@ -22,9 +23,6 @@ arbitrary = { version = "1.0", features = ["derive"], optional = true, default-f
 mem_dbg = { version = "0.4.1", features = [
 	"derive",
 ], optional = true, default-features = false }
-
-[dev-dependencies]
-rand = "0.9.2"
 
 [features]
 default = ["serde"]

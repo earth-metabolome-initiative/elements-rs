@@ -1,0 +1,36 @@
+# cargo-deny configuration. See https://embarkstudios.github.io/cargo-deny/
+# Run locally with: cargo deny check
+
+[advisories]
+# Deny crates with known security vulnerabilities (the default). This overlaps
+# intentionally with the cargo-audit workflow, which keeps the weekly schedule.
+# Flag crates that are no longer maintained anywhere in the tree.
+unmaintained = "all"
+
+[licenses]
+# Permissive licenses present in (or compatible with) the dependency tree.
+# The crate itself is MIT. Note: mem_dbg / mem_dbg-derive are
+# "Apache-2.0 OR LGPL-2.1-or-later" and are satisfied by the Apache-2.0 arm,
+# so LGPL does not need to be allowed.
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Unicode-3.0",
+    "Zlib",
+]
+confidence-threshold = 0.8
+# Skip workspace members that are not published (e.g. the `elements-builder`
+# code-generation helper has no license field and is never released).
+private = { ignore = true }
+
+[bans]
+# Duplicate versions of a crate are common transitively and not worth blocking;
+# surface them as warnings instead.
+multiple-versions = "warn"
+wildcards = "allow"
+
+[sources]
+# Only allow dependencies from the official crates.io registry.
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
