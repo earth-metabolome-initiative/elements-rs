@@ -492,6 +492,7 @@ fn implement_isotope_enum(isotopes: &[IsotopeMetadata]) -> TokenStream {
     }
 }
 
+/// Entry point: generates the isotope source modules from the isotope metadata.
 pub fn main() {
     let isotopes = isotopes();
     // We group the isotopes by atomic number
