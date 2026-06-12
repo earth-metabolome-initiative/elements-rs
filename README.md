@@ -99,4 +99,4 @@ prek install
 
 ## License
 
-This project is licensed under the same terms as the parent EMI monorepo.
+This project is licensed under the [MIT License](LICENSE).

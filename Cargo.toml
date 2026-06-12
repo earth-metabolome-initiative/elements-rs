@@ -2,7 +2,7 @@
 name = "elements_rs"
 version = "0.2.7"
 authors = ["Earth Metabolome Initiative"]
-license = "GPL-3.0"
+license = "MIT"
 repository = "https://github.com/earth-metabolome-initiative/elements-rs"
 edition = "2024"
 description = "A comprehensive library for chemical elements and their isotopes with rich metadata"
