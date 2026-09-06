@@ -311,7 +311,8 @@ mod tests {
             assert_eq!(result.unwrap(), expected_char, "Failed for {element:?}");
         }
 
-        // We check an error case for a single-character symbol that does not exist
+        // We check an error case for a single-character symbol that does not
+        // exist
         assert!(matches!(
             crate::Element::try_from('X'),
             Err(crate::errors::Error::Element(['X', ' ']))

@@ -140,7 +140,8 @@ impl Iterator for ElementMaskIterator {
         // trailing-zero count in `0..128`, so `+ 1` always fits in a `u8`.
         let atomic_number =
             u8::try_from(self.mask.trailing_zeros() + 1).expect("bit position fits in a u8");
-        // Clear the lowest set bit so the next call yields the following element.
+        // Clear the lowest set bit so the next call yields the following
+        // element.
         self.mask &= self.mask - 1;
         Some(Element::try_from(atomic_number).unwrap())
     }

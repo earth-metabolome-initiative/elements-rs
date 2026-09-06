@@ -151,8 +151,8 @@ mod tests {
     #[test]
     fn test_element_variant_delegation() {
         // Test that the Isotope enum correctly delegates to individual isotope
-        // implementations for the element() method. Test representative isotopes
-        // from different elements.
+        // implementations for the element() method. Test representative
+        // isotopes from different elements.
 
         // Hydrogen isotopes
         let h1 = crate::isotopes::Isotope::H(crate::isotopes::HydrogenIsotope::H1);

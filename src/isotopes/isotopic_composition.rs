@@ -172,8 +172,8 @@ mod tests {
             let isotopes = element.isotopes();
             for isotope in isotopes {
                 let composition = isotope.isotopic_composition();
-                // Isotopic composition should be either None (for synthetic isotopes) or
-                // between 0 and 1
+                // Isotopic composition should be either None (for synthetic
+                // isotopes) or between 0 and 1
                 if let Some(comp) = composition {
                     assert!(
                         (0.0..=1.0).contains(&comp),
