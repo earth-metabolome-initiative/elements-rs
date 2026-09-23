@@ -41,7 +41,7 @@ pub use classification::{ElementCategory, ElementClassification};
 pub use covalent_radius::CovalentRadius;
 pub use electronegativity::Electronegativity;
 pub use isotopes::{
-    ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope,
+    ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope, NeutronNumber,
     RelativeAtomicMass,
 };
 pub use orbitals::Orbitals;
