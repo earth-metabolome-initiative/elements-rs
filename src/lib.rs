@@ -351,6 +351,6 @@ mod tests {
 
         let mut output = alloc::string::String::new();
         Element::C.mem_dbg_on(&mut output, DbgFlags::default()).unwrap();
-        assert!(!output.is_empty());
+        assert_ne!(output, "");
     }
 }
