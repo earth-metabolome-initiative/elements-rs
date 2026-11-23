@@ -37,25 +37,30 @@ fn sqlite_round_trips_element_and_isotope_text() {
         (Element::Cl, CarbonIsotope::C13.into())
     );
 
-    diesel::update(species::table)
-        .set((species::element.eq("H"), species::isotope.eq("D")))
-        .execute(connection)
-        .unwrap();
-    assert_eq!(
-        columns.first::<(Element, Isotope)>(connection).unwrap(),
-        (Element::H, HydrogenIsotope::D.into())
-    );
+    for (symbol, isotope) in [("D", HydrogenIsotope::D), ("T", HydrogenIsotope::T)] {
+        diesel::update(species::table)
+            .set((species::element.eq("H"), species::isotope.eq(symbol)))
+            .execute(connection)
+            .unwrap();
+        assert_eq!(
+            columns.first::<(Element, Isotope)>(connection).unwrap(),
+            (Element::H, isotope.into())
+        );
+    }
 
-    diesel::update(species::table)
-        .set((species::element.eq("Xx"), species::isotope.eq("C99")))
-        .execute(connection)
-        .unwrap();
+    diesel::update(species::table).set(species::element.eq("Xx")).execute(connection).unwrap();
     assert!(matches!(
         species::table.select(species::element).first::<Element>(connection),
         Err(diesel::result::Error::DeserializationError(_))
     ));
-    assert!(matches!(
-        species::table.select(species::isotope).first::<Isotope>(connection),
-        Err(diesel::result::Error::DeserializationError(_))
-    ));
+    for malformed in ["C99", "C"] {
+        diesel::update(species::table)
+            .set(species::isotope.eq(malformed))
+            .execute(connection)
+            .unwrap();
+        assert!(matches!(
+            species::table.select(species::isotope).first::<Isotope>(connection),
+            Err(diesel::result::Error::DeserializationError(_))
+        ));
+    }
 }
