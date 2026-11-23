@@ -7,6 +7,7 @@ mod isotopic_composition;
 mod mass_number;
 mod monoisotopic_mass;
 mod most_abundant_isotope;
+mod neutron_number;
 mod relative_atomic_mass;
 mod try_from;
 mod try_from_element;
@@ -286,6 +287,21 @@ pub trait MassNumber {
     /// assert_eq!(tritium.mass_number(), 3);
     /// ```
     fn mass_number(&self) -> u16;
+}
+
+/// Number of neutrons in an isotope (mass number minus atomic number).
+pub trait NeutronNumber {
+    /// Returns the number of neutrons.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use elements_rs::isotopes::{HydrogenIsotope, NeutronNumber};
+    ///
+    /// assert_eq!(HydrogenIsotope::H1.neutron_number(), 0);
+    /// assert_eq!(HydrogenIsotope::D.neutron_number(), 1);
+    /// ```
+    fn neutron_number(&self) -> u16;
 }
 
 /// Element that an isotope belongs to.
