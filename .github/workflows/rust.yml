@@ -28,6 +28,8 @@ jobs:
       run: cargo test --workspace
     - name: Run tests (all features)
       run: cargo test --workspace --all-features
+    - name: Run Diesel SQLite tests without std
+      run: cargo test -p elements_rs --no-default-features --features diesel-sqlite --test diesel_sqlite
 
   fmt:
     name: Rustfmt
@@ -78,10 +80,14 @@ jobs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust 1.88 (declared MSRV)
       uses: dtolnay/rust-toolchain@1.88.0
+      with:
+        targets: x86_64-unknown-none
     - name: Cache cargo build
       uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
     - name: Check workspace builds on the MSRV toolchain
       run: cargo check --workspace --all-features
+    - name: Check no-std Diesel SQLite on the MSRV toolchain
+      run: cargo check -p elements_rs --no-default-features --features diesel-sqlite --target x86_64-unknown-none --lib
 
   doc:
     name: Documentation

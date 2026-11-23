@@ -14,8 +14,8 @@ include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 
 [dependencies]
 strum_macros = "0.28.0"
-strum = { version = "0.28.0", features = ["derive"] }
-thiserror = "2.0.18"
+strum = { version = "0.28.0", features = ["derive"], default-features = false }
+thiserror = { version = "2.0.18", default-features = false }
 serde = { version = "1.0", features = [
 	"derive",
 ], optional = true, default-features = false }
@@ -23,6 +23,7 @@ arbitrary = { version = "1.0", features = ["derive"], optional = true, default-f
 mem_dbg = { version = "0.4.1", features = [
 	"derive",
 ], optional = true, default-features = false }
+diesel = { version = "2.4.0", optional = true, default-features = false }
 
 [features]
 default = ["serde"]
@@ -31,6 +32,8 @@ serde = ["dep:serde"]
 arbitrary = ["dep:arbitrary"]
 mem_size = ["dep:mem_dbg"]
 mem_dbg = ["std", "mem_size", "mem_dbg/std"]
+diesel-sqlite = ["dep:diesel", "diesel/sqlite-no-std"]
+diesel-postgres = ["dep:diesel", "diesel/postgres", "std"]
 
 [lints]
 workspace = true
