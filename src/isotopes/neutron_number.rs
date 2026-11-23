@@ -1,8 +1,7 @@
 //! Neutron counts derived from isotope mass and atomic numbers.
 
-use crate::AtomicNumber;
-
 use super::{ElementVariant, MassNumber, NeutronNumber};
+use crate::AtomicNumber;
 
 impl<T: ElementVariant + MassNumber> NeutronNumber for T {
     #[inline]
