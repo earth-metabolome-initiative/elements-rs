@@ -23,7 +23,7 @@ jobs:
       with:
         toolchain: stable
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Run tests (default features)
       run: cargo test --workspace
     - name: Run tests (all features)
@@ -63,7 +63,7 @@ jobs:
     - name: Install cargo-hack
       uses: taiki-e/install-action@cargo-hack
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Compile-check every feature combination
       run: cargo hack --feature-powerset --no-dev-deps check
     - name: Test MemSize no-default smoke test
@@ -79,7 +79,7 @@ jobs:
     - name: Install Rust 1.88 (declared MSRV)
       uses: dtolnay/rust-toolchain@1.88.0
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Check workspace builds on the MSRV toolchain
       run: cargo check --workspace --all-features
 
@@ -109,7 +109,7 @@ jobs:
     - name: Generate coverage
       run: cargo tarpaulin --engine=llvm --out xml --all-features --workspace --run-types AllTargets --run-types Doctests --exclude elements-builder
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
+      uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: false
