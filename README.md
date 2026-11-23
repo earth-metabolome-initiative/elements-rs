@@ -99,6 +99,8 @@ cargo install prek
 prek install
 ```
 
+GitHub requires the `Rustfmt` check before merging into `main`. For fork pull requests awaiting approval, a maintainer must [approve the workflow run](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks).
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/earth-metabolome-initiative/elements-rs/blob/main/LICENSE).

@@ -23,7 +23,7 @@ jobs:
       with:
         toolchain: stable
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Run tests (default features)
       run: cargo test --workspace
     - name: Run tests (all features)
@@ -32,13 +32,15 @@ jobs:
       run: cargo test -p elements_rs --no-default-features --features diesel-sqlite --test diesel_sqlite
 
   fmt:
+    # The GitHub ruleset for main requires this check name.
     name: Rustfmt
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust
-      uses: dtolnay/rust-toolchain@nightly
+      uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
       with:
+        toolchain: nightly
         components: rustfmt
     - name: Check formatting
       run: cargo fmt --all -- --check
@@ -65,7 +67,7 @@ jobs:
     - name: Install cargo-hack
       uses: taiki-e/install-action@cargo-hack
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Compile-check every feature combination
       run: cargo hack --feature-powerset --no-dev-deps check
     - name: Test MemSize no-default smoke test
@@ -83,7 +85,7 @@ jobs:
       with:
         targets: x86_64-unknown-none
     - name: Cache cargo build
-      uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2
+      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
     - name: Check workspace builds on the MSRV toolchain
       run: cargo check --workspace --all-features
     - name: Check no-std Diesel SQLite on the MSRV toolchain
@@ -128,7 +130,7 @@ jobs:
         DATABASE_URL: postgresql://postgres@127.0.0.1/postgres?connect_timeout=5
       run: cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info -- --include-ignored
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
+      uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
       with:
         files: lcov.info
         token: ${{ secrets.CODECOV_TOKEN }}
