@@ -150,7 +150,9 @@ jobs:
         DATABASE_URL: postgresql://postgres@127.0.0.1/postgres?connect_timeout=5
         MARIADB_DATABASE_URL: mariadb://elements:elements-ci@127.0.0.1:${{ job.services.mariadb.ports['3306'] }}/elements
         MYSQL_DATABASE_URL: mysql://elements:elements-ci@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/elements
-      run: cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info -- --include-ignored
+      run: >-
+        cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info
+        --features diesel/postgres,diesel/mariadb,diesel/mysql -- --include-ignored
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
       with:

@@ -62,7 +62,8 @@ jobs:
       run: |
         set +e
         cargo mutants --jobs 1 --jobserver-tasks 4 --no-shuffle -vV --in-diff git.diff \
-          --features diesel-sqlite,diesel-postgres,diesel-mariadb,diesel-mysql -- -- --include-ignored
+          --features diesel-sqlite,diesel-postgres,diesel-mariadb,diesel-mysql \
+          --features diesel/postgres,diesel/mariadb,diesel/mysql -- -- --include-ignored
         code=$?
         set -e
         # Exit codes other than success (0), missed (2), and timeout (3) are

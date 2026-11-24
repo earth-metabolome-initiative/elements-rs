@@ -33,9 +33,17 @@ arbitrary = ["dep:arbitrary"]
 mem_size = ["dep:mem_dbg"]
 mem_dbg = ["std", "mem_size", "mem_dbg/std"]
 diesel-sqlite = ["dep:diesel", "diesel/sqlite-no-std"]
-diesel-postgres = ["dep:diesel", "diesel/postgres", "std"]
-diesel-mariadb = ["dep:diesel", "diesel/mariadb", "std"]
-diesel-mysql = ["dep:diesel", "diesel/mysql", "std"]
+diesel-postgres = ["dep:diesel", "diesel/postgres_backend", "std"]
+diesel-mariadb = ["dep:diesel", "diesel/mariadb_backend", "std"]
+diesel-mysql = ["dep:diesel", "diesel/mysql_backend", "std"]
+
+[[test]]
+name = "diesel_postgres"
+required-features = ["diesel-postgres", "diesel/postgres"]
+
+[[test]]
+name = "diesel_mysql_like"
+required-features = ["diesel-mariadb", "diesel-mysql", "diesel/mariadb", "diesel/mysql"]
 
 [lints]
 workspace = true
