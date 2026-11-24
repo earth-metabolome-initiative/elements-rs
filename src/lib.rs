@@ -12,7 +12,12 @@ mod bonds_number;
 mod charged_valences;
 mod classification;
 mod covalent_radius;
-#[cfg(any(feature = "diesel-sqlite", feature = "diesel-postgres"))]
+#[cfg(any(
+    feature = "diesel-sqlite",
+    feature = "diesel-postgres",
+    feature = "diesel-mariadb",
+    feature = "diesel-mysql"
+))]
 mod diesel_sql;
 mod display;
 mod electronegativity;
@@ -70,11 +75,13 @@ pub use van_der_waals_radius::VanDerWaalsRadius;
 #[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
 #[cfg_attr(feature = "mem_size", mem_size(flat))]
 #[cfg_attr(
-    any(feature = "diesel-sqlite", feature = "diesel-postgres"),
-    derive(diesel::expression::AsExpression, diesel::deserialize::FromSqlRow)
-)]
-#[cfg_attr(
-    any(feature = "diesel-sqlite", feature = "diesel-postgres"),
+    any(
+        feature = "diesel-sqlite",
+        feature = "diesel-postgres",
+        feature = "diesel-mariadb",
+        feature = "diesel-mysql"
+    ),
+    derive(diesel::expression::AsExpression, diesel::deserialize::FromSqlRow),
     diesel(sql_type = diesel::sql_types::Text)
 )]
 /// All 118 elements of the periodic table.

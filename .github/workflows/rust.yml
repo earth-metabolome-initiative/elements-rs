@@ -114,6 +114,26 @@ jobs:
         ports:
         - 127.0.0.1:5432:5432
         options: --health-cmd "pg_isready -h 127.0.0.1 -U postgres" --health-interval 2s --health-timeout 3s --health-retries 15
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: elements-ci-root
+          MARIADB_DATABASE: elements
+          MARIADB_USER: elements
+          MARIADB_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "healthcheck.sh --connect --innodb_initialized" --health-interval 2s --health-timeout 3s --health-retries 30
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: elements-ci-root
+          MYSQL_DATABASE: elements
+          MYSQL_USER: elements
+          MYSQL_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "mysqladmin ping -h 127.0.0.1 -u elements -pelements-ci" --health-interval 2s --health-timeout 3s --health-retries 30
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust
@@ -128,6 +148,8 @@ jobs:
     - name: Generate coverage
       env:
         DATABASE_URL: postgresql://postgres@127.0.0.1/postgres?connect_timeout=5
+        MARIADB_DATABASE_URL: mariadb://elements:elements-ci@127.0.0.1:${{ job.services.mariadb.ports['3306'] }}/elements
+        MYSQL_DATABASE_URL: mysql://elements:elements-ci@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/elements
       run: cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info -- --include-ignored
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1

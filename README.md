@@ -87,8 +87,10 @@ let nitrogen = Element::from_str("N").unwrap();
 
 - [`serde`](https://crates.io/crates/serde) (default): Enables [`Serialize`](https://docs.serde.rs/serde/trait.Serialize.html) and [`Deserialize`](https://docs.serde.rs/serde/trait.Deserialize.html) implementations for `Element` and `Isotope` types
 - [`arbitrary`](https://crates.io/crates/arbitrary): Enables [`Arbitrary`](https://docs.rs/arbitrary/latest/arbitrary/trait.Arbitrary.html) implementations for `Element` and `Isotope` types, useful for fuzzing
-- `diesel-sqlite`: Stores `Element` symbols such as `Cl` and `Isotope` symbols such as `C13`, `D`, and `T` in SQLite `TEXT` columns. Supports `no_std` with `alloc`.
-- `diesel-postgres`: Provides the same `TEXT` mapping for PostgreSQL. Both backends reject unknown symbols or isotopes on read.
+- `diesel-sqlite` supports SQLite in `no_std` builds with `alloc`.
+- `diesel-postgres`, `diesel-mariadb`, and `diesel-mysql` enable the corresponding server backends.
+
+All Diesel backends store `Element` symbols such as `Cl` and `Isotope` symbols such as `C13`, `D`, and `T` in `TEXT` columns. Reads reject unknown symbols or isotopes.
 
 ## Contributing
 
