@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_call:
 
 env:
   CARGO_TERM_COLOR: always
@@ -51,8 +52,9 @@ jobs:
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
+      uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
       with:
+        toolchain: stable
         components: clippy
     - name: Run clippy
       run: cargo clippy --all-features --all-targets -- -D warnings
@@ -63,8 +65,9 @@ jobs:
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust 1.88 (declared MSRV)
-      uses: dtolnay/rust-toolchain@1.88.0
+      uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
       with:
+        toolchain: 1.88.0
         targets: x86_64-unknown-none
     - name: Cache cargo build
       uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
@@ -83,14 +86,27 @@ jobs:
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
+      uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
+      with:
+        toolchain: stable
     - name: Check documentation
       run: cargo doc --no-deps --document-private-items
       env:
         RUSTDOCFLAGS: -D warnings
 
+  semver:
+    name: SemVer
+    runs-on: ubuntu-26.04
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: obi1kenobi/cargo-semver-checks-action@6b69fcf40e9b5fb17adeb57e4b6ecd020649a239 # v2.9
+      with:
+        package: elements_rs
+        feature-group: all-features
+
   coverage:
     name: Code Coverage
+    if: github.ref_type != 'tag'
     runs-on: ubuntu-26.04
     services:
       postgres:
