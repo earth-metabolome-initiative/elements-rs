@@ -41,7 +41,7 @@ pub use classification::{ElementCategory, ElementClassification};
 pub use covalent_radius::CovalentRadius;
 pub use electronegativity::Electronegativity;
 pub use isotopes::{
-    ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope,
+    ElementVariant, Isotope, IsotopicComposition, MassNumber, MostAbundantIsotope, NeutronNumber,
     RelativeAtomicMass,
 };
 pub use orbitals::Orbitals;
@@ -351,6 +351,6 @@ mod tests {
 
         let mut output = alloc::string::String::new();
         Element::C.mem_dbg_on(&mut output, DbgFlags::default()).unwrap();
-        assert!(!output.is_empty());
+        assert_ne!(output, "");
     }
 }

@@ -1,6 +1,8 @@
-//! Submodule implementing the `FromStr` trait for the `Element` enum.
+//! Parsing chemical element and isotope symbols.
 
 use core::str::FromStr;
+
+use crate::{Element, Isotope, errors::ParseIsotopeError, isotopes::HydrogenIsotope};
 
 impl FromStr for crate::Element {
     type Err = crate::errors::Error;
@@ -157,9 +159,71 @@ impl FromStr for crate::Element {
     }
 }
 
+impl FromStr for Isotope {
+    type Err = ParseIsotopeError;
+
+    /// Parses an element symbol followed by its mass number, or `D` or `T`.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use elements_rs::{
+    ///     Isotope,
+    ///     isotopes::{CarbonIsotope, HydrogenIsotope},
+    /// };
+    ///
+    /// assert_eq!("C13".parse::<Isotope>().unwrap(), CarbonIsotope::C13.into());
+    /// assert_eq!("D".parse::<Isotope>().unwrap(), HydrogenIsotope::D.into());
+    /// ```
+    ///
+    /// # Errors
+    ///
+    /// Rejects unknown symbols, unknown isotopes, and invalid mass numbers.
+    fn from_str(text: &str) -> Result<Self, Self::Err> {
+        match text {
+            "D" => return Ok(HydrogenIsotope::D.into()),
+            "T" => return Ok(HydrogenIsotope::T.into()),
+            _ => {}
+        }
+
+        let mass_start = text
+            .find(|character: char| character.is_ascii_digit())
+            .ok_or(ParseIsotopeError::MissingMassNumber)?;
+        let (symbol, mass) = text.split_at(mass_start);
+        Ok(Self::try_from((symbol.parse::<Element>()?, mass.parse::<u16>()?))?)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use strum::IntoEnumIterator;
+
+    use crate::{
+        Element, Isotope,
+        isotopes::{CarbonIsotope, HydrogenIsotope},
+    };
+
+    #[test]
+    fn parses_isotope_symbols() {
+        assert_eq!("C13".parse::<Isotope>().unwrap(), CarbonIsotope::C13.into());
+        assert_eq!("D".parse::<Isotope>().unwrap(), HydrogenIsotope::D.into());
+        assert_eq!("T".parse::<Isotope>().unwrap(), HydrogenIsotope::T.into());
+    }
+
+    #[test]
+    fn parses_every_isotopes_display_output() {
+        for isotope in Element::iter().flat_map(|element| element.isotopes()) {
+            let text = alloc::format!("{isotope}");
+            assert_eq!(text.parse::<Isotope>().unwrap(), *isotope, "{text}");
+        }
+    }
+
+    #[test]
+    fn rejects_malformed_and_unknown_isotope_symbols() {
+        for text in ["", "C", "Xx13", "C99", "C13x", "C65536"] {
+            assert!(text.parse::<Isotope>().is_err(), "{text}");
+        }
+    }
 
     #[test]
     fn test_from_str() {

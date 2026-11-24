@@ -170,7 +170,7 @@ mod tests {
     fn test_element_trait_is_self_consistent() {
         for element in crate::Element::iter() {
             let states = <crate::Element as OxidationStates>::oxidation_states(&element);
-            assert!(!states.is_empty());
+            assert_ne!(states, []);
 
             for state in -5..=9 {
                 assert_eq!(

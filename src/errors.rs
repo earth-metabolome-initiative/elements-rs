@@ -1,5 +1,7 @@
 //! Error types for element and isotope parsing.
 
+use core::num::ParseIntError;
+
 use crate::Element;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, thiserror::Error)]
@@ -21,4 +23,18 @@ pub enum Error {
     #[error("Unknown isotope for element {0:?} with atomic mass {1}")]
     /// The provided combination of Element and atomic mass is unknown.
     Isotope(Element, u64),
+}
+
+/// Errors returned when parsing an isotope symbol.
+#[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+pub enum ParseIsotopeError {
+    /// The symbol has no mass number.
+    #[error("missing isotope mass number")]
+    MissingMassNumber,
+    /// The mass number is invalid or out of range.
+    #[error("invalid isotope mass number")]
+    InvalidMassNumber(#[from] ParseIntError),
+    /// The element symbol or the isotope is unknown.
+    #[error(transparent)]
+    Unknown(#[from] Error),
 }
