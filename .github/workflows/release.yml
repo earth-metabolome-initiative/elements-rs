@@ -42,6 +42,7 @@ jobs:
     name: Publish to crates.io
     needs: checks
     runs-on: ubuntu-26.04
+    environment: crates-io
     permissions:
       contents: read
       id-token: write
