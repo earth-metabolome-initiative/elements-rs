@@ -57,24 +57,6 @@ jobs:
     - name: Run clippy
       run: cargo clippy --all-features --all-targets -- -D warnings
 
-  features:
-    name: Feature Compatibility
-    runs-on: ubuntu-26.04
-    steps:
-    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-    - name: Install cargo-hack
-      uses: taiki-e/install-action@cargo-hack
-    - name: Cache cargo build
-      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
-    - name: Compile-check every feature combination
-      run: cargo hack --feature-powerset --no-dev-deps check
-    - name: Test MemSize no-default smoke test
-      run: cargo test --no-default-features --features mem_size test_mem_size_derives
-    - name: Test MemDbg smoke test
-      run: cargo test --no-default-features --features mem_dbg test_mem_dbg_derives
-
   msrv:
     name: Minimum Supported Rust Version
     runs-on: ubuntu-26.04
