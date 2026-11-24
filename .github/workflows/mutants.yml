@@ -11,6 +11,34 @@ jobs:
   incremental-mutants:
     name: Incremental Mutants
     runs-on: ubuntu-26.04
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+        - 127.0.0.1:5432:5432
+        options: --health-cmd "pg_isready -h 127.0.0.1 -U postgres" --health-interval 2s --health-timeout 3s --health-retries 15
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: elements-ci-root
+          MARIADB_DATABASE: elements
+          MARIADB_USER: elements
+          MARIADB_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "healthcheck.sh --connect --innodb_initialized" --health-interval 2s --health-timeout 3s --health-retries 30
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: elements-ci-root
+          MYSQL_DATABASE: elements
+          MYSQL_USER: elements
+          MYSQL_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "mysqladmin ping -h 127.0.0.1 -u elements -pelements-ci" --health-interval 2s --health-timeout 3s --health-retries 30
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
@@ -19,13 +47,23 @@ jobs:
       run: |
         git diff origin/${{ github.base_ref }}.. | tee git.diff
     - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
+      uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
+      with:
+        toolchain: stable
     - name: Install cargo-mutants
-      uses: taiki-e/install-action@cargo-mutants
+      uses: taiki-e/install-action@fe3acb53a98b62c772db35de75ce0e4595e7ca8c
+      with:
+        tool: cargo-mutants
     - name: Run mutants on the diff
+      env:
+        DATABASE_URL: postgresql://postgres@127.0.0.1/postgres?connect_timeout=5
+        MARIADB_DATABASE_URL: mariadb://elements:elements-ci@127.0.0.1:${{ job.services.mariadb.ports['3306'] }}/elements
+        MYSQL_DATABASE_URL: mysql://elements:elements-ci@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/elements
       run: |
         set +e
-        cargo mutants --no-shuffle -vV --in-diff git.diff
+        cargo mutants --jobs 1 --jobserver-tasks 4 --no-shuffle -vV --in-diff git.diff \
+          --features diesel-sqlite,diesel-postgres,diesel-mariadb,diesel-mysql \
+          --features diesel/postgres,diesel/mariadb,diesel/mysql -- -- --include-ignored
         code=$?
         set -e
         # Exit codes other than success (0), missed (2), and timeout (3) are

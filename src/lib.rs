@@ -1,7 +1,7 @@
 #![doc = include_str!("../README.md")]
 #![cfg_attr(not(any(feature = "arbitrary", feature = "std")), no_std)]
 
-#[cfg(test)]
+#[cfg(any(test, feature = "diesel-sqlite"))]
 extern crate alloc;
 
 mod allowed_valences;
@@ -12,6 +12,13 @@ mod bonds_number;
 mod charged_valences;
 mod classification;
 mod covalent_radius;
+#[cfg(any(
+    feature = "diesel-sqlite",
+    feature = "diesel-postgres",
+    feature = "diesel-mariadb",
+    feature = "diesel-mysql"
+))]
+mod diesel_sql;
 mod display;
 mod electronegativity;
 mod element_mask;
@@ -67,6 +74,16 @@ pub use van_der_waals_radius::VanDerWaalsRadius;
 #[cfg_attr(feature = "mem_size", derive(mem_dbg::MemSize))]
 #[cfg_attr(feature = "mem_dbg", derive(mem_dbg::MemDbg))]
 #[cfg_attr(feature = "mem_size", mem_size(flat))]
+#[cfg_attr(
+    any(
+        feature = "diesel-sqlite",
+        feature = "diesel-postgres",
+        feature = "diesel-mariadb",
+        feature = "diesel-mysql"
+    ),
+    derive(diesel::expression::AsExpression, diesel::deserialize::FromSqlRow),
+    diesel(sql_type = diesel::sql_types::Text)
+)]
 /// All 118 elements of the periodic table.
 ///
 /// ```rust

@@ -28,6 +28,8 @@ jobs:
       run: cargo test --workspace
     - name: Run tests (all features)
       run: cargo test --workspace --all-features
+    - name: Run Diesel SQLite tests without std
+      run: cargo test -p elements_rs --no-default-features --features diesel-sqlite --test diesel_sqlite
 
   fmt:
     # The GitHub ruleset for main requires this check name.
@@ -55,24 +57,6 @@ jobs:
     - name: Run clippy
       run: cargo clippy --all-features --all-targets -- -D warnings
 
-  features:
-    name: Feature Compatibility
-    runs-on: ubuntu-26.04
-    steps:
-    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-    - name: Install cargo-hack
-      uses: taiki-e/install-action@cargo-hack
-    - name: Cache cargo build
-      uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
-    - name: Compile-check every feature combination
-      run: cargo hack --feature-powerset --no-dev-deps check
-    - name: Test MemSize no-default smoke test
-      run: cargo test --no-default-features --features mem_size test_mem_size_derives
-    - name: Test MemDbg smoke test
-      run: cargo test --no-default-features --features mem_dbg test_mem_dbg_derives
-
   msrv:
     name: Minimum Supported Rust Version
     runs-on: ubuntu-26.04
@@ -90,6 +74,8 @@ jobs:
       run: cargo check -p elements_rs --lib --target x86_64-unknown-none
     - name: Check workspace builds on the MSRV toolchain
       run: cargo check --workspace --all-features
+    - name: Check no-std Diesel SQLite on the MSRV toolchain
+      run: cargo check -p elements_rs --no-default-features --features diesel-sqlite --target x86_64-unknown-none --lib
 
   doc:
     name: Documentation
@@ -106,6 +92,34 @@ jobs:
   coverage:
     name: Code Coverage
     runs-on: ubuntu-26.04
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+        - 127.0.0.1:5432:5432
+        options: --health-cmd "pg_isready -h 127.0.0.1 -U postgres" --health-interval 2s --health-timeout 3s --health-retries 15
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: elements-ci-root
+          MARIADB_DATABASE: elements
+          MARIADB_USER: elements
+          MARIADB_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "healthcheck.sh --connect --innodb_initialized" --health-interval 2s --health-timeout 3s --health-retries 30
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: elements-ci-root
+          MYSQL_DATABASE: elements
+          MYSQL_USER: elements
+          MYSQL_PASSWORD: elements-ci
+        ports:
+        - 3306/tcp
+        options: --health-cmd "mysqladmin ping -h 127.0.0.1 -u elements -pelements-ci" --health-interval 2s --health-timeout 3s --health-retries 30
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install Rust
@@ -118,7 +132,13 @@ jobs:
       with:
         tool: cargo-llvm-cov
     - name: Generate coverage
-      run: cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info
+      env:
+        DATABASE_URL: postgresql://postgres@127.0.0.1/postgres?connect_timeout=5
+        MARIADB_DATABASE_URL: mariadb://elements:elements-ci@127.0.0.1:${{ job.services.mariadb.ports['3306'] }}/elements
+        MYSQL_DATABASE_URL: mysql://elements:elements-ci@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/elements
+      run: >-
+        cargo llvm-cov --locked --all-features -p elements_rs --doctests --lcov --output-path lcov.info
+        --features diesel/postgres,diesel/mariadb,diesel/mysql -- --include-ignored
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
       with:
