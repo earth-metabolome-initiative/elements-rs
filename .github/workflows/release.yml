@@ -5,125 +5,68 @@ on:
     tags:
       - 'v*'
 
-env:
-  CARGO_TERM_COLOR: always
-
 permissions:
-  contents: write
-  id-token: write
+  contents: read
 
 jobs:
-  test:
-    name: Test
+  validate:
+    name: Validate release tag
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
         with:
           toolchain: stable
-      - name: Cache cargo build
-        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
-      - name: Run tests (default features)
-        run: cargo test --workspace
-      - name: Run tests (all features)
-        run: cargo test --workspace --all-features
+      - name: Check tag version and commit
+        run: |
+          version=$(cargo metadata --locked --no-deps --format-version 1 |
+            jq -er '.packages[] | select(.name == "elements_rs") | .version')
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ || "$GITHUB_REF_NAME" != "v$version" ]]; then
+            echo "Expected a stable release tag matching Cargo.toml (v$version)." >&2
+            exit 1
+          fi
+          if ! git merge-base --is-ancestor HEAD refs/remotes/origin/main; then
+            echo "The tagged commit must be on main." >&2
+            exit 1
+          fi
 
-  fmt:
-    name: Rustfmt
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: rustfmt
-      - name: Check formatting
-        run: cargo fmt --all -- --check
-
-  clippy:
-    name: Clippy
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
-      - name: Run clippy
-        run: cargo clippy --all-features --all-targets -- -D warnings
-
-  features:
-    name: Feature Compatibility
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-      - name: Install cargo-hack
-        uses: taiki-e/install-action@cargo-hack
-      - name: Cache cargo build
-        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
-      - name: Compile-check every feature combination
-        run: cargo hack --feature-powerset --no-dev-deps check
-      - name: Test MemSize no-default smoke test
-        run: cargo test --no-default-features --features mem_size test_mem_size_derives
-      - name: Test MemDbg smoke test
-        run: cargo test --no-default-features --features mem_dbg test_mem_dbg_derives
-
-  msrv:
-    name: Minimum Supported Rust Version
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust 1.88 (declared MSRV)
-        uses: dtolnay/rust-toolchain@1.88.0
-      - name: Cache cargo build
-        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
-      - name: Check workspace builds on the MSRV toolchain
-        run: cargo check --workspace --all-features
-
-  doc:
-    name: Documentation
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-      - name: Check documentation
-        run: cargo doc --no-deps --document-private-items
-        env:
-          RUSTDOCFLAGS: -D warnings
-
-  coverage:
-    name: Code Coverage
-    runs-on: ubuntu-26.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: llvm-tools-preview, rustfmt
-      - name: Install tarpaulin
-        uses: taiki-e/install-action@cargo-tarpaulin
-      - name: Generate coverage
-        run: cargo tarpaulin --engine=llvm --out xml --all-features --workspace --run-types AllTargets --run-types Doctests --exclude elements-builder
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
+  checks:
+    name: Rust CI
+    needs: validate
+    uses: ./.github/workflows/rust.yml
 
   publish:
-    name: Publish
-    needs: [test, fmt, clippy, features, msrv, doc, coverage]
+    name: Publish to crates.io
+    needs: checks
     runs-on: ubuntu-26.04
+    environment: crates-io
     permissions:
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@f0d5300ba8908d942c808f4d31c08471d7798ba3
+        with:
+          toolchain: stable
       - uses: rust-lang/crates-io-auth-action@3268eb413133e2960fa4ae0e963ca76380c54cd9 # v1
         id: auth
-      - run: cargo publish --allow-dirty
+      - run: cargo publish --locked -p elements_rs
         env:
           CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+
+  github-release:
+    name: Create GitHub Release
+    needs: publish
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+      - run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
