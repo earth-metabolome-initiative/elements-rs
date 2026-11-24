@@ -12,16 +12,7 @@ Would you like to see more information or features? Please open an issue or a pu
 
 The crate is [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html), and optionally supports [`serde`](https://serde.rs/) for serialization/deserialization and [`arbitrary`](https://crates.io/crates/arbitrary) for fuzzing.
 
-## Usage
-
-Add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-elements_rs = "0.1"
-```
-
-### Basic Example
+## Basic Example
 
 ```rust
 use elements_rs::{
@@ -51,7 +42,7 @@ assert_eq!(carbon.cordero_covalent_radius(), Some(0.76));
 assert_eq!(carbon.bondi_van_der_waals_radius(), Some(1.70));
 ```
 
-### Working with Isotopes
+## Working with Isotopes
 
 ```rust
 use elements_rs::{
@@ -72,7 +63,7 @@ assert_eq!(carbon.monoisotopic_mass(), 12.0);
 let isotope = Isotope::C(carbon_12);
 ```
 
-### Parsing from Strings
+## Parsing from Strings
 
 ```rust
 use elements_rs::Element;
